@@ -18,7 +18,7 @@
     </parent>
 
 	<name>clinica</name>
-	<description>Demo project for Spring Boot</description>
+	<description>TCC</description>
  
 
 	<properties>
@@ -44,6 +44,14 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+  
+        <!-- https://mvnrepository.com/artifact/net.sourceforge.nekohtml/nekohtml -->
+        <dependency>
+            <groupId>net.sourceforge.nekohtml</groupId>
+            <artifactId>nekohtml</artifactId>
+            <version>1.9.22</version>
+        </dependency>
+  
   
   <!--  -->
         <dependency>
