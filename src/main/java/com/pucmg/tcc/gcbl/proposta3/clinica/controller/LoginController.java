@@ -1,5 +1,8 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.controller;
 
+import java.util.Date;
+import java.util.Locale;
+
 import javax.validation.Valid;
 
 import org.apache.commons.logging.Log;
@@ -8,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,6 +31,19 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
+    
+    @RequestMapping(value="/teste", method = RequestMethod.GET)
+    public String home(Locale locale, Model model) {
+        // Estado do sistema
+        model.addAttribute("RUNNING", "" );
+        model.addAttribute( "PAUSED", "" );
+        
+        Date date = new Date();
+        model.addAttribute("dataHora", date );
+        return "views/home";
+    }    
+    
+    
     @RequestMapping(value={"/", "/login"}, method = RequestMethod.GET)
     public ModelAndView login(){
         ModelAndView modelAndView = new ModelAndView();
