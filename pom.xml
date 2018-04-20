@@ -75,6 +75,13 @@
            <version>3.0.5</version>
         </dependency>        
 <!--  -->
+
+        <!-- H2 -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+        </dependency>
+
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
