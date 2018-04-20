@@ -2,6 +2,8 @@ package com.pucmg.tcc.gcbl.proposta3.clinica.controller;
 
 import javax.validation.Valid;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,8 +17,12 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.model.User;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.UserService;
 
 
+
+
 @Controller
 public class LoginController {
+    
+    private static Log log = LogFactory.getLog(LoginController.class);
     
     @Autowired
     private UserService userService;
@@ -25,6 +31,9 @@ public class LoginController {
     public ModelAndView login(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
+        
+        log.debug("teste do log");
+        
         return modelAndView;
     }
     
