@@ -1,0 +1,149 @@
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<tiles:insertDefinition name="templatePublico">
+    <tiles:putAttribute name="body">
+
+<style>
+.form-signin
+{
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.form-signin .form-signin-heading, .form-signin .checkbox
+{
+    margin-bottom: 10px;
+}
+.form-signin .checkbox
+{
+    font-weight: normal;
+}
+.form-signin .form-control
+{
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.form-signin .form-control:focus
+{
+    z-index: 2;
+}
+.form-signin input[type="text"]
+{
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.form-signin input[type="password"]
+{
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.account-wall
+{
+    margin-top: 20px;
+    padding: 40px 0px 20px 0px;
+    background-color: #f7f7f7;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+.login-title
+{
+    color: #555;
+    font-size: 18px;
+    font-weight: 400;
+    display: block;
+}
+.profile-img
+{
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+.need-help
+{
+    margin-top: 10px;
+}
+.new-account
+{
+    display: block;
+    margin-top: 10px;
+}
+
+</style>    
+
+
+        <div class="body">
+            <!-- ------------------------------------------- -->
+            
+
+                <div class="row">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4">
+                        <h1 class="text-center login-title">Efetue autenticação para continuar no sistema</h1>
+                        <div class="account-wall">
+                            <div class="text-center"><h3><b>SisClinica</b></h3></div>
+                            <!-- <img class="profile-img" src="https://cdn2.iconfinder.com/data/icons/medical-12-1/512/xxx017-256.png"> -->
+                            <div class="text-center"><h4>Sistema de Administração de Clínicas</h4></div>
+                            <form class="form-signin" action="/registration" method="post">
+                                <input type="text"     class="form-control" name="j_username" value="" placeholder="Matricula" required autofocus>
+                                <input type="password" class="form-control" name="j_password" value="" placeholder="Senha"     required>
+                                <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar no sistema</button>
+                            </form>
+                        </div>
+                        <c:if test="${not empty versao}">
+                            <div class="text-center font-weight-light font-italic"><small>v. ${versao}</small></div>
+                        </c:if>
+                    </div>
+                    <div class="col-sm-4"></div>
+                </div>
+            
+            
+            <!-- ------------------------------------------- -->
+
+           
+
+        </div>
+
+
+
+    </tiles:putAttribute>
+</tiles:insertDefinition>
+
+<%--
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title></title>
+</head>
+<body>
+    <form action="j_security_check" method="post">
+        <center>
+            <br>
+            <br>
+            <table border="0" cellspacing="2" cellpadding="0">
+                <tr>
+                    <td><label>Matricula:</label></td>
+                    <td><input type="text" name="j_username" value="1978"></td>
+                </tr>
+                <tr>
+                    <td><label>Senha:</label></td>
+                    <td><input type="password" name="j_password" value="1978"></td>
+                </tr>
+            </table>
+            <br> <input type="submit" value="OK">
+        </center>
+    </form>
+</body>
+</html>
+--%>
