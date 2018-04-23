@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="sasisMultaEleitoral"
+	version="3.1">
+
+  <display-name>TCC</display-name>
+
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
+  
+   <jsp-config>
+       <jsp-property-group>
+           <url-pattern>*.jsp</url-pattern>
+           <page-encoding>UTF-8</page-encoding>
+           <include-prelude>/WEB-INF/jspl/taglibs.jspf</include-prelude>
+           <trim-directive-whitespaces>true</trim-directive-whitespaces>
+           <!-- <include-prelude>/WEB-INF/jspl/taglibs.jspf</include-prelude> -->
+       </jsp-property-group>
+
+   </jsp-config>
+   
+   <error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/views/error500.jsp</location>
+	</error-page>
+	    
+  
+    
+  <listener>
+    <listener-class>
+        org.springframework.web.context.ContextLoaderListener
+    </listener-class>
+  </listener>
+  
+  <!-- TRATAR ENCODING RECEBIDO DO FRONT-END COMO UTF-8 -->
+	<filter>
+	    <filter-name>encodingFilter</filter-name>
+	    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+	    <init-param>
+	       <param-name>encoding</param-name>
+	       <param-value>UTF-8</param-value>
+	    </init-param>
+	    <init-param>
+	       <param-name>forceEncoding</param-name>
+	       <param-value>true</param-value>
+	    </init-param>
+	</filter>
+	<filter-mapping>
+	    <filter-name>encodingFilter</filter-name>
+	    <url-pattern>/*</url-pattern>
+	</filter-mapping>
+  
+   <!-- mantem o JPA EntityManager aberto por todo o request permitindo o lazy loading a partir da view -->
+   <filter>
+     <filter-name>OpenEntityManagerInViewFilter</filter-name>
+        <filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
+   </filter>
+   <filter-mapping>
+     <filter-name>OpenEntityManagerInViewFilter</filter-name>
+     <url-pattern>/*</url-pattern>
+   </filter-mapping>
+
+</web-app>
