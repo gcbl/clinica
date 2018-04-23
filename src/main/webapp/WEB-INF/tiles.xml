@@ -12,5 +12,10 @@
         <put-attribute name="rodape" value="/template/default/rodape.jsp" />
     </definition>
 
+    <definition name="templatePublico" template="/template/publico/templatePublico.jsp">
+        <put-attribute name="head" value="/template/default/head.jsp" />
+        <put-attribute name="cabecalhoPublico" value="/template/publico/cabecalhoPublico.jsp" />
+        <put-attribute name="rodapePublico" value="/template/publico/rodapePublico.jsp" />
+    </definition>  
     
 </tiles-definitions>
