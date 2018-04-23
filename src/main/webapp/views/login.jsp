@@ -1,4 +1,6 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <tiles:insertDefinition name="templatePublico">
     <tiles:putAttribute name="body">
 
@@ -93,10 +95,16 @@
                         <div class="account-wall">
                             <div class="text-center"><h3><b>SisClinica</b></h3></div>
                             <!-- <img class="profile-img" src="https://cdn2.iconfinder.com/data/icons/medical-12-1/512/xxx017-256.png"> -->
+                            <img class="profile-img" src="resources/static/images/if_10_hospital_2774741.png">
                             <div class="text-center"><h4>Sistema de Administração de Clínicas</h4></div>
-                            <form class="form-signin" action="/registration" method="post">
-                                <input type="text"     class="form-control" name="j_username" value="" placeholder="Matricula" required autofocus>
-                                <input type="password" class="form-control" name="j_password" value="" placeholder="Senha"     required>
+                            
+                            <hr>
+                            <c:if test="${loginErrado}">
+                                <h5 class="text-danger text-center">Email ou senha inválida, por favor verifique.</h5>
+                            </c:if>
+                            <form class="form-signin" action="/login" method="post">
+                                <input type="text"     class="form-control" name="email" value="teste@teste.com" placeholder="Email" required autofocus>
+                                <input type="password" class="form-control" name="password" value="teste" placeholder="Senha"     required>
                                 <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar no sistema</button>
                             </form>
                         </div>
