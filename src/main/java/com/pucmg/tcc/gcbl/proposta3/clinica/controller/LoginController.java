@@ -3,6 +3,7 @@ package com.pucmg.tcc.gcbl.proposta3.clinica.controller;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.apache.commons.logging.Log;
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.User;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.UserService;
+import com.pucmg.tcc.gcbl.proposta3.clinica.util.Constantes;
 
 
 
@@ -32,7 +34,7 @@ public class LoginController {
     private UserService userService;
 
     
-    @RequestMapping(value="/teste", method = RequestMethod.GET)
+    @RequestMapping(value="/publico/teste", method = RequestMethod.GET)
     public String home(Locale locale, Model model) {
         // Estado do sistema
         model.addAttribute("RUNNING", "" );
@@ -43,16 +45,30 @@ public class LoginController {
         return "views/home";
     }    
     
+    @RequestMapping(value="/privado", method = RequestMethod.GET)
+    public String privado(){
+        
+        
+        log.debug("HOME privado pela url");
+        
+        //return modelAndView;
+        return "views/home";
+    }
+        
+    // =========================================================================
     
     @RequestMapping(value={"/", "/login"}, method = RequestMethod.GET)
-    public ModelAndView login(){
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("login");
-        
-        log.debug("teste do log");
-        
-        return modelAndView;
+    public String  login(Model model){
+        return "views/login";
     }
+    
+    @RequestMapping(value={"/loginErrado"}, method = RequestMethod.GET)
+    public String loginErrado(Model model){
+        model.addAttribute("loginErrado", true);
+        return "views/login";
+       
+    }
+        
     
     
     @RequestMapping(value="/registration", method = RequestMethod.GET)
@@ -65,8 +81,13 @@ public class LoginController {
     }
     
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
+    public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult, HttpServletResponse response, String email, String password) {
         ModelAndView modelAndView = new ModelAndView();
+        
+        User userForm = new User();
+        userForm.setEmail(email);
+        userForm.setPassword(password);
+        
         User userExists = userService.findUserByEmail(user.getEmail());
         if (userExists != null) {
             bindingResult
