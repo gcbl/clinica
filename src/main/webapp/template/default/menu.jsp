@@ -65,13 +65,14 @@
       </li>
     </ul>
     
-    <span class="navbar-text">
-      <div class="btn-group">
-	        <a href="start" class="btn btn-success" role="button"><i class="fa fa-play-circle-o" aria-hidden="true"></i></a>
-			<a href="pause" class="btn btn-warning" role="button"><i class="fa fa-pause-circle-o" aria-hidden="true"></i></a>
-	        <a href="stop" class="btn btn-danger" role="button"><i class="fa fa-stop-circle-o" aria-hidden="true"></i></a>
-	  </div> 
-    </span>    
+    <ul class="nav navbar-nav navbar-right">
+          <li class="nav-item">
+            <div class="nav-link"><i class="far fa-user"></i> <b>${usuarioLogado.nom}</b> </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout"><i class="fa fa-sign-out-alt" aria-hidden="true"></i> Sair</a>
+          </li>
+    </ul>  
     
     <%-- 
     <form class="form-inline my-2 my-lg-0">
