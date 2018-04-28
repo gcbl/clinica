@@ -1,5 +1,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title></title>
+
+	<!-- livereload -->
+	<script>
+        document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')  
+    </script> 
     
     <!-- Favicon -->
     <!-- <link rel="shortcut icon" type="image/x-icon" href="resources/images/favicon.ico" /> -->
