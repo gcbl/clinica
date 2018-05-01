@@ -29,23 +29,53 @@
  -->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fa fa-book" aria-hidden="true"></i> Medicamentos
+            <i class="fas fa-pills"></i> Atendimento
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-          <a class="dropdown-item" href="orderbooks">Consultar</a>
-          <a class="dropdown-item disabled" href="#">Cadastrar</a>
+          <a class="dropdown-item" href="#">Inserir</a>
+          <a class="dropdown-item disabled" href="#">Excluir</a>
+          <a class="dropdown-item disabled" href="#">Alterar</a>
+          <a class="dropdown-item disabled" href="#">Consultar</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item disabled" href="#">Estatisticas</a>
         </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fa fa-balance-scale" aria-hidden="true"></i> Arbitragens
+            <i class="fas fa-pills"></i> Medicamentos
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-          <a class="dropdown-item" href="arbitragesOportunities">Tabela</a>
+          <a class="dropdown-item" href="#">Inserir</a>
+          <a class="dropdown-item disabled" href="#">Excluir</a>
+          <a class="dropdown-item disabled" href="#">Alterar</a>
+          <a class="dropdown-item disabled" href="#">Consultar</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item disabled" href="#">Extrato simulado</a>
+          <a class="dropdown-item disabled" href="#">Estatisticas</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user-md"></i> Profissionais
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+          <a class="dropdown-item" href="#">Inserir</a>
+          <a class="dropdown-item disabled" href="#">Excluir</a>
+          <a class="dropdown-item disabled" href="#">Alterar</a>
+          <a class="dropdown-item disabled" href="#">Consultar</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item disabled" href="#">Estatisticas</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-users"></i> Pacientes
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+          <a class="dropdown-item" href="#">Inserir</a>
+          <a class="dropdown-item disabled" href="#">Excluir</a>
+          <a class="dropdown-item disabled" href="#">Alterar</a>
+          <a class="dropdown-item disabled" href="#">Consultar</a>
+          <div class="dropdown-divider"></div>
           <a class="dropdown-item disabled" href="#">Estatisticas</a>
         </div>
       </li>
