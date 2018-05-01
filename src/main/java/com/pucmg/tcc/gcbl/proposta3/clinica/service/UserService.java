@@ -14,7 +14,7 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.repository.RoleRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.UserRepository;
 
 @Service("userService")
-public class UserServiceImpl implements UserService{
+public class UserService implements IUserService{
 
     @Autowired
     private UserRepository userRepository;
