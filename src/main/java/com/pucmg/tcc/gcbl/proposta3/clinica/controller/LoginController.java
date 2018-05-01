@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.User;
-import com.pucmg.tcc.gcbl.proposta3.clinica.service.UserService;
+import com.pucmg.tcc.gcbl.proposta3.clinica.service.IUserService;
 
 
 
@@ -23,7 +23,7 @@ public class LoginController {
     private static Log log = LogFactory.getLog(LoginController.class);
     
     @Autowired
-    private UserService userService;
+    private IUserService userService;
 
 
     /**
