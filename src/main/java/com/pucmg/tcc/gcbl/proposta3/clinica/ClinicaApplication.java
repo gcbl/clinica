@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ClinicaApplication {
 
 	public static void main(String[] args) {
-	    System.out.println("vai!");
 		SpringApplication.run(ClinicaApplication.class, args);
 	}
 }
