@@ -13,9 +13,9 @@
       <div class="row">
 <!--         <div class="col-sm-1">&nbsp;</div> -->
         <div class="col-sm-12">
-            body inicio
+            
             <tiles:insertAttribute name="body" />
-            body fim 
+             
         </div>
 <!--         <div class="col-sm-1">&nbsp;</div> -->
       </div>

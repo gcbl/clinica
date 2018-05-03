@@ -1,1 +1,1 @@
-<div class="header"><i class="fa fa-bitcoin"></i>cabecalhoddddddddd</div> 
+<div class="header">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.</div> 
