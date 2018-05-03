@@ -19,7 +19,7 @@ import lombok.EqualsAndHashCode;
 public class Pessoa extends BaseEntity {
 
     @Column(name = "NOME")
-    @NotEmpty(message = "*Por favor informe o nome do paciente")
+    @NotEmpty(message = "*Por favor informe o nome da pessoa")
     private String nome;
 
     @Column(name = "CPF")
@@ -28,7 +28,7 @@ public class Pessoa extends BaseEntity {
     private String cpf;
     
     @Column(name = "DT_NASCIMENTO")
-    @NotEmpty(message = "*Por favor informe a data de nascimento")
+    //@NotEmpty(message = "*Por favor informe a data de nascimento")
     private Date dataNascimento;
 
     @Column(name = "ENDERECO")
