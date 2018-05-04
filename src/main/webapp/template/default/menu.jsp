@@ -32,14 +32,23 @@
             <i class="fas fa-pills"></i> Atendimento
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-          <a class="dropdown-item" href="#">Inserir</a>
-          <a class="dropdown-item disabled" href="#">Excluir</a>
-          <a class="dropdown-item disabled" href="#">Alterar</a>
-          <a class="dropdown-item disabled" href="#">Consultar</a>
+          <a class="dropdown-item" href="#">Emitir receita</a>
+          <a class="dropdown-item disabled" href="#">-</a>
+          <a class="dropdown-item disabled" href="#">-</a>
+          <a class="dropdown-item disabled" href="#">-</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item disabled" href="#">Estatisticas</a>
+          <a class="dropdown-item disabled" href="#">-</a>
         </div>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-vials"></i> Exame
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+          <a class="dropdown-item disabled" href="#">Solicitar exame</a>
+          <a class="dropdown-item disabled" href="#">Receber exame</a>
+        </div>
+      </li>      
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-pills"></i> Medicamentos
@@ -87,7 +96,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
             <a class="dropdown-item" href="config" disabled><i class="fa fa-university" aria-hidden="true"></i> Gerais</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item disabled" href="#" disabled> Taxas das corretoras</a>            
+            <a class="dropdown-item disabled" href="#" disabled> Outras configurações</a>            
         </div>
       </li>      
       <li class="nav-item">
