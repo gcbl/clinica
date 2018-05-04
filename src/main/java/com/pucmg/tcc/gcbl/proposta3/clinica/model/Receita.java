@@ -1,9 +1,15 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -36,19 +42,11 @@ public class Receita extends BaseEntity {
       @Column(name = "CONTEUDO")
       private String conteudo;
       
-      
-//    @NotEmpty(message = "*Por favor informe o medicamento")
-//    private List<Medicamento> medicamentos;
-
-    
-//    @NotEmpty(message = "*Por favor informe o medicamento")
-//    private List<Medicamento> medicamentos;
-
-//      @ManyToMany
-//      @JoinTable(
-//          name="SC_MEDICAMENTO",
-//          joinColumns=@JoinColumn(name="EMP_ID", referencedColumnName="COD_OBJETO"),
-//          inverseJoinColumns=@JoinColumn(name="PROJ_ID", referencedColumnName="COD_OBJETO"))
-//      private List<Medicamento> medicamentos;
+      @ManyToMany(cascade = { CascadeType.REFRESH }, 
+                  fetch=FetchType.LAZY )
+      @JoinTable(name = "SC_RECEITA_MEDICAMENTO", 
+                 joinColumns = @JoinColumn(name = "ID_RECEITA"), 
+                 inverseJoinColumns = @JoinColumn(name = "ID_MEDICAMENTO"))
+      private Set<Medicamento> medicamentos = new HashSet<>();
 	
 }
