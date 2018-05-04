@@ -23,8 +23,6 @@ public class SolicitacaoExame  extends BaseEntity {
     @NotEmpty(message = "*Por favor informe a data de solicitacao")
     private String dataSolicitacao;
 
-//    private Exame exame;
-
     @NotNull(message = "*Por favor informe o paciente")
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="ID_PACIENTE")
@@ -34,6 +32,8 @@ public class SolicitacaoExame  extends BaseEntity {
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="ID_MEDICO")
     private Medico medicoSolicitante;
+
+    // Lista de exames
     
 }
 
