@@ -33,7 +33,7 @@ public class SolicitacaoExame  extends BaseEntity {
     @JoinColumn(name="ID_MEDICO")
     private Medico medicoSolicitante;
 
-    // Lista de exames
+    // Lista de exames 
     
 }
 
