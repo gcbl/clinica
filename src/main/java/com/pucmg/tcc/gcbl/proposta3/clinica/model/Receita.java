@@ -29,7 +29,8 @@ public class Receita extends BaseEntity {
       @ManyToOne(fetch=FetchType.LAZY)
       @JoinColumn(name="ID_MEDICO")
       private Medico medico;
-      
+
+      // Lista de medicamentos
       
       @NotEmpty(message = "*Por favor informe o texto da receita")
       @Column(name = "CONTEUDO")
