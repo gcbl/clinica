@@ -11,7 +11,7 @@ public class BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "COD_OBJETO")
+    @Column(name = "ID")
     private long id;
 
 }
