@@ -15,10 +15,12 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medicamento;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Receita;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.User;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.MedicoRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.PacienteRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.ReceitaRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicamentoService;
+import com.pucmg.tcc.gcbl.proposta3.clinica.service.UserService;
 
 
 
@@ -40,6 +42,9 @@ public class TesteController extends BaseController {
     @Autowired
     private MedicoRepository medicoRepository;
 
+    @Autowired
+    private UserService userService;
+    
     /**
      * TESTE
      * @param model
@@ -47,6 +52,13 @@ public class TesteController extends BaseController {
      */
     @RequestMapping(value={"/publico/teste"}, method = RequestMethod.GET)
     public String loginErrado(Model model){
+        User userForm = new User();
+        userForm.setEmail("teste@teste.com");
+        userForm.setPassword("teste");
+        userForm.setLastName("last name");
+        userForm.setName("name");
+        //userService.saveUser(userForm);
+        
     	List<Medicamento> medicamentos = medicamentoService.findAll();
         model.addAttribute("medicamentos", medicamentos);
         
@@ -73,6 +85,7 @@ public class TesteController extends BaseController {
         Receita receita = new Receita();
         receita.setPaciente(paciente);
         receita.setMedico(medico);
+        receita.setConteudo("1 comprimido de 8 em 8 horas");
         receitaRepository.save(receita);
         
         //Receita receita2 = new Receita();
@@ -80,7 +93,7 @@ public class TesteController extends BaseController {
         
         List<Paciente> pacientes = pacienteRepository.findAll();
         List<Receita> receitas = receitaRepository.findAll();
-        
+        Receita receita1 = receitas.get(1);
         System.out.println("para");
         
         return "views/listaMedicamentos";
