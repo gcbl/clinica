@@ -1,13 +1,14 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.model;
 
-import java.util.List;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -21,11 +22,19 @@ public class Receita extends BaseEntity {
 
       @NotNull(message = "*Por favor informe o paciente")
       @ManyToOne(fetch=FetchType.LAZY)
+      @JoinColumn(name="ID_PACIENTE")
       private Paciente paciente;
 
       @NotNull(message = "*Por favor informe o medico")
       @ManyToOne(fetch=FetchType.LAZY)
+      @JoinColumn(name="ID_MEDICO")
       private Medico medico;
+      
+      
+      @NotEmpty(message = "*Por favor informe o texto da receita")
+      @Column(name = "CONTEUDO")
+      private String conteudo;
+      
       
 //    @NotEmpty(message = "*Por favor informe o medicamento")
 //    private List<Medicamento> medicamentos;
