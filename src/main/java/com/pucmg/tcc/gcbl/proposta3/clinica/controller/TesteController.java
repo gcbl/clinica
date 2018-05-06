@@ -1,5 +1,6 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.controller;
 
+import java.time.LocalTime;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Agendamento;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Exame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medicamento;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
@@ -21,6 +23,7 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Receita;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.SolicitacaoExame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.User;
+import com.pucmg.tcc.gcbl.proposta3.clinica.repository.AgendamentoRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.ExameRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.MedicoRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.PacienteRepository;
@@ -55,6 +58,10 @@ public class TesteController extends BaseController {
     @Autowired
     private SolicitacaoExameRepository solicitacaoExameRepository;
 
+    @Autowired
+    private AgendamentoRepository agendamentoRepository;
+    
+    
     @Autowired
     private UserService userService;
     
@@ -136,6 +143,36 @@ public class TesteController extends BaseController {
         solicitacaoExameRepository.save(solicitacaoExame);
         
         List<SolicitacaoExame> solicitacaoExameList = solicitacaoExameRepository.findAll();
+        
+        // Agendamento
+        LocalTime horaInicio = LocalTime.of(10, 00);
+        LocalTime horaFim = LocalTime.of(14, 00);
+        
+        Agendamento agendamento = new Agendamento();
+        agendamento.setData(new Date());
+        agendamento.setHoraInicio(horaInicio);
+        agendamento.setHoraFim(horaFim);
+        agendamento.setPaciente(paciente);
+        agendamento.setMedico(medico);
+        
+        agendamentoRepository.save(agendamento);
+
+        LocalTime horaInicio2 = LocalTime.of(10, 00);
+        LocalTime horaFim2 = LocalTime.of(14, 00);
+        
+        Agendamento agendamento2 = new Agendamento();
+        agendamento2.setData(new Date());
+        agendamento2.setHoraInicio(horaInicio2);
+        agendamento2.setHoraFim(horaFim2);
+        agendamento2.setPaciente(paciente);
+
+        agendamentoRepository.save(agendamento2);
+
+        List<Agendamento> agendamentos = agendamentoRepository.findAll();
+        
+        for (Agendamento agenda : agendamentos) {
+			System.out.println(agenda);
+		}
         
         System.out.println("para");
         
