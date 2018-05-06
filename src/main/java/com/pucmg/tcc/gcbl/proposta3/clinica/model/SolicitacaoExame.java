@@ -27,8 +27,8 @@ import lombok.EqualsAndHashCode;
 public class SolicitacaoExame  extends BaseEntity {
 
     @Column(name = "DT_SOLICITACAO")
-    @NotEmpty(message = "*Por favor informe a data de solicitacao")
-    private String dataSolicitacao;
+    @NotNull(message = "*Por favor informe a data de solicitacao")
+    private Date dataSolicitacao;
 
     @NotNull(message = "*Por favor informe o paciente")
     @ManyToOne(fetch=FetchType.LAZY)
