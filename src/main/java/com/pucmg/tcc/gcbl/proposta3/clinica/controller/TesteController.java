@@ -122,7 +122,7 @@ public class TesteController extends BaseController {
         
         
         SolicitacaoExame solicitacaoExame = new SolicitacaoExame();
-        solicitacaoExame.setDataSolicitacao( "isto aqui E PRA SER UM dATE" );
+        solicitacaoExame.setDataSolicitacao(new Date());
         solicitacaoExame.setPaciente(paciente);
         solicitacaoExame.setMedicoSolicitante(medico);
         
