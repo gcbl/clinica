@@ -17,6 +17,7 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicamentoService;
 
 
 @Controller
+@RequestMapping("/privado/**")
 public class MedicamentoController extends BaseController {
     
     private static Log log = LogFactory.getLog(MedicamentoController.class);
@@ -24,16 +25,35 @@ public class MedicamentoController extends BaseController {
     @Autowired
     private MedicamentoService medicamentoService;
 
-    /**
-     * Login sem sucesso
-     * @param model
-     * @return
-     */
-    @RequestMapping(value={"privado/listaMedicamento"}, method = RequestMethod.GET)
-    public String loginErrado(Model model){
+    @RequestMapping(value={"/listaMedicamento"}, method = RequestMethod.GET)
+    public String consultar(Model model){
     	List<Medicamento> medicamentos = medicamentoService.findAll();
         model.addAttribute("medicamentos", medicamentos);
         return "views/listaMedicamentos";
     }
+
+    public String inserirForm(Model model){
+    	return null;
+    }
+    	
+    public String inserir(Model model){
+    	return null;
+    }
+
+    public String alterarForm(Model model){
+    	return null;
+    }
+    
+    public String alterar(Model model){
+    	return null;
+    }    
+    
+    public String excluir(Model model){
+    	return null;
+    }
+
+    
+    
+    
 
 }
