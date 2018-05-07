@@ -36,6 +36,15 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+
+
+        <!-- https://www.thoughts-on-java.org/hibernate-5-date-and-time/ --> 
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-java8</artifactId>
+            <version>5.1.0.Final</version>
+        </dependency>
+
   
         <!-- 
 		<dependency>
@@ -57,7 +66,7 @@
         </dependency>
   
   
-  <!--  -->
+  <!-- ##################### -->
         <!-- https://www.logicbig.com/tutorials/spring-framework/spring-boot/boot-auto-restart.html -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -101,11 +110,14 @@
             <artifactId>h2</artifactId>
         </dependency>
 
+        <!-- 
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+        -->
+  
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
