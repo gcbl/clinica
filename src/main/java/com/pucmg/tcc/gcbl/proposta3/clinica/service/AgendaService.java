@@ -39,6 +39,18 @@ public class AgendaService{
         agendamentoRepository.save(vagas);
         
     }
+
+    public List<Agendamento> getAgendaMedico(Medico medico) {
+        return agendamentoRepository.findByMedico(medico);
+    }
+
+    public List<Agendamento> getHorariosVagosMedico(Medico medico) {
+        return agendamentoRepository.findByMedicoAndPacienteIsNull(medico);
+    }
+
+    public List<Agendamento> getHorariosOcupadosMedico(Medico medico) {
+        return agendamentoRepository.findByMedicoAndPacienteIsNotNull(medico);
+    }
     
     
     public void salvarAgendamento(Agendamento agendamento) {
