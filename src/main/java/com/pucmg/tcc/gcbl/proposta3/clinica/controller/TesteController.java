@@ -24,6 +24,7 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Receita;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.SolicitacaoExame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.User;
+import com.pucmg.tcc.gcbl.proposta3.clinica.service.AgendaService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.AgendamentoRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.ExameRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.MedicoRepository;
@@ -32,7 +33,7 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.repository.ReceitaRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.SolicitacaoExameRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicamentoService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.UserService;
-import com.pucmg.tcc.gcbl.proposta3.clinica.util.DateUtils;
+import com.pucmg.tcc.gcbl.proposta3.clinica.util.DataUtils;
 
 
 
@@ -63,6 +64,9 @@ public class TesteController extends BaseController {
     @Autowired
     private AgendamentoRepository agendamentoRepository;
     
+    @Autowired
+    private AgendaService agendaService;
+
     
     @Autowired
     private UserService userService;
@@ -90,13 +94,13 @@ public class TesteController extends BaseController {
         model.addAttribute("medicamentos", medicamentos);
         
         // medico
-        Medico medico = new Medico();
-        medico.setNome("Fulano");
-        medico.setDataNascimento(new Date());
-        medico.setCpf("02782580426");
-        medico.setEndereco("rua tal");
-        medico.setCrm("1234");
-        medicoRepository.save(medico);
+        Medico medicoBD = new Medico();
+        medicoBD.setNome("Fulano");
+        medicoBD.setDataNascimento(new Date());
+        medicoBD.setCpf("02782580426");
+        medicoBD.setEndereco("rua tal");
+        medicoBD.setCrm("1234");
+        medicoRepository.save(medicoBD);
         
         // Inserir paciente
         Paciente paciente = new Paciente();
@@ -110,7 +114,7 @@ public class TesteController extends BaseController {
         
         Receita receita = new Receita();
         receita.setPaciente(paciente);
-        receita.setMedico(medico);
+        receita.setMedico(medicoBD);
         
         Set<Medicamento> medicamentosReceita = new HashSet<>();
         medicamentosReceita.add(medicamentos.get(0));
@@ -133,7 +137,7 @@ public class TesteController extends BaseController {
         SolicitacaoExame solicitacaoExame = new SolicitacaoExame();
         solicitacaoExame.setDataSolicitacao(new Date());
         solicitacaoExame.setPaciente(paciente);
-        solicitacaoExame.setMedicoSolicitante(medico);
+        solicitacaoExame.setMedicoSolicitante(medicoBD);
         
         Set<Exame> examesSolicitacao = new HashSet<>();
         examesSolicitacao.add(exames.get(0));
@@ -149,13 +153,13 @@ public class TesteController extends BaseController {
         // Agendamento
         LocalTime horaInicio = LocalTime.of(10, 00);
         LocalTime horaFim = LocalTime.of(14, 00);
-        LocalDate hoje = DateUtils.asLocalDate( new Date() );
+        LocalDate hoje = DataUtils.asLocalDate( new Date() );
         
         Agendamento agendamento = new Agendamento();
         agendamento.setData(  hoje  );
         agendamento.setHoraInicio(horaInicio);
         agendamento.setHoraFim(horaFim);
-        agendamento.setMedico(medico);
+        agendamento.setMedico(medicoBD);
         agendamento.setPaciente(paciente);
         
         
@@ -170,10 +174,19 @@ public class TesteController extends BaseController {
         agendamento2.setData( hoje );
         agendamento2.setHoraInicio(horaInicio2);
         agendamento2.setHoraFim(horaFim2);
-        agendamento2.setMedico(medico);
+        agendamento2.setMedico(medicoBD);
 
         agendamentoRepository.save(agendamento2);
 
+        List<Medico> medicos = medicoRepository.findAll();
+        
+        for (Medico medico : medicos) {
+            agendaService.criarVagas(hoje, hoje.plusDays(90), medico);
+        }
+        
+        agendaService.criarVagas(hoje, hoje.plusDays(90), medicoBD);
+        
+        
         List<Agendamento> agendamentos = agendamentoRepository.findAll();
         
         for (Agendamento agenda : agendamentos) {
