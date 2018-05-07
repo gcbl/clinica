@@ -90,17 +90,15 @@ public class TesteController extends BaseController {
     	
     	List<Exame> exames = exameRepository.findAll();
     	Collections.shuffle(exames);
+
+        List<Medico> medicos = medicoRepository.findAll();
+        Collections.shuffle(medicos);
     	
+        Medico medico = medicos.get(0);
+        
         model.addAttribute("medicamentos", medicamentos);
         
-        // medico
-        Medico medicoBD = new Medico();
-        medicoBD.setNome("Fulano");
-        medicoBD.setDataNascimento(new Date());
-        medicoBD.setCpf("02782580426");
-        medicoBD.setEndereco("rua tal");
-        medicoBD.setCrm("1234");
-        medicoRepository.save(medicoBD);
+
         
         // Inserir paciente
         Paciente paciente = new Paciente();
@@ -114,7 +112,7 @@ public class TesteController extends BaseController {
         
         Receita receita = new Receita();
         receita.setPaciente(paciente);
-        receita.setMedico(medicoBD);
+        receita.setMedico(medico);
         
         Set<Medicamento> medicamentosReceita = new HashSet<>();
         medicamentosReceita.add(medicamentos.get(0));
@@ -137,7 +135,7 @@ public class TesteController extends BaseController {
         SolicitacaoExame solicitacaoExame = new SolicitacaoExame();
         solicitacaoExame.setDataSolicitacao(new Date());
         solicitacaoExame.setPaciente(paciente);
-        solicitacaoExame.setMedicoSolicitante(medicoBD);
+        solicitacaoExame.setMedicoSolicitante(medico);
         
         Set<Exame> examesSolicitacao = new HashSet<>();
         examesSolicitacao.add(exames.get(0));
@@ -159,7 +157,7 @@ public class TesteController extends BaseController {
         agendamento.setData(  hoje  );
         agendamento.setHoraInicio(horaInicio);
         agendamento.setHoraFim(horaFim);
-        agendamento.setMedico(medicoBD);
+        agendamento.setMedico(medico);
         agendamento.setPaciente(paciente);
         
         
@@ -174,20 +172,26 @@ public class TesteController extends BaseController {
         agendamento2.setData( hoje );
         agendamento2.setHoraInicio(horaInicio2);
         agendamento2.setHoraFim(horaFim2);
-        agendamento2.setMedico(medicoBD);
+        agendamento2.setMedico(medico);
 
         agendamentoRepository.save(agendamento2);
 
-        List<Medico> medicos = medicoRepository.findAll();
         
-        for (Medico medico : medicos) {
-            agendaService.criarVagas(hoje, hoje.plusDays(90), medico);
+        
+        for (Medico medicoElement : medicos) {
+            agendaService.criarVagas(hoje, hoje.plusDays(90), medicoElement);
         }
         
+        System.out.println("pausa");
         
-        List<Agendamento> agendamentos = agendamentoRepository.findAll();
-        List<Agendamento> agendamentosMedico = agendamentoRepository.findByMedico(medicoBD);
+        medico = medicoRepository.findOne(new Long(2));
         
+        List<Agendamento> agendamentos = agendaService.findAll();
+        List<Agendamento> agendamentosMedico = agendaService.getAgendaMedico(medico);
+        List<Agendamento> agendaVagaMedico = agendaService.getHorariosVagosMedico(medico);
+        List<Agendamento> agendaOcupadaMedico = agendaService.getHorariosOcupadosMedico(medico);
+        
+        System.out.println("pausa");
         
 //        for (Agendamento agenda : agendamentos) {
 //			System.out.println(agenda);
