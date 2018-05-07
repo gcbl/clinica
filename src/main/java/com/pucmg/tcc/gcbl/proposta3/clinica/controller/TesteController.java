@@ -188,7 +188,7 @@ public class TesteController extends BaseController {
         
         List<Agendamento> agendamentos = agendaService.findAll();
         List<Agendamento> agendamentosMedico = agendaService.getAgendaMedico(medico);
-        List<Agendamento> agendaVagaMedico = agendaService.getHorarioDisponivelsMedico(medico);
+        List<Agendamento> agendaVagaMedico = agendaService.getHorarioDisponivelMedico(medico);
         List<Agendamento> agendaOcupadaMedico = agendaService.getHorariosOcupadosMedico(medico);
         
         System.out.println("pausa");
