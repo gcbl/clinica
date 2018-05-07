@@ -44,7 +44,7 @@ public class AgendaService{
         return agendamentoRepository.findByMedico(medico);
     }
 
-    public List<Agendamento> getHorariosVagosMedico(Medico medico) {
+    public List<Agendamento> getHorarioDisponivelMedico(Medico medico) {
         return agendamentoRepository.findByMedicoAndPacienteIsNull(medico);
     }
 
