@@ -24,11 +24,13 @@ public class Agendamento  extends BaseEntity {
     @NotNull(message = "*Por favor informe a data")
     private Date data;
 
-    @Column(name = "HORA_INICIO", columnDefinition = "varchar(8)")
+    // @Column(name = "HORA_INICIO", columnDefinition = "varchar(8)")
+    @Column(name = "HORA_INICIO")
     @NotNull(message = "*Por favor informe a hora do inicio")
     private LocalTime horaInicio;
     
-    @Column(name = "HORA_FIM", columnDefinition = "varchar(8)")
+    //@Column(name = "HORA_FIM", columnDefinition = "varchar(8)")
+    @Column(name = "HORA_FIM")
     @NotNull(message = "*Por favor informe a hora do fim")
     private LocalTime horaFim;
 
