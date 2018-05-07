@@ -11,3 +11,12 @@ https://www.iconfinder.com/iconsets/medical-14
 
 
 https://www.logicbig.com/tutorials/spring-framework/spring-boot/boot-live-reload.html
+
+
+Calendario:
+https://ourcodeworld.com/articles/read/55/top-5-best-jquery-scheduler-and-events-calendar-for-web-applications
+https://stackoverflow.com/questions/806212/outlook-style-events-calendar-for-project-based-on-mvc-framework
+
+https://fullcalendar.io/
+https://www.web2cal.com/
+
