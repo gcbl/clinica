@@ -29,7 +29,7 @@
  -->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-pills"></i> Atendimento
+            <i class="fas fa-notes-medical"></i> Atendimento
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
           <a class="dropdown-item" href="#">Emitir receita</a>
@@ -40,6 +40,15 @@
           <a class="dropdown-item disabled" href="#">-</a>
         </div>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="far fa-calendar-alt"></i> Agenda
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+          <a class="dropdown-item disabled" href="#">Preparar agenda</a>
+          <a class="dropdown-item disabled" href="#">Agendar</a>
+        </div>
+      </li>        
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-vials"></i> Exame
