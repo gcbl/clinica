@@ -1,5 +1,6 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.controller;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Collections;
 import java.util.Date;
@@ -31,6 +32,7 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.repository.ReceitaRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.SolicitacaoExameRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicamentoService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.UserService;
+import com.pucmg.tcc.gcbl.proposta3.clinica.util.DateUtils;
 
 
 
@@ -147,13 +149,15 @@ public class TesteController extends BaseController {
         // Agendamento
         LocalTime horaInicio = LocalTime.of(10, 00);
         LocalTime horaFim = LocalTime.of(14, 00);
+        LocalDate hoje = DateUtils.asLocalDate( new Date() );
         
         Agendamento agendamento = new Agendamento();
-        agendamento.setData(new Date());
+        agendamento.setData(  hoje  );
         agendamento.setHoraInicio(horaInicio);
         agendamento.setHoraFim(horaFim);
-        agendamento.setPaciente(paciente);
         agendamento.setMedico(medico);
+        agendamento.setPaciente(paciente);
+        
         
         agendamentoRepository.save(agendamento);
 
@@ -161,10 +165,12 @@ public class TesteController extends BaseController {
         LocalTime horaFim2 = LocalTime.of(14, 00);
         
         Agendamento agendamento2 = new Agendamento();
-        agendamento2.setData(new Date());
+        
+        
+        agendamento2.setData( hoje );
         agendamento2.setHoraInicio(horaInicio2);
         agendamento2.setHoraFim(horaFim2);
-        agendamento2.setPaciente(paciente);
+        agendamento2.setMedico(medico);
 
         agendamentoRepository.save(agendamento2);
 
