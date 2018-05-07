@@ -184,14 +184,14 @@ public class TesteController extends BaseController {
             agendaService.criarVagas(hoje, hoje.plusDays(90), medico);
         }
         
-        agendaService.criarVagas(hoje, hoje.plusDays(90), medicoBD);
-        
         
         List<Agendamento> agendamentos = agendamentoRepository.findAll();
+        List<Agendamento> agendamentosMedico = agendamentoRepository.findByMedico(medicoBD);
         
-        for (Agendamento agenda : agendamentos) {
-			System.out.println(agenda);
-		}
+        
+//        for (Agendamento agenda : agendamentos) {
+//			System.out.println(agenda);
+//		}
         
         System.out.println("para");
         
