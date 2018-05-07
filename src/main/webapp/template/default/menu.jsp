@@ -33,7 +33,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
           <a class="dropdown-item" href="#">Emitir receita</a>
-          <a class="dropdown-item disabled" href="#">-</a>
+          <a class="dropdown-item" href="#">Receber exame</a>
           <a class="dropdown-item disabled" href="#">-</a>
           <a class="dropdown-item disabled" href="#">-</a>
           <div class="dropdown-divider"></div>
