@@ -16,7 +16,7 @@ import lombok.EqualsAndHashCode;
 @Table(name = "SC_MEDICO")
 public class Medico extends Pessoa {
 
-    @Column(name = "CRM")
+    @Column(name = "CRM", unique=true) // unique=true pra criar a constraint ao criar o banco sozinho 
     @NotEmpty(message = "*Por favor informe o CRM")
     private String crm;
 
