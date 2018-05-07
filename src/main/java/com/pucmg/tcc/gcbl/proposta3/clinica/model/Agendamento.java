@@ -1,7 +1,7 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.model;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,7 +22,7 @@ public class Agendamento  extends BaseEntity {
 
     @Column(name = "DT_AGENDAMENTO")
     @NotNull(message = "*Por favor informe a data")
-    private Date data;
+    private LocalDate data;
 
     // @Column(name = "HORA_INICIO", columnDefinition = "varchar(8)")
     @Column(name = "HORA_INICIO")
@@ -35,16 +35,23 @@ public class Agendamento  extends BaseEntity {
     private LocalTime horaFim;
 
     
-    @NotNull(message = "*Por favor informe o paciente")
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="ID_PACIENTE")
-    private Paciente paciente;
-
-    // Medico opcional
-    //@NotNull(message = "*Por favor informe o medico")
+    /**
+     * 
+     * "O sistema deverá gerenciar a marcação de consultas dos pacientes de acordo com as agendas dos médicos. 
+     *  O sistema deve prover opções de marcar, pesquisar e cancelar, além de registro do histórico das consultas 
+     *  visando identificar estatísticas de atendimentos."
+     * 
+     */
+    // Medico obrigatorio!
+    @NotNull(message = "*Por favor informe o medico")
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="ID_MEDICO")
     private Medico medico;
 
+    // @NotNull(message = "*Por favor informe o paciente")
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="ID_PACIENTE")
+    private Paciente paciente;
+    
 }
 
