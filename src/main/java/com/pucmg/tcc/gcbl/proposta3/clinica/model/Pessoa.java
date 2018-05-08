@@ -16,7 +16,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @MappedSuperclass
-public class Pessoa extends BaseEntity {
+public abstract class Pessoa extends BaseEntity {
 
     @Column(name = "NOME")
     @NotEmpty(message = "*Por favor informe o nome da pessoa")
