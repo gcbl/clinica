@@ -27,7 +27,7 @@ public class MedicamentoController extends BaseController {
     @Autowired
     private MedicamentoService medicamentoService;
 
-    @RequestMapping(value={"/listaMedicamento"}, method = RequestMethod.GET)
+    @RequestMapping(value={"/listarMedicamento"}, method = RequestMethod.GET)
     public String consultar(Model model){
     	List<Medicamento> medicamentos = medicamentoService.findAll();
         model.addAttribute("medicamentos", medicamentos);
@@ -38,19 +38,23 @@ public class MedicamentoController extends BaseController {
     public String inserirForm(Model model){
         return VIEW_PATH + "incluirForm";
     }
-    	
+    
+    @RequestMapping(value={"/incluirMedicamento"}, method = RequestMethod.POST)
     public String inserir(Model model){
         return VIEW_PATH +  "incluir";
     }
 
+    @RequestMapping(value={"/alterarMedicamento"}, method = RequestMethod.GET)
     public String alterarForm(Model model){
         return VIEW_PATH + "alterarForm"; 
     }
     
+    @RequestMapping(value={"/alterarMedicamento"}, method = RequestMethod.POST)
     public String alterar(Model model){
         return VIEW_PATH + "alterar";
     }    
     
+    @RequestMapping(value={"/excluirMedicamento"}, method = RequestMethod.POST)
     public String excluir(Model model){
         return VIEW_PATH + "excluir";
     }

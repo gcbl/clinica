@@ -11,14 +11,79 @@
  
  
         <div class="body">
-            <h1>lista medicamentos</h1>
+            <h1>listar medicamentos</h1>
  
-            <c:forEach items="${medicamentos}" var="item">
-                ${item}<br>
-            </c:forEach>
-            
+<!-- ########################################################################### -->
+<!-- 
+id
+    private String nomeGenerico;
+    private String nomeFabrica;
+    private String fabricante;
+    private String concentracaoFormaFarmaceutica;
+ -->
+
+<hr>
+<div class="table-responsive table-sm">
+    <table id="medicamentoDataTable" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Nome Generico</th>
+                    <th>nomeFabrica</th>
+                    <th>fabricante</th>
+                    <th>concentracaoFormaFarmaceutica</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach items="${medicamentos}" var="item">
+                    <tr>
+                        <td>${item.id}</td>
+                        <td>${item.nomeGenerico}</td>
+                        <td>${item.nomeFabrica}</td>
+                        <td>${item.fabricante}</td>
+                        <td>${item.concentracaoFormaFarmaceutica}</td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>id</th>
+                    <th>nomeGenerico</th>
+                    <th>nomeFabrica</th>
+                    <th>fabricante</th>
+                    <th>concentracaoFormaFarmaceutica</th>
+                </tr>
+            </tfoot>
+    </table>
+</div>            
+<hr> 
+<!-- ########################################################################### -->
         </div>
  
+<script>
+$(document).ready(function() {
+    $('#medicamentoDataTable2').DataTable();
+    
+    var table = $('#medicamentoDataTable').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [ 
+                  {
+                       extend: 'colvis',
+                       text: 'Colunas',
+                       columnText: function ( dt, idx, title ) { return (idx+1)+': '+title; }
+                   }
+                 ],
+        "paging":   true,
+        "ordering": true,
+        "order": [[ 1, "asc" ]],
+        "info":     true,    	
+    	"language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese.json"
+        }
+    } ); 
+
+} );
+</script> 
  
  
     </tiles:putAttribute>

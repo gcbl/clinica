@@ -53,12 +53,14 @@ INSERT INTO SC_MEDICAMENTO (ID, NOME_GENERICO, NOME_FABRICA, FABRICANTE, CONCENT
 INSERT INTO SC_MEDICAMENTO (ID, NOME_GENERICO, NOME_FABRICA, FABRICANTE, CONCENTRACAO_FORMA_FARMACEUTICA) VALUES (11, 'diclofenaco resinato','Diclac P','SANDOZ','SUSPENSAO ORAL 44,94 MG/ML'); 
 
 -- EXAMES
-
+DELETE FROM SC_EXAME_SOLICITACAO_EXAME;
+DELETE FROM SC_SOLICITACAO_EXAME;
 DELETE FROM SC_EXAME;
+
 INSERT INTO SC_EXAME (ID, NOME, DESCRICAO) VALUES (1,'17- OH- Progesterona','17-alfa-hidroxiprogesterona - pesquisa e/ou dosagem');
-INSERT INTO SC_EXAME (ID, NOME, DESCRICAO) VALUES (2,'Acido Ascórbico – Vitamina C','Ácido ascórbico (vitamina C) - pesquisa e/ou dosagem');
+INSERT INTO SC_EXAME (ID, NOME, DESCRICAO) VALUES (2,'Ácido Ascórbico – Vitamina C','Ácido ascórbico (vitamina C) - pesquisa e/ou dosagem');
 INSERT INTO SC_EXAME (ID, NOME, DESCRICAO) VALUES (3,'Ácido Fólico','Ácido fólico, pesquisa e/ou dosagem nos eritrócitos');
-INSERT INTO SC_EXAME (ID, NOME, DESCRICAO) VALUES (4,'Acido Úrico','Ácido úrico - pesquisa e/ou dosagem');
+INSERT INTO SC_EXAME (ID, NOME, DESCRICAO) VALUES (4,'Ácido Úrico','Ácido úrico - pesquisa e/ou dosagem');
 INSERT INTO SC_EXAME (ID, NOME, DESCRICAO) VALUES (5,'ACTH','Adrenocorticotrófico, hormônio (ACTH) - pesquisa e/ou dosagem');
 INSERT INTO SC_EXAME (ID, NOME, DESCRICAO) VALUES (6,'Albumina','Albumina - pesquisa e/ou dosagem');
 INSERT INTO SC_EXAME (ID, NOME, DESCRICAO) VALUES (7,'Alumínio','Alumínio, pesquisa e/ou dosagem no soro');
