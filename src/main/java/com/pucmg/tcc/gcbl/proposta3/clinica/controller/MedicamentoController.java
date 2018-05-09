@@ -20,6 +20,8 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicamentoService;
 @RequestMapping("/privado/**")
 public class MedicamentoController extends BaseController {
     
+    private static final String VIEW_PATH = "views/medicamento/" + "medicamento-"; 
+    
     private static Log log = LogFactory.getLog(MedicamentoController.class);
     
     @Autowired
@@ -29,31 +31,28 @@ public class MedicamentoController extends BaseController {
     public String consultar(Model model){
     	List<Medicamento> medicamentos = medicamentoService.findAll();
         model.addAttribute("medicamentos", medicamentos);
-        return "views/listaMedicamentos";
+        return VIEW_PATH + "listar";
     }
 
+    @RequestMapping(value={"/incluirMedicamento"}, method = RequestMethod.GET)
     public String inserirForm(Model model){
-    	return null;
+        return VIEW_PATH + "incluirForm";
     }
     	
     public String inserir(Model model){
-    	return null;
+        return VIEW_PATH +  "incluir";
     }
 
     public String alterarForm(Model model){
-    	return null;
+        return VIEW_PATH + "alterarForm"; 
     }
     
     public String alterar(Model model){
-    	return null;
+        return VIEW_PATH + "alterar";
     }    
     
     public String excluir(Model model){
-    	return null;
+        return VIEW_PATH + "excluir";
     }
-
-    
-    
-    
 
 }
