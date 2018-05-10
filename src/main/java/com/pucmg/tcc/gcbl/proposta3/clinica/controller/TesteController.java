@@ -8,8 +8,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.Column;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +24,7 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.model.Exame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medicamento;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.PessoaBDApague;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Receita;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.SolicitacaoExame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.User;
@@ -29,6 +33,7 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.repository.AgendamentoRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.ExameRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.MedicoRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.PacienteRepository;
+import com.pucmg.tcc.gcbl.proposta3.clinica.repository.PessoaBDRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.ReceitaRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.SolicitacaoExameRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicamentoService;
@@ -71,6 +76,9 @@ public class TesteController extends BaseController {
     @Autowired
     private UserService userService;
     
+    @Autowired
+    private PessoaBDRepository pessoaBDRepository;    
+    
     /**
      * TESTE
      * @param model
@@ -84,6 +92,51 @@ public class TesteController extends BaseController {
         userForm.setLastName("last name");
         userForm.setName("name");
         //userService.saveUser(userForm);
+        
+        PessoaBDApague p = new PessoaBDApague();
+        p.setNome("NOME");
+        p.setCpf("02782580426");
+        p.setDataNascimento(LocalDate.now());
+        p.setEndereco("ENDERECO"); 
+        p.setBairro("BAIRRO");
+        p.setCep("50000000");
+        p.setCidade("CIDADE");
+        p.setEstado("UF");
+        
+        pessoaBDRepository.save(p);
+        /*
+    @Column(name = "NOME")
+    private String nome;
+
+    @Column(name = "SOBRENOME")
+    private String sobrenome;
+    
+    @Column(name = "CPF")
+    @CPF
+    private String cpf;
+    
+    @Column(name = "DT_NASCIMENTO")
+    private LocalDate dataNascimento;
+
+    @Column(name = "RUA")
+    private String rua;
+
+    @Column(name = "NUMERO")
+    private long numero;
+
+    @Column(name = "BAIRRO")
+    private String bairro;
+    
+    @Column(name = "CEP")
+    private String cep;
+
+    @Column(name = "CIDADE")
+    private String cidade;
+
+    @Column(name = "ESTADO")
+    private String estado;        
+        
+        */
         
     	List<Medicamento> medicamentos = medicamentoService.findAll();
     	Collections.shuffle(medicamentos);

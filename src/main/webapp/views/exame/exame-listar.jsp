@@ -41,6 +41,7 @@ id
                     </tr>
                 </c:forEach>
             </tbody>
+            <!-- 
             <tfoot>
                 <tr>
                     <th>id</th>
@@ -48,6 +49,7 @@ id
                     <th>Descricao</th>
                 </tr>
             </tfoot>
+             -->
     </table>
 </div>            
 <hr> 

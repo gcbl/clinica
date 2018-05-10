@@ -32,8 +32,24 @@ public abstract class Pessoa extends BaseEntity {
     private Date dataNascimento;
 
     @Column(name = "ENDERECO")
-    @NotEmpty(message = "*Por favor informe o endereco")
+    //@NotEmpty(message = "*Por favor informe o endereco")
     private String endereco;
+    
+    @Column(name = "BAIRRO")
+    //@NotEmpty(message = "*Por favor informe o endereco")
+    private String bairro;    
+    
+    @Column(name = "CEP")
+    //@NotEmpty(message = "*Por favor informe o CEP")
+    private String cep;
+
+    @Column(name = "CIDADE")
+    //@NotEmpty(message = "*Por favor informe a cidade")
+    private String cidade;
+
+    @Column(name = "ESTADO")
+    //@NotEmpty(message = "*Por favor informe o estado")
+    private String estado;
     
     
 }
