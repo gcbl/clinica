@@ -74,6 +74,57 @@ $(document).ready(function() {
             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese.json"
         }
     } ); 
+    
+    
+    $('#itemDataTable').Tabledit({
+        url: 'medicos',
+        columns: {
+            identifier: [0, 'id'],
+            editable: [[1, 'nome'], [2, 'cpf'], [3, 'dataNascimento'], [4, 'endereco'], [5, 'crm']]
+        },
+        buttons: {
+            edit: {
+                class: 'btn btn-sm btn-primary',
+                html: '<i class="fas fa-edit"></i>',
+                action: 'edit'
+            },
+            delete: {
+                class: 'btn btn-sm btn-danger',
+                html: '<i class="fas fa-trash-alt"></i>',
+                action: 'delete'
+            },
+            confirm: {
+                class: 'btn btn-sm btn-default',
+                html: 'Confirma operação?'
+            }
+        },
+        
+        onDraw: function() {
+            console.log('onDraw()');
+        },  
+        onSuccess: function(data, textStatus, jqXHR) {
+            console.log('onSuccess(data, textStatus, jqXHR)');
+            console.log(data);
+            console.log(textStatus);
+            console.log(jqXHR);
+        },
+        onFail: function(jqXHR, textStatus, errorThrown) {
+            console.log('onFail(jqXHR, textStatus, errorThrown)');
+            console.log(jqXHR);
+            console.log(textStatus);
+            console.log(errorThrown);
+        },
+        onAlways: function() {
+            console.log('onAlways()');
+        },
+        onAjax: function(action, serialize) {
+            console.log('onAjax(action, serialize)');
+            console.log(action);
+            console.log(serialize);
+        }
+        
+    });
+    
 
 } );
 </script> 

@@ -42,6 +42,11 @@
  
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.16/b-1.5.1/b-colvis-1.5.1/b-html5-1.5.1/cr-1.4.1/fh-3.1.3/datatables.min.css"/>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.16/b-1.5.1/b-colvis-1.5.1/b-html5-1.5.1/cr-1.4.1/fh-3.1.3/datatables.min.js"></script>
+
+
+    <!-- JS Local -->
+    <script type="text/javascript" src="/resources/js/jquery-tabledit-1.2.3/jquery.tabledit.min.js"></script>
+    
  
  
     <style type="text/css">
