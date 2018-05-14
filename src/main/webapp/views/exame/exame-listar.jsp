@@ -24,7 +24,7 @@ id
 
 <hr>
 <div class="table-responsive table-sm">
-    <table id="medicamentoDataTable" class="table table-striped table-bordered">
+    <table id="itemDataTable" class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th>id</th>
@@ -58,9 +58,7 @@ id
  
 <script>
 $(document).ready(function() {
-    $('#medicamentoDataTable2').DataTable();
-    
-    var table = $('#medicamentoDataTable').DataTable( {
+    var table = $('#itemDataTable').DataTable( {
         dom: 'Bfrtip',
         buttons: [ 
                   {

@@ -14,27 +14,9 @@
             <h1>Listar Pacientes</h1>
  
 <!-- ########################################################################### -->
-<!-- 
-    @Column(name = "NOME")
-    @NotEmpty(message = "*Por favor informe o nome da pessoa")
-    private String nome;
-
-    @Column(name = "CPF")
-    //@NotEmpty(message = "*Por favor informe o cpf")
-    @CPF
-    private String cpf;
-    
-    @Column(name = "DT_NASCIMENTO")
-    //@NotEmpty(message = "*Por favor informe a data de nascimento")
-    private Date dataNascimento;
-
-    @Column(name = "ENDERECO")
-    @NotEmpty(message = "*Por favor informe o endereco")
-    private String endereco;
- -->   
 <hr>
 <div class="table-responsive table-sm">
-    <table id="medicamentoDataTable" class="table table-striped table-bordered">
+    <table id="itemDataTable" class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th>id</th>
@@ -74,9 +56,7 @@
  
 <script>
 $(document).ready(function() {
-    $('#medicamentoDataTable2').DataTable();
-    
-    var table = $('#medicamentoDataTable').DataTable( {
+    var table = $('#itemDataTable').DataTable( {
         dom: 'Bfrtip',
         buttons: [ 
                   {

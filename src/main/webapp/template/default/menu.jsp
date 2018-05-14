@@ -65,7 +65,7 @@
             <i class="fas fa-pills"></i> Medicamentos
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-          <a class="dropdown-item" href="incluirMedicamento">Inserir</a>
+          <a class="dropdown-item disabled" href="incluirMedicamento">Inserir</a>
           <a class="dropdown-item disabled" href="#">Excluir</a>
           <a class="dropdown-item disabled" href="#">Alterar</a>
           <a class="dropdown-item" href="listarMedicamento">Consultar</a>
@@ -75,13 +75,13 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-user-md"></i> Profissionais
+            <i class="fas fa-user-md"></i> Medicos
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-          <a class="dropdown-item" href="#">Inserir</a>
+          <a class="dropdown-item disabled" href="#">Inserir</a>
           <a class="dropdown-item disabled" href="#">Excluir</a>
           <a class="dropdown-item disabled" href="#">Alterar</a>
-          <a class="dropdown-item disabled" href="#">Consultar</a>
+          <a class="dropdown-item" href="listarMedico">Consultar</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item disabled" href="#">Estatisticas</a>
         </div>
@@ -91,10 +91,10 @@
             <i class="fas fa-users"></i> Pacientes
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-          <a class="dropdown-item" href="#">Inserir</a>
+          <a class="dropdown-item disabled" href="#">Inserir</a>
           <a class="dropdown-item disabled" href="#">Excluir</a>
           <a class="dropdown-item disabled" href="#">Alterar</a>
-          <a class="dropdown-item disabled" href="#">Consultar</a>
+          <a class="dropdown-item" href="listarPaciente">Consultar</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item disabled" href="#">Estatisticas</a>
         </div>
