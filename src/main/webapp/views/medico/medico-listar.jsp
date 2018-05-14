@@ -78,6 +78,7 @@ $(document).ready(function() {
     
     $('#itemDataTable').Tabledit({
         url: 'medicos',
+        restoreButton: false,
         columns: {
             identifier: [0, 'id'],
             editable: [[1, 'nome'], [2, 'cpf'], [3, 'dataNascimento'], [4, 'endereco'], [5, 'crm']]
