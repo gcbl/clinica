@@ -24,6 +24,7 @@
                     <th>nomeFabrica</th>
                     <th>fabricante</th>
                     <th>concentracaoFormaFarmaceutica</th>
+                    <th>Ação</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,6 +35,12 @@
                         <td>${item.nomeFabrica}</td>
                         <td>${item.fabricante}</td>
                         <td>${item.concentracaoFormaFarmaceutica}</td>
+                        <td>
+                         <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">edit</i></a>
+                         <a href="#deleteItemModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">delete</i></a>
+                         ***
+                         <a href="alterar/${item.id}">alterar</a> | <a href="excluir/${item.id}">excluir</a>
+                        </td>
                     </tr>
                 </c:forEach>
             </tbody>
@@ -51,6 +58,33 @@
 <hr> 
 <!-- ########################################################################### -->
         </div>
+ 
+<!-- ##### MODALS ##### -->
+
+<!-- Delete Modal HTML -->
+    <div id="deleteItemModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form>
+                    <div class="modal-header">                      
+                        <h4 class="modal-title">Delete ${medicamentos[0]['class'].simpleName} </h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">                    
+                        <p>Are you sure you want to delete these Records?</p>
+                        <p class="text-warning"><small>This action cannot be undone.</small></p>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                        <input type="submit" class="btn btn-danger" value="Delete">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<!-- ##### FIM MODALS ##### --> 
+ 
  
 <script>
 $(document).ready(function() {
