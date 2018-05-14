@@ -16,9 +16,10 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.service.ExameService;
 
 @Controller
 @RequestMapping("/privado/**")
-public class ExameController extends BaseController {
+public class ExameController extends ModelController {
     
-    private static final String VIEW_PATH = "views/exame/" + "exame-"; 
+    private static final String MODEL = Exame.class.getSimpleName().toLowerCase(); 
+
     
     private static Log log = LogFactory.getLog(ExameController.class);
     
@@ -30,8 +31,15 @@ public class ExameController extends BaseController {
     public String consultar(Model model){
     	List<Exame> exames = exameService.findAll();
         model.addAttribute("exames", exames);
-        return VIEW_PATH + "listar";
+        return getViewPath() + "listar";
     }
+
+
+
+    @Override
+    public String getModel() {
+        return MODEL;
+    }    
 
 
 }

@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Exame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medicamento;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicamentoService;
 
@@ -18,9 +19,9 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicamentoService;
 
 @Controller
 @RequestMapping("/privado/**")
-public class MedicamentoController extends BaseController {
+public class MedicamentoController extends ModelController {
     
-    private static final String VIEW_PATH = "views/medicamento/" + "medicamento-"; 
+    private static final String MODEL = Medicamento.class.getSimpleName().toLowerCase(); 
     
     private static Log log = LogFactory.getLog(MedicamentoController.class);
     
@@ -31,32 +32,37 @@ public class MedicamentoController extends BaseController {
     public String consultar(Model model){
     	List<Medicamento> medicamentos = medicamentoService.findAll();
         model.addAttribute("medicamentos", medicamentos);
-        return VIEW_PATH + "listar";
+        return getViewPath() + "listar";
     }
 
     @RequestMapping(value={"/incluirMedicamento"}, method = RequestMethod.GET)
     public String inserirForm(Model model){
-        return VIEW_PATH + "incluirForm";
+        return getViewPath() + "incluirForm";
     }
     
     @RequestMapping(value={"/incluirMedicamento"}, method = RequestMethod.POST)
     public String inserir(Model model){
-        return VIEW_PATH +  "incluir";
+        return getViewPath() +  "incluir";
     }
 
     @RequestMapping(value={"/alterarMedicamento"}, method = RequestMethod.GET)
     public String alterarForm(Model model){
-        return VIEW_PATH + "alterarForm"; 
+        return getViewPath() + "alterarForm"; 
     }
     
     @RequestMapping(value={"/alterarMedicamento"}, method = RequestMethod.POST)
     public String alterar(Model model){
-        return VIEW_PATH + "alterar";
+        return getViewPath() + "alterar";
     }    
     
     @RequestMapping(value={"/excluirMedicamento"}, method = RequestMethod.POST)
     public String excluir(Model model){
-        return VIEW_PATH + "excluir";
+        return getViewPath() + "excluir";
     }
+    
+    @Override
+    public String getModel() {
+        return MODEL;
+    }    
 
 }

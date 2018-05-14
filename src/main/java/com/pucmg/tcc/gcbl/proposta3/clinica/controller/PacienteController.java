@@ -10,16 +10,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medicamento;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.PacienteService;
 
 
 @Controller
 @RequestMapping("/privado/**")
-public class PacienteController extends BaseController {
+public class PacienteController extends ModelController {
     
-    private static final String MODEL = "paciente";
-    private static final String VIEW_PATH = "views/" + MODEL + "/" + MODEL + "-"; //  "/views/paciente/paciente-"
+    private static final String MODEL = Paciente.class.getSimpleName().toLowerCase();
     
     private static Log log = LogFactory.getLog(PacienteController.class);
     
@@ -31,8 +31,13 @@ public class PacienteController extends BaseController {
     public String consultar(Model model){
     	List<Paciente> pacientes = pacienteService.findAll();
         model.addAttribute("pacientes", pacientes);
-        return VIEW_PATH + "listar";
+        return getViewPath() + "listar";
     }
 
 
+    @Override
+    public String getModel() {
+        return MODEL;
+    }      
+    
 }
