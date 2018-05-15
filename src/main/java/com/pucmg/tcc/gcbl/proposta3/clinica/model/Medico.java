@@ -9,9 +9,11 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
+@ToString(callSuper = true)
 @Entity
 @Table(name = "SC_MEDICO")
 public class Medico extends Pessoa {
