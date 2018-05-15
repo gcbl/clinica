@@ -17,5 +17,9 @@ public class MedicoService{
     public List<Medico> findAll() {
     	return medicoRepository.findAll();
     }
+    
+    public Medico save(Medico medico) {
+        return medicoRepository.save(medico);
+    }
 
 }
