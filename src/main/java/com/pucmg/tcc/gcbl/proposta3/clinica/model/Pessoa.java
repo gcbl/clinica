@@ -4,15 +4,13 @@ package com.pucmg.tcc.gcbl.proposta3.clinica.model;
 import java.util.Date;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 @Data
 @MappedSuperclass
@@ -28,6 +26,7 @@ public abstract class Pessoa extends BaseEntity {
     private String cpf;
     
     @Column(name = "DT_NASCIMENTO")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     //@NotEmpty(message = "*Por favor informe a data de nascimento")
     private Date dataNascimento;
 
