@@ -4,6 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 
 <tiles:insertDefinition name="defaultTemplate">
     <tiles:putAttribute name="body">
@@ -14,28 +15,48 @@
             <h1>Listar Medicos</h1>
  
 <!-- ########################################################################### -->
+<!-- 
+    private String nome;
+    private String cpf;
+    private Date dataNascimento;
+    private String endereco;
+    private String bairro;    
+    private String cep;
+    private String cidade;
+    private String estado;
+
+ -->
 <hr>
 <div class="table-responsive table-sm">
+<form:form action="medicos" commandName="medico">
     <table id="itemDataTable" class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th>id</th>
+                    <th>CRM</th>
                     <th>Nome</th>
                     <th>cpf</th>
                     <th>dataNascimento</th>
                     <th>Endereço</th>
-                    <th>CRM</th>
+                    <th>Bairro</th>
+                    <th>cep</th>
+                    <th>cidade</th>
+                    <th>estado</th>
                 </tr>
             </thead>
             <tbody>
                 <c:forEach items="${medicos}" var="item">
                     <tr>
                         <td>${item.id}</td>
-                        <td>${item.nome}</td>
-                        <td>${item.cpf}</td>
-                        <td>${item.dataNascimento}</td>
-                        <td>${item.endereco}</td>
                         <td>${item.crm}</td>
+                        <td>${item.nome}</td>
+                        <td>${item.cpf} <form:errors path="cpf" cssClass="text-danger" /></td>
+                        <td> <%-- <tags:localDate date="${yourDateToPrint}" pattern="dd/MM/yyyy"/> --%> <fmt:formatDate pattern="dd/MM/yyyy" value="${item.dataNascimento}" /></td>
+                        <td>${item.endereco}</td>
+                        <td>${item.bairro}</td>
+                        <td>${item.cep}</td>
+                        <td>${item.cidade}</td>
+                        <td>${item.estado}</td>
                     </tr>
                 </c:forEach>
             </tbody>
@@ -49,6 +70,7 @@
             </tfoot>
              -->
     </table>
+</form:form>    
 </div>            
 <hr> 
 <!-- ########################################################################### -->
@@ -81,7 +103,7 @@ $(document).ready(function() {
         restoreButton: false,
         columns: {
             identifier: [0, 'id'],
-            editable: [[1, 'nome'], [2, 'cpf'], [3, 'dataNascimento'], [4, 'endereco'], [5, 'crm']]
+            editable: [[1, 'crm'], [2, 'nome'], [3, 'cpf'], [4, 'dataNascimento'], [5, 'endereco'], [6, 'bairro'],[7, 'cep'],[8, 'cidade'],[9, 'estado'], ]
         },
         buttons: {
             edit: {

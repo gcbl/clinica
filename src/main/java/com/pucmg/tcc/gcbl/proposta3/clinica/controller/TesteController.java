@@ -156,7 +156,7 @@ public class TesteController extends BaseController {
         // Inserir paciente
         Paciente paciente = new Paciente();
         paciente.setNome("Fulano");
-        paciente.setDataNascimento(new Date());
+        paciente.setDataNascimento( new Date() );
         paciente.setCpf("02782580426");
         paciente.setEndereco("rua tal");
         paciente.setPlanoSaude("UNIMED");
