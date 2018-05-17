@@ -6,9 +6,15 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 
+
 <tiles:insertDefinition name="defaultTemplate">
     <tiles:putAttribute name="body">
  
+<style type="text/css">
+.error {
+    color: red;
+}
+</style>
  
  
         <div class="body">
@@ -29,6 +35,7 @@
 <hr>
 <div class="table-responsive table-sm">
 <form:form action="medicos" commandName="medico">
+<form:errors path="cpf" cssClass="error" />
     <table id="itemDataTable" class="table table-striped table-bordered">
             <thead>
                 <tr>
@@ -50,7 +57,7 @@
                         <td>${item.id}</td>
                         <td>${item.crm}</td>
                         <td>${item.nome}</td>
-                        <td>${item.cpf} <form:errors path="cpf" cssClass="text-danger" /></td>
+                        <td>${item.cpf}</td>
                         <td> <%-- <tags:localDate date="${yourDateToPrint}" pattern="dd/MM/yyyy"/> --%> <fmt:formatDate pattern="dd/MM/yyyy" value="${item.dataNascimento}" /></td>
                         <td>${item.endereco}</td>
                         <td>${item.bairro}</td>
@@ -80,6 +87,7 @@
 $(document).ready(function() {
     
     var table = $('#itemDataTable').DataTable( {
+    	responsive: true,
         dom: 'Bfrtip',
         buttons: [ 
                   {
@@ -100,6 +108,7 @@ $(document).ready(function() {
     
     $('#itemDataTable').Tabledit({
         url: 'medicos',
+        hideIdentifier: true,
         restoreButton: false,
         columns: {
             identifier: [0, 'id'],
@@ -115,6 +124,10 @@ $(document).ready(function() {
                 class: 'btn btn-sm btn-danger',
                 html: '<i class="fas fa-trash-alt"></i>',
                 action: 'delete'
+            },
+            save: {
+                class: 'btn btn-sm btn-success',
+                html: 'Salvar'
             },
             confirm: {
                 class: 'btn btn-sm btn-default',
