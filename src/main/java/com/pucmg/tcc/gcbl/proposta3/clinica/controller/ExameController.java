@@ -18,9 +18,6 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.service.ExameService;
 @RequestMapping("/privado/**")
 public class ExameController extends ModelController {
     
-    private static final String MODEL = Exame.class.getSimpleName().toLowerCase(); 
-
-    
     private static Log log = LogFactory.getLog(ExameController.class);
     
     @Autowired
@@ -35,11 +32,11 @@ public class ExameController extends ModelController {
     }
 
 
-
     @Override
-    public String getModel() {
-        return MODEL;
-    }    
+    protected Class<Exame> getModelClass() {
+        return Exame.class;
+    }
+
 
 
 }

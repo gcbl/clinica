@@ -9,8 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.pucmg.tcc.gcbl.proposta3.clinica.model.Exame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medicamento;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicamentoService;
 
@@ -20,8 +20,6 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicamentoService;
 @Controller
 @RequestMapping("/privado/**")
 public class MedicamentoController extends ModelController {
-    
-    private static final String MODEL = Medicamento.class.getSimpleName().toLowerCase(); 
     
     private static Log log = LogFactory.getLog(MedicamentoController.class);
     
@@ -35,7 +33,22 @@ public class MedicamentoController extends ModelController {
         return getViewPath() + "listar";
     }
 
-    @RequestMapping(value={"/incluirMedicamento"}, method = RequestMethod.GET)
+    @RequestMapping(value={"/excluirMedicamento"}, method = RequestMethod.GET)
+    public String excluirGet(@RequestParam("id") long id, Model model){
+        try{
+            medicamentoService.excluir(id);
+        }catch(Throwable t){
+            System.out.println("nao achou");
+        }
+        return consultar(model);
+    }
+    
+    @RequestMapping(value={"/excluirMedicamento"}, method = RequestMethod.POST)
+    public String excluirPost(Model model){
+        return getViewPath() + "excluir";
+    }
+
+    @RequestMapping(value={"/inserirMedicamento"}, method = RequestMethod.GET)
     public String inserirForm(Model model){
         return getViewPath() + "incluirForm";
     }
@@ -55,14 +68,10 @@ public class MedicamentoController extends ModelController {
         return getViewPath() + "alterar";
     }    
     
-    @RequestMapping(value={"/excluirMedicamento"}, method = RequestMethod.POST)
-    public String excluir(Model model){
-        return getViewPath() + "excluir";
-    }
-    
+
     @Override
-    public String getModel() {
-        return MODEL;
+    protected Class<Medicamento> getModelClass() {
+        return Medicamento.class;
     }    
 
 }

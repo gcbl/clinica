@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Exame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicoService;
 
@@ -24,12 +25,16 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicoService;
 @RequestMapping("/privado/**")
 public class MedicoController extends ModelController {
     
-    private static final String MODEL = Medico.class.getSimpleName().toLowerCase();
-    
+
     private static Log log = LogFactory.getLog(MedicoController.class);
     
     @Autowired
     private MedicoService medicoService;
+
+    @Override
+    protected Class<Medico> getModelClass() {
+        return Medico.class;
+    }    
     
     @RequestMapping(value={"/medicos"}, method = RequestMethod.GET)
     public String tableEditGet(@ModelAttribute("medico")  Medico medico, @RequestParam Map<String,String> allRequestParams, ModelMap model){
@@ -64,11 +69,6 @@ public class MedicoController extends ModelController {
         model.addAttribute("medicos", medicos);
         return getViewPath() + "listar";
     }
-
-
-    @Override
-    public String getModel() {
-        return MODEL;
-    }      
+   
     
 }

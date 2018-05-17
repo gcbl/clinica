@@ -7,6 +7,8 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.util.Constantes;
 
 public abstract class BaseController {
 
+    public static final String MODEL_STR = "MODEL";
+    
     public User getUsuarioLogado(HttpServletRequest request){
         return (User) request.getSession().getAttribute("usuarioLogado");
     }

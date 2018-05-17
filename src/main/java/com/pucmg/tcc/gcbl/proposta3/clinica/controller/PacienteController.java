@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medicamento;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.PacienteService;
 
@@ -19,14 +20,18 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.service.PacienteService;
 @RequestMapping("/privado/**")
 public class PacienteController extends ModelController {
     
-    private static final String MODEL = Paciente.class.getSimpleName().toLowerCase();
-    
     private static Log log = LogFactory.getLog(PacienteController.class);
     
     @Autowired
     private PacienteService pacienteService;
     
 
+    @Override
+    protected Class<Paciente> getModelClass() {
+        return Paciente.class;
+    }    
+    
+    
     @RequestMapping(value={"/listarPaciente"}, method = RequestMethod.GET)
     public String consultar(Model model){
     	List<Paciente> pacientes = pacienteService.findAll();
@@ -35,9 +40,5 @@ public class PacienteController extends ModelController {
     }
 
 
-    @Override
-    public String getModel() {
-        return MODEL;
-    }      
     
 }

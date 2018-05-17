@@ -1,13 +1,20 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.controller;
 
+import org.springframework.web.bind.annotation.ModelAttribute;
+
 public abstract class ModelController {
 
-    public abstract String getModel();
-    
     public String getViewPath(){
-        return "views/" + getModel() + "/" + getModel() + "-"; // Exemplo: views/exame/exame-
+        return "views/" + getModelName() + "/" + getModelName() + "-"; // Exemplo: views/exame/exame-
     }
     
+
+    @ModelAttribute(BaseController.MODEL_STR)
+    public String getModelName() {
+        String modelName = getModelClass().getSimpleName().toLowerCase();
+        return modelName;
+    }    
     
+    protected abstract Class getModelClass();
 
 }
