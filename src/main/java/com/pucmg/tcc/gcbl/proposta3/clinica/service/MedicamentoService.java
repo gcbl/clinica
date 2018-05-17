@@ -19,6 +19,11 @@ public class MedicamentoService{
     public void salvarMedicamento(Medicamento medicamento) {
     	medicamentoRepository.save(medicamento);
     }
+
+    public void excluir(long id) {
+        medicamentoRepository.delete(id);
+    }
+    
     
     public List<Medicamento> findAll() {
     	return medicamentoRepository.findAll();
