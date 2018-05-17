@@ -65,7 +65,7 @@
             <i class="fas fa-pills"></i> Medicamentos
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-          <a class="dropdown-item disabled" href="incluirMedicamento">Inserir</a>
+          <a class="dropdown-item" href="inserirMedicamento">Inserir</a>
           <a class="dropdown-item disabled" href="#">Excluir</a>
           <a class="dropdown-item disabled" href="#">Alterar</a>
           <a class="dropdown-item" href="listarMedicamento">Consultar</a>

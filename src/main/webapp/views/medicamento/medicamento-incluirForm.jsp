@@ -12,7 +12,63 @@
  
         <div class="body">
             <h1>Medicamentos</h1>
+    
+<hr><hr>
+<form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Inserir medicamento</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="nomeGenerico">Nome genérico</label>  
+  <div class="col-md-4">
+  <input id="nomeGenerico" name="nomeGenerico" placeholder="Nome genérico" class="form-control input-md" required="" type="text">
+  <span class="help-block">Informe o nome genérico do medicamento</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="nomeFabrica">Nome de Fábrica</label>  
+  <div class="col-md-4">
+  <input id="nomeFabrica" name="nomeFabrica" placeholder="Nome de Fabrica" class="form-control input-md" required="" type="text">
+  <span class="help-block">Informe o nome de fábrica do medicamento</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="fabricante">Fabricante</label>  
+  <div class="col-md-4">
+  <input id="fabricante" name="fabricante" placeholder="Fabricante" class="form-control input-md" required="" type="text">
+  <span class="help-block">Informe o nome do fabricante do medicamento</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="concentracaoFormaFarmaceutica">Concentraçãoo e Forma Farmaceutica</label>  
+  <div class="col-md-4">
+  <input id="concentracaoFormaFarmaceutica" name="concentracaoFormaFarmaceutica" placeholder="Exemplo: Suspensão oral 15mg/ml" class="form-control input-md" required="" type="text">
+  <span class="help-block">Informe a concentração e forma farmaceutica ou uma breve descrição </span>  
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <div class="col-md-4">
+    <button id="btnSalvar" name="btnSalvar" class="btn btn-primary">Salvar</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+<hr><hr>    
             
+<%--           
             <!-- ----------------- -->
             <form class="form-horizontal">
              <fieldset>
@@ -58,7 +114,7 @@
              </fieldset>
             </form>
             <!-- ----------------- -->
-
+--%>
             
         </div>
  
