@@ -36,22 +36,7 @@ public class MedicamentoController extends ModelController {
         model.addAttribute("medicamentos", medicamentos);
         return getViewPath() + "listar";
     }
-
-    @RequestMapping(value={"/excluirMedicamento"}, method = RequestMethod.GET)
-    public String excluirGet(@RequestParam("id") long id, Model model){
-        try{
-            medicamentoService.excluir(id);
-        }catch(Throwable t){
-            System.out.println("nao achou");
-        }
-        return consultar(model);
-    }
     
-    @RequestMapping(value={"/excluirMedicamento"}, method = RequestMethod.POST)
-    public String excluirPost(Model model){
-        return getViewPath() + "excluir";
-    }
-
     @RequestMapping(value={"/inserirMedicamento"}, method = RequestMethod.GET)
     public String inserirForm(Model model){
         model.addAttribute("medicamento", new Medicamento());
@@ -67,14 +52,37 @@ public class MedicamentoController extends ModelController {
         
         medicamentoService.salvarMedicamento(medicamento);
         return consultar(model);
-    }
+    }    
 
-    @RequestMapping(value={"/alterarMedicamento"}, method = RequestMethod.GET)
-    public String alterarForm(Model model){
-        return getViewPath() + "alterarForm"; 
+    @RequestMapping(value={"/excluirMedicamento"}, method = RequestMethod.GET)
+    public String excluirGet(@RequestParam("id") long id, Model model){
+        try{
+            medicamentoService.excluir(id);
+        }catch(Throwable t){
+            System.out.println("nao achou");
+        }
+        return consultar(model);
     }
     
-    @RequestMapping(value={"/alterarMedicamento"}, method = RequestMethod.POST)
+
+    @RequestMapping(value={"/editarMedicamento"}, method = RequestMethod.GET)
+    public String alterarForm(@RequestParam("id") long id, Model model){
+        Medicamento medicamento = medicamentoService.findOne(id);
+
+        if(medicamento != null){
+            model.addAttribute("medicamento", medicamento);
+            return getViewPath() + "incluirForm";
+        }else{
+            System.out.println("nao achou");
+            return consultar(model);
+        }
+
+            
+        
+        //return getViewPath() + "alterarForm"; 
+    }
+    
+    @RequestMapping(value={"/editarMedicamento"}, method = RequestMethod.POST)
     public String alterar(Model model){
         return getViewPath() + "alterar";
     }    

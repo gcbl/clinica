@@ -3,6 +3,7 @@ package com.pucmg.tcc.gcbl.proposta3.clinica.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 

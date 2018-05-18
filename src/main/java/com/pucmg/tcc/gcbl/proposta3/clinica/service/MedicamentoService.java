@@ -24,9 +24,13 @@ public class MedicamentoService{
         medicamentoRepository.delete(id);
     }
     
+    public Medicamento findOne(long id) {
+        return medicamentoRepository.findOne(id);
+    }
     
     public List<Medicamento> findAll() {
     	return medicamentoRepository.findAll();
     }
 
+    
 }
