@@ -16,7 +16,7 @@
 <!-- ########################################################################### -->
 <hr>
 
-        <div class="table-responsive table-sm">asdasd
+        <div class="table-responsive table-sm">
             <table id="itemDataTable" class="table table-striped table-bordered">
                     <thead>
                         <tr>
