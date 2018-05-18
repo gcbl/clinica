@@ -10,10 +10,10 @@
  
         <div class="body">
             <!-- <h1>Medicamentos</h1> -->
-    
+            acao = ${acao}
             <hr>
             
-                <form:form action="inserirMedicamento" class="form-horizontal " commandName="medicamento" id="cadastroMedicamento">
+                <form:form action="${acao}-${MODEL}" class="form-horizontal " commandName="${MODEL}" id="${acao}-${MODEL}">
                     <fieldset>
                     
                     <!-- Form Name -->
@@ -23,6 +23,7 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="nomeGenerico">Nome genérico</label>  
                       <div class="col-md-4">
+                      <form:hidden path="id" placeholder="id" class="form-control input-md"/> <form:errors path="id" cssClass="text-danger" />
                       <form:input path="nomeGenerico" placeholder="Nome genérico" class="form-control input-md"/> <form:errors path="nomeGenerico" cssClass="text-danger" />
                       <!-- <span class="help-block">Informe o nome genérico do medicamento</span> -->   
                       </div>
