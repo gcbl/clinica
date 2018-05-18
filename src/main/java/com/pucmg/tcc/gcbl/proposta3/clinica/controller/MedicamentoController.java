@@ -54,16 +54,16 @@ public class MedicamentoController extends ModelController {
 
     @RequestMapping(value={"/inserirMedicamento"}, method = RequestMethod.GET)
     public String inserirForm(Model model){
+        model.addAttribute("medicamento", new Medicamento());
         return getViewPath() + "incluirForm";
     }
     
     @RequestMapping(value={"/inserirMedicamento"}, method = RequestMethod.POST)
     public String inserir(@Valid Medicamento medicamento, BindingResult result, Model model, HttpServletRequest request) {                         
-            if(result.hasErrors()){
-                model.addAttribute("medicamento", medicamento);
-                // return "processo/cadastroProcesso";
-                return null;
-            }
+        if(result.hasErrors()){
+            model.addAttribute("medicamento", medicamento);
+            return getViewPath() + "incluirForm";
+        }
         
         medicamentoService.salvarMedicamento(medicamento);
         return consultar(model);
