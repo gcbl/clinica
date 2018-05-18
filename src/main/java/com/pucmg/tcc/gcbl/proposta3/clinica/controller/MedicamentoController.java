@@ -2,11 +2,15 @@ package com.pucmg.tcc.gcbl.proposta3.clinica.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -53,9 +57,16 @@ public class MedicamentoController extends ModelController {
         return getViewPath() + "incluirForm";
     }
     
-    @RequestMapping(value={"/incluirMedicamento"}, method = RequestMethod.POST)
-    public String inserir(Model model){
-        return getViewPath() +  "incluir";
+    @RequestMapping(value={"/inserirMedicamento"}, method = RequestMethod.POST)
+    public String inserir(@Valid Medicamento medicamento, BindingResult result, Model model, HttpServletRequest request) {                         
+            if(result.hasErrors()){
+                model.addAttribute("medicamento", medicamento);
+                // return "processo/cadastroProcesso";
+                return null;
+            }
+        
+        medicamentoService.salvarMedicamento(medicamento);
+        return consultar(model);
     }
 
     @RequestMapping(value={"/alterarMedicamento"}, method = RequestMethod.GET)
