@@ -23,6 +23,10 @@ public class MedicamentoService{
     public void excluir(long id) {
         medicamentoRepository.delete(id);
     }
+
+    public boolean exists(long id) {
+        return medicamentoRepository.exists(id);
+    }
     
     public Medicamento findOne(long id) {
         return medicamentoRepository.findOne(id);

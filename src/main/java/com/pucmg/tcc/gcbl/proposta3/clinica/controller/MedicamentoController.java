@@ -30,20 +30,23 @@ public class MedicamentoController extends ModelController {
     @Autowired
     private MedicamentoService medicamentoService;
 
-    @RequestMapping(value={"/listarMedicamento"}, method = RequestMethod.GET)
+    @RequestMapping(value={"/listar-medicamento"}, method = RequestMethod.GET)
     public String consultar(Model model){
     	List<Medicamento> medicamentos = medicamentoService.findAll();
         model.addAttribute("medicamentos", medicamentos);
         return getViewPath() + "listar";
     }
     
-    @RequestMapping(value={"/inserirMedicamento"}, method = RequestMethod.GET)
+    @RequestMapping(value={"/incluir-medicamento"}, method = RequestMethod.GET)
     public String inserirForm(Model model){
+        model.addAttribute("acao", "incluir");
+        
         model.addAttribute("medicamento", new Medicamento());
+        
         return getViewPath() + "incluirForm";
     }
     
-    @RequestMapping(value={"/inserirMedicamento"}, method = RequestMethod.POST)
+    @RequestMapping(value={"/incluir-medicamento"}, method = RequestMethod.POST)
     public String inserir(@Valid Medicamento medicamento, BindingResult result, Model model, HttpServletRequest request) {                         
         if(result.hasErrors()){
             model.addAttribute("medicamento", medicamento);
@@ -54,7 +57,7 @@ public class MedicamentoController extends ModelController {
         return consultar(model);
     }    
 
-    @RequestMapping(value={"/excluirMedicamento"}, method = RequestMethod.GET)
+    @RequestMapping(value={"/excluir-medicamento"}, method = RequestMethod.GET)
     public String excluirGet(@RequestParam("id") long id, Model model){
         try{
             medicamentoService.excluir(id);
@@ -65,12 +68,11 @@ public class MedicamentoController extends ModelController {
     }
     
 
-    @RequestMapping(value={"/editarMedicamento"}, method = RequestMethod.GET)
-    public String alterarForm(@RequestParam("id") long id, Model model){
-        Medicamento medicamento = medicamentoService.findOne(id);
-
-        if(medicamento != null){
-            model.addAttribute("medicamento", medicamento);
+    @RequestMapping(value={"/editar-medicamento"}, method = RequestMethod.GET)
+    public String editarForm(@RequestParam("id") long id, Model model){
+        model.addAttribute("acao", "editar");
+        if( medicamentoService.exists(id) ){
+            model.addAttribute("medicamento", medicamentoService.findOne(id));
             return getViewPath() + "incluirForm";
         }else{
             System.out.println("nao achou");
@@ -82,9 +84,16 @@ public class MedicamentoController extends ModelController {
         //return getViewPath() + "alterarForm"; 
     }
     
-    @RequestMapping(value={"/editarMedicamento"}, method = RequestMethod.POST)
-    public String alterar(Model model){
-        return getViewPath() + "alterar";
+    @RequestMapping(value={"/editar-medicamento"}, method = RequestMethod.POST)
+    public String editar(@Valid Medicamento medicamento, BindingResult result, Model model, HttpServletRequest request) {
+        model.addAttribute("acao", "editar");
+        if(result.hasErrors()){
+            model.addAttribute("medicamento", medicamento);
+            return getViewPath() + "incluirForm";
+        }
+        
+        medicamentoService.salvarMedicamento(medicamento);
+        return consultar(model);
     }    
     
 
