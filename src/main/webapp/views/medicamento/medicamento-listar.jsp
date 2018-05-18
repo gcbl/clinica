@@ -38,9 +38,8 @@
                                 <td>${item.concentracaoFormaFarmaceutica}</td>
                                 <td class="actions text-right">
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                      <a href="visualizar-${MODEL}?id=${item.id}" class="btn btn-sm btn-info"><i class="fas fa-search"></i></a>
-                                      <a href="editar-${MODEL}?id=${item.id}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
-                                      <a href="excluir-${MODEL}?id=${item.id}" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
+                                      <a href="editar-${MODEL}?id=${item.id}" class="btn btn-sm btn-info"><i class="far fa-edit"></i> Editar</a>
+                                      <a href="excluir-${MODEL}?id=${item.id}" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i> Remover</a>
                                     </div>
                                 </td>        
                             </tr>
