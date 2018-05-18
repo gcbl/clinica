@@ -12,6 +12,11 @@
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   
+  <!-- against XSS attacks -->
+  <context-param>
+    <param-name>defaultHtmlEscape</param-name>
+    <param-value>true</param-value>
+  </context-param>
   
    <jsp-config>
        <jsp-property-group>
