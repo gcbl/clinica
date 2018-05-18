@@ -1,1 +1,1 @@
-<div class="header">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.</div> 
+<div class="header">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> 
