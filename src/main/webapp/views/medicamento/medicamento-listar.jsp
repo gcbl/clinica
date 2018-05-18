@@ -15,49 +15,51 @@
  
 <!-- ########################################################################### -->
 <hr>
-<div class="table-responsive table-sm">
-    <table id="itemDataTable" class="table table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>id</th>
-                    <th>Nome Generico</th>
-                    <th>nomeFabrica</th>
-                    <th>fabricante</th>
-                    <th>concentracaoFormaFarmaceutica</th>
-                    <th>Ação</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach items="${medicamentos}" var="item">
-                    <tr>
-                        <td>${item.id}</td>
-                        <td>${item.nomeGenerico}</td>
-                        <td>${item.nomeFabrica}</td>
-                        <td>${item.fabricante}</td>
-                        <td>${item.concentracaoFormaFarmaceutica}</td>
-                        <td class="actions text-right">
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                              <a href="visualizarMedicamento?id=${item.id}" class="btn btn-sm btn-info"><i class="fas fa-search"></i></a>
-                              <a href="editarMedicamento?id=${item.id}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
-                              <a href="excluirMedicamento?id=${item.id}" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
-                            </div>
-                        </td>        
-                    </tr>
-                </c:forEach>
-            </tbody>
-            <!-- 
-            <tfoot>
-                <tr>
-                    <th>id</th>
-                    <th>nomeGenerico</th>
-                    <th>nomeFabrica</th>
-                    <th>fabricante</th>
-                    <th>concentracaoFormaFarmaceutica</th>
-                </tr>
-            </tfoot>
-             -->
-    </table>
-</div>            
+
+        <div class="table-responsive table-sm">asdasd
+            <table id="itemDataTable" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Nome Generico</th>
+                            <th>nomeFabrica</th>
+                            <th>fabricante</th>
+                            <th>concentracaoFormaFarmaceutica</th>
+                            <th class="text-right"><a href="inserirMedicamento" class="btn btn-sm btn-success"><i class="fas fa-plus-circle"></i> Adicionar novo ${MODEL}</a></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${medicamentos}" var="item">
+                            <tr>
+                                <td>${item.id}</td>
+                                <td>${item.nomeGenerico}</td>
+                                <td>${item.nomeFabrica}</td>
+                                <td>${item.fabricante}</td>
+                                <td>${item.concentracaoFormaFarmaceutica}</td>
+                                <td class="actions text-right">
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                      <a href="visualizarMedicamento?id=${item.id}" class="btn btn-sm btn-info"><i class="fas fa-search"></i></a>
+                                      <a href="editarMedicamento?id=${item.id}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+                                      <a href="excluirMedicamento?id=${item.id}" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
+                                    </div>
+                                </td>        
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                    <!-- 
+                    <tfoot>
+                        <tr>
+                            <th>id</th>
+                            <th>nomeGenerico</th>
+                            <th>nomeFabrica</th>
+                            <th>fabricante</th>
+                            <th>concentracaoFormaFarmaceutica</th>
+                        </tr>
+                    </tfoot>
+                     -->
+            </table>
+        </div>    
+                
 <hr> 
 <!-- ########################################################################### -->
         </div>
@@ -82,6 +84,7 @@ $(document).ready(function() {
                  ],
         "paging":   true,
         "ordering": true,
+        "columnDefs": [ { orderable: false, targets: -1 } ], // desabilita sort da ultima coluna 
         "order": [[ 1, "asc" ]],
         "info":     true,    	
     	"language": {
