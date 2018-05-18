@@ -28,11 +28,7 @@ $("#exampleModal").on("hidden.bs.modal", function (event) {
 	alert("hidden.bs.modal");
 });
 
-var el = $('#meuid');
-el.bind(getAllEvents(el[0]), function(e) {
-    /* insert your code */
-	alert(e);
-});
+
 
 
 //$("#delete-modal").on("show.bs.modal", function (event) {
