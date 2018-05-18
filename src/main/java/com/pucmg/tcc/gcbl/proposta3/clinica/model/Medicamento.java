@@ -17,11 +17,11 @@ public class Medicamento extends BaseEntity {
 
 
     @Column(name = "NOME_GENERICO")
-    @NotEmpty(message = "*Por favor informe o nome generico")
+    @NotEmpty(message = "*Por favor informe o nome genérico")
     private String nomeGenerico;
 
     @Column(name = "NOME_FABRICA")
-    @NotEmpty(message = "*Por favor informe o nome de fabrica")
+    @NotEmpty(message = "*Por favor informe o nome de fábrica")
     private String nomeFabrica;
 
     @Column(name = "FABRICANTE")
@@ -29,7 +29,7 @@ public class Medicamento extends BaseEntity {
     private String fabricante;
 
     @Column(name = "CONCENTRACAO_FORMA_FARMACEUTICA")
-    @NotEmpty(message = "*Por favor informe a descricao")
+    @NotEmpty(message = "*Por favor informe a descrição")
     private String concentracaoFormaFarmaceutica;
 	
 //    @ManyToMany(mappedBy="medicamentos",
