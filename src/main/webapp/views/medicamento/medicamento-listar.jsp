@@ -25,7 +25,7 @@
                             <th>nomeFabrica</th>
                             <th>fabricante</th>
                             <th>concentracaoFormaFarmaceutica</th>
-                            <th class="text-right"><a href="inserirMedicamento" class="btn btn-sm btn-success"><i class="fas fa-plus-circle"></i> Adicionar novo ${MODEL}</a></th>
+                            <th class="text-right"><a href="incluir-${MODEL}" class="btn btn-sm btn-success"><i class="fas fa-plus-circle"></i> Adicionar novo ${MODEL}</a></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,9 +38,9 @@
                                 <td>${item.concentracaoFormaFarmaceutica}</td>
                                 <td class="actions text-right">
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                      <a href="visualizarMedicamento?id=${item.id}" class="btn btn-sm btn-info"><i class="fas fa-search"></i></a>
-                                      <a href="editarMedicamento?id=${item.id}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
-                                      <a href="excluirMedicamento?id=${item.id}" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
+                                      <a href="visualizar-${MODEL}?id=${item.id}" class="btn btn-sm btn-info"><i class="fas fa-search"></i></a>
+                                      <a href="editar-${MODEL}?id=${item.id}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+                                      <a href="excluir-${MODEL}?id=${item.id}" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
                                     </div>
                                 </td>        
                             </tr>
