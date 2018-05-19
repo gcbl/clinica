@@ -48,8 +48,10 @@ public class MedicamentoController extends ModelController {
     
     @RequestMapping(value={"/incluir-medicamento"}, method = RequestMethod.POST)
     public String inserir(@Valid Medicamento medicamento, BindingResult result, Model model, HttpServletRequest request) {                         
-        if(result.hasErrors()){
-            model.addAttribute("medicamento", medicamento);
+    	model.addAttribute("acao", "incluir");
+
+    	if(result.hasErrors()){
+        	model.addAttribute("medicamento", medicamento);
             return getViewPath() + "incluirForm";
         }
         
