@@ -34,6 +34,9 @@
     <!-- Number format -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/df-number-format/2.1.6/jquery.number.min.js"></script>
 
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /> -->
@@ -55,6 +58,7 @@
     <!-- JS Local -->
     <script type="text/javascript" src="/resources/static/js/jquery-tabledit-1.2.3/jquery.tabledit.min.js"></script>
     <script type="text/javascript" src="/resources/static/js/clinica.js"></script>
+    <link rel="stylesheet" href="/resources/static/css/clinica.css" />    
     
  
  
