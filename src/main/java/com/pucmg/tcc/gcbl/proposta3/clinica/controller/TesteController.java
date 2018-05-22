@@ -237,7 +237,7 @@ public class TesteController extends BaseController {
         
         System.out.println("pausa");
         
-        medico = medicoRepository.findOne(new Long(2));
+        medico = medicoRepository.findOne("2");
         
         List<Agendamento> agendamentos = agendaService.findAll();
         List<Agendamento> agendamentosMedico = agendaService.getAgendaMedico(medico);
