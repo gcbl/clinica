@@ -40,9 +40,9 @@ public class MedicamentoController extends ModelController {
     
     @RequestMapping(value={"/listar-medicamento"}, method = RequestMethod.GET)
     public String consultar(Model model){
-    	List<Medicamento> medicamentos = modelService.findAll();
+    	List<Medicamento> itemList = modelService.findAll();
     	
-        model.addAttribute("medicamentos", medicamentos);
+        model.addAttribute("itemList", itemList);
         return getViewPath() + "listar";
     }
     
@@ -50,16 +50,16 @@ public class MedicamentoController extends ModelController {
     public String inserirForm(Model model){
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
         
-        model.addAttribute("medicamento", new Medicamento());
+        model.addAttribute(getModelName(), new Medicamento());
         return getViewPath() + "incluirForm";
     }
     
     @RequestMapping(value={"/incluir-medicamento"}, method = RequestMethod.POST)
-    public String inserir(@Valid Medicamento medicamento, BindingResult result, Model model, HttpServletRequest request, Locale locale) {                         
+    public String inserir(@Valid Medicamento item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {                         
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
 
     	if(result.hasErrors()){
-        	model.addAttribute("medicamento", medicamento);
+        	model.addAttribute(getModelName(), item);
         	
         	String mensagem = messageSource.getMessage("formulario.erros-de-validacao", null, locale);
         	adicionarAlertaWarning(model, mensagem);
@@ -67,9 +67,9 @@ public class MedicamentoController extends ModelController {
         }
         
     	
-        modelService.salvarMedicamento(medicamento);
+        modelService.salvarMedicamento(item);
         
-        String mensagemInclusao = messageSource.getMessage("formulario.operacao.inclusao.sucesso", new Object[]{getModelName()}, locale);
+        String mensagemInclusao = messageSource.getMessage("formulario.operacao.inclusao.sucesso", new Object[]{ getModelName() }, locale);
         adicionarAlertaSuccess(model, mensagemInclusao);
         return consultar(model);
     }    
@@ -95,7 +95,7 @@ public class MedicamentoController extends ModelController {
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_EDITAR);
         
         if( modelService.exists(id) ){
-            model.addAttribute("medicamento", modelService.findOne(id));
+            model.addAttribute(getModelName(), modelService.findOne(id));
             
             // Seta na sessao o id do item que esta sendo editado para checagem posterior
             request.getSession().setAttribute(Constantes.ACAO_EDITAR, id);
@@ -113,12 +113,12 @@ public class MedicamentoController extends ModelController {
     }
     
     @RequestMapping(value={"/editar-medicamento"}, method = RequestMethod.POST)
-    public String editar(@Valid Medicamento medicamento, BindingResult result, Model model, HttpServletRequest request, Locale locale) {
+    public String editar(@Valid Medicamento item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {
         String mensagem = "";
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_EDITAR);
         
         if(result.hasErrors()){
-            model.addAttribute("medicamento", medicamento);
+            model.addAttribute(getModelName(), item);
             
             mensagem = messageSource.getMessage("formulario.erros-de-validacao", null, locale);
             adicionarAlertaWarning(model, mensagem);
@@ -129,13 +129,13 @@ public class MedicamentoController extends ModelController {
         // Obtem da sessao o id do item que esta sendo editado para batimento
         String itemId = (String) request.getSession().getAttribute(Constantes.ACAO_EDITAR);
         
-        if(!itemId.equals(medicamento.getId())){
+        if(!itemId.equals(item.getId())){
             mensagem = messageSource.getMessage("formulario.operacao.alteracao.id-errado", null, locale);
             adicionarAlertaDanger(model, mensagem);
             return consultar(model);
         }
         
-        modelService.salvarMedicamento(medicamento);
+        modelService.salvarMedicamento(item);
         
         mensagem = messageSource.getMessage("formulario.operacao.alteracao.sucesso", new Object[]{ getModelName() }, locale);
         adicionarAlertaSuccess(model, mensagem);

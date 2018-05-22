@@ -27,7 +27,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="${medicamentos}" var="item">
+                        <c:forEach items="${itemList}" var="item">
                             <tr>
                                 <td>${item.id}</td>
                                 <td>${item.nomeGenerico}</td>
