@@ -25,22 +25,38 @@ public abstract class BaseController {
         return Constantes.VERSAO_DO_SISTEMA;
     }
     
+
+    public void adicionarAlertaPrimary(Model model, String mensagem){
+        model.addAttribute(Constantes.ALERTA_PRIMARY , mensagem);
+    }
     
-    public void adicionarAlertaSucesso(Model model, String mensagem){
+    public void adicionarAlertaSecondary(Model model, String mensagem){
+        model.addAttribute(Constantes.ALERTA_SECONDARY , mensagem);
+    }
+    
+    public void adicionarAlertaSuccess(Model model, String mensagem){
         model.addAttribute(Constantes.ALERTA_SUCCESS , mensagem);
-    }
-
-    public void adicionarAlertaInfo(Model model, String mensagem){
-        model.addAttribute(Constantes.ALERTA_INFO , mensagem);
-    }
-
-    public void adicionarAlertaWarning(Model model, String mensagem){
-        model.addAttribute(Constantes.ALERTA_WARNING , mensagem);
     }
 
     public void adicionarAlertaDanger(Model model, String mensagem){
         model.addAttribute(Constantes.ALERTA_DANGER , mensagem);
     }
+    
+    public void adicionarAlertaWarning(Model model, String mensagem){
+        model.addAttribute(Constantes.ALERTA_WARNING , mensagem);
+    }
+
+    public void adicionarAlertaInfo(Model model, String mensagem){
+        model.addAttribute(Constantes.ALERTA_INFO , mensagem);
+    }
+    
+    public void adicionarAlertaLight(Model model, String mensagem){
+        model.addAttribute(Constantes.ALERTA_LIGHT , mensagem);
+    }  
+    
+    public void adicionarAlertaDark(Model model, String mensagem){
+        model.addAttribute(Constantes.ALERTA_DARK , mensagem);
+    }  
     
 
 }
