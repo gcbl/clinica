@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Exame;
 
 @Repository
-public interface ExameRepository extends JpaRepository<Exame, Long> {
+public interface ExameRepository extends JpaRepository<Exame, String> {
 
 }

@@ -9,7 +9,7 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.model.Agendamento;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
 
 @Repository
-public interface AgendamentoRepository extends JpaRepository<Agendamento, Long> {
+public interface AgendamentoRepository extends JpaRepository<Agendamento, String> {
     
     public List<Agendamento> findByMedico(Medico medico);
     

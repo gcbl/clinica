@@ -7,6 +7,6 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.model.Exame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.PessoaBDApague;
 
 @Repository
-public interface PessoaBDRepository extends JpaRepository<PessoaBDApague, Long> {
+public interface PessoaBDRepository extends JpaRepository<PessoaBDApague, String> {
 
 }
