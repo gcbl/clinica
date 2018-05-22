@@ -13,32 +13,58 @@ http://stackoverflow.com/questions/7676356/can-twitter-bootstrap-alerts-fade-in-
     <div class="col-8">
         <div class="text-capitalize-first">
         <!-- ALERTAS -->        
-            <!-- sucesso -->
-            <c:if test="${not empty alertaSucesso}">
+            <!-- primary -->
+            <c:if test="${not empty alertaPrimary}">
                 <div class="animated fadeIn">
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                      ${alertaSucesso}
+                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                      ${alertaPrimary}
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
                 </div>
             </c:if>
-            <!-- /sucesso -->
-            
-            <!-- alertaInfo -->
-            <c:if test="${not empty alertaInfo}">
-                <div class="animated pulse">
-                    <div class="alert alert-info alert-dismissible fade show" role="alert">
-                      ${alertaSucesso}
+            <!-- /primary -->        
+        
+            <!-- secondary  -->
+            <c:if test="${not empty alertaSecondary}">
+                <div class="animated fadeIn">
+                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                      ${alertaSecondary}
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
+                </div>
+            </c:if>
+            <!-- /secondary  -->            
+        
+            <!-- success -->
+            <c:if test="${not empty alertaSuccess}">
+                <div class="animated fadeIn">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                      ${alertaSuccess}
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                </div>
+            </c:if>
+            <!-- /success -->
+            
+            <!-- alertaDanger -->
+            <c:if test="${not empty alertaDanger}"> 
+                <div class="animated shake">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      <strong>Atenção!</strong><br/><br/> ${alertaDanger}
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>      
                 </div>    
             </c:if>
-            <!-- /alertaInfo -->
-            
+            <!-- /alertaDanger -->            
+
             <!-- alertaWarning -->
             <c:if test="${not empty alertaWarning}">
                 <div class="animated bounce">
@@ -52,18 +78,49 @@ http://stackoverflow.com/questions/7676356/can-twitter-bootstrap-alerts-fade-in-
             </c:if>
             <!-- /alertaWarning -->
             
-            <!-- alertaDanger -->
-            <c:if test="${not empty alertaDanger}"> 
-                <div class="animated shake">
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                      <strong>Atenção!</strong><br/><br/> ${alertaDanger}
+            <!-- alertaInfo -->
+            <c:if test="${not empty alertaInfo}">
+                <!--  <div class="animated pulse"> -->
+                <div class="animated bounce">
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                      ${alertaInfo}
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
-                    </div>      
+                    </div>
                 </div>    
             </c:if>
-            <!-- /alertaDanger -->
+            <!-- /alertaInfo -->
+            
+            <!-- alertaLight -->
+            <c:if test="${not empty alertaLight}">
+                <!--  <div class="animated pulse"> -->
+                <div class="animated bounce">
+                    <div class="alert alert-light alert-dismissible fade show" role="alert">
+                      ${alertaLight}
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                </div>    
+            </c:if>
+            <!-- /alertaInfo -->
+
+            <!-- alertaDark -->
+            <c:if test="${not empty alertaDark}">
+                <!--  <div class="animated pulse"> -->
+                <div class="animated bounce">
+                    <div class="alert alert-dark alert-dismissible fade show" role="alert">
+                      ${alertaDark}
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                </div>    
+            </c:if>
+            <!-- /alertaInfo -->
+            
+
           
         <!-- /ALERTAS -->
         </div>

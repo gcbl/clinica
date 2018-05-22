@@ -20,15 +20,15 @@ public class MedicamentoService{
     	medicamentoRepository.save(medicamento);
     }
 
-    public void excluir(long id) {
+    public void excluir(String id) {
         medicamentoRepository.delete(id);
     }
 
-    public boolean exists(long id) {
+    public boolean exists(String id) {
         return medicamentoRepository.exists(id);
     }
     
-    public Medicamento findOne(long id) {
+    public Medicamento findOne(String id) {
         return medicamentoRepository.findOne(id);
     }
     
