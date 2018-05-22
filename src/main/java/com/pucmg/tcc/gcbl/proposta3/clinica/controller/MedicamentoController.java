@@ -1,6 +1,7 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.controller;
 
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -28,11 +29,12 @@ public class MedicamentoController extends ModelController {
     private static Log log = LogFactory.getLog(MedicamentoController.class);
     
     @Autowired
-    private MedicamentoService medicamentoService;
+    private MedicamentoService modelService;
 
     @RequestMapping(value={"/listar-medicamento"}, method = RequestMethod.GET)
     public String consultar(Model model){
-    	List<Medicamento> medicamentos = medicamentoService.findAll();
+    	List<Medicamento> medicamentos = modelService.findAll();
+    	
         model.addAttribute("medicamentos", medicamentos);
         return getViewPath() + "listar";
     }
@@ -40,31 +42,40 @@ public class MedicamentoController extends ModelController {
     @RequestMapping(value={"/incluir-medicamento"}, method = RequestMethod.GET)
     public String inserirForm(Model model){
         model.addAttribute("acao", "incluir");
-        
         model.addAttribute("medicamento", new Medicamento());
-        
         return getViewPath() + "incluirForm";
     }
     
     @RequestMapping(value={"/incluir-medicamento"}, method = RequestMethod.POST)
-    public String inserir(@Valid Medicamento medicamento, BindingResult result, Model model, HttpServletRequest request) {                         
+    public String inserir(@Valid Medicamento medicamento, BindingResult result, Model model, HttpServletRequest request, Locale locale) {                         
     	model.addAttribute("acao", "incluir");
 
     	if(result.hasErrors()){
         	model.addAttribute("medicamento", medicamento);
+        	
+        	String mensagem = messageSource.getMessage("formulario.erros-de-validacao", null, locale);
+        	adicionarAlertaWarning(model, mensagem);
             return getViewPath() + "incluirForm";
         }
         
-        medicamentoService.salvarMedicamento(medicamento);
+    	
+        modelService.salvarMedicamento(medicamento);
+        
+        String welcome = messageSource.getMessage("welcome.message", new Object[]{"John Doe"}, locale);
+        model.addAttribute("message", welcome);
+        
+        adicionarAlertaSucesso(model, "Inclusão de " + getModelName() + " executada com sucesso");        
         return consultar(model);
     }    
 
     @RequestMapping(value={"/excluir-medicamento"}, method = RequestMethod.GET)
     public String excluirGet(@RequestParam("id") long id, Model model){
         try{
-            medicamentoService.excluir(id);
+            modelService.excluir(id);
+            adicionarAlertaSucesso(model, "Exclusão de " + getModelName() + " executada com sucesso");
         }catch(Throwable t){
             System.out.println("nao achou");
+            adicionarAlertaWarning(model, getModelName()  + " não encontrado");
         }
         return consultar(model);
     }
@@ -73,11 +84,11 @@ public class MedicamentoController extends ModelController {
     @RequestMapping(value={"/editar-medicamento"}, method = RequestMethod.GET)
     public String editarForm(@RequestParam("id") long id, Model model){
         model.addAttribute("acao", "editar");
-        if( medicamentoService.exists(id) ){
-            model.addAttribute("medicamento", medicamentoService.findOne(id));
+        if( modelService.exists(id) ){
+            model.addAttribute("medicamento", modelService.findOne(id));
             return getViewPath() + "incluirForm";
         }else{
-            System.out.println("nao achou");
+            adicionarAlertaWarning(model, getModelName()  + " não encontrado");
             return consultar(model);
         }
 
@@ -87,14 +98,18 @@ public class MedicamentoController extends ModelController {
     }
     
     @RequestMapping(value={"/editar-medicamento"}, method = RequestMethod.POST)
-    public String editar(@Valid Medicamento medicamento, BindingResult result, Model model, HttpServletRequest request) {
+    public String editar(@Valid Medicamento medicamento, BindingResult result, Model model, HttpServletRequest request, Locale locale) {
         model.addAttribute("acao", "editar");
         if(result.hasErrors()){
             model.addAttribute("medicamento", medicamento);
+            
+            String mensagem = messageSource.getMessage("formulario.erros-de-validacao", null, locale);
+            adicionarAlertaWarning(model, mensagem);
             return getViewPath() + "incluirForm";
         }
         
-        medicamentoService.salvarMedicamento(medicamento);
+        modelService.salvarMedicamento(medicamento);
+        adicionarAlertaSucesso(model, "Alteração de " + getModelName() + " executada com sucesso");        
         return consultar(model);
     }    
     

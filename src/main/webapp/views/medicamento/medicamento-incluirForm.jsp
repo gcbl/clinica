@@ -10,14 +10,12 @@
  
         <div class="body">
             <!-- <h1>Medicamentos</h1> -->
-            acao = ${acao}
             <hr>
-            
                 <form:form action="${acao}-${MODEL}" class="form-horizontal " commandName="${MODEL}" id="${acao}-${MODEL}">
                     <fieldset>
                     
                     <!-- Form Name -->
-                    <legend>Inserir medicamento</legend>
+                    <h2 class="text-capitalize">${acao} ${MODEL}</h2>
                     
                     <!-- Text input-->
                     <div class="form-group">

@@ -24,3 +24,5 @@ https://stackoverflow.com/questions/806212/outlook-style-events-calendar-for-pro
 https://fullcalendar.io/
 https://www.web2cal.com/
 
+https://www.mkyong.com/spring-mvc/spring-mvc-controllerclassnamehandlermapping-example/
+https://docs.spring.io/spring/docs/3.2.18.RELEASE/javadoc-api/org/springframework/web/servlet/mvc/support/ControllerClassNameHandlerMapping.html

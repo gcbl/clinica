@@ -11,12 +11,10 @@
  
  
         <div class="body">
-            <h1>listar medicamentos [${MODEL}]</h1>
+            <h2 class="text-capitalize">Listar ${MODEL}</h2>
  
 <!-- ########################################################################### -->
-<hr>
-
-        <div class="table-responsive table-sm">
+         <div class="table-responsive table-sm">
             <table id="itemDataTable" class="table table-striped table-bordered">
                     <thead>
                         <tr>
