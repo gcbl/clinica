@@ -11,54 +11,62 @@
  
  
         <div class="body">
-            <h1>Listar Exames [${MODEL}]</h1>
+            <h2 class="text-capitalize">Listar ${MODEL}</h2>
  
 <!-- ########################################################################### -->
-<!-- 
-id
-    private String nomeGenerico;
-    private String nomeFabrica;
-    private String fabricante;
-    private String concentracaoFormaFarmaceutica;
- -->
-
-<hr>
-<div class="table-responsive table-sm">
-    <table id="itemDataTable" class="table table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>id</th>
-                    <th>Nome</th>
-                    <th>Descricao</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach items="${exames}" var="item">
-                    <tr>
-                        <td>${item.id}</td>
-                        <td>${item.nome}</td>
-                        <td>${item.descricao}</td>
-                    </tr>
-                </c:forEach>
-            </tbody>
-            <!-- 
-            <tfoot>
-                <tr>
-                    <th>id</th>
-                    <th>Nome</th>
-                    <th>Descricao</th>
-                </tr>
-            </tfoot>
-             -->
-    </table>
-</div>            
+         <div class="table-responsive table-sm">
+            <table id="itemDataTable" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                            <th class="text-right"><a href="incluir-${MODEL}" class="btn btn-sm btn-success"><i class="fas fa-plus-circle"></i> Adicionar novo ${MODEL}</a></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${itemList}" var="item">
+                            <tr>
+                                <td>${item.id}</td>
+                                <td>${item.nome}</td>
+                                <td>${item.descricao}</td>
+                                <td class="actions text-right">
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                      <a href="editar-${MODEL}?id=${item.id}" class="btn btn-sm btn-info"><i class="far fa-edit"></i> Editar</a>
+                                      <a href="excluir-${MODEL}?id=${item.id}" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i> Remover</a>
+                                    </div>
+                                </td>        
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                    <!-- 
+                    <tfoot>
+                        <tr>
+                            <th>id</th>
+                            <th>nomeGenerico</th>
+                            <th>nomeFabrica</th>
+                            <th>fabricante</th>
+                            <th>concentracaoFormaFarmaceutica</th>
+                        </tr>
+                    </tfoot>
+                     -->
+            </table>
+        </div>    
+                
 <hr> 
 <!-- ########################################################################### -->
         </div>
  
+<!-- ##### MODALS ##### -->
+
+<!-- ##### FIM MODALS ##### --> 
+ 
+ 
 <script>
 $(document).ready(function() {
-    var table = $('#itemDataTable').DataTable( {
+
+	var table = $('#itemDataTable').DataTable( {
+		responsive: true,
         dom: 'Bfrtip',
         buttons: [ 
                   {
@@ -69,6 +77,7 @@ $(document).ready(function() {
                  ],
         "paging":   true,
         "ordering": true,
+        "columnDefs": [ { orderable: false, targets: -1 } ], // desabilita sort da ultima coluna 
         "order": [[ 1, "asc" ]],
         "info":     true,    	
     	"language": {
