@@ -34,6 +34,10 @@ public class PacienteService{
     public List<Paciente> findAll() {
         return repository.findAll();
     }
+    
+    public List<Paciente> findByNomeContaining(String nome){
+        return repository.findByNomeContaining(nome);
+    }
 
     
 }
