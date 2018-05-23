@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.br.CPF;
@@ -17,16 +19,18 @@ import lombok.Data;
 public abstract class Pessoa extends BaseEntity {
 
     @Column(name = "NOME")
-    @NotEmpty(message = "*Por favor informe o nome da pessoa")
+    @NotEmpty(message = "*Por favor informe o nome")
     private String nome;
 
     @Column(name = "CPF")
-    //@NotEmpty(message = "*Por favor informe o cpf")
-    @CPF
+    //@NotNull(message = "Por favor informe um CPF")
+    @CPF(message = "Por favor informe um CPF válido")
     private String cpf;
     
     @Column(name = "DT_NASCIMENTO")
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "dd/MM/yyyy" )
+    @NotNull(message = "Por favor informe a data de nascimento")
+    @Past(message = "A data de nascimento deve ser no passado")
     //@NotEmpty(message = "*Por favor informe a data de nascimento")
     private Date dataNascimento;
 
