@@ -12,14 +12,28 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.repository.MedicoRepository;
 public class MedicoService{
 
 	@Autowired
-	protected MedicoRepository medicoRepository;
+	protected MedicoRepository repository;
 	
-    public List<Medico> findAll() {
-    	return medicoRepository.findAll();
-    }
-    
-    public Medico save(Medico medico) {
-        return medicoRepository.save(medico);
+	
+    public void salvar(Medico medico) {
+    	repository.save(medico);
     }
 
+    public void excluir(String id) {
+        repository.delete(id);
+    }
+
+    public boolean exists(String id) {
+        return repository.exists(id);
+    }
+    
+    public Medico findOne(String id) {
+        return repository.findOne(id);
+    }
+    
+    public List<Medico> findAll() {
+    	return repository.findAll();
+    }
+
+    
 }

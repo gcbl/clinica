@@ -13,27 +13,27 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.repository.MedicamentoRepository;
 public class MedicamentoService{
 
 	@Autowired
-	protected MedicamentoRepository medicamentoRepository;
+	protected MedicamentoRepository repository;
 	
 	
-    public void salvarMedicamento(Medicamento medicamento) {
-    	medicamentoRepository.save(medicamento);
+    public void salvar(Medicamento item) {
+    	repository.save(item);
     }
 
     public void excluir(String id) {
-        medicamentoRepository.delete(id);
+        repository.delete(id);
     }
 
     public boolean exists(String id) {
-        return medicamentoRepository.exists(id);
+        return repository.exists(id);
     }
     
     public Medicamento findOne(String id) {
-        return medicamentoRepository.findOne(id);
+        return repository.findOne(id);
     }
     
     public List<Medicamento> findAll() {
-    	return medicamentoRepository.findAll();
+    	return repository.findAll();
     }
 
     
