@@ -11,52 +11,76 @@
  
  
         <div class="body">
-            <h1>Listar Pacientes</h1>
+            <h2 class="text-capitalize">Listar ${MODEL}</h2>
  
 <!-- ########################################################################### -->
-<hr>
-<div class="table-responsive table-sm">
-    <table id="itemDataTable" class="table table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>id</th>
-                    <th>Nome</th>
-                    <th>cpf</th>
-                    <th>dataNascimento</th>
-                    <th>Endereço</th>
-                    <th>planoSaude</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach items="${pacientes}" var="item">
-                    <tr>
-                        <td>${item.id}</td>
-                        <td>${item.nome}</td>
-                        <td>${item.cpf}</td>
-                        <td>${item.dataNascimento}</td>
-                        <td>${item.endereco}</td>
-                        <td>${item.planoSaude}</td>
-                    </tr>
-                </c:forEach>
-            </tbody>
-            <!-- 
-            <tfoot>
-                <tr>
-                    <th>id</th>
-                    <th>Nome</th>
-                    <th>Descricao</th>
-                </tr>
-            </tfoot>
-             -->
-    </table>
-</div>            
+         <div class="table-responsive table-sm">
+            <table id="itemDataTable" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Nome</th>
+                            <th>Cpf</th>
+                            <th>DtNascimento</th>
+                            <th>Endereco</th>
+                            <th>Bairro</th>
+                            <th>Cep</th>
+                            <th>Cidade</th>
+                            <th>Estado</th>
+                            <th>Plano de Saúde</th>                            
+                            <th class="text-right"><a href="incluir-${MODEL}" class="btn btn-sm btn-success"><i class="fas fa-plus-circle"></i> Adicionar novo ${MODEL}</a></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${itemList}" var="item">
+                            <tr>
+                                <td>${item.id}</td>
+                                <td>${item.nome}</td>
+                                <td>${item.cpf}</td>
+                                <td data-order="<fmt:formatDate value="${item.dataNascimento}" pattern="yyyyMMdd"/>" ><fmt:formatDate value="${item.dataNascimento}" pattern="dd/MM/yyyy"/></td>
+                                <td>${item.endereco}</td>
+                                <td>${item.bairro}</td>
+                                <td>${item.cep}</td>
+                                <td>${item.cidade}</td>
+                                <td>${item.estado}</td>
+                                <td>${item.planoSaude}</td>                                
+                                <td class="actions text-right">
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                      <a href="editar-${MODEL}?id=${item.id}" class="btn btn-sm btn-info"><i class="far fa-edit"></i> Editar</a>
+                                      <a href="excluir-${MODEL}?id=${item.id}" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i> Remover</a>
+                                    </div>
+                                </td>        
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                    <!-- 
+                    <tfoot>
+                        <tr>
+                            <th>id</th>
+                            <th>nomeGenerico</th>
+                            <th>nomeFabrica</th>
+                            <th>fabricante</th>
+                            <th>concentracaoFormaFarmaceutica</th>
+                        </tr>
+                    </tfoot>
+                     -->
+            </table>
+        </div>    
+                
 <hr> 
 <!-- ########################################################################### -->
         </div>
  
+<!-- ##### MODALS ##### -->
+
+<!-- ##### FIM MODALS ##### --> 
+ 
+ 
 <script>
 $(document).ready(function() {
+
     var table = $('#itemDataTable').DataTable( {
+        responsive: true,
         dom: 'Bfrtip',
         buttons: [ 
                   {
@@ -67,9 +91,10 @@ $(document).ready(function() {
                  ],
         "paging":   true,
         "ordering": true,
+        "columnDefs": [ { orderable: false, targets: -1 } ], // desabilita sort da ultima coluna 
         "order": [[ 1, "asc" ]],
-        "info":     true,    	
-    	"language": {
+        "info":     true,       
+        "language": {
             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese.json"
         }
     } ); 

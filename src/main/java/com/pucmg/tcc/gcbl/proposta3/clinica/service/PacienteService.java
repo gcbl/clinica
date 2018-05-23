@@ -11,11 +11,29 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.repository.PacienteRepository;
 @Service
 public class PacienteService{
 
-	@Autowired
-	protected PacienteRepository pacienteRepository;
-	
-    public List<Paciente> findAll() {
-    	return pacienteRepository.findAll();
+    @Autowired
+    protected PacienteRepository repository;
+    
+    
+    public void salvar(Paciente item) {
+        repository.save(item);
     }
 
+    public void excluir(String id) {
+        repository.delete(id);
+    }
+
+    public boolean exists(String id) {
+        return repository.exists(id);
+    }
+    
+    public Paciente findOne(String id) {
+        return repository.findOne(id);
+    }
+    
+    public List<Paciente> findAll() {
+        return repository.findAll();
+    }
+
+    
 }
