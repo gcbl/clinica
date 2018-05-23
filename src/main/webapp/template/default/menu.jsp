@@ -54,10 +54,11 @@
             <i class="fas fa-vials"></i> Exame
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+          <a class="dropdown-item" href="incluir-exame">Incluir</a>
+          <a class="dropdown-item" href="listar-exame">Consultar</a>
+          <div class="dropdown-divider"></div>
           <a class="dropdown-item disabled" href="#">Solicitar exame</a>
           <a class="dropdown-item disabled" href="#">Receber exame</a>
-          <div class="dropdown-divider"></div>          
-          <a class="dropdown-item" href="listarExame">Listar</a>
         </div>
       </li>      
       <li class="nav-item dropdown">
