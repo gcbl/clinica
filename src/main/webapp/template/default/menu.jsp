@@ -57,7 +57,7 @@
           <a class="dropdown-item" href="incluir-exame">Incluir</a>
           <a class="dropdown-item" href="listar-exame">Consultar</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item disabled" href="#">Solicitar exame</a>
+          <a class="dropdown-item" href="solicitar-exame">Solicitar exame</a>
           <a class="dropdown-item disabled" href="#">Receber exame</a>
         </div>
       </li>      
