@@ -19,7 +19,6 @@
                     <thead>
                         <tr>
                             <th>id</th>
-                            <th>CRM</th>
                             <th>Nome</th>
                             <th>Cpf</th>
                             <th>DtNascimento</th>
@@ -28,6 +27,7 @@
                             <th>Cep</th>
                             <th>Cidade</th>
                             <th>Estado</th>
+                            <th>CRM</th>                            
                             <th class="text-right"><a href="incluir-${MODEL}" class="btn btn-sm btn-success"><i class="fas fa-plus-circle"></i> Adicionar novo ${MODEL}</a></th>
                         </tr>
                     </thead>
@@ -35,15 +35,15 @@
                         <c:forEach items="${itemList}" var="item">
                             <tr>
                                 <td>${item.id}</td>
-                                <td>${item.crm}</td>
                                 <td>${item.nome}</td>
                                 <td>${item.cpf}</td>
-                                <td>${item.dataNascimento}</td>
+                                <td data-order="<fmt:formatDate value="${item.dataNascimento}" pattern="yyyyMMdd"/>" ><fmt:formatDate value="${item.dataNascimento}" pattern="dd/MM/yyyy"/></td>
                                 <td>${item.endereco}</td>
                                 <td>${item.bairro}</td>
                                 <td>${item.cep}</td>
                                 <td>${item.cidade}</td>
                                 <td>${item.estado}</td>
+                                <td>${item.crm}</td>                                
                                 <td class="actions text-right">
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                       <a href="editar-${MODEL}?id=${item.id}" class="btn btn-sm btn-info"><i class="far fa-edit"></i> Editar</a>

@@ -16,43 +16,90 @@
                     <!-- Form Name -->
                     <h2 class="text-capitalize">${acao} ${MODEL}</h2>
                     <br><br>                    
+                    
                     <!-- Text input-->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="nomeGenerico">Nome genérico</label>  
+                      <label class="col-md-4 control-label" for="nome">Nome:</label>  
+                      <div class="col-md-4">
+                      <form:input path="nome" placeholder="Nome" class="form-control input-md"/> <form:errors path="nome" cssClass="text-danger" />
+                      <!-- <span class="help-block">help block</span> -->  
+                      </div>
+                    </div>
+                    
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="cpf">Cpf:</label>  
+                      <div class="col-md-4">
+                      <form:input path="cpf" placeholder="Cpf" class="form-control input-md"/> <form:errors path="cpf" cssClass="text-danger" />
+                      <!-- <span class="help-block">help block</span> -->  
+                      </div>
+                    </div>
+                    
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="concentracaoFormaFarmaceutica">Data de nascimento:</label>  
+                      <div class="col-md-4">
+                      <form:input path="dataNascimento" placeholder="Data de nascimento" class="form-control input-md"/> <form:errors path="dataNascimento" cssClass="text-danger" />
+                      <!-- <span class="help-block">help block</span> -->  
+                      </div>
+                    </div>
+                    
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="endereco">Endereço:</label>  
+                      <div class="col-md-4">
+                      <form:input path="endereco" placeholder="endereco" class="form-control input-md"/> <form:errors path="endereco" cssClass="text-danger" />
+                      <!-- <span class="help-block">help block</span> -->  
+                      </div>
+                    </div>
+                    
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="bairro">Bairro:</label>  
+                      <div class="col-md-4">
+                      <form:input path="bairro" placeholder="bairro" class="form-control input-md"/> <form:errors path="bairro" cssClass="text-danger" />
+                      <!-- <span class="help-block">help block</span> -->  
+                      </div>
+                    </div>   
+                    
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="cep">CEP:</label>  
+                      <div class="col-md-4">
+                      <form:input path="cep" placeholder="cep" class="form-control input-md"/> <form:errors path="cep" cssClass="text-danger" />
+                      <!-- <span class="help-block">help block</span> -->  
+                      </div>
+                    </div> 
+                    
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="cidade">Cidade:</label>  
+                      <div class="col-md-4">
+                      <form:input path="cidade" placeholder="cidade" class="form-control input-md"/> <form:errors path="cidade" cssClass="text-danger" />
+                      <!-- <span class="help-block">help block</span> -->  
+                      </div>
+                    </div> 
+                    
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="estado">Estado:</label>  
+                      <div class="col-md-4">
+                      <form:input path="estado" placeholder="estado" class="form-control input-md"/> <form:errors path="estado" cssClass="text-danger" />
+                      <!-- <span class="help-block">help block</span> -->  
+                      </div>
+                    </div> 
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="crm">CRM:</label>  
                       <div class="col-md-4">
                       <form:hidden path="id" placeholder="id" class="form-control input-md"/> <form:errors path="id" cssClass="text-danger" />
-                      <form:input path="nomeGenerico" placeholder="Nome genérico" class="form-control input-md"/> <form:errors path="nomeGenerico" cssClass="text-danger" />
-                      <!-- <span class="help-block">Informe o nome genérico do medicamento</span> -->   
+                      <form:input path="crm" placeholder="CRM" class="form-control input-md"/> <form:errors path="crm" cssClass="text-danger" />
+                      <!-- <span class="help-block">help block</span> -->   
                       </div>
                     </div>
                     
-                    <!-- Text input-->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="nomeFabrica">Nome de Fábrica</label>  
-                      <div class="col-md-4">
-                      <form:input path="nomeFabrica" placeholder="Nome de Fábrica" class="form-control input-md"/> <form:errors path="nomeFabrica" cssClass="text-danger" />
-                      <!-- <span class="help-block">Informe o nome de fábrica do medicamento</span> -->  
-                      </div>
-                    </div>
-                    
-                    <!-- Text input-->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="fabricante">Fabricante</label>  
-                      <div class="col-md-4">
-                      <form:input path="fabricante" placeholder="Fabricante" class="form-control input-md"/> <form:errors path="fabricante" cssClass="text-danger" />
-                      <!-- <span class="help-block">Informe o nome do fabricante do medicamento</span> -->  
-                      </div>
-                    </div>
-                    
-                    <!-- Text input-->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="concentracaoFormaFarmaceutica">Concentraçãoo e Forma Farmaceutica</label>  
-                      <div class="col-md-4">
-                      <form:input path="concentracaoFormaFarmaceutica" placeholder="Exemplo: Suspensão oral 15mg/ml" class="form-control input-md"/> <form:errors path="concentracaoFormaFarmaceutica" cssClass="text-danger" />
-                      <!-- <span class="help-block">Informe a concentração e forma farmaceutica ou uma breve descrição </span> -->  
-                      </div>
-                    </div>
-                    
+                                        
                     <!-- Button -->
                     <div class="form-group">
                       <div class="col-md-4">
