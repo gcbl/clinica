@@ -15,8 +15,8 @@ public class MedicoService{
 	protected MedicoRepository repository;
 	
 	
-    public void salvar(Medico medico) {
-    	repository.save(medico);
+    public void salvar(Medico item) {
+    	repository.save(item);
     }
 
     public void excluir(String id) {
