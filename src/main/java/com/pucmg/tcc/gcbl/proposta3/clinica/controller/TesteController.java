@@ -93,50 +93,18 @@ public class TesteController extends BaseController {
         userForm.setName("name");
         //userService.saveUser(userForm);
         
-        PessoaBDApague p = new PessoaBDApague();
-        p.setNome("NOME");
-        p.setCpf("02782580426");
-        p.setDataNascimento(LocalDate.now());
-        p.setEndereco("ENDERECO"); 
-        p.setBairro("BAIRRO");
-        p.setCep("50000000");
-        p.setCidade("CIDADE");
-        p.setEstado("UF");
-        
-        pessoaBDRepository.save(p);
-        /*
-    @Column(name = "NOME")
-    private String nome;
-
-    @Column(name = "SOBRENOME")
-    private String sobrenome;
-    
-    @Column(name = "CPF")
-    @CPF
-    private String cpf;
-    
-    @Column(name = "DT_NASCIMENTO")
-    private LocalDate dataNascimento;
-
-    @Column(name = "RUA")
-    private String rua;
-
-    @Column(name = "NUMERO")
-    private long numero;
-
-    @Column(name = "BAIRRO")
-    private String bairro;
-    
-    @Column(name = "CEP")
-    private String cep;
-
-    @Column(name = "CIDADE")
-    private String cidade;
-
-    @Column(name = "ESTADO")
-    private String estado;        
-        
-        */
+//        PessoaBDApague p = new PessoaBDApague();
+//        p.setNome("NOME");
+//        p.setCpf("02782580426");
+//        p.setDataNascimento(LocalDate.now());
+//        p.setEndereco("ENDERECO"); 
+//        p.setBairro("BAIRRO");
+//        p.setCep("50000000");
+//        p.setCidade("CIDADE");
+//        p.setEstado("UF");
+//        
+//        pessoaBDRepository.save(p);
+ 
         
     	List<Medicamento> medicamentos = medicamentoService.findAll();
     	Collections.shuffle(medicamentos);
@@ -146,22 +114,16 @@ public class TesteController extends BaseController {
 
         List<Medico> medicos = medicoRepository.findAll();
         Collections.shuffle(medicos);
+        
+        List<Paciente> pacientes = pacienteRepository.findAll();
+        Collections.shuffle(pacientes);        
     	
         Medico medico = medicos.get(0);
+        Paciente paciente = pacientes.get(0);
         
         model.addAttribute("medicamentos", medicamentos);
         
 
-        
-        // Inserir paciente
-        Paciente paciente = new Paciente();
-        paciente.setNome("Fulano");
-        paciente.setDataNascimento( new Date() );
-        paciente.setCpf("02782580426");
-        paciente.setEndereco("rua tal");
-        paciente.setPlanoSaude("UNIMED");
-        
-        pacienteRepository.save(paciente);
         
         Receita receita = new Receita();
         receita.setPaciente(paciente);
@@ -180,7 +142,6 @@ public class TesteController extends BaseController {
         //Receita receita2 = new Receita();
         //receitaRepository.save(receita2);
         
-        List<Paciente> pacientes = pacienteRepository.findAll();
         List<Receita> receitas = receitaRepository.findAll();
         
         
@@ -252,7 +213,7 @@ public class TesteController extends BaseController {
         
         System.out.println("para");
         
-        return "views/listaMedicamentos";
+        return "views/about";
     }
 
 
