@@ -22,8 +22,8 @@ public abstract class Pessoa extends BaseEntity {
     @NotEmpty(message = "*Por favor informe o nome")
     private String nome;
 
-    @Column(name = "CPF")
-    //@NotNull(message = "Por favor informe um CPF")
+    //TODO: Ativar o unique=true e tratar quando for inserir um mesmo CPF
+    @Column(name = "CPF" /*, unique=true */)
     @CPF(message = "Por favor informe um CPF válido")
     private String cpf;
     
@@ -31,7 +31,6 @@ public abstract class Pessoa extends BaseEntity {
     @DateTimeFormat(pattern = "dd/MM/yyyy" )
     @NotNull(message = "Por favor informe a data de nascimento")
     @Past(message = "A data de nascimento deve ser no passado")
-    //@NotEmpty(message = "*Por favor informe a data de nascimento")
     private Date dataNascimento;
 
     @Column(name = "ENDERECO")
