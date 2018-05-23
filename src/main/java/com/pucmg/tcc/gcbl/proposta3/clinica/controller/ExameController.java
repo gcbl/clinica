@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Exame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.ExameService;
@@ -44,6 +45,14 @@ public class ExameController extends ModelController {
         model.addAttribute("itemList", itemList);
         return getViewPath() + "listar";
     }
+    
+    @ResponseBody
+    @RequestMapping(value={"/listar-exame-json"}, method = RequestMethod.GET)
+    public List<Exame> consultarJson(@RequestParam("q") String q){
+        List<Exame> itemList = modelService.findByNomeContaining(q);
+        
+        return itemList;
+    }    
     
     @RequestMapping(value={"/incluir-exame"}, method = RequestMethod.GET)
     public String inserirForm(Model model){
