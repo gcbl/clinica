@@ -65,7 +65,7 @@
             <i class="fas fa-pills"></i> Medicamentos
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-          <a class="dropdown-item" href="incluir-medicamento">Inserir</a>
+          <a class="dropdown-item" href="incluir-medicamento">Incluir</a>
           <a class="dropdown-item" href="listar-medicamento">Consultar</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item disabled" href="#">Estatisticas</a>
@@ -73,13 +73,11 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-user-md"></i> Medicos
+            <i class="fas fa-user-md"></i> Médicos
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-          <a class="dropdown-item disabled" href="#">Inserir</a>
-          <a class="dropdown-item disabled" href="#">Excluir</a>
-          <a class="dropdown-item disabled" href="#">Alterar</a>
-          <a class="dropdown-item" href="listarMedico">Consultar</a>
+          <a class="dropdown-item" href="incluir-medico">Incluir</a>
+          <a class="dropdown-item" href="listar-medico">Consultar</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item disabled" href="#">Estatisticas</a>
         </div>
