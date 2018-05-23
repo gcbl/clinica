@@ -67,7 +67,7 @@ public class MedicamentoController extends ModelController {
         }
         
     	
-        modelService.salvarMedicamento(item);
+        modelService.salvar(item);
         
         String mensagemInclusao = messageSource.getMessage("formulario.operacao.inclusao.sucesso", new Object[]{ getModelName() }, locale);
         adicionarAlertaSuccess(model, mensagemInclusao);
@@ -135,7 +135,7 @@ public class MedicamentoController extends ModelController {
             return consultar(model);
         }
         
-        modelService.salvarMedicamento(item);
+        modelService.salvar(item);
         
         mensagem = messageSource.getMessage("formulario.operacao.alteracao.sucesso", new Object[]{ getModelName() }, locale);
         adicionarAlertaSuccess(model, mensagem);
