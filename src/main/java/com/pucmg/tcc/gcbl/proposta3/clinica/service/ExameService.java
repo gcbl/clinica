@@ -35,5 +35,8 @@ public class ExameService{
         return repository.findAll();
     }
 
+    public List<Exame> findByNomeContaining(String nome){
+        return repository.findByNomeContaining(nome);
+    }
     
 }
