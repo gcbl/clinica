@@ -17,7 +17,7 @@ solicitar exame
 
 var options = {
 		url: function(phrase) {
-	        return "privado/listar-exame-json?q=" + phrase;
+	        return "api/listar-exame-json?q=" + phrase;
 	    },
 	    getValue: "nome"
 	};
