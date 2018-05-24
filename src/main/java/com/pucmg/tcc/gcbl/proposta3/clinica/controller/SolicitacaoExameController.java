@@ -16,7 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.SolicitacaoExame;
+import com.pucmg.tcc.gcbl.proposta3.clinica.service.ExameService;
+import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicoService;
+import com.pucmg.tcc.gcbl.proposta3.clinica.service.PacienteService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.SolicitacaoExameService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.util.Constantes;
 
@@ -30,6 +35,16 @@ public class SolicitacaoExameController extends ModelController {
     @Autowired
     private SolicitacaoExameService modelService;
 
+    @Autowired
+    private PacienteService pacienteService;
+
+    @Autowired
+    private MedicoService medicoService;
+
+    @Autowired
+    private ExameService exameService;
+    
+    
     @Override
     protected Class<SolicitacaoExame> getModelClass() {
         return SolicitacaoExame.class;
@@ -49,6 +64,10 @@ public class SolicitacaoExameController extends ModelController {
     public String inserirForm(Model model){
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
         
+        model.addAttribute(getModelName() + "-pacientes", pacienteService.findAll());
+        model.addAttribute(getModelName() + "-medicos", medicoService.findAll());
+        model.addAttribute(getModelName() + "-exames", exameService.findAll());
+        
         model.addAttribute(getModelName(), new SolicitacaoExame());
         return getViewPath() + "incluirForm";
     }
@@ -65,6 +84,12 @@ public class SolicitacaoExameController extends ModelController {
             return getViewPath() + "incluirForm";
         }
         
+        Paciente paciente = pacienteService.findOne( item.getPaciente().getId() );
+        Medico medicoSolicitante = medicoService.findOne( item.getMedicoSolicitante().getId() );
+        
+        SolicitacaoExame solicitacaoExame = new SolicitacaoExame();
+        solicitacaoExame.setMedicoSolicitante(medicoSolicitante);
+        solicitacaoExame.setPaciente(paciente);
         
         modelService.salvar(item);
         
