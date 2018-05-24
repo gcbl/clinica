@@ -46,14 +46,6 @@ public class ExameController extends ModelController {
         return getViewPath() + "listar";
     }
     
-    @ResponseBody
-    @RequestMapping(value={"/listar-exame-json"}, method = RequestMethod.GET)
-    public List<Exame> consultarJson(@RequestParam("q") String q){
-        List<Exame> itemList = modelService.findByNomeContaining(q);
-        
-        return itemList;
-    }    
-    
     @RequestMapping(value={"/incluir-exame"}, method = RequestMethod.GET)
     public String inserirForm(Model model){
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);

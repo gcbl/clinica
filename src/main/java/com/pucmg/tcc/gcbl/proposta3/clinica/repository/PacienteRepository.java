@@ -10,6 +10,6 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
 @Repository
 public interface PacienteRepository extends JpaRepository<Paciente, String> {
 
-    public List<Paciente> findByNomeContaining(String nome);
+    public List<Paciente> findByNomeContainingIgnoreCase(String nome);
     
 }
