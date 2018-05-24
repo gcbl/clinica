@@ -37,7 +37,7 @@
                     
                     <!-- Text input-->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="concentracaoFormaFarmaceutica">Data de nascimento:</label>  
+                      <label class="col-md-4 control-label" for="dataNascimento">Data de nascimento:</label>  
                       <div class="col-md-4">
                       <form:input path="dataNascimento" placeholder="Data de nascimento" class="form-control input-md"/> <form:errors path="dataNascimento" cssClass="text-danger" />
                       <!-- <span class="help-block">help block</span> -->  
