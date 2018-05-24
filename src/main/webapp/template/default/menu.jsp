@@ -54,8 +54,8 @@
             <i class="fas fa-vials"></i> Exame
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-          <a class="dropdown-item" href="incluir-exame">Incluir</a>
           <a class="dropdown-item" href="listar-exame">Consultar</a>
+          <a class="dropdown-item" href="incluir-exame">Incluir</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="listar-solicitacaoexame">Listar Solicitações de Exames</a>
           <a class="dropdown-item disabled" href="incluir-solicitacaoexame">Solicitar exame</a>
@@ -67,8 +67,8 @@
             <i class="fas fa-pills"></i> Medicamentos
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-          <a class="dropdown-item" href="incluir-medicamento">Incluir</a>
           <a class="dropdown-item" href="listar-medicamento">Consultar</a>
+          <a class="dropdown-item" href="incluir-medicamento">Incluir</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item disabled" href="#">Estatisticas</a>
         </div>
@@ -78,8 +78,8 @@
             <i class="fas fa-user-md"></i> Médicos
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-          <a class="dropdown-item" href="incluir-medico">Incluir</a>
           <a class="dropdown-item" href="listar-medico">Consultar</a>
+          <a class="dropdown-item" href="incluir-medico">Incluir</a>          
           <div class="dropdown-divider"></div>
           <a class="dropdown-item disabled" href="#">Estatisticas</a>
         </div>
@@ -89,8 +89,8 @@
             <i class="fas fa-users"></i> Pacientes
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-          <a class="dropdown-item" href="incluir-paciente">Incluir</a>
           <a class="dropdown-item" href="listar-paciente">Consultar</a>
+          <a class="dropdown-item" href="incluir-paciente">Incluir</a>          
           <div class="dropdown-divider"></div>
           <a class="dropdown-item disabled" href="#">Estatisticas</a>
         </div>
@@ -101,8 +101,8 @@
             <i class="far fa-id-card"></i> Recepcionista
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-          <a class="dropdown-item" href="incluir-recepcionista">Incluir</a>
           <a class="dropdown-item" href="listar-recepcionista">Consultar</a>
+          <a class="dropdown-item" href="incluir-recepcionista">Incluir</a>          
           <div class="dropdown-divider"></div>
           <a class="dropdown-item disabled" href="#">Estatisticas</a>
         </div>
