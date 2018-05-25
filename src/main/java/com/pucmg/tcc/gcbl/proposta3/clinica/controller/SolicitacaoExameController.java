@@ -64,10 +64,6 @@ public class SolicitacaoExameController extends ModelController {
     public String inserirForm(Model model){
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
         
-        model.addAttribute(getModelName() + "-pacientes", pacienteService.findAll());
-        model.addAttribute(getModelName() + "-medicos", medicoService.findAll());
-        model.addAttribute(getModelName() + "-exames", exameService.findAll());
-        
         model.addAttribute(getModelName(), new SolicitacaoExame());
         return getViewPath() + "incluirForm";
     }
