@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Exame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.ExameService;
+import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicoService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.PacienteService;
 
 
@@ -28,6 +30,9 @@ public class APIController extends BaseController {
 
     @Autowired
     private PacienteService pacienteService;
+    
+    @Autowired
+    private MedicoService medicoService;    
     
 
     // -----------------------------------------------------------------------------------
@@ -59,6 +64,20 @@ public class APIController extends BaseController {
         List<Paciente> itemList = pacienteService.findAll();
         return itemList;
     }    
+    
+    @ResponseBody
+    @RequestMapping(value={"/listar-medico-json"}, method = RequestMethod.GET)
+    public List<Medico> listarMedicoJson(@RequestParam("q") String q){
+        List<Medico> itemList = medicoService.findByNomeContainingIgnoreCase(q);
+        return itemList;
+    }
+    
+    @ResponseBody
+    @RequestMapping(value={"/listar-all-medico-json"}, method = RequestMethod.GET)
+    public List<Medico> listarMedicoJson(){
+        List<Medico> itemList = medicoService.findAll();
+        return itemList;
+    }       
     
 
 }
