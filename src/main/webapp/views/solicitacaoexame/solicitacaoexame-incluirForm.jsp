@@ -16,7 +16,7 @@
                     <!-- Form Name -->
                     <h2 class="text-capitalize">${acao} ${MODEL}</h2>
                     <br><br>
-                    
+                                        
                     <!-- Text input-->
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="dataSolicitacao">Data da Solicitacao:</label>  
@@ -26,24 +26,18 @@
                       </div>
                     </div>
                     
-                    <form:select path="paciente">
-                         <form:option value="-" label="--Please Select"/>
-                         <form:options items="${solicitacaoexame-pacientes}" itemValue="id" itemLabel="nome"/>
-                    </form:select>                    
-                    
                     <!-- Text input-->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="paciente.id">Paciente:</label>  
+                      <label class="col-md-4 control-label" for="paciente.id">Escolha o paciente:</label>
+                      <div class="col-md-4"><input id="inputAutoCompletePaciente" class="form-control input-md" placeholder="paciente" /></div>   
                       <div class="col-md-4">
-                      <input id="inputOne" class="form-control input-md" placeholder="paciente" />
-                      <br><br><br><br><br><br><br><br><br><br><br><br>
-                      <input id="inputTwo" placeholder="id" />
-                      <br>
-                      <form:input path="paciente.id" placeholder="Paciente" class="form-control input-md"/> <form:errors path="paciente.id" cssClass="text-danger" />
+                          Paciente: <div id="pacienteEscolhido"></div>
+                          <form:hidden path="paciente.id" placeholder="paciente.id" class="form-control input-md"/> <form:errors path="paciente.id" cssClass="text-danger" />
                       <!-- <span class="help-block">help block</span> -->  
                       </div>
-                    </div>                    
-                    
+                    </div>
+                                        
+ <%--                        
                     <!-- Text input-->
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="medicoSolicitante.id">Medico solicitante:</label>  
@@ -51,7 +45,8 @@
                       <form:input path="medicoSolicitante.id" placeholder="Medico solicitante" class="form-control input-md"/> <form:errors path="medicoSolicitante.id" cssClass="text-danger" />
                       <!-- <span class="help-block">help block</span> -->  
                       </div>
-                    </div>                     
+                    </div>
+--%>                    
                     
                                         
                     <!-- Button -->
@@ -66,29 +61,59 @@
                    
                     
 <script>
-var options = {
-
-	    url: "api/listar-all-paciente-json",
+    var optionsInputAutoCompletePaciente = {
+	    url: function(phrase) {
+	        return "api/listar-paciente-json?q=" + phrase;
+	    },
 	    theme: "bootstrap",
 	    getValue: function(element) {
 	        return element.nome;
 	    },
-
 	    list: {
 	        onSelectItemEvent: function() {
-	            var selectedItemValue = $("#inputOne").getSelectedItemData().id;
+	            var selectedItemValue = $("#inputAutoCompletePaciente").getSelectedItemData().id;
+	            var selectedItemCpf = $("#inputAutoCompletePaciente").getSelectedItemData().cpf;
+	            var selectedItemNome = $("#inputAutoCompletePaciente").getSelectedItemData().nome;
 
-	            
-	            $("#inputTwo").val(selectedItemValue).trigger("change");
+	            // mUDAR O TEXTO DO div
 	            $('input[id="paciente.id"]').val(selectedItemValue).trigger("change");
+	            $("#pacienteEscolhido").html( "<b>" + selectedItemCpf + ' - ' + selectedItemNome + "</b>");
+	            $("#inputAutoCompletePaciente").val("");
 	        },
 	        onHideListEvent: function() {
 	            //$("#inputTwo").val("").trigger("change");
 	        }
 	    }
 	};
+	$("#inputAutoCompletePaciente").easyAutocomplete(optionsInputAutoCompletePaciente);
+	
+	
+    var optionsInputAutoCompleteMedico = {
+            url: function(phrase) {
+                return "api/listar-paciente-json?q=" + phrase;
+            },
+            theme: "bootstrap",
+            getValue: function(element) {
+                return element.nome;
+            },
+            list: {
+                onSelectItemEvent: function() {
+                    var selectedItemValue = $("#inputAutoCompleteMedico").getSelectedItemData().id;
+                    var selectedItemCpf = $("#inputAutoCompleteMedico").getSelectedItemData().cpf;
+                    var selectedItemNome = $("#inputAutoCompleteMedico").getSelectedItemData().nome;
 
-	$("#inputOne").easyAutocomplete(options);
+                    // mUDAR O TEXTO DO div
+                    $('input[id="medico.id"]').val(selectedItemValue).trigger("change");
+                    $("#medicoEscolhido").html( "<b>" + selectedItemCpf + ' - ' + selectedItemNome + "</b>");
+                    $("#inputAutoCompleteMedico").val("");
+                },
+                onHideListEvent: function() {
+                    //$("#inputTwo").val("").trigger("change");
+                }
+            }
+        };
+        $("#inputAutoCompleteMedico").easyAutocomplete(optionsInputAutoCompleteMedico);
+	
 </script>
  
        
