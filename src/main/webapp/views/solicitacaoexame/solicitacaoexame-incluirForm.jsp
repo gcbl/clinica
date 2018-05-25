@@ -36,6 +36,18 @@
                       <!-- <span class="help-block">help block</span> -->  
                       </div>
                     </div>
+                    
+                    
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="medicoSolicitante.id">Escolha o Médico Solicitante:</label>
+                      <div class="col-md-4"><input id="inputAutoCompleteMedicoSolicitante" class="form-control input-md" placeholder="medicoSolicitante" /></div>   
+                      <div class="col-md-4">
+                          Medico Solicitante: <div id="medicoSolicitanteEscolhido"></div>
+                          <form:hidden path="medicoSolicitante.id" placeholder="medicoSolicitante.id" class="form-control input-md"/> <form:errors path="medicoSolicitante.id" cssClass="text-danger" />
+                      <!-- <span class="help-block">help block</span> -->  
+                      </div>
+                    </div>                    
                                         
  <%--                        
                     <!-- Text input-->
@@ -69,15 +81,20 @@
 	    getValue: function(element) {
 	        return element.nome;
 	    },
+	    template: {
+	        type: "description",
+	        fields: {
+	            description: "cpf"
+	        }
+	    },	    
 	    list: {
 	        onSelectItemEvent: function() {
 	            var selectedItemValue = $("#inputAutoCompletePaciente").getSelectedItemData().id;
 	            var selectedItemCpf = $("#inputAutoCompletePaciente").getSelectedItemData().cpf;
 	            var selectedItemNome = $("#inputAutoCompletePaciente").getSelectedItemData().nome;
 
-	            // mUDAR O TEXTO DO div
 	            $('input[id="paciente.id"]').val(selectedItemValue).trigger("change");
-	            $("#pacienteEscolhido").html( "<b>" + selectedItemCpf + ' - ' + selectedItemNome + "</b>");
+	            $("#pacienteEscolhido").html( "<b>" + selectedItemNome + "</b>" + " (CPF: " + mascaraCpf(selectedItemCpf) + ")" );
 	            $("#inputAutoCompletePaciente").val("");
 	        },
 	        onHideListEvent: function() {
@@ -90,29 +107,34 @@
 	
     var optionsInputAutoCompleteMedico = {
             url: function(phrase) {
-                return "api/listar-paciente-json?q=" + phrase;
+                return "api/listar-medico-json?q=" + phrase;
             },
             theme: "bootstrap",
             getValue: function(element) {
                 return element.nome;
             },
+            template: {
+                type: "description",
+                fields: {
+                    description: "crm"
+                }
+            },            
             list: {
                 onSelectItemEvent: function() {
-                    var selectedItemValue = $("#inputAutoCompleteMedico").getSelectedItemData().id;
-                    var selectedItemCpf = $("#inputAutoCompleteMedico").getSelectedItemData().cpf;
-                    var selectedItemNome = $("#inputAutoCompleteMedico").getSelectedItemData().nome;
+                    var selectedItemValue = $("#inputAutoCompleteMedicoSolicitante").getSelectedItemData().id;
+                    var selectedItemCrm = $("#inputAutoCompleteMedicoSolicitante").getSelectedItemData().crm;
+                    var selectedItemNome = $("#inputAutoCompleteMedicoSolicitante").getSelectedItemData().nome;
 
-                    // mUDAR O TEXTO DO div
                     $('input[id="medico.id"]').val(selectedItemValue).trigger("change");
-                    $("#medicoEscolhido").html( "<b>" + selectedItemCpf + ' - ' + selectedItemNome + "</b>");
-                    $("#inputAutoCompleteMedico").val("");
+                    $("#medicoSolicitanteEscolhido").html( "<b>" + selectedItemNome + "</b>" + " (CRM: " + selectedItemCrm + ")" );
+                    $("#inputAutoCompleteMedicoSolicitante").val("");
                 },
                 onHideListEvent: function() {
                     //$("#inputTwo").val("").trigger("change");
                 }
             }
         };
-        $("#inputAutoCompleteMedico").easyAutocomplete(optionsInputAutoCompleteMedico);
+        $("#inputAutoCompleteMedicoSolicitante").easyAutocomplete(optionsInputAutoCompleteMedico);
 	
 </script>
  
