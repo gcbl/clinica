@@ -1,5 +1,6 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.util;
 
+import java.text.DecimalFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -23,4 +24,13 @@ public class DataUtils {
     public static LocalDateTime asLocalDateTime(Date date) {
       return Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDateTime();
     }
+    
+    
+    private static final DecimalFormat CPF_NFORMAT = new DecimalFormat("00000000000");
+    public String getCpfFormatado(long cpf){
+        final String stringNumber = CPF_NFORMAT.format(cpf);
+        return stringNumber.replaceAll("([0-9]{3})([0-9]{3})([0-9]{3})([0-9]{2})", "$1.$2.$3-$4");   
+    }
+
+    
   }
