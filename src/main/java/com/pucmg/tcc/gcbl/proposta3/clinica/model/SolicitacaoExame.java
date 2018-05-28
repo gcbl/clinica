@@ -38,6 +38,9 @@ public class SolicitacaoExame  extends BaseEntity {
     @JoinColumn(name="ID_MEDICO")
     private Medico medicoSolicitante;
 
+    @Column(name = "OBSERVACAO")
+    private String observacao;
+
     // Lista de exames 
     @ManyToMany(cascade = { CascadeType.REFRESH }, 
                 fetch=FetchType.LAZY )
@@ -45,6 +48,9 @@ public class SolicitacaoExame  extends BaseEntity {
                joinColumns = @JoinColumn(name = "ID_SOLICITACAO"), 
                inverseJoinColumns = @JoinColumn(name = "ID_EXAME"))
     private Set<Exame> exames = new HashSet<>();    
+
+    
+    
     
 }
 
