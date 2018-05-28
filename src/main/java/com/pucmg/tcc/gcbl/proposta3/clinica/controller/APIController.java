@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Exame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medicamento;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.ExameService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicoService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.PacienteService;
+import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicamentoService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.util.Constantes;
 
 
@@ -33,7 +35,11 @@ public class APIController extends BaseController {
     private PacienteService pacienteService;
     
     @Autowired
-    private MedicoService medicoService;    
+    private MedicoService medicoService;
+
+    @Autowired
+    private MedicamentoService medicamentoService;    
+
     
 
     // -----------------------------------------------------------------------------------
@@ -45,12 +51,6 @@ public class APIController extends BaseController {
         return itemList;
     }    
 
-    @ResponseBody
-    @RequestMapping(value={"/listar-all-exame-json"}, method = RequestMethod.GET)
-    public List<Exame> listarExameJson(){
-        List<Exame> itemList = exameService.findAll();
-        return itemList;
-    }    
     
     @ResponseBody
     @RequestMapping(value={"/listar-paciente-json"}, method = RequestMethod.GET)
@@ -59,12 +59,6 @@ public class APIController extends BaseController {
         return itemList;
     }
     
-    @ResponseBody
-    @RequestMapping(value={"/listar-all-paciente-json"}, method = RequestMethod.GET)
-    public List<Paciente> listarPacienteJson(){
-        List<Paciente> itemList = pacienteService.findAll();
-        return itemList;
-    }    
     
     @ResponseBody
     @RequestMapping(value={"/listar-medico-json"}, method = RequestMethod.GET)
@@ -72,6 +66,32 @@ public class APIController extends BaseController {
         List<Medico> itemList = medicoService.findByNomeContainingIgnoreCase(q);
         return itemList;
     }
+    
+    @ResponseBody
+    @RequestMapping(value={"/listar-medicamento-json"}, method = RequestMethod.GET)
+    public List<Medicamento> listarMedicamentoJson(@RequestParam( Constantes.QUERY_PARAMETER ) String q){
+        List<Medicamento> itemList = medicamentoService.findByNomeContainingIgnoreCase(q);
+        return itemList;
+    }
+
+    
+    // -------------------------
+
+    @ResponseBody
+    @RequestMapping(value={"/listar-all-exame-json"}, method = RequestMethod.GET)
+    public List<Exame> listarExameJson(){
+        List<Exame> itemList = exameService.findAll();
+        return itemList;
+    }    
+
+    
+    @ResponseBody
+    @RequestMapping(value={"/listar-all-paciente-json"}, method = RequestMethod.GET)
+    public List<Paciente> listarPacienteJson(){
+        List<Paciente> itemList = pacienteService.findAll();
+        return itemList;
+    }    
+    
     
     @ResponseBody
     @RequestMapping(value={"/listar-all-medico-json"}, method = RequestMethod.GET)

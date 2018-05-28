@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medicamento;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.MedicamentoRepository;
 
 //@Service("userService")
@@ -35,6 +36,10 @@ public class MedicamentoService{
     public List<Medicamento> findAll() {
     	return repository.findAll();
     }
+
+    public List<Medicamento> findByNomeContainingIgnoreCase(String nome){
+        return repository.findByNomeContainingIgnoreCase(nome);
+    }    
 
     
 }
