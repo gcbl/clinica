@@ -58,7 +58,6 @@
                                   <c:if test="${not empty solicitacaoexame}">
                                       <form:option value="${solicitacaoexame.medicoSolicitante.id}" label="${solicitacaoexame.medicoSolicitante.nome}" />
                                   </c:if>
-                                  <form:options items="${medicoSolicitanteList}" itemLabel="nome" />
                               </form:select>
                           </div>
                         </div>
@@ -71,7 +70,11 @@
                       <label class="col-md-4 control-label" for="exames">Exames:</label>  
                       <div class="col-md-4">
                           <form:select path="exames" id="selectExamesList" multiple="true" style="width: 100%">
-                              <%-- <form:options items="${exameList}" itemLabel="nome" /> --%>
+                              <%-- No caso de estar editando --%>
+                              <c:if test="${not empty solicitacaoexame}">
+                                  <form:options items="${solicitacaoexame.exames}" itemValue="id" itemLabel="nome"/>
+                              </c:if>
+                              
                           </form:select>
                       </div>
                     </div>                    
