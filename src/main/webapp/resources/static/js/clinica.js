@@ -21,7 +21,7 @@ $("#exampleModal").on("show.bs.modal", function (event) {
 	alert("show.bs.modal");
 });
 
-
+ 
 // --------------------------------------------------------------------
 
 
