@@ -16,12 +16,7 @@
                     <!-- Form Name -->
                     <h2 class="text-capitalize">${acao} ${MODEL}</h2>
                     <br><br>
-                    
-                    <hr>
-                    ${solicitacaoexame}
-                    <hr>
-                    
-                    
+
                     <form:hidden path="id" placeholder="id" class="form-control input-md"/> <form:errors path="id" cssClass="text-danger" />                    
                     <!-- Text input-->
                     <div class="form-group">
@@ -92,7 +87,7 @@
                     <!-- Button -->
                     <div class="form-group">
                       <div class="col-md-4">
-                        <button id="btnSalvar" name="btnSalvar" class="btn btn-primary">Salvar</button>
+                        <button id="btnSalvar" name="btnSalvar" class="btn btn-primary">Solicitar exame</button>
                       </div>
                     </div>
                     
@@ -103,7 +98,14 @@
 <script>
 
 $(document).ready(function() {
-
+	// Open select2 on focus
+	$(document).on('focus', '.select2', function (e) {
+		  if (e.originalEvent) {
+		    $(this).siblings('select').select2('open');    
+		  } 
+    });
+	
+	
     $('#selectMedicoSolicitanteList').select2({
         placeholder: "Selecione o médico solicitante",
         language: "pt-BR",        
