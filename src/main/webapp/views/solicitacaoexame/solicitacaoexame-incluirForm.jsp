@@ -30,7 +30,8 @@
                     <div class="form-group">
                           <label class="col-md-4 control-label" for="medicoSolicitante">Médico Solicitante:</label>  
                           <div class="col-md-4">
-                              <form:select path="medicoSolicitante" id="selectMedicoSolicitanteList">
+                              <form:select path="medicoSolicitante" id="selectMedicoSolicitanteList" style="width: 100%">
+                                  <option></option>
                                   <form:options items="${medicoSolicitanteList}" itemLabel="nome" />
                               </form:select>
                           </div>
@@ -42,7 +43,8 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="paciente">Paciente:</label>  
                       <div class="col-md-4">
-                          <form:select path="paciente" id="selectPacienteList">
+                          <form:select path="paciente" id="selectPacienteList" style="width: 100%">
+                              <option></option>
                               <form:options items="${pacienteList}" itemLabel="nome" />
                           </form:select>
                       </div>
@@ -53,11 +55,20 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="exames">Exames:</label>  
                       <div class="col-md-4">
-                          <form:select path="exames" id="selectExamesList" multiple="true">
-                              <form:options items="${exameList}" itemLabel="nome" />
+                          <form:select path="exames" id="selectExamesList" multiple="true" style="width: 100%">
+                              <%-- <form:options items="${exameList}" itemLabel="nome" /> --%>
                           </form:select>
                       </div>
-                    </div>                       
+                    </div>                    
+                    
+                    <!-- Textarea input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="observacao">Observação:</label>  
+                      <div class="col-md-4">
+                      <form:textarea path="observacao" placeholder="Observação" rows="3" class="form-control input-md"/> <form:errors path="observacao" cssClass="text-danger" />
+                      <!-- <span class="help-block">help block</span> -->  
+                      </div>
+                    </div>
                                          
                     <!-- Button -->
                     <div class="form-group">
@@ -88,8 +99,30 @@ $(document).ready(function() {
     
     $('#selectExamesList').select2({
         placeholder: "Selecione os exames",
+        language: "pt-BR",
         theme: "bootstrap",
-        allowClear: true
+        minimumInputLength: 1,
+        closeOnSelect: true,
+        allowClear: true,
+        ajax: {
+            url: 'api/listar-exame-json',
+            dataType: 'json',
+           	processResults: function (data, params) {
+           	      
+           		  var resultsData = $.map(data, function (obj) {
+           			obj.id = obj.id || obj.nome; // replace name with the property used for the text
+                    obj.text = obj.text || obj.nome; // replace name with the property used for the text
+                    return obj;
+                  });
+
+           	      return {
+           	        results: resultsData
+           	      };
+           	    },
+        }
+    
+    
+    
   });    
 	
     
