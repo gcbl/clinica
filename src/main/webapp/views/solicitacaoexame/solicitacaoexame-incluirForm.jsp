@@ -25,42 +25,40 @@
                       <!-- <span class="help-block">help block</span> -->  
                       </div>
                     </div>
-                    
-                    <!-- Text input-->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="paciente.id">Escolha o paciente:</label>
-                      <div class="col-md-4"><input id="inputAutoCompletePaciente" class="form-control input-md" placeholder="paciente" /></div>   
-                      <div class="col-md-4">
-                          Paciente: <div id="pacienteEscolhido"></div>
-                          <form:hidden path="paciente.id" placeholder="paciente.id" class="form-control input-md"/> <form:errors path="paciente.id" cssClass="text-danger" />
-                      <!-- <span class="help-block">help block</span> -->  
-                      </div>
-                    </div>
 
-                    <!-- Text input-->
+                    <!-- Select Input -->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="medicoSolicitante.id">Escolha o médico:</label>
-                      <div class="col-md-4"><input id="inputAutoCompleteMedicoSolicitante" class="form-control input-md" placeholder="Busque o médico" /></div>   
-                      <div class="col-md-4">
-                          Médico: <div id="medicoSolicitanteEscolhido"></div>
-                          <form:hidden path="medicoSolicitante.id" placeholder="medicoSolicitante.id" class="form-control input-md"/> <form:errors path="medicoSolicitante.id" cssClass="text-danger" />
-                      <!-- <span class="help-block">help block</span> -->  
-                      </div>
-                    </div>
+                          <label class="col-md-4 control-label" for="medicoSolicitante">Médico Solicitante:</label>  
+                          <div class="col-md-4">
+                              <form:select path="medicoSolicitante" id="selectMedicoSolicitanteList">
+                                  <form:options items="${medicoSolicitanteList}" itemLabel="nome" />
+                              </form:select>
+                          </div>
+                        </div>
+                    </div>   
 
-                                        
- <%--                        
-                    <!-- Text input-->
+          
+                    <!-- Select Input -->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="medicoSolicitante.id">Medico solicitante:</label>  
+                      <label class="col-md-4 control-label" for="paciente">Paciente:</label>  
                       <div class="col-md-4">
-                      <form:input path="medicoSolicitante.id" placeholder="Medico solicitante" class="form-control input-md"/> <form:errors path="medicoSolicitante.id" cssClass="text-danger" />
-                      <!-- <span class="help-block">help block</span> -->  
+                          <form:select path="paciente" id="selectPacienteList">
+                              <form:options items="${pacienteList}" itemLabel="nome" />
+                          </form:select>
                       </div>
-                    </div>
---%>                    
+                    </div>   
                     
-                                        
+                    
+                    <!-- Select Input -->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="exames">Exames:</label>  
+                      <div class="col-md-4">
+                          <form:select path="exames" id="selectExamesList" multiple="true">
+                              <form:options items="${exameList}" itemLabel="nome" />
+                          </form:select>
+                      </div>
+                    </div>                       
+                                         
                     <!-- Button -->
                     <div class="form-group">
                       <div class="col-md-4">
@@ -73,69 +71,29 @@
                    
                     
 <script>
-    var optionsInputAutoCompletePaciente = {
-	    url: function(phrase) {
-	        return "api/listar-paciente-json?q=" + phrase;
-	    },
-	    theme: "bootstrap",
-	    getValue: function(element) {
-	        return element.nome;
-	    },
-        template: {
-    		type: "custom",
-    		method: function(value, item) {
-    			return value + " - <span class='text-muted'><em> CPF:" + item.cpf + "</em></span>";
-    		}
-    	},		
-	    list: {
-	        onSelectItemEvent: function() {
-	            var selectedItemValue = $("#inputAutoCompletePaciente").getSelectedItemData().id;
-	            var selectedItemCpf = $("#inputAutoCompletePaciente").getSelectedItemData().cpf;
-	            var selectedItemNome = $("#inputAutoCompletePaciente").getSelectedItemData().nome;
 
-	            $('input[id="paciente.id"]').val(selectedItemValue).trigger("change");
-	            $("#pacienteEscolhido").html( "<b>" + selectedItemCpf + ' - ' + selectedItemNome + "</b>");
-	            $("#inputAutoCompletePaciente").val("");
-	        },
-	        onHideListEvent: function() {
-	            //$("#inputTwo").val("").trigger("change");
-	        }
-	    }
-	};
-	$("#inputAutoCompletePaciente").easyAutocomplete(optionsInputAutoCompletePaciente);
-	
-	
-    var optionsInputAutoCompleteMedicoSolicitante = {
-            url: function(phrase) {
-                return "api/listar-medico-json?q=" + phrase;
-            },
-            theme: "bootstrap",
-            getValue: function(element) {
-                return element.nome;
-            },
-            template: {
-        		type: "custom",
-        		method: function(value, item) {
-        			return value + " - <span class='text-muted'><em> CRM:" + item.crm + "</em></span>";
-        		}
-        	},
-            list: {
-                onSelectItemEvent: function() {
-                    var selectedItemValue = $("#inputAutoCompleteMedicoSolicitante").getSelectedItemData().id;
-                    var selectedItemCrm = $("#inputAutoCompleteMedicoSolicitante").getSelectedItemData().crm;
-                    var selectedItemNome = $("#inputAutoCompleteMedicoSolicitante").getSelectedItemData().nome;
+$(document).ready(function() {
 
-                    // mUDAR O TEXTO DO div
-                    $('input[id="medico.id"]').val(selectedItemValue).trigger("change");
-                    $("#medicoSolicitanteEscolhido").html( "<b>" + selectedItemCrm + ' - ' + selectedItemNome + "</b>");
-                    $("#inputAutoCompleteMedicoSolicitante").val("");
-                },
-                onHideListEvent: function() {
-                    //$("#inputTwo").val("").trigger("change");
-                }
-            }
-        };
-        $("#inputAutoCompleteMedicoSolicitante").easyAutocomplete(optionsInputAutoCompleteMedicoSolicitante);
+    $('#selectMedicoSolicitanteList').select2({
+        placeholder: "Selecione o médico solicitante",
+        theme: "bootstrap",
+        allowClear: true
+    });	
+	
+	$('#selectPacienteList').select2({
+    	  placeholder: "Selecione o paciente",
+    	  theme: "bootstrap",
+    	  allowClear: true
+    });
+    
+    $('#selectExamesList').select2({
+        placeholder: "Selecione os exames",
+        theme: "bootstrap",
+        allowClear: true
+  });    
+	
+    
+});
 	
 </script>
  
