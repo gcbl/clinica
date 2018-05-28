@@ -28,7 +28,7 @@ public class Exame extends BaseEntity implements Comparable<Exame>{
      * Descricao Tabela TUSS
      */
     @Column(name = "DESCRICAO")
-    @NotEmpty(message = "*Por favor informe a descricao do exame")
+    @NotEmpty(message = "*Por favor informe a descrição do exame")
     private String descricao;
 
     @Override
