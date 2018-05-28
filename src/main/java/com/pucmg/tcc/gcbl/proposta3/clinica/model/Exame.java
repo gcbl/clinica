@@ -13,7 +13,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "SC_EXAME")
-public class Exame extends BaseEntity {
+public class Exame extends BaseEntity implements Comparable<Exame>{
 
 	// http://www.unimedpelotas.com.br/downloads/tiss/download.php?arquivo=ExamesLaboratoriais.xls
 
@@ -31,4 +31,9 @@ public class Exame extends BaseEntity {
     @NotEmpty(message = "*Por favor informe a descricao do exame")
     private String descricao;
 
+    @Override
+    public int compareTo(Exame o) {
+        return nome.compareTo(o.getNome());
+    }
+    
 }
