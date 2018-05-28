@@ -12,6 +12,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.pucmg.tcc.gcbl.proposta3.clinica.util.StringUtils;
+
 import lombok.Data;
 
 @Data
@@ -56,7 +58,9 @@ public abstract class Pessoa extends BaseEntity implements Comparable<Pessoa> {
     
     @Override
     public int compareTo(Pessoa o) {
-        return nome.compareTo(o.getNome());
+        int resultado = StringUtils.removerAcentos(nome).compareTo( StringUtils.removerAcentos(o.getNome()) );
+        return resultado;
+        //return nome.compareTo(o.getNome());
     }
     
 }
