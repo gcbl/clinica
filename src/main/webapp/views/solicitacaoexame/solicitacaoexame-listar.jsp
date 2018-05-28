@@ -19,9 +19,10 @@
                     <thead>
                         <tr>
                             <th>Data da Solicitação</th>
-                            <th>Paciente</th>
-                            <th>medicoSolicitante</th>
+                            <th nowrap>Paciente</th>
+                            <th nowrap>Médico Solicitante</th>                            
                             <th>Exames</th>
+                            <th>Observação</th>
                             <th class="text-right"><a href="incluir-${MODEL}" class="btn btn-sm btn-success"><i class="fas fa-plus-circle"></i> Adicionar novo ${MODEL}</a></th>
                         </tr>
                     </thead>
@@ -29,8 +30,8 @@
                         <c:forEach items="${itemList}" var="item">
                             <tr>
                                 <td data-order="<fmt:formatDate value="${item.dataSolicitacao}" pattern="yyyyMMdd"/>" ><fmt:formatDate value="${item.dataSolicitacao}" pattern="dd/MM/yyyy"/></td>                                
-                                <td>${item.paciente.nome}</td>
-                                <td>${item.medicoSolicitante.nome}</td>
+                                <td nowrap>${item.paciente.nome}</td>
+                                <td nowrap>${item.medicoSolicitante.nome}</td>
                                 <td><!-- ${item.exames} <br><br><br> -->
                                     <ul>
                                         <c:forEach items="${item.exames}" var="itemList">
@@ -38,6 +39,7 @@
                                         </c:forEach>
                                     </ul> 
                                 </td>
+                                <td>${item.observacao}</td>
                                 <td class="actions text-right">
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                       <a href="editar-${MODEL}?id=${item.id}" class="btn btn-sm btn-info"><i class="far fa-edit"></i> Editar</a>
