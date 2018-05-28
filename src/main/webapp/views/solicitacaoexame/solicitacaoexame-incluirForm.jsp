@@ -39,8 +39,10 @@
                       <label class="col-md-4 control-label" for="paciente">Paciente:</label>  
                       <div class="col-md-4">
                           <form:select path="paciente" id="selectPacienteList" style="width: 100%">
-                              <option></option>
-                              <%-- <form:options items="${pacienteList}" itemLabel="nome" /> --%>
+                              <%-- No caso de estar editando --%>
+                              <c:if test="${not empty solicitacaoexame}">
+                                  <form:option value="${solicitacaoexame.paciente.id}" label="${solicitacaoexame.paciente.nome}" />
+                              </c:if>
                           </form:select>
                       </div>
                       <form:errors path="paciente" cssClass="text-danger" />
@@ -52,7 +54,10 @@
                           <label class="col-md-4 control-label" for="medicoSolicitante">Médico Solicitante:</label>  
                           <div class="col-md-4">
                               <form:select path="medicoSolicitante" id="selectMedicoSolicitanteList" style="width: 100%">
-                                  <option></option>
+                                  <%-- No caso de estar editando --%>
+                                  <c:if test="${not empty solicitacaoexame}">
+                                      <form:option value="${solicitacaoexame.medicoSolicitante.id}" label="${solicitacaoexame.medicoSolicitante.nome}" />
+                                  </c:if>
                                   <form:options items="${medicoSolicitanteList}" itemLabel="nome" />
                               </form:select>
                           </div>
