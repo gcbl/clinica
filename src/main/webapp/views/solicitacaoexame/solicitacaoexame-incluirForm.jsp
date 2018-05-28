@@ -36,18 +36,18 @@
                       <!-- <span class="help-block">help block</span> -->  
                       </div>
                     </div>
-                    
-                    
+
                     <!-- Text input-->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="medicoSolicitante.id">Escolha o Médico Solicitante:</label>
-                      <div class="col-md-4"><input id="inputAutoCompleteMedicoSolicitante" class="form-control input-md" placeholder="medicoSolicitante" /></div>   
+                      <label class="col-md-4 control-label" for="medicoSolicitante.id">Escolha o médico:</label>
+                      <div class="col-md-4"><input id="inputAutoCompleteMedicoSolicitante" class="form-control input-md" placeholder="Busque o médico" /></div>   
                       <div class="col-md-4">
-                          Medico Solicitante: <div id="medicoSolicitanteEscolhido"></div>
+                          Médico: <div id="medicoSolicitanteEscolhido"></div>
                           <form:hidden path="medicoSolicitante.id" placeholder="medicoSolicitante.id" class="form-control input-md"/> <form:errors path="medicoSolicitante.id" cssClass="text-danger" />
                       <!-- <span class="help-block">help block</span> -->  
                       </div>
-                    </div>                    
+                    </div>
+
                                         
  <%--                        
                     <!-- Text input-->
@@ -81,12 +81,12 @@
 	    getValue: function(element) {
 	        return element.nome;
 	    },
-	    template: {
-	        type: "description",
-	        fields: {
-	            description: "cpf"
-	        }
-	    },	    
+        template: {
+    		type: "custom",
+    		method: function(value, item) {
+    			return value + " - <span class='text-muted'><em> CPF:" + item.cpf + "</em></span>";
+    		}
+    	},		
 	    list: {
 	        onSelectItemEvent: function() {
 	            var selectedItemValue = $("#inputAutoCompletePaciente").getSelectedItemData().id;
@@ -94,7 +94,7 @@
 	            var selectedItemNome = $("#inputAutoCompletePaciente").getSelectedItemData().nome;
 
 	            $('input[id="paciente.id"]').val(selectedItemValue).trigger("change");
-	            $("#pacienteEscolhido").html( "<b>" + selectedItemNome + "</b>" + " (CPF: " + mascaraCpf(selectedItemCpf) + ")" );
+	            $("#pacienteEscolhido").html( "<b>" + selectedItemCpf + ' - ' + selectedItemNome + "</b>");
 	            $("#inputAutoCompletePaciente").val("");
 	        },
 	        onHideListEvent: function() {
@@ -105,7 +105,7 @@
 	$("#inputAutoCompletePaciente").easyAutocomplete(optionsInputAutoCompletePaciente);
 	
 	
-    var optionsInputAutoCompleteMedico = {
+    var optionsInputAutoCompleteMedicoSolicitante = {
             url: function(phrase) {
                 return "api/listar-medico-json?q=" + phrase;
             },
@@ -114,19 +114,20 @@
                 return element.nome;
             },
             template: {
-                type: "description",
-                fields: {
-                    description: "crm"
-                }
-            },            
+        		type: "custom",
+        		method: function(value, item) {
+        			return value + " - <span class='text-muted'><em> CRM:" + item.crm + "</em></span>";
+        		}
+        	},
             list: {
                 onSelectItemEvent: function() {
                     var selectedItemValue = $("#inputAutoCompleteMedicoSolicitante").getSelectedItemData().id;
                     var selectedItemCrm = $("#inputAutoCompleteMedicoSolicitante").getSelectedItemData().crm;
                     var selectedItemNome = $("#inputAutoCompleteMedicoSolicitante").getSelectedItemData().nome;
 
+                    // mUDAR O TEXTO DO div
                     $('input[id="medico.id"]').val(selectedItemValue).trigger("change");
-                    $("#medicoSolicitanteEscolhido").html( "<b>" + selectedItemNome + "</b>" + " (CRM: " + selectedItemCrm + ")" );
+                    $("#medicoSolicitanteEscolhido").html( "<b>" + selectedItemCrm + ' - ' + selectedItemNome + "</b>");
                     $("#inputAutoCompleteMedicoSolicitante").val("");
                 },
                 onHideListEvent: function() {
@@ -134,7 +135,7 @@
                 }
             }
         };
-        $("#inputAutoCompleteMedicoSolicitante").easyAutocomplete(optionsInputAutoCompleteMedico);
+        $("#inputAutoCompleteMedicoSolicitante").easyAutocomplete(optionsInputAutoCompleteMedicoSolicitante);
 	
 </script>
  
