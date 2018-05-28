@@ -17,6 +17,7 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.ExameService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicoService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.PacienteService;
+import com.pucmg.tcc.gcbl.proposta3.clinica.util.Constantes;
 
 
 @Controller
@@ -39,7 +40,7 @@ public class APIController extends BaseController {
     
     @ResponseBody
     @RequestMapping(value={"/listar-exame-json"}, method = RequestMethod.GET)
-    public List<Exame> listarExameJson(@RequestParam("q") String q){
+    public List<Exame> listarExameJson(@RequestParam( Constantes.QUERY_PARAMETER ) String q){
         List<Exame> itemList = exameService.findByNomeContainingIgnoreCase(q);
         return itemList;
     }    
@@ -53,7 +54,7 @@ public class APIController extends BaseController {
     
     @ResponseBody
     @RequestMapping(value={"/listar-paciente-json"}, method = RequestMethod.GET)
-    public List<Paciente> listarPacienteJson(@RequestParam("q") String q){
+    public List<Paciente> listarPacienteJson(@RequestParam( Constantes.QUERY_PARAMETER ) String q){
         List<Paciente> itemList = pacienteService.findByNomeContainingIgnoreCase(q);
         return itemList;
     }
@@ -67,7 +68,7 @@ public class APIController extends BaseController {
     
     @ResponseBody
     @RequestMapping(value={"/listar-medico-json"}, method = RequestMethod.GET)
-    public List<Medico> listarMedicoJson(@RequestParam("q") String q){
+    public List<Medico> listarMedicoJson(@RequestParam( Constantes.QUERY_PARAMETER ) String q){
         List<Medico> itemList = medicoService.findByNomeContainingIgnoreCase(q);
         return itemList;
     }
