@@ -1,5 +1,6 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.controller;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -18,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
-import com.pucmg.tcc.gcbl.proposta3.clinica.model.Exame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.SolicitacaoExame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.ExameService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicoService;
@@ -67,12 +67,14 @@ public class SolicitacaoExameController extends ModelController {
         
         List<Paciente>        pacienteList = pacienteService.findAll();
         List<Medico> medicoSolicitanteList = medicoService.findAll();
-        List<Exame>       exameList = exameService.findAll();
+
+        Collections.sort(pacienteList);
+        Collections.sort(medicoSolicitanteList);
         
         
         model.addAttribute("pacienteList", pacienteList);
         model.addAttribute("medicoSolicitanteList", medicoSolicitanteList);
-        model.addAttribute("exameList", exameList);
+        //model.addAttribute("exameList", new ArrayList<Exame>() );
         
         model.addAttribute(getModelName(), new SolicitacaoExame());
         return getViewPath() + "incluirForm";
