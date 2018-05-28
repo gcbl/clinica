@@ -16,7 +16,7 @@ import lombok.Data;
 
 @Data
 @MappedSuperclass
-public abstract class Pessoa extends BaseEntity {
+public abstract class Pessoa extends BaseEntity implements Comparable<Pessoa> {
 
     @Column(name = "NOME")
     @NotEmpty(message = "*Por favor informe o nome")
@@ -53,5 +53,10 @@ public abstract class Pessoa extends BaseEntity {
     //@NotEmpty(message = "*Por favor informe o estado")
     private String estado;
     
+    
+    @Override
+    public int compareTo(Pessoa o) {
+        return nome.compareTo(o.getNome());
+    }
     
 }
