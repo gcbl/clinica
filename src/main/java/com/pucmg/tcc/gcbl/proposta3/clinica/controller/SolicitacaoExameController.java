@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Exame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.SolicitacaoExame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.ExameService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicoService;
@@ -64,6 +65,15 @@ public class SolicitacaoExameController extends ModelController {
     public String inserirForm(Model model){
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
         
+        List<Paciente>        pacienteList = pacienteService.findAll();
+        List<Medico> medicoSolicitanteList = medicoService.findAll();
+        List<Exame>       exameList = exameService.findAll();
+        
+        
+        model.addAttribute("pacienteList", pacienteList);
+        model.addAttribute("medicoSolicitanteList", medicoSolicitanteList);
+        model.addAttribute("exameList", exameList);
+        
         model.addAttribute(getModelName(), new SolicitacaoExame());
         return getViewPath() + "incluirForm";
     }
@@ -79,14 +89,7 @@ public class SolicitacaoExameController extends ModelController {
             adicionarAlertaWarning(model, mensagem);
             return getViewPath() + "incluirForm";
         }
-        
-        Paciente paciente = pacienteService.findOne( item.getPaciente().getId() );
-        Medico medicoSolicitante = medicoService.findOne( item.getMedicoSolicitante().getId() );
-        
-        SolicitacaoExame solicitacaoExame = new SolicitacaoExame();
-        solicitacaoExame.setMedicoSolicitante(medicoSolicitante);
-        solicitacaoExame.setPaciente(paciente);
-        
+
         modelService.salvar(item);
         
         String mensagemInclusao = messageSource.getMessage("formulario.operacao.inclusao.sucesso", new Object[]{ getModelName() }, locale);
