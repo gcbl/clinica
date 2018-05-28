@@ -16,16 +16,37 @@
                     <!-- Form Name -->
                     <h2 class="text-capitalize">${acao} ${MODEL}</h2>
                     <br><br>
-                                        
+                    
+                    <hr>
+                    ${solicitacaoexame}
+                    <hr>
+                    
+                    
+                    <form:hidden path="id" placeholder="id" class="form-control input-md"/> <form:errors path="id" cssClass="text-danger" />                    
                     <!-- Text input-->
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="dataSolicitacao">Data da Solicitacao:</label>  
                       <div class="col-md-4">
-                      <form:input path="dataSolicitacao" placeholder="Data da Solicitação" class="form-control input-md" value="01/01/2018"/> <form:errors path="dataSolicitacao" cssClass="text-danger" />
+                      <form:input path="dataSolicitacao" placeholder="Data da Solicitação" class="form-control input-md"/>
+                      <form:errors path="dataSolicitacao" cssClass="text-danger" />
                       <!-- <span class="help-block">help block</span> -->  
                       </div>
                     </div>
 
+          
+                    <!-- Select Input -->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="paciente">Paciente:</label>  
+                      <div class="col-md-4">
+                          <form:select path="paciente" id="selectPacienteList" style="width: 100%">
+                              <option></option>
+                              <%-- <form:options items="${pacienteList}" itemLabel="nome" /> --%>
+                          </form:select>
+                      </div>
+                      <form:errors path="paciente" cssClass="text-danger" />
+                    </div>   
+                    
+                    
                     <!-- Select Input -->
                     <div class="form-group">
                           <label class="col-md-4 control-label" for="medicoSolicitante">Médico Solicitante:</label>  
@@ -36,20 +57,9 @@
                               </form:select>
                           </div>
                         </div>
-                    </div>   
-
-          
-                    <!-- Select Input -->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="paciente">Paciente:</label>  
-                      <div class="col-md-4">
-                          <form:select path="paciente" id="selectPacienteList" style="width: 100%">
-                              <option></option>
-                              <form:options items="${pacienteList}" itemLabel="nome" />
-                          </form:select>
-                      </div>
-                    </div>   
-                    
+                        <form:errors path="medicoSolicitante" cssClass="text-danger" />
+                    </div>
+                       
                     
                     <!-- Select Input -->
                     <div class="form-group">
@@ -65,7 +75,8 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="observacao">Observação:</label>  
                       <div class="col-md-4">
-                      <form:textarea path="observacao" placeholder="Observação" rows="3" class="form-control input-md"/> <form:errors path="observacao" cssClass="text-danger" />
+                      <form:textarea path="observacao" placeholder="Observação" rows="3" class="form-control input-md"/>
+                      <form:errors path="observacao" cssClass="text-danger" />
                       <!-- <span class="help-block">help block</span> -->  
                       </div>
                     </div>
@@ -87,23 +98,61 @@ $(document).ready(function() {
 
     $('#selectMedicoSolicitanteList').select2({
         placeholder: "Selecione o médico solicitante",
+        language: "pt-BR",        
         theme: "bootstrap",
-        allowClear: true
+        allowClear: true,
+        minimumInputLength: 1,
+        closeOnSelect: true,
+        ajax: {
+            url: 'api/listar-medico-json',
+            dataType: 'json',
+            processResults: function (data, params) {
+                  
+                  var resultsData = $.map(data, function (obj) {
+                    obj.id = obj.id || obj.nome; // replace name with the property used for the text
+                    obj.text = obj.text || obj.nome; // replace name with the property used for the text
+                    return obj;
+                  });
+
+                  return {
+                    results: resultsData
+                  };
+                },
+        }
     });	
 	
 	$('#selectPacienteList').select2({
     	  placeholder: "Selecione o paciente",
+          language: "pt-BR",    	  
     	  theme: "bootstrap",
-    	  allowClear: true
+    	  allowClear: true,
+          minimumInputLength: 1,
+          closeOnSelect: true,
+          ajax: {
+              url: 'api/listar-paciente-json',
+              dataType: 'json',
+              processResults: function (data, params) {
+                    
+                    var resultsData = $.map(data, function (obj) {
+                      obj.id = obj.id || obj.nome; // replace name with the property used for the text
+                      obj.text = obj.text || obj.nome; // replace name with the property used for the text
+                      return obj;
+                    });
+
+                    return {
+                      results: resultsData
+                    };
+                  },
+          }
     });
     
     $('#selectExamesList').select2({
         placeholder: "Selecione os exames",
         language: "pt-BR",
         theme: "bootstrap",
+        allowClear: true,
         minimumInputLength: 1,
         closeOnSelect: true,
-        allowClear: true,
         ajax: {
             url: 'api/listar-exame-json',
             dataType: 'json',
@@ -120,10 +169,7 @@ $(document).ready(function() {
            	      };
            	    },
         }
-    
-    
-    
-  });    
+    });    
 	
     
 });

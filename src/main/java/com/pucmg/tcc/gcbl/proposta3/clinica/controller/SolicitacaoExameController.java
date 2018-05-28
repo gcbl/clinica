@@ -65,23 +65,14 @@ public class SolicitacaoExameController extends ModelController {
     public String inserirForm(Model model){
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
         
-        List<Paciente>        pacienteList = pacienteService.findAll();
-        List<Medico> medicoSolicitanteList = medicoService.findAll();
-
-        Collections.sort(pacienteList);
-        Collections.sort(medicoSolicitanteList);
-        
-        
-        model.addAttribute("pacienteList", pacienteList);
-        model.addAttribute("medicoSolicitanteList", medicoSolicitanteList);
-        //model.addAttribute("exameList", new ArrayList<Exame>() );
-        
         model.addAttribute(getModelName(), new SolicitacaoExame());
         return getViewPath() + "incluirForm";
     }
     
-    @RequestMapping(value={"/incluir-solicitacaoexame"}, method = RequestMethod.POST)
-    public String inserir(@Valid SolicitacaoExame item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {                         
+/**    
+
+    @RequestMapping(value={"/incluir-exame"}, method = RequestMethod.POST)
+    public String inserir(@Valid Exame item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {                         
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
 
         if(result.hasErrors()){
@@ -89,6 +80,31 @@ public class SolicitacaoExameController extends ModelController {
             
             String mensagem = messageSource.getMessage("formulario.erros-de-validacao", null, locale);
             adicionarAlertaWarning(model, mensagem);
+            return getViewPath() + "incluirForm";
+        }   
+    
+   
+**/    
+    @RequestMapping(value={"/incluir-solicitacaoexame"}, method = RequestMethod.POST)
+    public String inserir(@Valid SolicitacaoExame item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {                         
+        model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
+
+        if(result.hasErrors()){
+            model.addAttribute(getModelName(), item);
+            
+            
+            String mensagem = messageSource.getMessage("formulario.erros-de-validacao", null, locale);
+            adicionarAlertaWarning(model, mensagem);
+            
+            List<Paciente>        pacienteList = pacienteService.findAll();
+            List<Medico> medicoSolicitanteList = medicoService.findAll();
+
+            Collections.sort(pacienteList);
+            Collections.sort(medicoSolicitanteList);
+            
+            model.addAttribute("pacienteList", pacienteList);
+            model.addAttribute("medicoSolicitanteList", medicoSolicitanteList);
+            
             return getViewPath() + "incluirForm";
         }
 
