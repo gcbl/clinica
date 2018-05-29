@@ -38,7 +38,7 @@ public class MedicamentoService{
     }
 
     public List<Medicamento> findByNomeIgnoreCase(String nome){
-        return repository.findByNomeGenericoContainingIgnoreCaseOrNomeFabricaContainingIgnoreCase(nome);
+        return repository.findByNomeGenericoContainingIgnoreCase(nome);
     }    
 
     
