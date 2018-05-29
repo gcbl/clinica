@@ -84,7 +84,7 @@ public class TesteController extends BaseController {
      * @param model
      * @return
      */
-    @RequestMapping(value={"/publico/teste"}, method = RequestMethod.GET)
+    @RequestMapping(value={"/privado/teste"}, method = RequestMethod.GET)
     public String loginErrado(Model model){
         User userForm = new User();
         userForm.setEmail("teste@teste.com");
