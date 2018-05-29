@@ -15,7 +15,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Exame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.ExameService;
@@ -38,7 +37,7 @@ public class ReceitaController extends ModelController {
 
     // -----------------------------------------------------------------------------------
     
-    @RequestMapping(value={"/listar-exame"}, method = RequestMethod.GET)
+    @RequestMapping(value={"/listar-receita"}, method = RequestMethod.GET)
     public String consultar(Model model){
         List<Exame> itemList = modelService.findAll();
         
@@ -46,7 +45,7 @@ public class ReceitaController extends ModelController {
         return getViewPath() + "listar";
     }
     
-    @RequestMapping(value={"/incluir-exame"}, method = RequestMethod.GET)
+    @RequestMapping(value={"/incluir-receita"}, method = RequestMethod.GET)
     public String inserirForm(Model model){
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
         
@@ -54,7 +53,7 @@ public class ReceitaController extends ModelController {
         return getViewPath() + "incluirForm";
     }
     
-    @RequestMapping(value={"/incluir-exame"}, method = RequestMethod.POST)
+    @RequestMapping(value={"/incluir-receita"}, method = RequestMethod.POST)
     public String inserir(@Valid Exame item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {                         
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
 
@@ -74,7 +73,7 @@ public class ReceitaController extends ModelController {
         return consultar(model);
     }    
 
-    @RequestMapping(value={"/excluir-exame"}, method = RequestMethod.GET)
+    @RequestMapping(value={"/excluir-receita"}, method = RequestMethod.GET)
     public String excluirGet(@RequestParam("id") String id, Model model, Locale locale){
         String mensagem = "";
         try{
@@ -90,7 +89,7 @@ public class ReceitaController extends ModelController {
     }
     
 
-    @RequestMapping(value={"/editar-exame"}, method = RequestMethod.GET)
+    @RequestMapping(value={"/editar-receita"}, method = RequestMethod.GET)
     public String editarForm(@RequestParam("id") String id, Model model, Locale locale, HttpServletRequest request){
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_EDITAR);
         
@@ -112,7 +111,7 @@ public class ReceitaController extends ModelController {
         //return getViewPath() + "alterarForm"; 
     }
     
-    @RequestMapping(value={"/editar-exame"}, method = RequestMethod.POST)
+    @RequestMapping(value={"/editar-receita"}, method = RequestMethod.POST)
     public String editar(@Valid Exame item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {
         String mensagem = "";
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_EDITAR);

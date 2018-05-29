@@ -108,7 +108,7 @@
         </div>
       </li>      
       
-      
+      <!-- 
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-gear" aria-hidden="true"></i> Configuração
@@ -122,6 +122,7 @@
       <li class="nav-item">
         <a class="nav-link" href="about"><i class="fa fa-info-circle" aria-hidden="true"></i> Sobre</a>
       </li>
+       -->
     </ul>
     
     <ul class="nav navbar-nav navbar-right">
