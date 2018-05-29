@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Receita;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.ReceitaService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.PacienteService;
@@ -47,7 +48,7 @@ public class ReceitaController extends ModelController {
     }    
 
     // -----------------------------------------------------------------------------------
-    
+
     @RequestMapping(value={"/listar-receita"}, method = RequestMethod.GET)
     public String consultar(Model model){
         List<Receita> itemList = modelService.findAll();
@@ -74,6 +75,11 @@ public class ReceitaController extends ModelController {
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
 
         if(result.hasErrors()){
+            model.addAttribute("pacienteList", pacienteService.findAll());
+            model.addAttribute("medicoList", medicoService.findAll());
+            model.addAttribute("medicamentoList", medicamentoService.findAll());
+
+            
             model.addAttribute(getModelName(), item);
             
             String mensagem = messageSource.getMessage("formulario.erros-de-validacao", null, locale);
@@ -133,6 +139,11 @@ public class ReceitaController extends ModelController {
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_EDITAR);
         
         if(result.hasErrors()){
+            model.addAttribute("pacienteList", pacienteService.findAll());
+            model.addAttribute("medicoList", medicoService.findAll());
+            model.addAttribute("medicamentoList", medicamentoService.findAll());
+
+            
             model.addAttribute(getModelName(), item);
             
             mensagem = messageSource.getMessage("formulario.erros-de-validacao", null, locale);

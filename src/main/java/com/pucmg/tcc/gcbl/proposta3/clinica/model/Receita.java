@@ -12,6 +12,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -42,7 +43,9 @@ public class Receita extends BaseEntity {
       @Column(name = "CONTEUDO")
       private String conteudo;
       
-      @NotEmpty(message = "*Por favor informe os medicamentos da receita")
+      //@NotEmpty(message = "*Por favor informe os medicamentos da receita")
+      //@Size(min=1, message = "*Por favor informe os medicamentos da receita")
+      @Min(1)
       @ManyToMany(cascade = { CascadeType.REFRESH }, 
                   fetch=FetchType.LAZY )
       @JoinTable(name = "SC_RECEITA_MEDICAMENTO", 
