@@ -43,7 +43,7 @@ public class SolicitacaoExame  extends BaseEntity {
     private Medico medicoSolicitante;
 
     @Column(name = "OBSERVACAO")
-    @NotEmpty(message = "*Por favor informe a observacao da solicitação")
+    //@NotEmpty(message = "*Por favor informe a observacao da solicitação")
     private String observacao;
 
     // Lista de exames 
