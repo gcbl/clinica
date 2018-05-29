@@ -1,5 +1,6 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.controller;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -68,8 +69,10 @@ public class SolicitacaoExameController extends ModelController {
         return getViewPath() + "incluirForm";
     }
     
-    @RequestMapping(value={"/incluir-solicitacaoexame"}, method = RequestMethod.POST)
-    public String inserir(@Valid SolicitacaoExame item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {                         
+/**    
+
+    @RequestMapping(value={"/incluir-exame"}, method = RequestMethod.POST)
+    public String inserir(@Valid Exame item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {                         
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
 
         if(result.hasErrors()){
@@ -78,15 +81,33 @@ public class SolicitacaoExameController extends ModelController {
             String mensagem = messageSource.getMessage("formulario.erros-de-validacao", null, locale);
             adicionarAlertaWarning(model, mensagem);
             return getViewPath() + "incluirForm";
+        }   
+    
+   
+**/    
+    @RequestMapping(value={"/incluir-solicitacaoexame"}, method = RequestMethod.POST)
+    public String inserir(@Valid SolicitacaoExame item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {                         
+        model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
+
+        if(result.hasErrors()){
+            model.addAttribute(getModelName(), item);
+            
+            
+            String mensagem = messageSource.getMessage("formulario.erros-de-validacao", null, locale);
+            adicionarAlertaWarning(model, mensagem);
+            
+            List<Paciente>        pacienteList = pacienteService.findAll();
+            List<Medico> medicoSolicitanteList = medicoService.findAll();
+
+            Collections.sort(pacienteList);
+            Collections.sort(medicoSolicitanteList);
+            
+            model.addAttribute("pacienteList", pacienteList);
+            model.addAttribute("medicoSolicitanteList", medicoSolicitanteList);
+            
+            return getViewPath() + "incluirForm";
         }
-        
-        Paciente paciente = pacienteService.findOne( item.getPaciente().getId() );
-        Medico medicoSolicitante = medicoService.findOne( item.getMedicoSolicitante().getId() );
-        
-        SolicitacaoExame solicitacaoExame = new SolicitacaoExame();
-        solicitacaoExame.setMedicoSolicitante(medicoSolicitante);
-        solicitacaoExame.setPaciente(paciente);
-        
+
         modelService.salvar(item);
         
         String mensagemInclusao = messageSource.getMessage("formulario.operacao.inclusao.sucesso", new Object[]{ getModelName() }, locale);
