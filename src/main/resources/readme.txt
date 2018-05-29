@@ -8,7 +8,7 @@ https://medium.com/@gustavo.ponce.ch/spring-boot-spring-mvc-spring-security-mysq
 
 Multiselect:
 Chosen
-Select2
+Select2 - escolhido!
 
 Icones:
 https://www.iconfinder.com/iconsets/hospital-19
