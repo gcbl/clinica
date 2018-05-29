@@ -10,7 +10,7 @@
  
         <div class="body">
 
-                <H1><div class="text-danger">As mensagens de erro não estão aparecendo!</div></H1>
+                <H1><div class="text-danger">As mensagens de erro de validacao não estão aparecendo!</div></H1>
 
                 <form:form action="${acao}-${MODEL}" class="form-horizontal" commandName="${MODEL}" id="${acao}-${MODEL}"> 
                     <fieldset>

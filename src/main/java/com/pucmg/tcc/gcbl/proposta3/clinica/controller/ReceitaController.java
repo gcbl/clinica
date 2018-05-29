@@ -16,8 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.pucmg.tcc.gcbl.proposta3.clinica.model.Exame;
-import com.pucmg.tcc.gcbl.proposta3.clinica.service.ExameService;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Receita;
+import com.pucmg.tcc.gcbl.proposta3.clinica.service.ReceitaService;
+import com.pucmg.tcc.gcbl.proposta3.clinica.service.PacienteService;
+import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicoService;
+import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicamentoService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.util.Constantes;
 
 
@@ -28,18 +31,26 @@ public class ReceitaController extends ModelController {
     private static Log log = LogFactory.getLog(ReceitaController.class);
     
     @Autowired
-    private ExameService modelService;
+    private ReceitaService modelService;
 
+    @Autowired
+    private PacienteService pacienteService;
+    @Autowired
+    private MedicoService medicoService;
+    @Autowired
+    private MedicamentoService medicamentoService;
+
+    
     @Override
-    protected Class<Exame> getModelClass() {
-        return Exame.class;
+    protected Class<Receita> getModelClass() {
+        return Receita.class;
     }    
 
     // -----------------------------------------------------------------------------------
     
     @RequestMapping(value={"/listar-receita"}, method = RequestMethod.GET)
     public String consultar(Model model){
-        List<Exame> itemList = modelService.findAll();
+        List<Receita> itemList = modelService.findAll();
         
         model.addAttribute("itemList", itemList);
         return getViewPath() + "listar";
@@ -49,12 +60,17 @@ public class ReceitaController extends ModelController {
     public String inserirForm(Model model){
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
         
-        model.addAttribute(getModelName(), new Exame());
+        
+        model.addAttribute("pacienteList", pacienteService.findAll());
+        model.addAttribute("medicoList", medicoService.findAll());
+        model.addAttribute("medicamentoList", medicamentoService.findAll());
+        
+        model.addAttribute(getModelName(), new Receita());
         return getViewPath() + "incluirForm";
     }
     
     @RequestMapping(value={"/incluir-receita"}, method = RequestMethod.POST)
-    public String inserir(@Valid Exame item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {                         
+    public String inserir(@Valid Receita item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {                         
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
 
         if(result.hasErrors()){
@@ -112,7 +128,7 @@ public class ReceitaController extends ModelController {
     }
     
     @RequestMapping(value={"/editar-receita"}, method = RequestMethod.POST)
-    public String editar(@Valid Exame item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {
+    public String editar(@Valid Receita item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {
         String mensagem = "";
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_EDITAR);
         
