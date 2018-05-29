@@ -42,6 +42,7 @@ public class Receita extends BaseEntity {
       @Column(name = "CONTEUDO")
       private String conteudo;
       
+      @NotEmpty(message = "*Por favor informe os medicamentos da receita")
       @ManyToMany(cascade = { CascadeType.REFRESH }, 
                   fetch=FetchType.LAZY )
       @JoinTable(name = "SC_RECEITA_MEDICAMENTO", 

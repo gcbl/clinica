@@ -24,7 +24,7 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="nome">Paciente:</label>  
                       <div class="col-md-4">
-                      <form:select path="paciente" items="${pacienteList}" itemLabel="nome" itemValue="id" />
+                      <form:select path="paciente" items="${pacienteList}" itemLabel="nome" itemValue="id" /> <form:errors path="paciente" cssClass="text-danger" />
                       <!-- <span class="help-block">Informe o nome genérico do medicamento</span> -->   
                       </div>
                     </div>
@@ -33,7 +33,7 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="nome">Medico:</label>  
                       <div class="col-md-4">
-                      <form:select path="medico" items="${medicoList}" itemLabel="nome" itemValue="id" />
+                      <form:select path="medico" items="${medicoList}" itemLabel="nome" itemValue="id" /> <form:errors path="medico" cssClass="text-danger" />
                       <!-- <span class="help-block">Informe o nome genérico do medicamento</span> -->   
                       </div>
                     </div>
@@ -42,7 +42,7 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="nome">Medicamento:</label>  
                       <div class="col-md-4">
-                      <form:select path="medicamentos" items="${medicamentoList}" itemLabel="nomeGenerico" itemValue="id" multiple="true" />
+                      <form:select path="medicamentos" items="${medicamentoList}" itemLabel="nomeGenerico" itemValue="id" multiple="true" /> <form:errors path="medicamentos" cssClass="text-danger" />
                       <!-- <span class="help-block">Informe o nome genérico do medicamento</span> -->   
                       </div>
                     </div>                
