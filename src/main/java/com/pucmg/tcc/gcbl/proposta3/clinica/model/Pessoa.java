@@ -12,11 +12,13 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.pucmg.tcc.gcbl.proposta3.clinica.util.StringUtils;
+
 import lombok.Data;
 
 @Data
 @MappedSuperclass
-public abstract class Pessoa extends BaseEntity {
+public abstract class Pessoa extends BaseEntity implements Comparable<Pessoa> {
 
     @Column(name = "NOME")
     @NotEmpty(message = "*Por favor informe o nome")
@@ -53,5 +55,12 @@ public abstract class Pessoa extends BaseEntity {
     //@NotEmpty(message = "*Por favor informe o estado")
     private String estado;
     
+    
+    @Override
+    public int compareTo(Pessoa o) {
+        int resultado = StringUtils.removerAcentos(nome).compareTo( StringUtils.removerAcentos(o.getNome()) );
+        return resultado;
+        //return nome.compareTo(o.getNome());
+    }
     
 }

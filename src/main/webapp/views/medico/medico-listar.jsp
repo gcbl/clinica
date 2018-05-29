@@ -21,7 +21,7 @@
                             <th>id</th>
                             <th>Nome</th>
                             <th>Cpf</th>
-                            <th>DtNascimento</th>
+                            <th nowrap>Data de Nascimento</th>
                             <th>Endereco</th>
                             <th>Bairro</th>
                             <th>Cep</th>
