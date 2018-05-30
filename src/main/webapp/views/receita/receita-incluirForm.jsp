@@ -42,7 +42,9 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="nome">Medicamento:</label>  
                       <div class="col-md-4">
-                      <form:select path="medicamentos" items="${medicamentoList}" itemLabel="nomeGenerico" itemValue="id" multiple="true" /> <form:errors path="medicamentos" cssClass="text-danger" />
+                      <form:select path="medicamentos" items="${medicamentoList}" itemLabel="nomeGenerico" itemValue="id" multiple="true" />
+                      <br>
+                      <form:errors path="medicamentos" cssClass="text-danger" />
                       <!-- <span class="help-block">Informe o nome genérico do medicamento</span> -->   
                       </div>
                     </div>                
@@ -51,9 +53,9 @@
                     
                     <!-- Text input-->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="conteudo">Conteudo da receita</label>  
+                      <label class="col-md-4 control-label" for="conteudo">Conteúdo da receita:</label>  
                       <div class="col-md-4">
-                      <form:input path="conteudo" placeholder="Exemplo: 1 comprimido de 8 em 8 horas" class="form-control input-md"/> <form:errors path="conteudo" cssClass="text-danger" />
+                      <form:textarea path="conteudo" placeholder="Exemplo: 1 comprimido de 8 em 8 horas" class="form-control input-md"/> <form:errors path="conteudo" cssClass="text-danger" />
                       <!-- <span class="help-block">Informe a concentração e forma farmaceutica ou uma breve descrição </span> -->  
                       </div>
                     </div>     
