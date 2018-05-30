@@ -2,17 +2,15 @@ package com.pucmg.tcc.gcbl.proposta3.clinica.controller;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.Column;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,11 +22,9 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.model.Exame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medicamento;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
-import com.pucmg.tcc.gcbl.proposta3.clinica.model.PessoaBDApague;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Receita;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.SolicitacaoExame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.User;
-import com.pucmg.tcc.gcbl.proposta3.clinica.service.AgendaService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.AgendamentoRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.ExameRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.MedicoRepository;
@@ -36,6 +32,7 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.repository.PacienteRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.PessoaBDRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.ReceitaRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.SolicitacaoExameRepository;
+import com.pucmg.tcc.gcbl.proposta3.clinica.service.AgendaService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicamentoService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.UserService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.util.DataUtils;
@@ -129,12 +126,15 @@ public class TesteController extends BaseController {
         receita.setPaciente(paciente);
         receita.setMedico(medico);
         
-        Set<Medicamento> medicamentosReceita = new HashSet<>();
-        medicamentosReceita.add(medicamentos.get(0));
-        medicamentosReceita.add(medicamentos.get(1));
-        medicamentosReceita.add(medicamentos.get(2));
+        Set<Medicamento> medicamentosReceitaSet = new HashSet<>();
+        medicamentosReceitaSet.add(medicamentos.get(0));
+        medicamentosReceitaSet.add(medicamentos.get(1));
+        medicamentosReceitaSet.add(medicamentos.get(2));
         
-        receita.setMedicamentos(medicamentosReceita);
+        //receita.setMedicamentos(medicamentosReceitaSet);
+        
+        List<Medicamento> list = new ArrayList<Medicamento>(medicamentosReceitaSet);
+        receita.setMedicamentos(list);        
         
         receita.setConteudo("1 comprimido de 8 em 8 horas");
         receitaRepository.save(receita);
@@ -151,12 +151,15 @@ public class TesteController extends BaseController {
         solicitacaoExame.setPaciente(paciente);
         solicitacaoExame.setMedicoSolicitante(medico);
         
-        Set<Exame> examesSolicitacao = new HashSet<>();
-        examesSolicitacao.add(exames.get(0));
-        examesSolicitacao.add(exames.get(1));
-        examesSolicitacao.add(exames.get(2));
+        Set<Exame> examesSolicitacaoSet = new HashSet<>();
+        examesSolicitacaoSet.add(exames.get(0));
+        examesSolicitacaoSet.add(exames.get(1));
+        examesSolicitacaoSet.add(exames.get(2));
         
-        solicitacaoExame.setExames(examesSolicitacao);
+        solicitacaoExame.setExames(examesSolicitacaoSet);
+        
+//        List<Exame> list = new ArrayList<Exame>(examesSolicitacaoSet);
+//        solicitacaoExame.setExames(list);
         
         solicitacaoExameRepository.save(solicitacaoExame);
         

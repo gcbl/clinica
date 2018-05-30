@@ -1,7 +1,7 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.model;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,7 +12,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -26,7 +25,6 @@ import lombok.EqualsAndHashCode;
 @Table(name = "SC_RECEITA")
 public class Receita extends BaseEntity {
 
-
       @NotNull(message = "*Por favor informe o paciente")
       @ManyToOne(fetch=FetchType.LAZY)
       @JoinColumn(name="ID_PACIENTE")
@@ -37,20 +35,21 @@ public class Receita extends BaseEntity {
       @JoinColumn(name="ID_MEDICO")
       private Medico medico;
 
-      // Lista de medicamentos
+      
       
       @NotEmpty(message = "*Por favor informe o texto da receita")
       @Column(name = "CONTEUDO")
       private String conteudo;
       
+      //Lista de medicamentos
       //@NotEmpty(message = "*Por favor informe os medicamentos da receita")
       //@Size(min=1, message = "*Por favor informe os medicamentos da receita")
-      @NotEmpty(message = "*Por favor informe os medicamentos da receita")
+      //@NotEmpty(message = "*Por favor informe os medicamentos da receita")
       @ManyToMany(cascade = { CascadeType.REFRESH }, 
                   fetch=FetchType.LAZY )
       @JoinTable(name = "SC_RECEITA_MEDICAMENTO", 
                  joinColumns = @JoinColumn(name = "ID_RECEITA"), 
                  inverseJoinColumns = @JoinColumn(name = "ID_MEDICAMENTO"))
-      private Set<Medicamento> medicamentos = new HashSet<>();
+      private List<Medicamento> medicamentos = new ArrayList<>();
 	
 }
