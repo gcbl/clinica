@@ -1,7 +1,7 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -44,12 +44,12 @@ public class Receita extends BaseEntity {
       //Lista de medicamentos
       //@NotEmpty(message = "*Por favor informe os medicamentos da receita")
       //@Size(min=1, message = "*Por favor informe os medicamentos da receita")
-      //@NotEmpty(message = "*Por favor informe os medicamentos da receita")
+      @NotEmpty(message = "*Por favor informe os medicamentos da receita")
       @ManyToMany(cascade = { CascadeType.REFRESH }, 
                   fetch=FetchType.LAZY )
       @JoinTable(name = "SC_RECEITA_MEDICAMENTO", 
                  joinColumns = @JoinColumn(name = "ID_RECEITA"), 
                  inverseJoinColumns = @JoinColumn(name = "ID_MEDICAMENTO"))
-      private List<Medicamento> medicamentos = new ArrayList<>();
+      private Set<Medicamento> medicamentos = new HashSet<>();
 	
 }
