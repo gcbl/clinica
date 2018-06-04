@@ -30,7 +30,7 @@ public class Receita extends BaseEntity {
       @JoinColumn(name="ID_PACIENTE")
       private Paciente paciente;
 
-      @NotNull(message = "*Por favor informe o medico")
+      @NotNull(message = "*Por favor informe o médico")
       @ManyToOne(fetch=FetchType.LAZY)
       @JoinColumn(name="ID_MEDICO")
       private Medico medico;
