@@ -47,7 +47,7 @@ public class APIController extends BaseController {
     @ResponseBody
     @RequestMapping(value={"/listar-exame-json"}, method = RequestMethod.GET)
     public List<Exame> listarExameJson(@RequestParam( Constantes.QUERY_PARAMETER ) String q){
-        List<Exame> itemList = exameService.findByNomeContainingIgnoreCase(q);
+        List<Exame> itemList = exameService.findByNomeContainingIgnoreCaseOrderByNomeAsc(q);
         return itemList;
     }    
 
@@ -55,7 +55,7 @@ public class APIController extends BaseController {
     @ResponseBody
     @RequestMapping(value={"/listar-paciente-json"}, method = RequestMethod.GET)
     public List<Paciente> listarPacienteJson(@RequestParam( Constantes.QUERY_PARAMETER ) String q){
-        List<Paciente> itemList = pacienteService.findByNomeContainingIgnoreCase(q);
+        List<Paciente> itemList = pacienteService.findByNomeContainingIgnoreCaseOrderByNomeAsc(q);
         return itemList;
     }
     

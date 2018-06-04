@@ -35,8 +35,8 @@ public class PacienteService{
         return repository.findAll();
     }
     
-    public List<Paciente> findByNomeContainingIgnoreCase(String nome){
-        return repository.findByNomeContainingIgnoreCase(nome);
+    public List<Paciente> findByNomeContainingIgnoreCaseOrderByNomeAsc(String nome){
+        return repository.findByNomeContainingIgnoreCaseOrderByNomeAsc(nome);
     }
 
     
