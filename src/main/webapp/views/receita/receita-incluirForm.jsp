@@ -16,7 +16,10 @@
                     
                     
                     <!-- Form Name -->
-                    <form:hidden path="id" placeholder="id" class="form-control input-md"/> <form:errors path="id" cssClass="text-danger" />
+                    <hr>
+                    <c:if test = "${acao != ACAO_INCLUIR}">
+                       <form:hidden path="id" placeholder="id" class="form-control input-md"/> <form:errors path="id" cssClass="text-danger" />
+                    </c:if>
                     
                     <h2 class="text-capitalize">${acao} ${MODEL}</h2>
                     <br><br>                    
