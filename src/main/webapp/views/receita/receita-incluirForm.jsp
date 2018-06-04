@@ -27,8 +27,14 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="nome">Paciente:</label>  
                       <div class="col-md-4">
-                      <form:select path="paciente" items="${pacienteList}" itemLabel="nome" itemValue="id" /> <form:errors path="paciente" cssClass="text-danger" />
-                      <!-- <span class="help-block">Informe o nome genérico do medicamento</span> -->   
+                          <form:select path="paciente" id="paciente" style="width: 100%">
+                              <%-- No caso de estar editando --%>
+                              <c:if test="${not empty receita}">
+                                  <form:option value="${receita.paciente.id}" label="${receita.paciente.nome}" />
+                              </c:if>
+                          </form:select>
+                          <form:errors path="paciente" cssClass="text-danger" />
+                          <!-- <span class="help-block">texto de help-block</span> -->   
                       </div>
                     </div>
 
@@ -36,8 +42,14 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="nome">Medico:</label>  
                       <div class="col-md-4">
-                      <form:select path="medico" items="${medicoList}" itemLabel="nome" itemValue="id" /> <form:errors path="medico" cssClass="text-danger" />
-                      <!-- <span class="help-block">Informe o nome genérico do medicamento</span> -->   
+                          <form:select path="medico" id="medico" style="width: 100%">
+                              <%-- No caso de estar editando --%>
+                              <c:if test="${not empty receita}">
+                                  <form:option value="${receita.medico.id}" label="${receita.medico.nome}" />
+                              </c:if>
+                          </form:select>
+                          <form:errors path="medico" cssClass="text-danger" />
+                          <!-- <span class="help-block">texto de help-block</span> -->
                       </div>
                     </div>
                     
@@ -45,10 +57,14 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="nome">Medicamento:</label>  
                       <div class="col-md-4">
-                      <form:select path="medicamentos" items="${medicamentoList}" itemLabel="nomeGenerico" itemValue="id" multiple="true" />
-                      <br>
-                      <form:errors path="medicamentos" cssClass="text-danger" />
-                      <!-- <span class="help-block">Informe o nome genérico do medicamento</span> -->   
+                          <form:select path="medicamentos" multiple="true" style="width: 100%">
+                              <%-- No caso de estar editando --%>
+                              <c:if test="${not empty receita}">
+                                  <form:options items="${receita.medicamentos}" itemValue="id" itemLabel="nomeCompleto"/>
+                              </c:if>
+                          </form:select>
+                          <form:errors path="medicamentos" cssClass="text-danger" />
+                          <!-- <span class="help-block">texto de help-block</span> -->   
                       </div>
                     </div>                
 
@@ -131,10 +147,31 @@
 	        }
 	    });
 	 
-	 
+	    $('#medicamentos').select2({
+	        placeholder: "Selecione os medicamentos",
+	        language: "pt-BR",
+	        theme: "bootstrap",
+	        allowClear: true,
+	        minimumInputLength: 1,
+	        closeOnSelect: true,
+	        ajax: {
+	            url: 'api/listar-medicamento-json',
+	            dataType: 'json',
+	            processResults: function (data, params) {
+	                  
+	                  var resultsData = $.map(data, function (obj) {
+	                    obj.id = obj.id || obj.nomeCompleto; // replace name with the property used for the text
+	                    obj.text = obj.text || obj.nomeCompleto; // replace name with the property used for the text
+	                    return obj;
+	                  });
 
-	 $('#medicamentos').select2();
-	 
+	                  return {
+	                    results: resultsData
+	                  };
+	                },
+	        }
+	    });	 
+
 	 
 });
  </script>

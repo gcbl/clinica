@@ -35,7 +35,7 @@
                                 <td>
                                     <ul>
                                         <c:forEach items="${item.medicamentos}" var="itemList">
-                                            <li>${itemList.nomeFabrica} (${itemList.nomeGenerico})</li>
+                                            <li>${itemList.nomeCompleto}</li>
                                         </c:forEach>
                                     </ul> 
                                 </td>
