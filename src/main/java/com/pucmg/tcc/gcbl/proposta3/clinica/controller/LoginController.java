@@ -13,12 +13,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.User;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.IUserService;
+import com.pucmg.tcc.gcbl.proposta3.clinica.service.TesteService;
 
 
 
 
 @Controller
 public class LoginController {
+    @Autowired
+    private TesteService testeService;
     
     private static Log log = LogFactory.getLog(LoginController.class);
     
@@ -54,6 +57,8 @@ public class LoginController {
      */
     @RequestMapping(value="/privado/inicio", method = RequestMethod.GET)
     public ModelAndView inicio(){
+        testeService.popula();
+        
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
