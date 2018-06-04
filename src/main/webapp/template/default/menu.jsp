@@ -62,17 +62,6 @@
           <a class="dropdown-item disabled" href="#">Receber exame</a>
         </div>
       </li>      
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-pills"></i> Medicamentos
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-          <a class="dropdown-item" href="listar-medicamento">Consultar</a>
-          <a class="dropdown-item" href="incluir-medicamento">Incluir</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item disabled" href="#">Estatisticas</a>
-        </div>
-      </li>
 
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -85,6 +74,18 @@
           <a class="dropdown-item disabled" href="#">Estatisticas</a>
         </div>
       </li>      
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-pills"></i> Medicamentos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+          <a class="dropdown-item" href="listar-medicamento">Consultar</a>
+          <a class="dropdown-item" href="incluir-medicamento">Incluir</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item disabled" href="#">Estatisticas</a>
+        </div>
+      </li>
       
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
