@@ -10,6 +10,7 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medicamento;
 @Repository
 public interface MedicamentoRepository extends JpaRepository<Medicamento, String> {
 
-    public List<Medicamento> findByNomeGenericoContainingIgnoreCase(String nome);    
+    //public List<Medicamento> findByNomeGenericoContainingIgnoreCase(String NomeGenerico);    
+    public List<Medicamento> findByNomeFabricaContainingOrNomeGenericoContainingAllIgnoreCase(String nomeFabrica, String nomeGenerico);
     
 }

@@ -10,6 +10,6 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
 @Repository
 public interface MedicoRepository extends JpaRepository<Medico, String> {
 
-    public List<Medico> findByNomeContainingIgnoreCase(String nome);
+    public List<Medico> findByNomeContainingIgnoreCaseOrderByNomeAsc(String nome);
     
 }
