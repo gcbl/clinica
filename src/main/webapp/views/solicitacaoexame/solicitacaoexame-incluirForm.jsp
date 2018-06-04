@@ -35,7 +35,7 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="paciente">Paciente:</label>  
                       <div class="col-md-4">
-                          <form:select path="paciente" id="selectPacienteList" style="width: 100%">
+                          <form:select path="paciente" style="width: 100%">
                               <%-- No caso de estar editando --%>
                               <c:if test="${not empty solicitacaoexame}">
                                   <form:option value="${solicitacaoexame.paciente.id}" label="${solicitacaoexame.paciente.nome}" />
@@ -71,7 +71,6 @@
                               <c:if test="${not empty solicitacaoexame}">
                                   <form:options items="${solicitacaoexame.exames}" itemValue="id" itemLabel="nome"/>
                               </c:if>
-                              
                           </form:select>
                       </div>
                     </div>                    
