@@ -131,10 +131,10 @@ public class TesteController extends BaseController {
         medicamentosReceitaSet.add(medicamentos.get(1));
         medicamentosReceitaSet.add(medicamentos.get(2));
         
-        //receita.setMedicamentos(medicamentosReceitaSet);
+        receita.setMedicamentos(medicamentosReceitaSet);
         
-        List<Medicamento> list = new ArrayList<Medicamento>(medicamentosReceitaSet);
-        receita.setMedicamentos(list);        
+//        List<Medicamento> list = new ArrayList<Medicamento>(medicamentosReceitaSet);
+//        receita.setMedicamentos(list);        
         
         receita.setConteudo("1 comprimido de 8 em 8 horas");
         receitaRepository.save(receita);
