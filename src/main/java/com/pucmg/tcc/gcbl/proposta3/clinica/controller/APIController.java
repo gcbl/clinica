@@ -63,7 +63,7 @@ public class APIController extends BaseController {
     @ResponseBody
     @RequestMapping(value={"/listar-medico-json"}, method = RequestMethod.GET)
     public List<Medico> listarMedicoJson(@RequestParam( Constantes.QUERY_PARAMETER ) String q){
-        List<Medico> itemList = medicoService.findByNomeContainingIgnoreCase(q);
+        List<Medico> itemList = medicoService.findByNomeContainingIgnoreCaseOrderByNomeAsc(q);
         return itemList;
     }
     
