@@ -5,6 +5,8 @@ http://imtilab.blogspot.com.br/2016/10/how-to-pushupload-eclipse-project-to.html
 Spring Boot + Spring MVC + Spring Security + MySQL
 https://medium.com/@gustavo.ponce.ch/spring-boot-spring-mvc-spring-security-mysql-a5d8545d837d
 
+TODO: Utilizar o Spring.IO
+https://docs.spring.io/platform/docs/1.1.2.RELEASE/reference/htmlsingle/#appendix-dependency-versions
 
 Multiselect:
 Chosen
