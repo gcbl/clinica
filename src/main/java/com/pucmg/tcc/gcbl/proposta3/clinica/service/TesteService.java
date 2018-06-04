@@ -13,7 +13,6 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.pucmg.tcc.gcbl.proposta3.clinica.controller.TesteController;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Agendamento;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Exame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medicamento;
@@ -26,7 +25,6 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.repository.AgendamentoRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.ExameRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.MedicoRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.PacienteRepository;
-import com.pucmg.tcc.gcbl.proposta3.clinica.repository.PessoaBDRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.ReceitaRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.SolicitacaoExameRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.util.DataUtils;
@@ -34,7 +32,7 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.util.DataUtils;
 @Service
 public class TesteService{
     
-private static Log log = LogFactory.getLog(TesteController.class);
+    private static Log log = LogFactory.getLog(TesteService.class);
     
     @Autowired
     private MedicamentoService medicamentoService;
