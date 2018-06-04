@@ -87,7 +87,7 @@ public class ReceitaController extends ModelController {
             return getViewPath() + "incluirForm";
         }
         
-        
+        //item.setId(null);
         modelService.salvar(item);
         
         String mensagemInclusao = messageSource.getMessage("formulario.operacao.inclusao.sucesso", new Object[]{ getModelName() }, locale);

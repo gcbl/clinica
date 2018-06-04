@@ -15,10 +15,31 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 
         String versao = (String)request.getSession().getAttribute("versao");
         
+         String ACAO_LISTAR = (String)request.getSession().getAttribute("ACAO_LISTAR");
+        String ACAO_INCLUIR = (String)request.getSession().getAttribute("ACAO_INCLUIR");
+        String ACAO_EXCLUIR = (String)request.getSession().getAttribute("ACAO_EXCLUIR");
+         String ACAO_EDITAR = (String)request.getSession().getAttribute("ACAO_EDITAR");
+        
+        
         if(versao == null){ // "" ou null
             request.getSession().setAttribute("versao", Constantes.VERSAO_DO_SISTEMA);
         }
-        
+
+        // ACOES DO CRUD pra inserir o hidden ou nao.
+        // Poderia usar o Constants no JSP mas vai no purismo ;)
+        if(ACAO_LISTAR == null){ // "" ou null
+            request.getSession().setAttribute("ACAO_LISTAR", Constantes.ACAO_LISTAR);
+        }
+        if(ACAO_INCLUIR == null){ // "" ou null
+            request.getSession().setAttribute("ACAO_INCLUIR", Constantes.ACAO_INCLUIR);
+        }
+        if(ACAO_EXCLUIR == null){ // "" ou null
+            request.getSession().setAttribute("ACAO_EXCLUIR", Constantes.ACAO_EXCLUIR);
+        }
+        if(ACAO_EDITAR == null){ // "" ou null
+            request.getSession().setAttribute("ACAO_EDITAR", Constantes.ACAO_EDITAR);
+        }        
+
         
 //        // set few parameters to handle ajax request from different host
 //        respo!nse.addHeader("Access-Control-Allow-Origin", "*");
