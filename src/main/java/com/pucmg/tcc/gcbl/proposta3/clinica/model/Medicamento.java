@@ -38,4 +38,8 @@ public class Medicamento extends BaseEntity {
 //                cascade=CascadeType.REFRESH)
 //    private Set<Receita> receitas = new HashSet<>();
     
+    public String getNomeCompleto(){
+        return getNomeFabrica() + " - " + getConcentracaoFormaFarmaceutica() + " (" + getNomeGenerico() + ")"; 
+    }
+    
 }
