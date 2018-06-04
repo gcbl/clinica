@@ -7,10 +7,13 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+
+import com.pucmg.tcc.gcbl.proposta3.clinica.controller.RequestInterceptor;
 
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
@@ -55,5 +58,10 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         messageSource.setCacheSeconds(1);
         return messageSource;
     }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new RequestInterceptor());
+    }    
     
 }
