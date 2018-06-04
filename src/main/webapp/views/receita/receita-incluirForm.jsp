@@ -78,5 +78,67 @@
            
         </div>
  
+ <script>
+ $(document).ready(function() {
+ 
+	    $('#paciente').select2({
+	          placeholder: "Selecione o paciente",
+	          language: "pt-BR",          
+	          theme: "bootstrap",
+	          allowClear: true,
+	          minimumInputLength: 1,
+	          closeOnSelect: true,
+	          ajax: {
+	              url: 'api/listar-paciente-json',
+	              dataType: 'json',
+	              processResults: function (data, params) {
+	                    
+	                    var resultsData = $.map(data, function (obj) {
+	                      obj.id = obj.id || obj.nome; // replace name with the property used for the text
+	                      obj.text = obj.text || obj.nome; // replace name with the property used for the text
+	                      return obj;
+	                    });
+
+	                    return {
+	                      results: resultsData
+	                    };
+	                  },
+	          }
+	    });	 
+	    
+	    $('#medico').select2({
+	        placeholder: "Selecione o médico solicitante",
+	        language: "pt-BR",        
+	        theme: "bootstrap",
+	        allowClear: true,
+	        minimumInputLength: 1,
+	        closeOnSelect: true,
+	        ajax: {
+	            url: 'api/listar-medico-json',
+	            dataType: 'json',
+	            processResults: function (data, params) {
+	                  
+	                  var resultsData = $.map(data, function (obj) {
+	                    obj.id = obj.id || obj.nome; // replace name with the property used for the text
+	                    obj.text = obj.text || obj.nome; // replace name with the property used for the text
+	                    return obj;
+	                  });
+
+	                  return {
+	                    results: resultsData
+	                  };
+	                },
+	        }
+	    });
+	 
+	 
+
+	 $('#medicamentos').select2();
+	 
+	 
+});
+ </script>
+ 
+ 
     </tiles:putAttribute>
 </tiles:insertDefinition>
