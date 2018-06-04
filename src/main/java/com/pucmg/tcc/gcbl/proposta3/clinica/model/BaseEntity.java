@@ -1,5 +1,7 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,5 +18,8 @@ public class BaseEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private String id;
+    
+    @Column(name = "DATA_CRIACAO")
+    private Date dataCriacao = new Date();
 
 }
