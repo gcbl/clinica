@@ -34,14 +34,6 @@ public class ReceitaController extends ModelController {
     @Autowired
     private ReceitaService modelService;
 
-    @Autowired
-    private PacienteService pacienteService;
-    @Autowired
-    private MedicoService medicoService;
-    @Autowired
-    private MedicamentoService medicamentoService;
-
-    
     @Override
     protected Class<Receita> getModelClass() {
         return Receita.class;
@@ -61,11 +53,6 @@ public class ReceitaController extends ModelController {
     public String inserirForm(Model model){
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
         
-        
-        model.addAttribute("pacienteList", pacienteService.findAll());
-        model.addAttribute("medicoList", medicoService.findAll());
-        model.addAttribute("medicamentoList", medicamentoService.findAll());
-        
         model.addAttribute(getModelName(), new Receita());
         return getViewPath() + "incluirForm";
     }
@@ -75,11 +62,6 @@ public class ReceitaController extends ModelController {
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
 
         if(result.hasErrors()){
-            model.addAttribute("pacienteList", pacienteService.findAll());
-            model.addAttribute("medicoList", medicoService.findAll());
-            model.addAttribute("medicamentoList", medicamentoService.findAll());
-
-            
             model.addAttribute(getModelName(), item);
             
             String mensagem = messageSource.getMessage("formulario.erros-de-validacao", null, locale);
@@ -128,7 +110,6 @@ public class ReceitaController extends ModelController {
             return consultar(model);
         }
 
-            
         
         //return getViewPath() + "alterarForm"; 
     }
@@ -139,11 +120,6 @@ public class ReceitaController extends ModelController {
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_EDITAR);
         
         if(result.hasErrors()){
-            model.addAttribute("pacienteList", pacienteService.findAll());
-            model.addAttribute("medicoList", medicoService.findAll());
-            model.addAttribute("medicamentoList", medicamentoService.findAll());
-
-            
             model.addAttribute(getModelName(), item);
             
             mensagem = messageSource.getMessage("formulario.erros-de-validacao", null, locale);
