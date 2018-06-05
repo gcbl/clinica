@@ -15,8 +15,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.pucmg.tcc.gcbl.proposta3.clinica.util.StringUtils;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode(callSuper = false)
 @MappedSuperclass
 public abstract class Pessoa extends BaseEntity implements Comparable<Pessoa> {
 
