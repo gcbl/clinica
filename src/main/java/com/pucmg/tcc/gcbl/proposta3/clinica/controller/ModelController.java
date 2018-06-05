@@ -11,7 +11,11 @@ public abstract class ModelController extends BaseController {
 
     @ModelAttribute(BaseController.MODEL_STR)
     public String getModelName() {
-        String modelName = getModelClass().getSimpleName().toLowerCase();
+        //String modelName = getModelClass().getSimpleName().toLowerCase();
+        
+        String modelName = getModelClass().getSimpleName();
+        modelName = Character.toLowerCase(modelName.charAt(0)) + modelName.substring(1);
+        
         return modelName;
     }
     
