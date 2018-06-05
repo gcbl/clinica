@@ -56,7 +56,7 @@
                     <!-- Select input-->
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="medicamentos">Medicamento:</label>  
-                      <div class="col-md-4">
+                      <div class="col-md-4"> 
                           <form:select path="medicamentos" multiple="true" style="width: 100%">
                               <%-- No caso de estar editando --%>
                               <c:if test="${not empty receita}">
