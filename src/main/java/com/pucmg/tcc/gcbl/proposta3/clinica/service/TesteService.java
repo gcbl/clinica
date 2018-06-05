@@ -56,7 +56,7 @@ public class TesteService{
     private AgendamentoRepository agendamentoRepository;
     
     @Autowired
-    private AgendaService agendaService;
+    private AgendamentoService agendaService;
 
     
     public void popula(){
