@@ -18,28 +18,22 @@
             <table id="itemDataTable" class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>Data da Solicitação</th>
-                            <th nowrap>Paciente</th>
-                            <th nowrap>Médico Solicitante</th>                            
-                            <th>Exames</th>
-                            <th>Observação</th>
+                            <th>data</th>
+                            <th nowrap>horaInicio</th>
+                            <th nowrap>horaFim</th>                            
+                            <th>Medico</th>
+                            <th>Paciente</th>
                             <th class="text-right"><a href="incluir-${MODEL}" class="btn btn-sm btn-success"><i class="fas fa-plus-circle"></i> Adicionar novo ${MODEL}</a></th>
                         </tr>
                     </thead>
                     <tbody>
                         <c:forEach items="${itemList}" var="item">
                             <tr>
-                                <td data-order="<fmt:formatDate value="${item.dataSolicitacao}" pattern="yyyyMMdd"/>" ><fmt:formatDate value="${item.dataSolicitacao}" pattern="dd/MM/yyyy"/></td>                                
+                                <td data-order="${item.data}"><%-- <fmt:formatDate value="${item.data}" pattern="dd/MM/yyyy"/>  --%> ${item.data} </td>                                
+                                <td nowrap>${item.horaInicio}</td>
+                                <td nowrap>${item.horaFim}</td>
+                                <td nowrap>${item.medico.nome}</td>
                                 <td nowrap>${item.paciente.nome}</td>
-                                <td nowrap>${item.medicoSolicitante.nome}</td>
-                                <td><!-- ${item.exames} <br><br><br> -->
-                                    <ul>
-                                        <c:forEach items="${item.exames}" var="itemList">
-                                            <li>${itemList.nome}</li>
-                                        </c:forEach>
-                                    </ul> 
-                                </td>
-                                <td>${item.observacao}</td>
                                 <td class="actions text-right">
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                       <a href="editar-${MODEL}?id=${item.id}" class="btn btn-sm btn-info"><i class="far fa-edit"></i> Editar</a>
