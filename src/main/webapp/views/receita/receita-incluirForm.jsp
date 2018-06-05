@@ -25,7 +25,7 @@
                     <br><br>                    
                     <!-- Select input-->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="nome">Paciente:</label>  
+                      <label class="col-md-4 control-label" for="paciente">Paciente:</label>  
                       <div class="col-md-4">
                           <form:select path="paciente" id="paciente" style="width: 100%">
                               <%-- No caso de estar editando --%>
@@ -40,7 +40,7 @@
 
                     <!-- Select input-->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="nome">Medico:</label>  
+                      <label class="col-md-4 control-label" for="medico">Medico:</label>  
                       <div class="col-md-4">
                           <form:select path="medico" id="medico" style="width: 100%">
                               <%-- No caso de estar editando --%>
@@ -55,7 +55,7 @@
                     
                     <!-- Select input-->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="nome">Medicamento:</label>  
+                      <label class="col-md-4 control-label" for="medicamentos">Medicamento:</label>  
                       <div class="col-md-4">
                           <form:select path="medicamentos" multiple="true" style="width: 100%">
                               <%-- No caso de estar editando --%>
