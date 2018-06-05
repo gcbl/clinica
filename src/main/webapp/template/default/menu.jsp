@@ -49,6 +49,7 @@
           <a class="dropdown-item disabled" href="#">Agendar</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="listar-agendamento">Listar Agendamento</a>
+          <a class="dropdown-item" href="incluir-agendamento">Incluir Agendamento</a>          
         </div>
       </li>        
       <li class="nav-item dropdown">
