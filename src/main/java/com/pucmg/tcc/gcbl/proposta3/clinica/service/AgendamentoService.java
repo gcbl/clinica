@@ -16,7 +16,7 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.repository.AgendamentoRepository;
 public class AgendamentoService{
 
     @Autowired
-	private AgendamentoRepository agendamentoRepository;
+	private AgendamentoRepository repository;
 
     public void criarVagas(LocalDate dateInicio, LocalDate dataFim, Medico medico) {
         List<Agendamento> vagas = new ArrayList<Agendamento>();
@@ -36,29 +36,41 @@ public class AgendamentoService{
         }
         
         
-        agendamentoRepository.save(vagas);
+        repository.save(vagas);
         
     }
 
     public List<Agendamento> getAgendaMedico(Medico medico) {
-        return agendamentoRepository.findByMedico(medico);
+        return repository.findByMedico(medico);
     }
 
     public List<Agendamento> getHorarioDisponivelMedico(Medico medico) {
-        return agendamentoRepository.findByMedicoAndPacienteIsNull(medico);
+        return repository.findByMedicoAndPacienteIsNull(medico);
     }
 
     public List<Agendamento> getHorariosOcupadosMedico(Medico medico) {
-        return agendamentoRepository.findByMedicoAndPacienteIsNotNull(medico);
+        return repository.findByMedicoAndPacienteIsNotNull(medico);
     }
     
     
-    public void salvarAgendamento(Agendamento agendamento) {
-        agendamentoRepository.save(agendamento);
+    public void salvar(Agendamento item) {
+        repository.save(item);
+    }
+
+    public void excluir(String id) {
+        repository.delete(id);
+    }
+
+    public boolean exists(String id) {
+        return repository.exists(id);
+    }
+    
+    public Agendamento findOne(String id) {
+        return repository.findOne(id);
     }
     
     public List<Agendamento> findAll() {
-        return agendamentoRepository.findAll();
+        return repository.findAll();
     }
 
     
