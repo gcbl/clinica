@@ -36,7 +36,14 @@ public class AgendamentoController extends ModelController {
     }    
 
     // -----------------------------------------------------------------------------------
-
+    @RequestMapping(value={"/exibir-calendario"}, method = RequestMethod.GET)
+    public String exibirCalendario(Model model){
+        List<Agendamento> itemList = modelService.findAll();
+        
+        model.addAttribute("itemList", itemList);
+        return getViewPath() + "calendario";
+    }
+    // -----------------------------------------------------------------------------------
     @RequestMapping(value={"/listar-agendamento"}, method = RequestMethod.GET)
     public String consultar(Model model){
         List<Agendamento> itemList = modelService.findAll();

@@ -48,6 +48,8 @@
           <a class="dropdown-item disabled" href="#">Preparar agenda</a>
           <a class="dropdown-item disabled" href="#">Agendar</a>
           <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="exibir-calendario">Exibir Calendario</a>
+          <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="listar-agendamento">Listar Agendamento</a>
           <a class="dropdown-item" href="incluir-agendamento">Incluir Agendamento</a>          
         </div>
