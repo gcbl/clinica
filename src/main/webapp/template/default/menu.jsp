@@ -57,8 +57,8 @@
           <a class="dropdown-item" href="listar-exame">Consultar</a>
           <a class="dropdown-item" href="incluir-exame">Incluir</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="listar-solicitacao">Listar Solicitações de Exames</a>
-          <a class="dropdown-item" href="incluir-solicitacao">Solicitar exame</a>
+          <a class="dropdown-item" href="listar-solicitacaoExame">Listar Solicitações de Exames</a>
+          <a class="dropdown-item" href="incluir-solicitacaoExame">Solicitar exame</a>
           <a class="dropdown-item disabled" href="#">Receber exame</a>
         </div>
       </li>      
@@ -69,6 +69,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
           <a class="dropdown-item" href="listar-receita">Consultar</a>
+          <a class="dropdown-item" href="incluir-receita">Incluir</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item disabled" href="#">Estatisticas</a>
         </div>
