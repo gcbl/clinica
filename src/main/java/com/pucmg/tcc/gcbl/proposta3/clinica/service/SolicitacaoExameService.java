@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.pucmg.tcc.gcbl.proposta3.clinica.model.Solicitacao;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.SolicitacaoExame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.SolicitacaoExameRepository;
 
 @Service
@@ -15,7 +15,7 @@ public class SolicitacaoExameService{
     protected SolicitacaoExameRepository repository;
     
     
-    public void salvar(Solicitacao item) {
+    public void salvar(SolicitacaoExame item) {
         repository.save(item);
     }
 
@@ -27,11 +27,11 @@ public class SolicitacaoExameService{
         return repository.exists(id);
     }
     
-    public Solicitacao findOne(String id) {
+    public SolicitacaoExame findOne(String id) {
         return repository.findOne(id);
     }
     
-    public List<Solicitacao> findAll() {
+    public List<SolicitacaoExame> findAll() {
         return repository.findAll();
     }
 
