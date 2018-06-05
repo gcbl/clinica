@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
@@ -31,12 +32,12 @@ public class SolicitacaoExame  extends BaseEntity {
     @NotNull(message = "*Por favor informe a data de solicitacao")
     private Date dataSolicitacao;
 
-    //@NotNull(message = "*Por favor informe o paciente")
+    @NotNull(message = "*Por favor informe o paciente")
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="ID_PACIENTE")
     private Paciente paciente;
 
-    //@NotNull(message = "*Por favor informe o medico")
+    @NotNull(message = "*Por favor informe o médico")
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="ID_MEDICO")
     private Medico medicoSolicitante;
@@ -46,6 +47,7 @@ public class SolicitacaoExame  extends BaseEntity {
     private String observacao;
 
     // Lista de exames 
+    @NotEmpty(message = "*Por favor informe os exames a serem solicitados")
     @ManyToMany(cascade = { CascadeType.REFRESH }, 
                 fetch=FetchType.LAZY )
     @JoinTable(name = "SC_EXAME_SOLICITACAO_EXAME", 
