@@ -53,7 +53,7 @@
 
                     <!-- Select input-->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="medicoSolicitante">Méedico Solicitante:</label>  
+                      <label class="col-md-4 control-label" for="medicoSolicitante">Médico Solicitante:</label>  
                       <div class="col-md-4">
                           <form:select path="medicoSolicitante" id="medicoSolicitante" style="width: 100%">
                               <!-- No caso de estar editando -->
@@ -87,7 +87,7 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="observacao">Observação da solicitação:</label>  
                       <div class="col-md-4">
-                      <form:textarea path="observacao" placeholder="Exemplo: 1 comprimido de 8 em 8 horas" class="form-control input-md"/> <form:errors path="observacao" cssClass="text-danger" />
+                      <form:textarea path="observacao" placeholder="Exemplo: O exame deve ser feito em jejum de no mínimo 8 horas" class="form-control input-md"/> <form:errors path="observacao" cssClass="text-danger" />
                       <!-- <span class="help-block">Informe a concentração e forma farmaceutica ou uma breve descrição </span> -->  
                       </div>
                     </div>     
