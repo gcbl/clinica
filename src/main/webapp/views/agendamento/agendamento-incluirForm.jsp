@@ -14,6 +14,7 @@
                     <fieldset>
                     
                     
+                    <form:errors path="*"/>
                     
                     <!-- Form Name -->
                     <hr>
@@ -26,13 +27,33 @@
 
                     <!-- Text input-->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="dataSolicitacao">Data da Solicitação:</label>  
+                      <label class="col-md-4 control-label" for="data">Data:</label>  
                       <div class="col-md-4">
-                      <form:input path="dataSolicitacao" placeholder="Data da Solicitação" class="form-control input-md"/>
-                      <form:errors path="dataSolicitacao" cssClass="text-danger" />
+                      <form:input path="data" placeholder="Data" class="form-control input-md"/>
+                      <form:errors path="data" cssClass="text-danger" />
                       <!-- <span class="help-block">help block</span> -->  
                       </div>
                     </div>
+                    
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="horaInicio">horaInicio:</label>  
+                      <div class="col-md-4">
+                      <form:input path="horaInicio" placeholder="horaInicio" class="form-control input-md"/>
+                      <form:errors path="horaInicio" cssClass="text-danger" />
+                      <!-- <span class="help-block">help block</span> -->  
+                      </div>
+                    </div>
+                    
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="horaFim">horaFim:</label>  
+                      <div class="col-md-4">
+                      <form:input path="horaFim" placeholder="horaFim" class="form-control input-md"/>
+                      <form:errors path="horaFim" cssClass="text-danger" />
+                      <!-- <span class="help-block">help block</span> -->  
+                      </div>
+                    </div>                    
 
                     <!-- Select input-->
                     <div class="form-group">
@@ -40,8 +61,8 @@
                       <div class="col-md-4">
                           <form:select path="paciente" id="paciente" style="width: 100%">
                               <!-- No caso de estar editando -->
-                              <c:if test="${not empty solicitacaoExame}">
-                                  <form:option value="${solicitacaoExame.paciente.id}" label="${solicitacaoExame.paciente.nome}" />
+                              <c:if test="${not empty agendamento}">
+                                  <form:option value="${agendamento.paciente.id}" label="${agendamento.paciente.nome}" />
                               </c:if>
                           </form:select>
                           <form:errors path="paciente" cssClass="text-danger" />
@@ -52,45 +73,19 @@
 
                     <!-- Select input-->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="medicoSolicitante">Médico Solicitante:</label>  
+                      <label class="col-md-4 control-label" for="medico">Médico :</label>  
                       <div class="col-md-4">
-                          <form:select path="medicoSolicitante" id="medicoSolicitante" style="width: 100%">
+                          <form:select path="medico" id="medico" style="width: 100%">
                               <!-- No caso de estar editando -->
-                              <c:if test="${not empty solicitacaoExame}">
-                                  <form:option value="${solicitacaoExame.medicoSolicitante.id}" label="${solicitacaoExame.medicoSolicitante.nome}" />
+                              <c:if test="${not empty agendamento}">
+                                  <form:option value="${agendamento.medico.id}" label="${agendamento.medico.nome}" />
                               </c:if>
                           </form:select>
-                          <form:errors path="medicoSolicitante" cssClass="text-danger" />
+                          <form:errors path="medico" cssClass="text-danger" />
                           <!-- <span class="help-block">texto de help-block</span> -->
                       </div>
                     </div>
                     
-                    <!-- Select input-->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="exames">Exames:</label>  
-                      <div class="col-md-4"> 
-                          <form:select path="exames" multiple="true" style="width: 100%">
-                              <!-- No caso de estar editando -->
-                              <c:if test="${not empty solicitacaoExame}">
-                                  <form:options items="${solicitacaoExame.exames}" itemValue="id" itemLabel="nome"/>
-                              </c:if>
-                          </form:select>
-                          <form:errors path="exames" cssClass="text-danger" />
-                          <!-- <span class="help-block">texto de help-block</span> -->   
-                      </div>
-                    </div>                
-
-                    
-                    
-                    <!-- Text input-->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="observacao">Observação da solicitação:</label>  
-                      <div class="col-md-4">
-                      <form:textarea path="observacao" placeholder="Exemplo: O exame deve ser feito em jejum de no mínimo 8 horas" class="form-control input-md"/> <form:errors path="observacao" cssClass="text-danger" />
-                      <!-- <span class="help-block">Informe a concentração e forma farmaceutica ou uma breve descrição </span> -->  
-                      </div>
-                    </div>     
-
                     <!-- Button -->
                     <div class="form-group">
                       <div class="col-md-4">
@@ -133,8 +128,8 @@
               }
         });  
         
-        $('#medicoSolicitante').select2({
-            placeholder: "Selecione o médico solicitante",
+        $('#medico').select2({
+            placeholder: "Selecione o médico",
             language: "pt-BR",        
             theme: "bootstrap",
             allowClear: true,
@@ -157,32 +152,6 @@
                     },
             }
         });
-     
-        $('#exames').select2({
-            placeholder: "Selecione os medicamentos",
-            language: "pt-BR",
-            theme: "bootstrap",
-            allowClear: true,
-            minimumInputLength: 1,
-            closeOnSelect: true,
-            ajax: {
-                url: 'api/listar-exame-json',
-                dataType: 'json',
-                processResults: function (data, params) {
-                      
-                      var resultsData = $.map(data, function (obj) {
-                        obj.id = obj.id || obj.nome; // replace name with the property used for the text
-                        obj.text = obj.text || obj.nome; // replace name with the property used for the text
-                        return obj;
-                      });
-
-                      return {
-                        results: resultsData
-                      };
-                    },
-            }
-        });  
-
      
 });
  </script>
