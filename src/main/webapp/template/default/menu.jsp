@@ -13,7 +13,7 @@
   <%-- <img width="10%" height="10%" src="https://seeklogo.com/images/B/bitcoin-logo-DDAEEA68FA-seeklogo.com.png"> --%>
   <span class="fa-stack fa-lg fa-2x">
 	    <i class="fas fa-medkit fa-stack-1x text-info"></i>
-  </span>SisSaude
+  </span>NOME
   </a>
   
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,8 +57,8 @@
           <a class="dropdown-item" href="listar-exame">Consultar</a>
           <a class="dropdown-item" href="incluir-exame">Incluir</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="listar-solicitacaoexame">Listar Solicitações de Exames</a>
-          <a class="dropdown-item" href="incluir-solicitacaoexame">Solicitar exame</a>
+          <a class="dropdown-item" href="listar-solicitacao">Listar Solicitações de Exames</a>
+          <a class="dropdown-item" href="incluir-solicitacao">Solicitar exame</a>
           <a class="dropdown-item disabled" href="#">Receber exame</a>
         </div>
       </li>      
@@ -69,7 +69,6 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
           <a class="dropdown-item" href="listar-receita">Consultar</a>
-          <a class="dropdown-item" href="incluir-receita">Incluir</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item disabled" href="#">Estatisticas</a>
         </div>
