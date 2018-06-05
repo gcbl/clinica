@@ -19,7 +19,7 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medicamento;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Receita;
-import com.pucmg.tcc.gcbl.proposta3.clinica.model.Solicitacao;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.SolicitacaoExame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.User;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.AgendamentoRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.ExameRepository;
@@ -120,7 +120,7 @@ public class TesteService{
         
         
         
-        Solicitacao solicitacaoExame = new Solicitacao();
+        SolicitacaoExame solicitacaoExame = new SolicitacaoExame();
         solicitacaoExame.setDataSolicitacao(new Date());
         solicitacaoExame.setPaciente(paciente);
         solicitacaoExame.setMedicoSolicitante(medico);
@@ -137,7 +137,7 @@ public class TesteService{
         
         solicitacaoExameRepository.save(solicitacaoExame);
         
-        List<Solicitacao> solicitacaoExameList = solicitacaoExameRepository.findAll();
+        List<SolicitacaoExame> solicitacaoExameList = solicitacaoExameRepository.findAll();
         
         // Agendamento
         LocalTime horaInicio = LocalTime.of(10, 00);
