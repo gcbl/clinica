@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.pucmg.tcc.gcbl.proposta3.clinica.model.SolicitacaoExame;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Solicitacao;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.SolicitacaoExameService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.util.Constantes;
 
@@ -31,30 +31,30 @@ public class SolicitacaoExameController extends ModelController {
     private SolicitacaoExameService modelService;
 
     @Override
-    protected Class<SolicitacaoExame> getModelClass() {
-        return SolicitacaoExame.class;
+    protected Class<Solicitacao> getModelClass() {
+        return Solicitacao.class;
     }    
 
     // -----------------------------------------------------------------------------------
 
-    @RequestMapping(value={"/listar-solicitacaoexame"}, method = RequestMethod.GET)
+    @RequestMapping(value={"/listar-solicitacao"}, method = RequestMethod.GET)
     public String consultar(Model model){
-        List<SolicitacaoExame> itemList = modelService.findAll();
+        List<Solicitacao> itemList = modelService.findAll();
         
         model.addAttribute("itemList", itemList);
         return getViewPath() + "listar";
     }
     
-    @RequestMapping(value={"/incluir-solicitacaoexame"}, method = RequestMethod.GET)
+    @RequestMapping(value={"/incluir-solicitacao"}, method = RequestMethod.GET)
     public String inserirForm(Model model){
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
         
-        model.addAttribute(getModelName(), new SolicitacaoExame());
+        model.addAttribute(getModelName(), new Solicitacao());
         return getViewPath() + "incluirForm";
     }
     
-    @RequestMapping(value={"/incluir-solicitacaoexame"}, method = RequestMethod.POST)
-    public String inserir(@Valid SolicitacaoExame item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {                         
+    @RequestMapping(value={"/incluir-solicitacao"}, method = RequestMethod.POST)
+    public String inserir(@Valid Solicitacao item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {                         
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
 
         if(result.hasErrors()){
@@ -73,7 +73,7 @@ public class SolicitacaoExameController extends ModelController {
         return consultar(model);
     }    
 
-    @RequestMapping(value={"/excluir-solicitacaoexame"}, method = RequestMethod.GET)
+    @RequestMapping(value={"/excluir-solicitacao"}, method = RequestMethod.GET)
     public String excluirGet(@RequestParam("id") String id, Model model, Locale locale){
         String mensagem = "";
         try{
@@ -89,7 +89,7 @@ public class SolicitacaoExameController extends ModelController {
     }
     
 
-    @RequestMapping(value={"/editar-solicitacaoexame"}, method = RequestMethod.GET)
+    @RequestMapping(value={"/editar-solicitacao"}, method = RequestMethod.GET)
     public String editarForm(@RequestParam("id") String id, Model model, Locale locale, HttpServletRequest request){
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_EDITAR);
         
@@ -110,8 +110,8 @@ public class SolicitacaoExameController extends ModelController {
         //return getViewPath() + "alterarForm"; 
     }
     
-    @RequestMapping(value={"/editar-solicitacaoexame"}, method = RequestMethod.POST)
-    public String editar(@Valid SolicitacaoExame item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {
+    @RequestMapping(value={"/editar-solicitacao"}, method = RequestMethod.POST)
+    public String editar(@Valid Solicitacao item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {
         String mensagem = "";
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_EDITAR);
         
