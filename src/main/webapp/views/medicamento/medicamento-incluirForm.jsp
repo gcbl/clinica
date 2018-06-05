@@ -10,7 +10,7 @@
  
         <div class="body">
 
-                <form:form action="${acao}-${MODEL}" class="form-horizontal " commandName="${MODEL}" id="${acao}-${MODEL}">
+                <form:form action="${acao}-${MODEL}" class="form-horizontal" modelAttribute="${MODEL}" id="${acao}-${MODEL}">
                     <fieldset>
                     
                     <!-- Form Name -->
