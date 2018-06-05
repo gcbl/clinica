@@ -47,6 +47,8 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
           <a class="dropdown-item disabled" href="#">Preparar agenda</a>
           <a class="dropdown-item disabled" href="#">Agendar</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="listar-agendamento">Listar Agendamento</a>
         </div>
       </li>        
       <li class="nav-item dropdown">
