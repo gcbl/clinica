@@ -170,7 +170,7 @@ public class TesteService{
         
         
         for (Medico medicoElement : medicos) {
-            agendaService.criarVagas(hoje, hoje.plusDays(90), medicoElement);
+            agendaService.criarVagas(hoje, hoje.plusDays(5), medicoElement);
         }
         
         System.out.println("pausa");
