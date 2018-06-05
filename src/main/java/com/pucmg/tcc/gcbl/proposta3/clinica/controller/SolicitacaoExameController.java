@@ -1,6 +1,5 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.controller;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -17,12 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
-import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.SolicitacaoExame;
-import com.pucmg.tcc.gcbl.proposta3.clinica.service.ExameService;
-import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicoService;
-import com.pucmg.tcc.gcbl.proposta3.clinica.service.PacienteService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.SolicitacaoExameService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.util.Constantes;
 
@@ -36,23 +30,13 @@ public class SolicitacaoExameController extends ModelController {
     @Autowired
     private SolicitacaoExameService modelService;
 
-    @Autowired
-    private PacienteService pacienteService;
-
-    @Autowired
-    private MedicoService medicoService;
-
-    @Autowired
-    private ExameService exameService;
-    
-    
     @Override
     protected Class<SolicitacaoExame> getModelClass() {
         return SolicitacaoExame.class;
     }    
 
     // -----------------------------------------------------------------------------------
-    
+
     @RequestMapping(value={"/listar-solicitacaoexame"}, method = RequestMethod.GET)
     public String consultar(Model model){
         List<SolicitacaoExame> itemList = modelService.findAll();
@@ -69,22 +53,6 @@ public class SolicitacaoExameController extends ModelController {
         return getViewPath() + "incluirForm";
     }
     
-/**    
-
-    @RequestMapping(value={"/incluir-exame"}, method = RequestMethod.POST)
-    public String inserir(@Valid Exame item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {                         
-        model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
-
-        if(result.hasErrors()){
-            model.addAttribute(getModelName(), item);
-            
-            String mensagem = messageSource.getMessage("formulario.erros-de-validacao", null, locale);
-            adicionarAlertaWarning(model, mensagem);
-            return getViewPath() + "incluirForm";
-        }   
-    
-   
-**/    
     @RequestMapping(value={"/incluir-solicitacaoexame"}, method = RequestMethod.POST)
     public String inserir(@Valid SolicitacaoExame item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {                         
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
@@ -92,22 +60,12 @@ public class SolicitacaoExameController extends ModelController {
         if(result.hasErrors()){
             model.addAttribute(getModelName(), item);
             
-            
             String mensagem = messageSource.getMessage("formulario.erros-de-validacao", null, locale);
             adicionarAlertaWarning(model, mensagem);
-            
-            List<Paciente>        pacienteList = pacienteService.findAll();
-            List<Medico> medicoSolicitanteList = medicoService.findAll();
-
-            Collections.sort(pacienteList);
-            Collections.sort(medicoSolicitanteList);
-            
-            model.addAttribute("pacienteList", pacienteList);
-            model.addAttribute("medicoSolicitanteList", medicoSolicitanteList);
-            
             return getViewPath() + "incluirForm";
         }
-
+        
+        //item.setId(null);
         modelService.salvar(item);
         
         String mensagemInclusao = messageSource.getMessage("formulario.operacao.inclusao.sucesso", new Object[]{ getModelName() }, locale);
@@ -148,7 +106,6 @@ public class SolicitacaoExameController extends ModelController {
             return consultar(model);
         }
 
-            
         
         //return getViewPath() + "alterarForm"; 
     }
