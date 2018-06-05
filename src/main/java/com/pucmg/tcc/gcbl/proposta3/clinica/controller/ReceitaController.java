@@ -16,12 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Receita;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.ReceitaService;
-import com.pucmg.tcc.gcbl.proposta3.clinica.service.PacienteService;
-import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicoService;
-import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicamentoService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.util.Constantes;
 
 
