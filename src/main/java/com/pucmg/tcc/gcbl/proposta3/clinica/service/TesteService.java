@@ -57,7 +57,10 @@ public class TesteService{
     private AgendamentoRepository agendamentoRepository;
     
     @Autowired
-    private AgendamentoService agendaService;
+    private AgendamentoService agendamentoService;
+
+    @Autowired
+    private AgendaService agendaService;
 
     
     public void popula(){
@@ -187,10 +190,10 @@ public class TesteService{
         
         medico = medicoRepository.findOne("2");
         
-        List<Agendamento> agendamentos = agendaService.findAll();
-        List<Agendamento> agendamentosMedico = agendaService.getAgendaMedico(medico);
-        List<Agendamento> agendaVagaMedico = agendaService.getHorarioDisponivelMedico(medico);
-        List<Agendamento> agendaOcupadaMedico = agendaService.getHorariosOcupadosMedico(medico);
+        List<Agendamento> agendamentos = agendamentoService.findAll();
+        List<Agendamento> agendamentosMedico = agendamentoService.getAgendaMedico(medico);
+        List<Agendamento> agendaVagaMedico = agendamentoService.getHorarioDisponivelMedico(medico);
+        List<Agendamento> agendaOcupadaMedico = agendamentoService.getHorariosOcupadosMedico(medico);
         
         System.out.println("pausa");
         
