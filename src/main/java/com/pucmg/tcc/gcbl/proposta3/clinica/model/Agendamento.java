@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -43,12 +45,14 @@ public class Agendamento  extends BaseEntity {
      * 
      */
     // Medico obrigatorio!
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @NotNull(message = "*Por favor informe o medico")
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="ID_MEDICO")
     private Medico medico;
 
     // @NotNull(message = "*Por favor informe o paciente")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="ID_PACIENTE")
     private Paciente paciente;
