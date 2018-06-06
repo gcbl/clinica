@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 import org.apache.commons.logging.Log;
@@ -140,12 +141,21 @@ public class TesteService{
         List<SolicitacaoExame> solicitacaoExameList = solicitacaoExameRepository.findAll();
         
         // Agendamento
-        LocalTime horaInicio = LocalTime.of(10, 00);
-        LocalTime horaFim = LocalTime.of(14, 00);
+        Random random = new Random();
+        
+        // Hora aleatoria entre 8 e 20
+        int horaInicioRandom = random.ints(8, (20 + 1)).findFirst().getAsInt();
+        
+        LocalTime horaInicio = LocalTime.of(horaInicioRandom, 00);
+        LocalTime horaFim = LocalTime.of(horaInicioRandom+1, 00);
         LocalDate hoje = DataUtils.asLocalDate( new Date() );
+
+        // Data aleatoria 2 dias pra tras ou 2 dias pra frente
+        int diaOffset = random.ints(-2, (2 + 1)).findFirst().getAsInt(); // numero entre -2 e 2
+        LocalDate diaConsulta = hoje.plusDays(diaOffset);
         
         Agendamento agendamento = new Agendamento();
-        agendamento.setData(  hoje  );
+        agendamento.setData(  diaConsulta  );
         agendamento.setHoraInicio(horaInicio);
         agendamento.setHoraFim(horaFim);
         agendamento.setMedico(medico);
@@ -160,7 +170,7 @@ public class TesteService{
         Agendamento agendamento2 = new Agendamento();
         
         
-        agendamento2.setData( hoje );
+        agendamento2.setData( diaConsulta );
         agendamento2.setHoraInicio(horaInicio2);
         agendamento2.setHoraFim(horaFim2);
         agendamento2.setMedico(medico);
@@ -170,7 +180,7 @@ public class TesteService{
         
         
         for (Medico medicoElement : medicos) {
-            agendaService.criarVagas(hoje, hoje.plusDays(5), medicoElement);
+            agendaService.criarVagas(diaConsulta, diaConsulta.plusDays(5), medicoElement);
         }
         
         System.out.println("pausa");
