@@ -36,14 +36,6 @@ public class AgendamentoController extends ModelController {
     }    
 
     // -----------------------------------------------------------------------------------
-    @RequestMapping(value={"/exibir-calendario"}, method = RequestMethod.GET)
-    public String exibirCalendario(Model model){
-        List<Agendamento> itemList = modelService.findAll();
-        
-        model.addAttribute("itemList", itemList);
-        return getViewPath() + "calendario";
-    }
-    // -----------------------------------------------------------------------------------
     @RequestMapping(value={"/listar-agendamento"}, method = RequestMethod.GET)
     public String consultar(Model model){
         List<Agendamento> itemList = modelService.findAll();
@@ -148,6 +140,25 @@ public class AgendamentoController extends ModelController {
         return consultar(model);
     }    
     
+    // ###############################################################################
+    
+    @RequestMapping(value={"/exibir-calendario-agendamento"}, method = RequestMethod.GET)
+    public String exibirCalendario(Model model){
+        return getViewPath() + "calendario";
+    }
 
+/*    
+    @RequestMapping(value={"/criar-agenda-agendamento"}, method = RequestMethod.GET)
+    public String criarAgendaForm(Model model){
+        return getViewPath() + "criarAgendaForm";
+    }
+    
+    @RequestMapping(value={"/criar-agenda-agendamento"}, method = RequestMethod.POST)
+    public String criarAgenda(@Valid Agendamento item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {
+        return null;
+    }
+*/    
+    
+    
 
 }
