@@ -11,7 +11,6 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-@Entity
 public class AgendaForm  extends BaseEntity {
 
     @NotNull(message = "*Por favor informe a data de inicio")
