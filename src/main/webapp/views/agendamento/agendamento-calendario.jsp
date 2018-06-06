@@ -77,11 +77,57 @@ $(document).ready(function() {
     
 	// fullcalendar.io
 	$('#calendar').fullCalendar({
-		header: { center: 'month, agendaWeek, listWeek, basicWeek' }, // buttons for switching between views
+		header: {
+	        left: 'prev,next today',
+	        center: 'title',
+	        right: 'month, agendaWeek, agendaDay, listMonth, listWeek, basicWeek'
+	    },
 		themeSystem: 'bootstrap4', 
 	    aspectRatio: 1,
-	    height: 650
+	    height: 650,
 	    // put your options and callbacks here
+	    eventSources: [
+              // your event source
+              {
+                url: 'api/listar-evento-json',  // use the 'url' property
+                color: 'yellow',    // an option!
+                textColor: 'black'  // an option!
+              }
+        ]
+/*              
+	    events: [
+              {
+                title: 'Meeting',
+                start: '2018-03-12T10:30:00',
+                end: '2018-03-12T12:30:00'
+              },
+              {
+                title: 'Lunch',
+                start: '2018-03-12T12:00:00'
+              },
+              {
+                title: 'Meeting',
+                start: '2018-03-12T14:30:00'
+              },
+              {
+                title: 'Happy Hour',
+                start: '2018-03-12T17:30:00'
+              },
+              {
+                title: 'Dinner',
+                start: '2018-03-12T20:00:00'
+              },
+              {
+                title: 'Birthday Party',
+                start: '2018-03-13T07:00:00'
+              },
+              {
+                title: 'Click for Google',
+                url: 'http://google.com/',
+                start: '2018-03-28'
+              }
+	    ]
+*/              
 	  })
 	
 	// Datatable
