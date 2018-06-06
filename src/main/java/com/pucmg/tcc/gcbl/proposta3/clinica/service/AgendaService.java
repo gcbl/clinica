@@ -8,6 +8,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pucmg.tcc.gcbl.proposta3.clinica.util.DataUtils;
+
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.AgendaForm;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Agendamento;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
@@ -20,7 +22,8 @@ public class AgendaService{
     protected AgendamentoRepository repository;
     
     public void salvar(AgendaForm item) {
-        // chamar o criarVagas
+        criarVagas(DataUtils.asLocalDate(item.getDataInicio()),
+                   DataUtils.asLocalDate(item.getDataFim()), item.getMedico());
     }
     
     public void criarVagas(LocalDate dateInicio, LocalDate dataFim, Medico medico) {

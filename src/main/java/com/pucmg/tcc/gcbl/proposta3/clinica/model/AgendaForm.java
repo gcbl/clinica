@@ -7,6 +7,7 @@ import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Range;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -16,10 +17,12 @@ import lombok.EqualsAndHashCode;
 public class AgendaForm  extends BaseEntity {
 
     @NotNull(message = "*Por favor informe a data de inicio")
+    @DateTimeFormat(pattern = "dd/MM/yyyy" )
     @Future
     private Date dataInicio;
 
     @NotNull(message = "*Por favor informe a data de fim")
+    @DateTimeFormat(pattern = "dd/MM/yyyy" )
     @Future
     private Date dataFim;
     
