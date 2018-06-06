@@ -27,6 +27,11 @@ public class Constantes {
     
 
     // API Ajax search
-    public static final String QUERY_PARAMETER = "q";
+    public static final String PARAMETER_QUERY_SEARCH = "q";
+    
+    // API Fullcalendar.io Events JSON Feed
+    public static final String PARAMETER_START_DATE = "start";
+    public static final String PARAMETER_END_DATE = "end";
+    
     
 }
