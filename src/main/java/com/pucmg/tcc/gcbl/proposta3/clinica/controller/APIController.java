@@ -11,14 +11,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Agendamento;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Exame;
-import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
-import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.FullCalendarEvent;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medicamento;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
+import com.pucmg.tcc.gcbl.proposta3.clinica.service.AgendamentoService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.ExameService;
+import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicamentoService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicoService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.PacienteService;
-import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicamentoService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.util.Constantes;
 
 
@@ -40,13 +43,15 @@ public class APIController extends BaseController {
     @Autowired
     private MedicamentoService medicamentoService;    
 
+    @Autowired
+    private AgendamentoService agendamentoService;    
     
 
     // -----------------------------------------------------------------------------------
     
     @ResponseBody
     @RequestMapping(value={"/listar-exame-json"}, method = RequestMethod.GET)
-    public List<Exame> listarExameJson(@RequestParam( Constantes.QUERY_PARAMETER ) String q){
+    public List<Exame> listarExameJson(@RequestParam( Constantes.PARAMETER_QUERY_SEARCH ) String q){
         List<Exame> itemList = exameService.findByNomeContainingIgnoreCaseOrderByNomeAsc(q);
         return itemList;
     }    
@@ -54,7 +59,7 @@ public class APIController extends BaseController {
     
     @ResponseBody
     @RequestMapping(value={"/listar-paciente-json"}, method = RequestMethod.GET)
-    public List<Paciente> listarPacienteJson(@RequestParam( Constantes.QUERY_PARAMETER ) String q){
+    public List<Paciente> listarPacienteJson(@RequestParam( Constantes.PARAMETER_QUERY_SEARCH ) String q){
         List<Paciente> itemList = pacienteService.findByNomeContainingIgnoreCaseOrderByNomeAsc(q);
         return itemList;
     }
@@ -62,17 +67,30 @@ public class APIController extends BaseController {
     
     @ResponseBody
     @RequestMapping(value={"/listar-medico-json"}, method = RequestMethod.GET)
-    public List<Medico> listarMedicoJson(@RequestParam( Constantes.QUERY_PARAMETER ) String q){
+    public List<Medico> listarMedicoJson(@RequestParam( Constantes.PARAMETER_QUERY_SEARCH ) String q){
         List<Medico> itemList = medicoService.findByNomeContainingIgnoreCaseOrderByNomeAsc(q);
         return itemList;
     }
     
     @ResponseBody
     @RequestMapping(value={"/listar-medicamento-json"}, method = RequestMethod.GET)
-    public List<Medicamento> listarMedicamentoJson(@RequestParam( Constantes.QUERY_PARAMETER ) String q){
+    public List<Medicamento> listarMedicamentoJson(@RequestParam( Constantes.PARAMETER_QUERY_SEARCH ) String q){
         List<Medicamento> itemList = medicamentoService.findByNomeIgnoreCase(q);
         return itemList;
     }
+    
+    @ResponseBody
+    @RequestMapping(value={"/listar-evento-json"}, method = RequestMethod.GET)
+    public List<FullCalendarEvent> listarEventosJson(@RequestParam( Constantes.PARAMETER_START_DATE ) String start, 
+                                               @RequestParam( Constantes.PARAMETER_END_DATE   ) String end ){
+        
+        List<Agendamento> itemList = agendamentoService.getHorariosOcupados();
+
+        List<FullCalendarEvent> eventList = FullCalendarEvent.toFullCalendarEventList(itemList);
+        
+        
+        return eventList;
+    }    
 
     
     // -------------------------
