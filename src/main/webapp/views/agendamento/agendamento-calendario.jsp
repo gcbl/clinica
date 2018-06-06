@@ -70,7 +70,13 @@
 <!-- ##### MODALS ##### -->
 
 <!-- ##### FIM MODALS ##### --> 
- 
+<style> 
+  #calendar {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 10px;
+  }
+</style> 
  
 <script>
 $(document).ready(function() {
@@ -90,8 +96,8 @@ $(document).ready(function() {
               // your event source
               {
                 url: 'api/listar-evento-json',  // use the 'url' property
-                color: 'yellow',    // an option!
-                textColor: 'black'  // an option!
+                //color: 'yellow',    // an option!
+                //textColor: 'black'  // an option!
               }
         ]
 /*              
