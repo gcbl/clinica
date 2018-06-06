@@ -70,7 +70,6 @@
  -->
 
     <!-- JS Local -->
-    <script type="text/javascript" src="/resources/static/js/jquery-tabledit-1.2.3/jquery.tabledit.min.js"></script>
     <script type="text/javascript" src="/resources/static/js/clinica.js"></script>
 
     <!-- CSS local -->
