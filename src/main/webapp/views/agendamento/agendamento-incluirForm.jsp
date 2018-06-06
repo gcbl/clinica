@@ -13,11 +13,7 @@
                 <form:form action="${acao}-${MODEL}" class="form-horizontal " modelAttribute="${MODEL}" id="${acao}-${MODEL}">
                     <fieldset>
                     
-                    
-                    <form:errors path="*"/>
-                    
                     <!-- Form Name -->
-                    <hr>
                     <c:if test = "${acao != ACAO_INCLUIR}">
                        <form:hidden path="id" placeholder="id" class="form-control input-md"/> <form:errors path="id" cssClass="text-danger" />
                     </c:if>
