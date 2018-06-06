@@ -52,6 +52,10 @@ public class AgendamentoService{
         return repository.findByMedicoAndPacienteIsNotNull(medico);
     }
     
+    public List<Agendamento> getHorariosOcupados() {
+        return repository.findByMedicoIsNotNullAndPacienteIsNotNull();
+    }
+    
     
     public void salvar(Agendamento item) {
         repository.save(item);
