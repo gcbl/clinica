@@ -45,10 +45,10 @@
             <i class="far fa-calendar-alt"></i> Agenda
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-          <a class="dropdown-item disabled" href="#">Preparar agenda</a>
+          <a class="dropdown-item" href="criar-agenda-agendamento">Criar agenda</a>
           <a class="dropdown-item disabled" href="#">Agendar</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="exibir-calendario">Exibir Calendario</a>
+          <a class="dropdown-item" href="exibir-calendario-agendamento">Exibir Calendario</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="listar-agendamento">Listar Agendamento</a>
           <a class="dropdown-item" href="incluir-agendamento">Incluir Agendamento</a>          
