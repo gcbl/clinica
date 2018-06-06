@@ -13,6 +13,11 @@ public interface AgendamentoRepository extends JpaRepository<Agendamento, String
     
     public List<Agendamento> findByMedico(Medico medico);
     
+    // Vagas disponiveis para o médico
     public List<Agendamento> findByMedicoAndPacienteIsNull(Medico medico);
+    
+    // Vagas preenchidas
     public List<Agendamento> findByMedicoAndPacienteIsNotNull(Medico medico);
+    public List<Agendamento> findByMedicoIsNotNullAndPacienteIsNotNull();
+    
 }
