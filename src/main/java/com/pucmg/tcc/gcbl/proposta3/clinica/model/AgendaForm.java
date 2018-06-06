@@ -1,10 +1,12 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.model;
 
-import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
 
-import javax.persistence.Entity;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Range;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,10 +16,12 @@ import lombok.EqualsAndHashCode;
 public class AgendaForm  extends BaseEntity {
 
     @NotNull(message = "*Por favor informe a data de inicio")
-    private LocalDate dataInicio;
+    @Future
+    private Date dataInicio;
 
-    @NotNull(message = "*Por favor informe a data de FIM")
-    private LocalDate dataFim;
+    @NotNull(message = "*Por favor informe a data de fim")
+    @Future
+    private Date dataFim;
     
     @NotNull(message = "*Por favor informe a hora do inicio")
     private LocalTime horaInicio;
@@ -26,7 +30,8 @@ public class AgendaForm  extends BaseEntity {
     private LocalTime horaFim;
 
     @NotNull(message = "*Por favor informe a duração do atendimendo")
-    private LocalTime duração;
+    @Range(min=10, max=60, message="A duração da consulta deve ser entre 10 e 60 minutos")
+    private int duracao;
     
     @NotNull(message = "*Por favor informe o medico")
     private Medico medico;

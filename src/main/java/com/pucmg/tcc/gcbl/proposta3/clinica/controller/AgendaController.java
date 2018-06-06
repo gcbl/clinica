@@ -37,7 +37,7 @@ public class AgendaController extends ModelController {
 
     // -----------------------------------------------------------------------------------
     
-    @RequestMapping(value={"/incluir-agenda"}, method = RequestMethod.GET)
+    @RequestMapping(value={"/incluir-agendaForm"}, method = RequestMethod.GET)
     public String inserirForm(Model model){
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
         
@@ -45,7 +45,7 @@ public class AgendaController extends ModelController {
         return getViewPath() + "incluirForm";
     }
     
-    @RequestMapping(value={"/incluir-agenda"}, method = RequestMethod.POST)
+    @RequestMapping(value={"/incluir-agendaForm"}, method = RequestMethod.POST)
     public String inserir(@Valid AgendaForm item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {                         
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
 
