@@ -23,7 +23,7 @@
                     
                     <!-- Text input-->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="data">dataInicio:</label>  
+                      <label class="col-md-4 control-label" for="data">Data inicial:</label>  
                       <div class="col-md-4">
                       <form:input path="dataInicio" placeholder="dataInicio" class="form-control input-md"/>
                       <form:errors path="dataInicio" cssClass="text-danger" />
@@ -33,7 +33,7 @@
                     
                     <!-- Text input-->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="dataFim">dataFim:</label>  
+                      <label class="col-md-4 control-label" for="dataFim">Data final:</label>  
                       <div class="col-md-4">
                       <form:input path="dataFim" placeholder="dataFim" class="form-control input-md"/>
                       <form:errors path="dataFim" cssClass="text-danger" />
@@ -43,7 +43,7 @@
                     
                     <!-- Text input-->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="horaInicio">horaInicio:</label>  
+                      <label class="col-md-4 control-label" for="horaInicio">Hora inicial:</label>  
                       <div class="col-md-4">
                       <form:input path="horaInicio" placeholder="horaInicio" class="form-control input-md"/>
                       <form:errors path="horaInicio" cssClass="text-danger" />
@@ -53,7 +53,7 @@
 
                     <!-- Text input-->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="horaFim">horaFim:</label>  
+                      <label class="col-md-4 control-label" for="horaFim">Hora final:</label>  
                       <div class="col-md-4">
                       <form:input path="horaFim" placeholder="horaFim" class="form-control input-md"/>
                       <form:errors path="horaFim" cssClass="text-danger" />
@@ -78,7 +78,7 @@
                     
                     <!-- Text input-->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="duracao">duracao:</label>  
+                      <label class="col-md-4 control-label" for="duracao">Duração do atendimento:</label>  
                       <div class="col-md-4">
                       <form:input path="duracao" placeholder="duracao" class="form-control input-md"/>
                       <form:errors path="duracao" cssClass="text-danger" />
