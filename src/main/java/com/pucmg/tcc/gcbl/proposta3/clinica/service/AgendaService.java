@@ -21,24 +21,40 @@ public class AgendaService{
     @Autowired
     protected AgendamentoRepository repository;
     
-    public void salvar(AgendaForm item) {
-        criarVagas(DataUtils.asLocalDate(item.getDataInicio()),
-                   DataUtils.asLocalDate(item.getDataFim()), item.getMedico());
-    }
-    
-    public void criarVagas(LocalDate dateInicio, LocalDate dataFim, Medico medico) {
+    public void criarVagas(Medico medico,
+                           LocalDate dateInicio,
+                           LocalDate dataFim,
+                           int horaInicio,
+                           int horaFim,
+                           int duracao) {
+
+        
         List<Agendamento> vagas = new ArrayList<Agendamento>();
         
         LocalDate data = dateInicio;
         while(data.isBefore(dataFim)){
-            Agendamento agendamento = new Agendamento();
-            agendamento.setMedico(medico);
-            agendamento.setData(data);
+            LocalTime horaInicioLocalTime = LocalTime.of(horaInicio, 0);
+            LocalTime horaFimLocalTime = LocalTime.of(horaFim, 0);
             
-            agendamento.setHoraInicio( LocalTime.of(8, 0) );
-            agendamento.setHoraFim( LocalTime.of(9, 0) );
+            LocalTime horaInicioTemp = horaInicioLocalTime;
+            LocalTime horaFimTemp = horaInicioTemp.plusMinutes(duracao);
+            
+            while( !horaFimTemp.isAfter(horaFimLocalTime) ){
+                
+                Agendamento agendamento = new Agendamento();
+                agendamento.setMedico(medico);
+                agendamento.setData(data);
 
-            vagas.add(agendamento);
+                agendamento.setHoraInicio( horaInicioTemp );
+                agendamento.setHoraFim( horaFimTemp );
+                
+                vagas.add(agendamento);
+
+                horaInicioTemp = horaFimTemp;
+                horaFimTemp = horaFimTemp.plusMinutes(duracao);
+                
+                
+            }
             
             data = data.plusDays(1);
         }
