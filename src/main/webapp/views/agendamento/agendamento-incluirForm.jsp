@@ -92,8 +92,6 @@
                     </fieldset>
                 </form:form>
             
-            <hr>
-           
         </div>
  
  <script>
