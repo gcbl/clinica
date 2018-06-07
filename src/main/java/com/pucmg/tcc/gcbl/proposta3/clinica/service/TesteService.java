@@ -183,7 +183,7 @@ public class TesteService{
         
         
         for (Medico medicoElement : medicos) {
-            agendaService.criarVagas(diaConsulta, diaConsulta.plusDays(5), medicoElement);
+            agendaService.criarVagas(medicoElement, diaConsulta, diaConsulta.plusDays(5), 8, 12, 60);
         }
         
         System.out.println("pausa");
