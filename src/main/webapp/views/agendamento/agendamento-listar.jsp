@@ -4,6 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="tags"%>
 
 <tiles:insertDefinition name="defaultTemplate">
     <tiles:putAttribute name="body">
@@ -18,10 +19,10 @@
             <table id="itemDataTable" class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>data</th>
-                            <th nowrap>horaInicio</th>
-                            <th nowrap>horaFim</th>                            
-                            <th>Medico</th>
+                            <th>Data</th>
+                            <th nowrap>Hora inicial</th>
+                            <th nowrap>Hora final</th>                            
+                            <th>Médico</th>
                             <th>Paciente</th>
                             <th class="text-right"><a href="incluir-${MODEL}" class="btn btn-sm btn-success"><i class="fas fa-plus-circle"></i> Adicionar novo ${MODEL}</a></th>
                         </tr>
@@ -29,7 +30,7 @@
                     <tbody>
                         <c:forEach items="${itemList}" var="item">
                             <tr>
-                                <td data-order="${item.data}"><%-- <fmt:formatDate value="${item.data}" pattern="dd/MM/yyyy"/>  --%> ${item.data} </td>                                
+                                <td data-order="<tags:localDate date="${item.data}" pattern="yyyyMMdd"/>"><tags:localDate date="${item.data}" pattern="dd/MM/yyyy"/></td>                                
                                 <td nowrap>${item.horaInicio}</td>
                                 <td nowrap>${item.horaFim}</td>
                                 <td nowrap>${item.medico.nome}</td>
