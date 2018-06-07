@@ -4,6 +4,10 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="tags"%>
+
+
+
 
 <tiles:insertDefinition name="defaultTemplate">
     <tiles:putAttribute name="body">

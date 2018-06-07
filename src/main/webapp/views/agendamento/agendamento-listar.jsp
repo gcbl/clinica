@@ -6,6 +6,9 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="tags"%>
 
+
+
+
 <tiles:insertDefinition name="defaultTemplate">
     <tiles:putAttribute name="body">
  
