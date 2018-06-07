@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.AgendaForm;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.AgendaService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.util.Constantes;
+import com.pucmg.tcc.gcbl.proposta3.clinica.util.DataUtils;
 
 
 @Controller
@@ -57,7 +58,14 @@ public class AgendaController extends ModelController {
             return getViewPath() + "incluirForm";
         }
         
-        modelService.salvar(item);
+        
+        modelService.criarVagas(item.getMedico(), 
+                                DataUtils.asLocalDate(item.getDataInicio()), 
+                                DataUtils.asLocalDate(item.getDataFim()), 
+                                item.getHoraInicio(), 
+                                item.getHoraFim(),
+                                item.getDuracao());
+
         
         String mensagemInclusao = messageSource.getMessage("formulario.operacao.inclusao.sucesso", new Object[]{ getModelName() }, locale);
         adicionarAlertaSuccess(model, mensagemInclusao);
