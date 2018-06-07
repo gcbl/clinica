@@ -25,7 +25,7 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="data">Data inicial:</label>  
                       <div class="col-md-4">
-                      <form:input path="dataInicio" placeholder="dataInicio" class="form-control input-md"/>
+                      <form:input path="dataInicio" placeholder="dd/MM/aaaa" class="form-control input-md"/>
                       <form:errors path="dataInicio" cssClass="text-danger" />
                       <!-- <span class="help-block">help block</span> -->  
                       </div>
@@ -35,7 +35,7 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="dataFim">Data final:</label>  
                       <div class="col-md-4">
-                      <form:input path="dataFim" placeholder="dataFim" class="form-control input-md"/>
+                      <form:input path="dataFim" placeholder="dd/MM/aaaa" class="form-control input-md"/>
                       <form:errors path="dataFim" cssClass="text-danger" />
                       <!-- <span class="help-block">help block</span> -->  
                       </div>
@@ -45,7 +45,7 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="horaInicio">Hora inicial:</label>  
                       <div class="col-md-4">
-                      <form:input path="horaInicio" placeholder="horaInicio" class="form-control input-md"/>
+                      <form:input path="horaInicio" placeholder="Número entre 0 e 23" class="form-control input-md"/>
                       <form:errors path="horaInicio" cssClass="text-danger" />
                       <!-- <span class="help-block">help block</span> -->  
                       </div>
@@ -55,7 +55,7 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="horaFim">Hora final:</label>  
                       <div class="col-md-4">
-                      <form:input path="horaFim" placeholder="horaFim" class="form-control input-md"/>
+                      <form:input path="horaFim" placeholder="Número entre 0 e 23" class="form-control input-md"/>
                       <form:errors path="horaFim" cssClass="text-danger" />
                       <!-- <span class="help-block">help block</span> -->  
                       </div>
@@ -80,7 +80,7 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="duracao">Duração do atendimento:</label>  
                       <div class="col-md-4">
-                      <form:input path="duracao" placeholder="duracao" class="form-control input-md"/>
+                      <form:input path="duracao" placeholder="10, 15, 20, 30 ou 60" class="form-control input-md"/>
                       <form:errors path="duracao" cssClass="text-danger" />
                       <!-- <span class="help-block">help block</span> -->  
                       </div>
@@ -96,38 +96,11 @@
                     </fieldset>
                 </form:form>
             
-            <hr>
-           
         </div>
  
  <script>
  $(document).ready(function() {
  
-        $('#paciente').select2({
-              placeholder: "Selecione o paciente",
-              language: "pt-BR",          
-              theme: "bootstrap",
-              allowClear: true,
-              minimumInputLength: 1,
-              closeOnSelect: true,
-              ajax: {
-                  url: 'api/listar-paciente-json',
-                  dataType: 'json',
-                  processResults: function (data, params) {
-                        
-                        var resultsData = $.map(data, function (obj) {
-                          obj.id = obj.id || obj.nome; // replace name with the property used for the text
-                          obj.text = obj.text || obj.nome; // replace name with the property used for the text
-                          return obj;
-                        });
-
-                        return {
-                          results: resultsData
-                        };
-                      },
-              }
-        });  
-        
         $('#medico').select2({
             placeholder: "Selecione o médico",
             language: "pt-BR",        
