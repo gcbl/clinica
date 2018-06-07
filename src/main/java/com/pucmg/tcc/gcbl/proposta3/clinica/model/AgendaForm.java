@@ -27,15 +27,15 @@ public class AgendaForm  extends BaseEntity {
     
     @NotNull(message = "*Por favor informe a hora do inicio")
     @Range(min=0, max=23, message="Por favor informe um numero entre 0 e 23")
-    private int horaInicio;
+    private Integer horaInicio;
     
     @NotNull(message = "*Por favor informe a hora do fim")
     @Range(min=0, max=23, message="Por favor informe um numero entre 0 e 23")
-    private int horaFim;
+    private Integer horaFim;
 
     @NotNull(message = "*Por favor informe a duração do atendimendo")
     @Range(min=10, max=60, message="A duração da consulta deve ser entre 10 e 60 minutos")
-    private int duracao;
+    private Integer duracao;
     
     @NotNull(message = "*Por favor informe o medico")
     private Medico medico;
