@@ -97,10 +97,16 @@ $(document).ready(function() {
 	    eventSources: [
               // your event source
               {
-                url: 'api/listar-evento-json',  // use the 'url' property
+                url: 'api/listar-horario-ocupado-json',  // use the 'url' property
                 //color: 'yellow',    // an option!
                 //textColor: 'black'  // an option!
+              },
+              {
+                  url: 'api/listar-horario-vago-json',  // use the 'url' property
+                  color: 'white',    // an option!
+                  textColor: 'black'  // an option!
               }
+              
         ]
 /*              
 	    events: [
