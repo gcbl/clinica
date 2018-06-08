@@ -19,6 +19,10 @@ public class AgendamentoService{
         return repository.findByMedico(medico);
     }
 
+    public List<Agendamento> getHorarioDisponivel() {
+        return repository.findByPacienteIsNull();
+    }    
+    
     public List<Agendamento> getHorarioDisponivelMedico(Medico medico) {
         return repository.findByMedicoAndPacienteIsNull(medico);
     }
