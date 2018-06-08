@@ -80,15 +80,26 @@ public class APIController extends BaseController {
     }
     
     @ResponseBody
-    @RequestMapping(value={"/listar-evento-json"}, method = RequestMethod.GET)
-    public List<FullCalendarEvent> listarEventosJson(@RequestParam( Constantes.PARAMETER_START_DATE ) String start, 
+    @RequestMapping(value={"/listar-horario-ocupado-json"}, method = RequestMethod.GET)
+    public List<FullCalendarEvent> listarHorariosOcupadosJson(@RequestParam( Constantes.PARAMETER_START_DATE ) String start, 
                                                @RequestParam( Constantes.PARAMETER_END_DATE   ) String end ){
 
         List<Agendamento> agendamentoList = agendamentoService.getHorariosOcupados();
         List<FullCalendarEvent> eventList = FullCalendarEvent.toFullCalendarEventList(agendamentoList);
         
         return eventList;
-    }    
+    }
+    
+    @ResponseBody
+    @RequestMapping(value={"/listar-horario-vago-json"}, method = RequestMethod.GET)
+    public List<FullCalendarEvent> listarHorariosVagosJson(@RequestParam( Constantes.PARAMETER_START_DATE ) String start, 
+                                               @RequestParam( Constantes.PARAMETER_END_DATE   ) String end ){
+
+        List<Agendamento> agendamentoList = agendamentoService.getHorarioDisponivel();
+        List<FullCalendarEvent> eventList = FullCalendarEvent.toFullCalendarEventList(agendamentoList);
+        
+        return eventList;
+    }      
 
     
     // -------------------------
