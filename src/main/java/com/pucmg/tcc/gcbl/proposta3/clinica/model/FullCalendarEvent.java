@@ -35,6 +35,8 @@ public class FullCalendarEvent {
 //            if(agendamento.getMedico() != null){
 //                title += "   [Dr(a). " + agendamento.getMedico().getNome() + "]"; 
 //            }
+        }else{
+            title = "vago";
         }
         return title;
     }
