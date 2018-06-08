@@ -12,6 +12,10 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
 public interface AgendamentoRepository extends JpaRepository<Agendamento, String> {
     
     public List<Agendamento> findByMedico(Medico medico);
+
+    // Vagas disponiveis de qualquer medico
+    public List<Agendamento> findByPacienteIsNull();
+    
     
     // Vagas disponiveis para o médico
     public List<Agendamento> findByMedicoAndPacienteIsNull(Medico medico);
