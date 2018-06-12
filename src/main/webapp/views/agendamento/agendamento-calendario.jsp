@@ -29,7 +29,7 @@
                       <c:if test="${not empty agendamento}">
                           <form:option value="${agendamento.medico.id}" label="${agendamento.medico.nome}" />
                       </c:if>
-
+ 
                   </form:select>
                   <form:errors path="medico" cssClass="text-danger" />
                   --%>
