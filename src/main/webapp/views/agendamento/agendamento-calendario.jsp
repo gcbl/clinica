@@ -16,8 +16,29 @@
         
         <hr>
             <h1>CALENDARIO</h1>
-            <div id="calendar"></div>
-        <hr>
+            <hr>
+            <!-- Select input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="medico">Médico :</label>  
+              <div class="col-md-4">
+                  <select id="medico" style="width: 100%"></select>
+                  <%--
+                  <form:select path="medico" id="medico" style="width: 100%">
+                      <!-- No caso de estar editando -->
+
+                      <c:if test="${not empty agendamento}">
+                          <form:option value="${agendamento.medico.id}" label="${agendamento.medico.nome}" />
+                      </c:if>
+
+                  </form:select>
+                  <form:errors path="medico" cssClass="text-danger" />
+                  --%>
+                  <!-- <span class="help-block">texto de help-block</span> -->
+              </div>
+            </div>
+            <hr>
+               <div id="calendar"></div>
+            <hr>
         
             <h2 class="text-capitalize">Listar ${MODEL}</h2>
  
@@ -108,42 +129,36 @@ $(document).ready(function() {
               }
               
         ]
-/*              
-	    events: [
-              {
-                title: 'Meeting',
-                start: '2018-03-12T10:30:00',
-                end: '2018-03-12T12:30:00'
-              },
-              {
-                title: 'Lunch',
-                start: '2018-03-12T12:00:00'
-              },
-              {
-                title: 'Meeting',
-                start: '2018-03-12T14:30:00'
-              },
-              {
-                title: 'Happy Hour',
-                start: '2018-03-12T17:30:00'
-              },
-              {
-                title: 'Dinner',
-                start: '2018-03-12T20:00:00'
-              },
-              {
-                title: 'Birthday Party',
-                start: '2018-03-13T07:00:00'
-              },
-              {
-                title: 'Click for Google',
-                url: 'http://google.com/',
-                start: '2018-03-28'
-              }
-	    ]
-*/              
+       
 	  })
-	
+
+    // sELECT2
+    $('#medico').select2({
+        placeholder: "Selecione o médico",
+        language: "pt-BR",        
+        theme: "bootstrap",
+        allowClear: true,
+        minimumInputLength: 1,
+        closeOnSelect: true,
+        ajax: {
+            url: 'api/listar-medico-json',
+            dataType: 'json',
+            processResults: function (data, params) {
+                  
+                  var resultsData = $.map(data, function (obj) {
+                    obj.id = obj.id || obj.nome; // replace name with the property used for the text
+                    obj.text = obj.text || obj.nome; // replace name with the property used for the text
+                    return obj;
+                  });
+
+                  return {
+                    results: resultsData
+                  };
+                },
+        }
+     });    
+	  
+	  
 	// Datatable
 	var table = $('#itemDataTable').DataTable( {
 		responsive: true,
