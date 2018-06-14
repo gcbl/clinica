@@ -22,5 +22,6 @@ public class Medico extends Pessoa {
     @Digits(fraction=0, integer=10, message = "Por favor informe o número do CRM")
     private String crm;
 
+    private String corCalendario;
     
 }
