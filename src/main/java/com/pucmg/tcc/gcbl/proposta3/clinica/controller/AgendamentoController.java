@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Agendamento;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.AgendamentoService;
+import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicoService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.util.Constantes;
 
 
@@ -29,6 +31,10 @@ public class AgendamentoController extends ModelController {
     
     @Autowired
     private AgendamentoService modelService;
+    
+    @Autowired
+    private MedicoService medicoService;
+    
 
     @Override
     protected Class<Agendamento> getModelClass() {
@@ -144,8 +150,18 @@ public class AgendamentoController extends ModelController {
     
     @RequestMapping(value={"/exibir-calendario-agendamento"}, method = RequestMethod.GET)
     public String exibirCalendario(Model model){
+        model.addAttribute("itemList", modelService.getHorariosOcupados());
         return getViewPath() + "calendario";
     }
+    
+    @RequestMapping(value={"/exibir-calendario-agendamento-medico"}, method = RequestMethod.GET)
+    public String exibirCalendarioMedico(@RequestParam("idMedico") String idMedico, Model model){
+        Medico medico = medicoService.findOne(idMedico);
+        model.addAttribute("medico", medico);
+        model.addAttribute("itemList", modelService.getHorariosOcupadosMedico(medico));
+        return getViewPath() + "calendario";
+    }
+    
 
 /*    
     @RequestMapping(value={"/criar-agenda-agendamento"}, method = RequestMethod.GET)
