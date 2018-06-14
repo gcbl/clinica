@@ -15,13 +15,15 @@
         <div class="body">
         
         <hr>
-            <h1>CALENDARIO</h1>
+            <h1>Agenda ${medico.nome} </h1>
             <hr>
             <!-- Select input-->
             <div class="form-group">
-              <label class="col-md-4 control-label" for="medico">Médico :</label>  
+              <label class="col-md-4 control-label" for="medico">Médico :</label>                
               <div class="col-md-4">
-                  <select id="medico" style="width: 100%"></select>
+                  <select id="medico" style="width: 100%">
+                        <option id="${medico.id}">${medico.nome}</option>
+                  </select>
                   <%--
                   <form:select path="medico" id="medico" style="width: 100%">
                       <!-- No caso de estar editando -->
@@ -36,6 +38,7 @@
                   <!-- <span class="help-block">texto de help-block</span> -->
               </div>
             </div>
+            
             <hr>
                <div id="calendar"></div>
             <hr>
@@ -58,7 +61,7 @@
                     <tbody>
                         <c:forEach items="${itemList}" var="item">
                             <tr>
-                                <td data-order="${item.data}"><%-- <fmt:formatDate value="${item.data}" pattern="dd/MM/yyyy"/>  --%> ${item.data} </td>                                
+                                <td data-order="<tags:localDate date="${item.data}" pattern="yyyyMMdd"/>"><tags:localDate date="${item.data}" pattern="dd/MM/yyyy"/></td>
                                 <td nowrap>${item.horaInicio}</td>
                                 <td nowrap>${item.horaFim}</td>
                                 <td nowrap>${item.medico.nome}</td>
@@ -103,8 +106,7 @@
  
 <script>
 $(document).ready(function() {
-    
-	// fullcalendar.io
+	var idMedico = '${medico.id}';
 	$('#calendar').fullCalendar({
 		header: {
 	        left: 'prev,next today',
@@ -118,7 +120,7 @@ $(document).ready(function() {
 	    eventSources: [
               // your event source
               {
-                url: 'api/listar-horario-ocupado-json',  // use the 'url' property
+                url: 'api/listar-horario-ocupado-json?idMedico=' + idMedico,  // use the 'url' property
                 //color: 'yellow',    // an option!
                 //textColor: 'black'  // an option!
               },
@@ -132,7 +134,14 @@ $(document).ready(function() {
        
 	  })
 
-    // sELECT2
+    // Select2
+    $('#medico').on('select2:select', function (event) {
+        // Do something
+        // alert(JSON.stringify(event.params.data, null, 4));
+        var idMedico = event.params.data.id;
+        window.location.replace("exibir-calendario-agendamento-medico?idMedico=" + idMedico);
+    });
+	
     $('#medico').select2({
         placeholder: "Selecione o médico",
         language: "pt-BR",        
