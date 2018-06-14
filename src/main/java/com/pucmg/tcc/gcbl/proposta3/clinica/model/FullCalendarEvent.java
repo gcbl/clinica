@@ -65,7 +65,15 @@ public class FullCalendarEvent {
             paciente = agendamento.getPaciente().getNome();
         }
         return paciente;
-    }      
+    }
+    
+    public String getColor(){
+        String corMedico = "";
+        if(agendamento.getMedico() != null){
+            corMedico = agendamento.getMedico().getCorCalendario();
+        }
+        return corMedico;
+    }
     
 }
 
