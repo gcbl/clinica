@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
@@ -23,6 +25,7 @@ import lombok.EqualsAndHashCode;
 public class Agendamento  extends BaseEntity {
 
     @Column(name = "DT_AGENDAMENTO")
+    @DateTimeFormat(pattern = "dd/MM/yyyy" )
     @NotNull(message = "*Por favor informe a data")
     private LocalDate data;
 
