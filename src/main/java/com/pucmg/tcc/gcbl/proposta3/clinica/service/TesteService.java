@@ -153,7 +153,7 @@ public class TesteService{
         }
         
         // --- Marcando horarios ---
-        List<Agendamento> horariosVagos = agendamentoService.getHorarioDisponivel();
+        List<Agendamento> horariosVagos = agendamentoService.getHorarioDisponivelList();
         Collections.shuffle(horariosVagos);
         
         int qtdPacientes = pacientes.size();
@@ -219,8 +219,8 @@ public class TesteService{
         
         List<Agendamento> agendamentos = agendamentoService.findAll();
         List<Agendamento> agendamentosMedico = agendamentoService.getAgendaMedico(medico);
-        List<Agendamento> agendaVagaMedico = agendamentoService.getHorarioDisponivelMedico(medico);
-        List<Agendamento> agendaOcupadaMedico = agendamentoService.getHorariosOcupadosMedico(medico);
+        List<Agendamento> agendaVagaMedico = agendamentoService.getHorarioDisponivelMedicoList(medico);
+        List<Agendamento> agendaOcupadaMedico = agendamentoService.getHorarioOcupadoMedicoList(medico);
         
         System.out.println("pausa");
         

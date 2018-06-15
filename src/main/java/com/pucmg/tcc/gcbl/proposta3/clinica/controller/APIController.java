@@ -89,9 +89,9 @@ public class APIController extends BaseController {
         Medico medico = medicoService.findOne(idMedico);
         List<Agendamento> agendamentoList;
         if(medico == null){
-            agendamentoList = agendamentoService.getHorariosOcupados();
+            agendamentoList = agendamentoService.getHorarioOcupadoList();
         }else{
-            agendamentoList = agendamentoService.getHorariosOcupadosMedico(medico);    
+            agendamentoList = agendamentoService.getHorarioOcupadoMedicoList(medico);    
         }
         
         List<FullCalendarEvent> eventList = FullCalendarEvent.toFullCalendarEventList(agendamentoList);
@@ -106,12 +106,14 @@ public class APIController extends BaseController {
                                                            @RequestParam( "idMedico"                      ) String idMedico ){
 
         Medico medico = medicoService.findOne(idMedico);
+        List<Agendamento> agendamentoList;
+        if(medico == null){
+            agendamentoList = agendamentoService.getHorarioDisponivelList();
+        }else{
+            agendamentoList = agendamentoService.getHorarioDisponivelMedicoList(medico);    
+        }
         
-        //List<Agendamento> agendamentoList = agendamentoService.getHorarioDisponivel();
-        
-        List<Agendamento> agendamentoMedicoList = agendamentoService.getHorarioDisponivelMedico(medico);
-        
-        List<FullCalendarEvent> eventList = FullCalendarEvent.toFullCalendarEventList(agendamentoMedicoList);
+        List<FullCalendarEvent> eventList = FullCalendarEvent.toFullCalendarEventList(agendamentoList);
         
         return eventList;
     }      

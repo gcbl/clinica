@@ -19,19 +19,19 @@ public class AgendamentoService{
         return repository.findByMedico(medico);
     }
 
-    public List<Agendamento> getHorarioDisponivel() {
+    public List<Agendamento> getHorarioDisponivelList() {
         return repository.findByPacienteIsNull();
     }    
     
-    public List<Agendamento> getHorarioDisponivelMedico(Medico medico) {
+    public List<Agendamento> getHorarioDisponivelMedicoList(Medico medico) {
         return repository.findByMedicoAndPacienteIsNull(medico);
     }
 
-    public List<Agendamento> getHorariosOcupadosMedico(Medico medico) {
+    public List<Agendamento> getHorarioOcupadoMedicoList(Medico medico) {
         return repository.findByMedicoAndPacienteIsNotNull(medico);
     }
     
-    public List<Agendamento> getHorariosOcupados() {
+    public List<Agendamento> getHorarioOcupadoList() {
         return repository.findByMedicoIsNotNullAndPacienteIsNotNull();
     }
     

@@ -150,7 +150,7 @@ public class AgendamentoController extends ModelController {
     
     @RequestMapping(value={"/exibir-calendario-agendamento"}, method = RequestMethod.GET)
     public String exibirCalendario(Model model){
-        model.addAttribute("itemList", modelService.getHorariosOcupados());
+        model.addAttribute("itemList", modelService.getHorarioOcupadoList());
         return getViewPath() + "calendario";
     }
     
@@ -158,9 +158,39 @@ public class AgendamentoController extends ModelController {
     public String exibirCalendarioMedico(@RequestParam("idMedico") String idMedico, Model model){
         Medico medico = medicoService.findOne(idMedico);
         model.addAttribute("medico", medico);
-        model.addAttribute("itemList", modelService.getHorariosOcupadosMedico(medico));
+        model.addAttribute("itemList", modelService.getHorarioOcupadoMedicoList(medico));
         return getViewPath() + "calendario";
     }
+    
+    @RequestMapping(value={"/incluir-consulta-agendamento"}, method = RequestMethod.GET)
+    public String inserirConsultaForm(Model model){
+        model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
+        
+        model.addAttribute(getModelName(), new Agendamento());
+        return getViewPath() + "marcarConsulta";
+    }
+    
+    @RequestMapping(value={"/incluir-consulta-agendamento"}, method = RequestMethod.POST)
+    public String inserirConsulta(@Valid Agendamento item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {                         
+        model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
+
+        if(result.hasErrors()){
+            model.addAttribute(getModelName(), item);
+            
+            String mensagem = messageSource.getMessage("formulario.erros-de-validacao", null, locale);
+            adicionarAlertaWarning(model, mensagem);
+            return getViewPath() + "marcarConsulta";
+        }
+        
+        //item.setId(null);
+        modelService.salvar(item);
+        
+        String mensagemInclusao = messageSource.getMessage("formulario.operacao.inclusao.sucesso", new Object[]{ getModelName() }, locale);
+        adicionarAlertaSuccess(model, mensagemInclusao);
+        return consultar(model);
+    }     
+    
+
     
 
 /*    
