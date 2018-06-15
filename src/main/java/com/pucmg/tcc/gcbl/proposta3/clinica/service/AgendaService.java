@@ -33,27 +33,29 @@ public class AgendaService{
         
         LocalDate data = dateInicio;
         while(data.isBefore(dataFim)){
-            LocalTime horaInicioLocalTime = LocalTime.of(horaInicio, 0);
-            LocalTime horaFimLocalTime = LocalTime.of(horaFim, 0);
             
-            LocalTime horaInicioTemp = horaInicioLocalTime;
-            LocalTime horaFimTemp = horaInicioTemp.plusMinutes(duracao);
-            
-            while( !horaFimTemp.isAfter(horaFimLocalTime) ){
-                
-                Agendamento agendamento = new Agendamento();
-                agendamento.setMedico(medico);
-                agendamento.setData(data);
-
-                agendamento.setHoraInicio( horaInicioTemp );
-                agendamento.setHoraFim( horaFimTemp );
-                
-                vagas.add(agendamento);
-
-                horaInicioTemp = horaFimTemp;
-                horaFimTemp = horaFimTemp.plusMinutes(duracao);
-                
-                
+            boolean isWeekend = DataUtils.isWeekend(data);
+            if ( !isWeekend ){
+                    LocalTime horaInicioLocalTime = LocalTime.of(horaInicio, 0);
+                    LocalTime horaFimLocalTime = LocalTime.of(horaFim, 0);
+                    
+                    LocalTime horaInicioTemp = horaInicioLocalTime;
+                    LocalTime horaFimTemp = horaInicioTemp.plusMinutes(duracao);
+                    
+                    while( !horaFimTemp.isAfter(horaFimLocalTime) ){
+                        
+                        Agendamento agendamento = new Agendamento();
+                        agendamento.setMedico(medico);
+                        agendamento.setData(data);
+        
+                        agendamento.setHoraInicio( horaInicioTemp );
+                        agendamento.setHoraFim( horaFimTemp );
+                        
+                        vagas.add(agendamento);
+        
+                        horaInicioTemp = horaFimTemp;
+                        horaFimTemp = horaFimTemp.plusMinutes(duracao);
+                    }
             }
             
             data = data.plusDays(1);
