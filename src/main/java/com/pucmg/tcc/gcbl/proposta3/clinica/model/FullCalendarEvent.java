@@ -1,6 +1,9 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +53,18 @@ public class FullCalendarEvent {
         LocalDateTime localDateTimeFim = LocalDateTime.of(agendamento.getData(), agendamento.getHoraFim());
         return localDateTimeFim.toString();
     }
+    
+    public String getHorarioCompleto(){
+        LocalDate localDate = agendamento.getData();
+        LocalTime localTimeInicio = agendamento.getHoraInicio();
+        LocalTime localTimeFim = agendamento.getHoraFim();
+        
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String dataStr = localDate.format(formatter);
+        //String horarioCompletoInicioStr = localDate.format(formatterInicio);
+        
+        return dataStr + " " + localTimeInicio +  " às " + localTimeFim;
+    }    
 
     public String getMedico(){
         String medico = "";
