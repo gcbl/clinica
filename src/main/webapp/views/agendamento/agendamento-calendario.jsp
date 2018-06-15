@@ -102,6 +102,10 @@
     margin: 40px auto;
     padding: 0 10px;
   }
+  
+  .fc-sat {  background-color: #F2F2F2 }
+  .fc-sun {  background-color: #F2F2F2 }
+  
 </style> 
  
 <script>
@@ -116,6 +120,7 @@ $(document).ready(function() {
 		themeSystem: 'bootstrap4', 
 	    aspectRatio: 1,
 	    height: 650,
+	    eventLimit: true, // allow "more" link when too many events
 	    // put your options and callbacks here
 	    eventSources: [
               // your event source
