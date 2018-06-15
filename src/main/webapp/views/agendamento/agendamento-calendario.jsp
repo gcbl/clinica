@@ -130,7 +130,7 @@ $(document).ready(function() {
                 //textColor: 'black'  // an option!
               },
               {
-                  url: 'api/listar-horario-vago-json',  // use the 'url' property
+                  //url: 'api/listar-horario-vago-json?idMedico=' + idMedico,  // use the 'url' property
                   color: 'white',    // an option!
                   textColor: 'black'  // an option!
               }
