@@ -2,6 +2,7 @@ package com.pucmg.tcc.gcbl.proposta3.clinica.service;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
@@ -143,7 +144,37 @@ public class TesteService{
         
         List<SolicitacaoExame> solicitacaoExameList = solicitacaoExameRepository.findAll();
         
-        // Agendamento
+        
+        // Criando agenda pra os medicos
+        LocalDate diaInicioAgenda = DataUtils.asLocalDate( new Date() );
+        diaInicioAgenda = diaInicioAgenda.plusDays(-10);
+        for (Medico medicoElement : medicos) {
+            agendaService.criarVagas(medicoElement, diaInicioAgenda, diaInicioAgenda.plusDays(20), 8, 12, 60);
+        }
+        
+        // --- Marcando horarios ---
+        List<Agendamento> horariosVagos = agendamentoService.getHorarioDisponivel();
+        Collections.shuffle(horariosVagos);
+        
+        int qtdPacientes = pacientes.size();
+        
+        List<Agendamento> horariosMarcados = new ArrayList<Agendamento>();
+        // Marcando um horario pra cada paciente
+        for(int contador = 0; contador < qtdPacientes; contador++){
+            Agendamento agendamento = horariosVagos.get(contador);
+            Paciente pacienteAgendando = pacientes.get(contador);
+            
+            // Setando o paciente no horario vago
+            agendamento.setPaciente(pacienteAgendando);
+
+            horariosMarcados.add(agendamento);
+        }
+        
+        // Salvando a lista de agendamentos
+        agendamentoService.salvar(horariosMarcados);
+        // --- Fim de Marcando horarios ---
+
+        // Encaixe
         Random random = new Random();
         
         // Hora aleatoria entre 8 e 20
@@ -180,11 +211,7 @@ public class TesteService{
 
         agendamentoRepository.save(agendamento2);
 
-        
-        
-        for (Medico medicoElement : medicos) {
-            agendaService.criarVagas(medicoElement, diaConsulta, diaConsulta.plusDays(5), 8, 12, 60);
-        }
+
         
         System.out.println("pausa");
         
