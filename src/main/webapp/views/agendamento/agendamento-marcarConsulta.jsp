@@ -27,6 +27,21 @@
 
                     <!-- Select input-->
                     <div class="form-group">
+                      <label class="col-md-4 control-label" for="paciente">Paciente:</label>  
+                      <div class="col-md-4">
+                          <form:select path="paciente" id="paciente" style="width: 100%">
+                              <!-- No caso de estar editando -->
+                              <c:if test="${not empty agendamento}">
+                                  <form:option value="${agendamento.paciente.id}" label="${agendamento.paciente.nome}" />
+                              </c:if>
+                          </form:select>
+                          <form:errors path="paciente" cssClass="text-danger" />
+                          <!-- <span class="help-block">texto de help-block</span> -->   
+                      </div>
+                    </div>  
+
+                    <!-- Select input-->
+                    <div class="form-group">
                       <label class="col-md-4 control-label" for="medico">Médico :</label>  
                       <div class="col-md-4">
                           <form:select path="medico" id="medico" style="width: 100%">
@@ -39,6 +54,17 @@
                           <!-- <span class="help-block">texto de help-block</span> -->
                       </div>
                     </div>
+                    
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="data">Data:</label>  
+                      <div class="col-md-4">
+                        <select id="second" name="second" size="1" class="form-control">
+                            <option></option>
+                        </select>
+                      </div>
+                    </div>                    
+                  
 
                     <!-- Text input-->
                     <div class="form-group">
@@ -70,20 +96,7 @@
                       </div>
                     </div>                    
 
-                    <!-- Select input-->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="paciente">Paciente:</label>  
-                      <div class="col-md-4">
-                          <form:select path="paciente" id="paciente" style="width: 100%">
-                              <!-- No caso de estar editando -->
-                              <c:if test="${not empty agendamento}">
-                                  <form:option value="${agendamento.paciente.id}" label="${agendamento.paciente.nome}" />
-                              </c:if>
-                          </form:select>
-                          <form:errors path="paciente" cssClass="text-danger" />
-                          <!-- <span class="help-block">texto de help-block</span> -->   
-                      </div>
-                    </div>
+
 
 
 
@@ -153,6 +166,34 @@
             }
         });
         
+        $("#second").select2({
+        	  placeholder: 'Select a number',
+        	  ajax: {
+        	    url: 'api/listar-horario-vago-json',
+        	    type: 'GET',
+        	    dataType: 'json',
+        	    data: function (params) {
+        	      return {
+        	    	start: '2018-05-27',
+        	    	end: '2018-07-08',
+        	        idMedico: $("#medico").val(),
+        	        search: params.term
+        	      }
+        	    },
+        	    processResults: function (data, params) {
+                        var resultsData = $.map(data, function (obj) {
+                        obj.id = obj.id || obj.horarioCompleto; // replace name with the property used for the id
+                        obj.text = obj.text || obj.horarioCompleto; // replace name with the property used for the text
+                        return obj;
+                      });
+    
+                      return {
+                        results: resultsData
+                      };
+                  },        	    
+        	  }
+        });        
+        
         $('#horarioVago').select2({
             placeholder: "Selecione o horario",
             language: "pt-BR",          
@@ -161,11 +202,10 @@
             minimumInputLength: 1,
             closeOnSelect: true,
             ajax: {
-                url: 'api/listar-paciente-json',
+            	url: 'api/listar-horario-vago-json',
                 dataType: 'json',
                 processResults: function (data, params) {
-                      
-                      var resultsData = $.map(data, function (obj) {
+                        var resultsData = $.map(data, function (obj) {
                         obj.id = obj.id || obj.nome; // replace name with the property used for the text
                         obj.text = obj.text || obj.nome; // replace name with the property used for the text
                         return obj;
@@ -174,7 +214,7 @@
                       return {
                         results: resultsData
                       };
-                    },
+                },
             }
       });        
      
