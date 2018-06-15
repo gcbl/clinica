@@ -149,7 +149,7 @@ public class TesteService{
         LocalDate diaInicioAgenda = DataUtils.asLocalDate( new Date() );
         diaInicioAgenda = diaInicioAgenda.plusDays(-10);
         for (Medico medicoElement : medicos) {
-            agendaService.criarVagas(medicoElement, diaInicioAgenda, diaInicioAgenda.plusDays(20), 8, 12, 60);
+            agendaService.criarVagas(medicoElement, diaInicioAgenda, diaInicioAgenda.plusDays(20), 8, 18, 60);
         }
         
         // --- Marcando horarios ---
