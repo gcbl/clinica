@@ -104,7 +104,6 @@ public class APIController extends BaseController {
     public List<FullCalendarEvent> listarHorariosVagosJson(@RequestParam( Constantes.PARAMETER_START_DATE ) String start, 
                                                            @RequestParam( Constantes.PARAMETER_END_DATE   ) String end,
                                                            @RequestParam( "idMedico"                      ) String idMedico ){
-
         Medico medico = medicoService.findOne(idMedico);
         List<Agendamento> agendamentoList;
         if(medico == null){
