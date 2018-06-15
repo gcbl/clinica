@@ -162,6 +162,20 @@ public class AgendamentoController extends ModelController {
         return getViewPath() + "calendario";
     }
     
+    @RequestMapping(value={"/exibir-calendario-vagas-agendamento"}, method = RequestMethod.GET)
+    public String exibirCalendarioVagas(Model model){
+        model.addAttribute("itemList", modelService.getHorarioOcupadoList());
+        return getViewPath() + "calendarioVagas";
+    }
+    
+    @RequestMapping(value={"/exibir-calendario-vagas-agendamento-medico"}, method = RequestMethod.GET)
+    public String exibirCalendarioVagasMedico(@RequestParam("idMedico") String idMedico, Model model){
+        Medico medico = medicoService.findOne(idMedico);
+        model.addAttribute("medico", medico);
+        model.addAttribute("itemList", modelService.getHorarioDisponivelMedicoList(medico) );
+        return getViewPath() + "calendarioVagas";
+    }    
+    
     @RequestMapping(value={"/incluir-consulta-agendamento"}, method = RequestMethod.GET)
     public String inserirConsultaForm(Model model){
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
