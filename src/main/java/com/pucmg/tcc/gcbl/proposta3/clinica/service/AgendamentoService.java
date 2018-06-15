@@ -39,6 +39,10 @@ public class AgendamentoService{
     public void salvar(Agendamento item) {
         repository.save(item);
     }
+    
+    public void salvar(List<Agendamento> agendamentos) {
+        repository.save(agendamentos);
+    }
 
     public void excluir(String id) {
         repository.delete(id);
