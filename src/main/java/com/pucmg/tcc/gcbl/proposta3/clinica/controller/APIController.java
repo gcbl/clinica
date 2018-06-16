@@ -81,7 +81,7 @@ public class APIController extends BaseController {
     
     @ResponseBody
     @RequestMapping(value={"/fullcalendar-listar-horario-ocupado-json"}, method = RequestMethod.GET)
-    public List<FullCalendarEvent> listarHorariosOcupadosJson(@RequestParam( Constantes.PARAMETER_START_DATE ) String start, 
+    public List<FullCalendarEvent> listarHorariosOcupadosFullCalendarJson(@RequestParam( Constantes.PARAMETER_START_DATE ) String start, 
                                                               @RequestParam( Constantes.PARAMETER_END_DATE   ) String end,
                                                               @RequestParam( "idMedico"                      ) String idMedico){
         
@@ -101,7 +101,7 @@ public class APIController extends BaseController {
     
     @ResponseBody
     @RequestMapping(value={"/fullcalendar-listar-horario-vago-json"}, method = RequestMethod.GET)
-    public List<FullCalendarEvent> listarHorariosVagosJson(@RequestParam( Constantes.PARAMETER_START_DATE ) String start, 
+    public List<FullCalendarEvent> listarHorariosVagosFullCalendarJson(@RequestParam( Constantes.PARAMETER_START_DATE ) String start, 
                                                            @RequestParam( Constantes.PARAMETER_END_DATE   ) String end,
                                                            @RequestParam( "idMedico"                      ) String idMedico ){
         Medico medico = medicoService.findOne(idMedico);
@@ -117,6 +117,20 @@ public class APIController extends BaseController {
         return eventList;
     }      
 
+    @ResponseBody
+    @RequestMapping(value={"/listar-horario-vago-json"}, method = RequestMethod.GET)
+    public List<Agendamento> listarHorariosVagosJson(@RequestParam( "idMedico" ) String idMedico ){
+        Medico medico = medicoService.findOne(idMedico);
+        List<Agendamento> agendamentoList;
+        if(medico == null){
+            agendamentoList = agendamentoService.getHorarioDisponivelList();
+        }else{
+            agendamentoList = agendamentoService.getHorarioDisponivelMedicoList(medico);    
+        }
+        
+        return agendamentoList;
+    }      
+    
     
     // -------------------------
 

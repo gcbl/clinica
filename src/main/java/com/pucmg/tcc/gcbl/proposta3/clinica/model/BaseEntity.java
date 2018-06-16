@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Data
@@ -19,6 +21,7 @@ public class BaseEntity {
     @Column(name = "ID")
     private String id;
     
+    @JsonIgnore
     @Column(name = "DATA_CRIACAO")
     private Date dataCriacao = new Date();
 

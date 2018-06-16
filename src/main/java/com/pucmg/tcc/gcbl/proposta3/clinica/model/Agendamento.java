@@ -2,6 +2,7 @@ package com.pucmg.tcc.gcbl.proposta3.clinica.model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +14,7 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
@@ -24,16 +26,19 @@ import lombok.EqualsAndHashCode;
 @Table(name = "SC_AGENDAMENTO")
 public class Agendamento  extends BaseEntity {
 
+	@JsonIgnore
     @Column(name = "DT_AGENDAMENTO")
     @DateTimeFormat(pattern = "dd/MM/yyyy" )
     @NotNull(message = "*Por favor informe a data")
     private LocalDate data;
 
+    @JsonIgnore
     // @Column(name = "HORA_INICIO", columnDefinition = "varchar(8)")
     @Column(name = "HORA_INICIO")
     @NotNull(message = "*Por favor informe a hora do inicio")
     private LocalTime horaInicio;
     
+    @JsonIgnore
     //@Column(name = "HORA_FIM", columnDefinition = "varchar(8)")
     @Column(name = "HORA_FIM")
     @NotNull(message = "*Por favor informe a hora do fim")
@@ -59,6 +64,20 @@ public class Agendamento  extends BaseEntity {
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="ID_PACIENTE")
     private Paciente paciente;
+
+    
+    public String getHorarioCompleto(){
+        LocalDate localDate = this.getData();
+        LocalTime localTimeInicio = this.getHoraInicio();
+        LocalTime localTimeFim = this.getHoraFim();
+        
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String dataStr = localDate.format(formatter);
+        //String horarioCompletoInicioStr = localDate.format(formatterInicio);
+        
+        return dataStr + " de " + localTimeInicio +  " às " + localTimeFim;
+    }    
+    
     
 }
 
