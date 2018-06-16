@@ -163,7 +163,7 @@
         });
      
         $('#exames').select2({
-            placeholder: "Selecione os medicamentos",
+            placeholder: "Selecione os exames",
             language: "pt-BR",
             theme: "bootstrap",
             allowClear: true,
