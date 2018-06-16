@@ -80,7 +80,7 @@ public class APIController extends BaseController {
     }
     
     @ResponseBody
-    @RequestMapping(value={"/listar-horario-ocupado-json"}, method = RequestMethod.GET)
+    @RequestMapping(value={"/fullcalendar-listar-horario-ocupado-json"}, method = RequestMethod.GET)
     public List<FullCalendarEvent> listarHorariosOcupadosJson(@RequestParam( Constantes.PARAMETER_START_DATE ) String start, 
                                                               @RequestParam( Constantes.PARAMETER_END_DATE   ) String end,
                                                               @RequestParam( "idMedico"                      ) String idMedico){
@@ -100,7 +100,7 @@ public class APIController extends BaseController {
     }
     
     @ResponseBody
-    @RequestMapping(value={"/listar-horario-vago-json"}, method = RequestMethod.GET)
+    @RequestMapping(value={"/fullcalendar-listar-horario-vago-json"}, method = RequestMethod.GET)
     public List<FullCalendarEvent> listarHorariosVagosJson(@RequestParam( Constantes.PARAMETER_START_DATE ) String start, 
                                                            @RequestParam( Constantes.PARAMETER_END_DATE   ) String end,
                                                            @RequestParam( "idMedico"                      ) String idMedico ){
