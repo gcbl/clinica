@@ -59,48 +59,13 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="data">Data:</label>  
                       <div class="col-md-4">
-                        <select id="second" name="second" size="1" class="form-control">
+                        <select id="selectAgendamento" name="selectAgendamento" size="1" class="form-control" style="width: 100%">
                             <option></option>
                         </select>
                       </div>
                     </div>                    
                   
 
-                    <!-- Text input-->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="data">Data:</label>  
-                      <div class="col-md-4">
-                      <form:input path="data" placeholder="Data" class="form-control input-md"/>
-                      <form:errors path="data" cssClass="text-danger" />
-                      <!-- <span class="help-block">help block</span> -->  
-                      </div>
-                    </div>
-                    
-                    <!-- Text input-->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="horaInicio">horaInicio:</label>  
-                      <div class="col-md-4">
-                      <form:input path="horaInicio" placeholder="horaInicio" class="form-control input-md"/>
-                      <form:errors path="horaInicio" cssClass="text-danger" />
-                      <!-- <span class="help-block">help block</span> -->  
-                      </div>
-                    </div>
-                    
-                    <!-- Text input-->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="horaFim">horaFim:</label>  
-                      <div class="col-md-4">
-                      <form:input path="horaFim" placeholder="horaFim" class="form-control input-md"/>
-                      <form:errors path="horaFim" cssClass="text-danger" />
-                      <!-- <span class="help-block">help block</span> -->  
-                      </div>
-                    </div>                    
-
-
-
-
-
-                    
                     <!-- Button -->
                     <div class="form-group">
                       <div class="col-md-4">
@@ -166,18 +131,24 @@
             }
         });
         
-        $("#second").select2({
-        	  placeholder: 'Select a number',
+        $("#selectAgendamento").select2({
+        	  placeholder: 'Selecione o horário',
+        	  language: "pt-BR",
+        	  theme: "bootstrap",
+        	  allowClear: true,
+              minimumInputLength: 1,
+              closeOnSelect: true,        	  
         	  ajax: {
         	    url: 'api/listar-horario-vago-json',
         	    type: 'GET',
         	    dataType: 'json',
         	    data: function (params) {
         	      return {
-        	    	start: '2018-05-27',
-        	    	end: '2018-07-08',
         	        idMedico: $("#medico").val(),
-        	        search: params.term
+        	        //debug: JSON.stringify(params, null, 2),
+        	        _type: params._type,
+        	        term: params.term,
+        	        q: params.term
         	      }
         	    },
         	    processResults: function (data, params) {
