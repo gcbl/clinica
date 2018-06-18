@@ -94,24 +94,27 @@
         </div>
  
 <!-- ##### MODALS ##### -->
-<div class="modal fade" id="agendamentoEventModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="agendamentoEventModal" role="dialog" aria-labelledby="agendamentoEventModal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...aaaaaaaaaaaaaaaaaa
-        <div id="medico"></div>
-        <div id="horarioCompleto"></div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Salvar</button>
-      </div>
+         <div class="modal-header">
+             <h5 class="modal-title" id="tituloModal">Marcar consulta</h5>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+             </button>
+         </div>
+         <div class="modal-body">
+             <div>Agendamento: <span id="modalBodyAgendamento"></span></div>
+             <div>Médico: <span id="modalBodyMedico"></span></div>
+             <div>Horário: <span id="modalBodyhorarioCompleto"></span></div>
+             <div>Paciente:
+                    <select path="paciente" id="paciente" style="width: 100%"></select>
+             </div>
+         </div>
+         <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+             <button type="button" class="btn btn-primary">Salvar</button>
+         </div>
     </div>
   </div>
 </div>
@@ -133,19 +136,24 @@
 $(document).ready(function() {
     var idMedico = '${medico.id}';
     $('#calendar').fullCalendar({
+    	// ---------------------------------------------------------------
+    	// Modal:
         eventClick:  function(event, jsEvent, view) {
-            alert('Event: ' + event.title);
-            alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-            alert('View: ' + view.name);
-            alert(event.color);
-            $('#exampleModalLongTitle').html(event.medico);
-            $('#horarioCompleto').html(event.horarioCompleto);
+            //alert('Event: ' + event.title);
+            //alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+            //alert('View: ' + view.name);
+            //alert(event.color);
+            //$('#tituloModal').html(event.medico);
+            $('#modalBodyAgendamento').text(event.id);
+            $('#modalBodyMedico').text(event.medico);
+            $('#modalBodyhorarioCompleto').text(event.horarioCompleto);
             $('#agendamentoEventModal').modal();
         },        
+        // ---------------------------------------------------------------
         header: {
             left: 'prev,next today',
             center: 'title',
-            right: 'month, agendaWeek, agendaDay, listMonth, listWeek, basicWeek'
+            right: 'month, agendaDay, listMonth, listWeek, basicWeek'
         },
         themeSystem: 'bootstrap4', 
         aspectRatio: 1,
@@ -188,7 +196,6 @@ $(document).ready(function() {
             url: 'api/listar-medico-json',
             dataType: 'json',
             processResults: function (data, params) {
-                  
                   var resultsData = $.map(data, function (obj) {
                     obj.id = obj.id || obj.nome; // replace name with the property used for the text
                     obj.text = obj.text || obj.nome; // replace name with the property used for the text
@@ -202,6 +209,29 @@ $(document).ready(function() {
         }
      });    
       
+    $('#paciente').select2({
+        placeholder: "Selecione o paciente",
+        language: "pt-BR",        
+        theme: "bootstrap",
+        allowClear: true,
+        minimumInputLength: 1,
+        closeOnSelect: true,
+        ajax: {
+            url: 'api/listar-paciente-json',
+            dataType: 'json',
+            processResults: function (data, params) {
+                  var resultsData = $.map(data, function (obj) {
+                    obj.id = obj.id || obj.nome; // replace name with the property used for the text
+                    obj.text = obj.text || obj.nome; // replace name with the property used for the text
+                    return obj;
+                  });
+
+                  return {
+                    results: resultsData
+                  };
+                },
+        }
+     });       
       
     // Datatable
     var table = $('#itemDataTable').DataTable( {
