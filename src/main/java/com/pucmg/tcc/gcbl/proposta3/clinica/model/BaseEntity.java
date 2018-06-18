@@ -22,7 +22,7 @@ public class BaseEntity {
     private String id;
     
     @JsonIgnore
-    @Column(name = "DATA_CRIACAO")
+    @Column(name = "DT_CRIACAO")
     private Date dataCriacao = new Date();
 
 }
