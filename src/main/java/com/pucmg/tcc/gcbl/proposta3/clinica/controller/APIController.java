@@ -126,7 +126,7 @@ public class APIController extends BaseController {
         
         agendamentoList = agendamentoService.findByLikeDataHoraInicioHoraFim(medico, queryTerm);
         
-        // Se vazio preenche com alguma coisa [todos os valores] pra ajudar o usuario
+        // Se vazio preenche com *todos os valores > hoje* pra ajudar o usuario
         if(agendamentoList.isEmpty()){
             if(medico == null){
                 agendamentoList = agendamentoService.getHorarioDisponivelList();
