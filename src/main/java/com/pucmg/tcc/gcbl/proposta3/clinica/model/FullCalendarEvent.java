@@ -13,6 +13,7 @@ import lombok.Data;
 
 @Data
 public class FullCalendarEvent {
+    private static final String COR_HORARIO_VAGO = "#FFFFFF";
     
     @JsonIgnore
     private Agendamento agendamento;
@@ -31,15 +32,19 @@ public class FullCalendarEvent {
         return eventList;
     }
 
+    private boolean isVago(){
+        return (agendamento.getPaciente() == null) ? true : false; 
+    }
+    
     public String getTitle(){
         String title = "";
-        if(agendamento.getPaciente() != null){
-            title = agendamento.getPaciente().getNome();
+        if(isVago()){
+            title = "vago";
 //            if(agendamento.getMedico() != null){
 //                title += "   [Dr(a). " + agendamento.getMedico().getNome() + "]"; 
 //            }
         }else{
-            title = "vago";
+            title = agendamento.getPaciente().getNome();
         }
         return title;
     }
@@ -76,23 +81,32 @@ public class FullCalendarEvent {
     
     public String getPaciente(){
         String paciente = "";
-        if(agendamento.getPaciente() != null){
+        if(!isVago()){
             paciente = agendamento.getPaciente().getNome();
         }
         return paciente;
     }
     
     public String getColor(){
-        String corMedico = "";
+        String cor = COR_HORARIO_VAGO;
         if(agendamento.getMedico() != null){
-            corMedico = agendamento.getMedico().getCorCalendario();
+            cor = agendamento.getMedico().getCorCalendario();
         }
-        return corMedico;
+//        if(!isVago()){
+//            if(agendamento.getMedico() != null){
+//                cor = agendamento.getMedico().getCorCalendario();
+//            }
+//        }
+        return cor;
     }
+
+    public String getId(){
+      return agendamento.getId();
+    }       
     
-    public String getUrl(){
-        return "editar-agendamento?id=" + agendamento.getId();
-    }    
+//    public String getUrl(){
+//        return "editar-agendamento?id=" + agendamento.getId();
+//    }    
     
 }
 
