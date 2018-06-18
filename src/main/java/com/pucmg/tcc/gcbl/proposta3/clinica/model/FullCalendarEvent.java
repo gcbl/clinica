@@ -90,5 +90,9 @@ public class FullCalendarEvent {
         return corMedico;
     }
     
+    public String getUrl(){
+        return "editar-agendamento?id=" + agendamento.getId();
+    }    
+    
 }
 
