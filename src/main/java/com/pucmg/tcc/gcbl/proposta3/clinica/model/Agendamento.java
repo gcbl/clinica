@@ -35,12 +35,14 @@ public class Agendamento  extends BaseEntity {
     @JsonIgnore
     // @Column(name = "HORA_INICIO", columnDefinition = "varchar(8)")
     @Column(name = "HORA_INICIO")
+    @DateTimeFormat(pattern = "HH:mm" )
     @NotNull(message = "*Por favor informe a hora do inicio")
     private LocalTime horaInicio;
     
     @JsonIgnore
     //@Column(name = "HORA_FIM", columnDefinition = "varchar(8)")
     @Column(name = "HORA_FIM")
+    @DateTimeFormat(pattern = "HH:mm" )
     @NotNull(message = "*Por favor informe a hora do fim")
     private LocalTime horaFim;
 
