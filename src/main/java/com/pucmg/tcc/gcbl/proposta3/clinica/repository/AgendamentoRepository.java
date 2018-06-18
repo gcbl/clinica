@@ -22,6 +22,7 @@ and (   TO_CHAR(dt_agendamento, 'dd/mm/yyyy') || ' DE ' || hora_inicio || ' AS '
     public static final String QUERY_SEARCH_HORARIOS = "select * from sc_agendamento " +  
                                                        "where ID_MEDICO = :idMedico " +
                                                        "and ID_PACIENTE IS NULL " +
+                                                       "and dt_agendamento > SYSDATE " +
                                                        "and ( TO_CHAR(dt_agendamento, 'dd/mm/yyyy') || ' DE ' || hora_inicio || ' AS ' || hora_fim)  like %:searchString% ";
 
     
