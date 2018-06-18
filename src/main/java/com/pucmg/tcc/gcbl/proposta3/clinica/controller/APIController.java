@@ -119,14 +119,22 @@ public class APIController extends BaseController {
 
     @ResponseBody
     @RequestMapping(value={"/listar-horario-vago-json"}, method = RequestMethod.GET)
-    public List<Agendamento> listarHorariosVagosJson(@RequestParam( "idMedico" ) String idMedico ){
+    public List<Agendamento> listarHorariosVagosJson(@RequestParam( "idMedico" ) String idMedico,
+                                                     @RequestParam( Constantes.PARAMETER_QUERY_SEARCH ) String queryTerm ){
         Medico medico = medicoService.findOne(idMedico);
         List<Agendamento> agendamentoList;
-        if(medico == null){
-            agendamentoList = agendamentoService.getHorarioDisponivelList();
-        }else{
-            agendamentoList = agendamentoService.getHorarioDisponivelMedicoList(medico);    
+        
+        agendamentoList = agendamentoService.findByLikeDataHoraInicioHoraFim(medico, queryTerm);
+        
+        // Se vazio preenche com alguma coisa [todos os valores] pra ajudar o usuario
+        if(agendamentoList.isEmpty()){
+            if(medico == null){
+                agendamentoList = agendamentoService.getHorarioDisponivelList();
+            }else{
+                agendamentoList = agendamentoService.getHorarioDisponivelMedicoList(medico);    
+            }
         }
+        
         
         return agendamentoList;
     }      
