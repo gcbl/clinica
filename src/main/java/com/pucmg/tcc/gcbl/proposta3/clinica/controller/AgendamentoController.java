@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Agendamento;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.MarcacaoConsultaForm;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.AgendamentoService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicoService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.util.Constantes;
@@ -180,7 +181,7 @@ public class AgendamentoController extends ModelController {
     public String inserirConsultaForm(Model model){
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
         
-        model.addAttribute(getModelName(), new Agendamento());
+        model.addAttribute(getModelName(), new MarcacaoConsultaForm());
         return getViewPath() + "marcarConsulta";
     }
     
