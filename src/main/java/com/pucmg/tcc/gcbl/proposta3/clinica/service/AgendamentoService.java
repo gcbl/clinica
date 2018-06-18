@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Agendamento;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.AgendamentoRepository;
+import com.pucmg.tcc.gcbl.proposta3.clinica.util.StringUtils;
 
 @Service
 public class AgendamentoService{
@@ -34,6 +35,24 @@ public class AgendamentoService{
     public List<Agendamento> getHorarioOcupadoList() {
         return repository.findByMedicoIsNotNullAndPacienteIsNotNull();
     }
+
+    public List<Agendamento> findByLikeDataHoraInicioHoraFim(Medico medico, String queryTerm) {
+        queryTerm = StringUtils.removerAcentos(queryTerm);
+        queryTerm = queryTerm.toUpperCase();
+        queryTerm = queryTerm.replaceAll(" ", "%");
+        
+        String idMedico = medico == null ? "" : medico.getId();
+        List<Agendamento> agendamentoList = null;
+        
+        agendamentoList = repository.findByLikeDataHoraInicioHoraFimNative(medico.getId(), queryTerm);
+        
+        //agendamentoList = repository.findByLikeDataHoraInicioHoraFimQL(medico, queryTerm);
+        return agendamentoList;
+    }
+
+    
+    
+    //-------------
     
     
     public void salvar(Agendamento item) {
