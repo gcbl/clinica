@@ -22,16 +22,19 @@ public class AgendaService{
     protected AgendamentoRepository repository;
     
     public void criarVagas(Medico medico,
-                           LocalDate dateInicio,
+                           LocalDate dataInicio,
                            LocalDate dataFim,
                            int horaInicio,
                            int horaFim,
                            int duracao) {
 
+        // Apagando todos os agendamentos daquele medico no periodo
+        List<Agendamento> agendamentos = repository.findByMedicoAndDataBetween(medico, dataInicio, dataFim);
+        repository.delete(agendamentos);
         
         List<Agendamento> vagas = new ArrayList<Agendamento>();
         
-        LocalDate data = dateInicio;
+        LocalDate data = dataInicio;
         while(data.isBefore(dataFim)){
             
             boolean isWeekend = DataUtils.isWeekend(data);
