@@ -15,7 +15,7 @@
         <div class="body">
         
         <hr>
-            <h1>Marcar consulta ${medico.nome} </h1>
+            <h1>Marcar consulta <div id="nomeMedico">${medico.nome}</div> <div id="idMedico">${medico.id}</div></h1>
             <hr>
             <!-- Select input-->
             <div class="form-group">
@@ -202,8 +202,9 @@ $(document).ready(function() {
         // Do something
         // alert(JSON.stringify(event.params.data, null, 4));
         idMedico = event.params.data.id;
+        $('#idMedico').text(idMedico);
         window.location.replace("exibir-calendario-vagas-agendamento-medico?idMedico=" + idMedico);
-        //('#calendar').fullCalendar( 'refetchEvents');
+        //$('#calendar').fullCalendar( 'refetchEvents');
     });
     
     $('#medico').select2({
