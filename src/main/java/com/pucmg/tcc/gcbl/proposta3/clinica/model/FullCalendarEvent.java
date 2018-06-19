@@ -99,6 +99,10 @@ public class FullCalendarEvent {
 //        }
         return cor;
     }
+    
+    public String getTextColor(){
+        return isVago() ? "black" : "white";
+    }    
 
     public String getId(){
       return agendamento.getId();
