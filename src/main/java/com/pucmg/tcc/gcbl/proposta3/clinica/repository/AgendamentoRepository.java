@@ -1,5 +1,6 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,37 +13,37 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
 
 @Repository
 public interface AgendamentoRepository extends JpaRepository<Agendamento, String> {
-    
-/*
 
-select  * from sc_agendamento 
-where ID_MEDICO = '16'
-and (   TO_CHAR(dt_agendamento, 'dd/mm/yyyy') || ' DE ' || hora_inicio || ' AS ' || hora_fim)  like '%14/%'  
-*/    
+    // TODO: Corrigir o JPQL abaixo
     public static final String QUERY_SEARCH_HORARIOS = "select * from sc_agendamento " +  
                                                        "where ID_MEDICO = :idMedico " +
                                                        "and ID_PACIENTE IS NULL " +
-                                                       "and dt_agendamento > SYSDATE " +
+                                                    // "and dt_agendamento > SYSDATE " +
                                                        "and ( TO_CHAR(dt_agendamento, 'dd/mm/yyyy') || ' DE ' || hora_inicio || ' AS ' || hora_fim)  like %:searchString% ";
 
-    
     @Query(value = AgendamentoRepository.QUERY_SEARCH_HORARIOS, nativeQuery = true)
     public List<Agendamento> findByLikeDataHoraInicioHoraFimNative(@Param("idMedico") String idMedico, @Param("searchString") String searchString);    
 
-    @Query("select agendamento from Agendamento agendamento where agendamento.medico = :medico and concat( data, ' DE ', trim(horaInicio), ' AS ', trim(horaFim)) like %:searchString%")
-    public List<Agendamento> findByLikeDataHoraInicioHoraFimQL(@Param("medico") Medico medico, @Param("searchString") String searchString);    
+//    // TODO: Formatar a data para dd/mm/yyyy pra poder funcionar a contento.
+//    @Query("select agendamento from Agendamento agendamento where agendamento.medico = :medico and concat( data, ' DE ', trim(horaInicio), ' AS ', trim(horaFim)) like %:searchString%")
+//    public List<Agendamento> findByLikeDataHoraInicioHoraFimQL(@Param("medico") Medico medico, @Param("searchString") String searchString);    
     
+    // -------------------------------------------------------
     public List<Agendamento> findByMedico(Medico medico);
 
-    // Vagas disponiveis de qualquer medico
-    public List<Agendamento> findByPacienteIsNull();
+    public List<Agendamento> findByMedicoAndDataBetween(Medico medico, LocalDate dataInicio, LocalDate datafim);
     
     
     // Vagas disponiveis para o médico
     public List<Agendamento> findByMedicoAndPacienteIsNull(Medico medico);
     
-    // Vagas preenchidas
+    // Vagas preenchidas para o medico
     public List<Agendamento> findByMedicoAndPacienteIsNotNull(Medico medico);
+
+    // Todas as vagas disponiveis de qualquer medico
+    public List<Agendamento> findByPacienteIsNull();
+
+    // Todas as vagas preenchidas 
     public List<Agendamento> findByMedicoIsNotNullAndPacienteIsNotNull();
     
 }
