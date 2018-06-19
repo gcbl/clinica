@@ -115,7 +115,8 @@
          </div>
          <div class="modal-footer">
              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-             <button type="button" class="btn btn-primary" id="btnMarcarConsultaModal">Marcar horário</button>
+             <button type="button" class="btn btn-primary" id="btnMarcarHorarioModal">Marcar horário</button>
+             <button type="button" class="btn btn-warning" id="btnDesmarcarHorarioModal">Desmarcar horário</button>
          </div>
     </div>
   </div>
@@ -285,7 +286,7 @@ $(document).ready(function() {
 } );
 
 
-$( "#btnMarcarConsultaModal" ).click(function() {
+$( "#btnMarcarHorarioModal" ).click(function() {
 	    consultaMarcadaComSucesso = false;
 	    
     	$.ajax({
@@ -309,8 +310,8 @@ $( "#btnMarcarConsultaModal" ).click(function() {
 	        if (consultaMarcadaComSucesso) {
 	            //alert("marcar a consulta em ajax!");
 	            $('#tituloModal').text("Horario marcado com sucesso!");
-	            $('#btnMarcarConsultaModal').prop("disabled", true);
-	            $('#btnMarcarConsultaModal').hide();
+	            $('#btnMarcarHorarioModal').prop("disabled", true);
+	            $('#btnMarcarHorarioModal').hide();
 	            $('#divPacienteSelect2').hide();
 	            $('#pacienteMarcado').show();
 	            //window.location.replace("exibir-calendario-vagas-agendamento-medico?idMedico=" + idMedico);
@@ -339,8 +340,8 @@ $( "#btnMarcarConsultaModal" ).click(function() {
 	
 	function beforeMarcarHorario(){
         $('#tituloModal').text("Marcar horário");
-        $('#btnMarcarConsultaModal').prop("disabled", false);
-        $('#btnMarcarConsultaModal').show();
+        $('#btnMarcarHorarioModal').prop("disabled", false);
+        $('#btnMarcarHorarioModal').show();
         $('#pacienteSelect2').val('').trigger('change'); // Zerar o select
         $('#divPacienteSelect2').show();
         $('#pacienteMarcado').hide();		
@@ -348,8 +349,8 @@ $( "#btnMarcarConsultaModal" ).click(function() {
 	
     function afterMarcarHorario(){
         $('#tituloModal').text("Horario marcado com sucesso!");
-        $('#btnMarcarConsultaModal').prop("disabled", true);
-        $('#btnMarcarConsultaModal').hide();
+        $('#btnMarcarHorarioModal').prop("disabled", true);
+        $('#btnMarcarHorarioModal').hide();
         $('#divPacienteSelect2').hide();
         $('#pacienteMarcado').show();
         $('#calendar').fullCalendar( 'refetchEvents');
