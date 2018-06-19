@@ -32,7 +32,7 @@ public class FullCalendarEvent {
         return eventList;
     }
 
-    private boolean isVago(){
+    public boolean isVago(){
         return (agendamento.getPaciente() == null) ? true : false; 
     }
     
