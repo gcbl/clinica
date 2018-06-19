@@ -98,22 +98,24 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
          <div class="modal-header">
-             <h5 class="modal-title" id="tituloModal">Marcar consulta</h5>
+             <h5 class="modal-title"><b><span id="tituloModal">Marcar horário</span></b></h5>
              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                <span aria-hidden="true">&times;</span>
              </button>
          </div>
          <div class="modal-body">
-             <div>Agendamento: <span id="modalBodyAgendamento"></span></div>
-             <div>Médico: <span id="modalBodyMedico"></span></div>
-             <div>Horário: <span id="modalBodyhorarioCompleto"></span></div>
-             <div>Paciente:
-                    <select path="paciente" id="paciente" style="width: 100%"></select>
+         
+             <div><b>Agendamento:</b> <div id="modalBodyAgendamento"></div></div>
+             <div><b>Médico:</b> <div id="modalBodyMedico"></div></div>
+             <div><b>Horário:</b> <div id="modalBodyhorarioCompleto"></div></div>
+             <div><b>Paciente:</b>
+                    <div id="divPacienteSelect2"><select path="paciente" id="pacienteSelect2" style="width: 100%"></select></div>
+                    <div id="pacienteMarcado"></div>
              </div>
          </div>
          <div class="modal-footer">
              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-             <button type="button" class="btn btn-primary">Salvar</button>
+             <button type="button" class="btn btn-primary" id="btnMarcarConsultaModal">Marcar horário</button>
          </div>
     </div>
   </div>
@@ -133,9 +135,18 @@
 </style> 
  
 <script>
+
+var idMedico;
+var idAgendamento;
+var idPaciente;
 $(document).ready(function() {
-    var idMedico = '${medico.id}';
+	$('#pacienteMarcado').hide();
+	
+    idMedico = '${medico.id}';
     $('#calendar').fullCalendar({
+    	eventAfterAllRender: function( view ) {
+    		//beforeMarcarHorario();
+    	},
     	// ---------------------------------------------------------------
     	// Modal:
         eventClick:  function(event, jsEvent, view) {
@@ -144,9 +155,17 @@ $(document).ready(function() {
             //alert('View: ' + view.name);
             //alert(event.color);
             //$('#tituloModal').html(event.medico);
+            idAgendamento = event.id;
             $('#modalBodyAgendamento').text(event.id);
             $('#modalBodyMedico').text(event.medico);
             $('#modalBodyhorarioCompleto').text(event.horarioCompleto);
+            
+            if(event.vago){
+            	alert('horario vago');
+            }else{
+            	alert('horario ocupado');
+            }
+            
             $('#agendamentoEventModal').modal();
         },        
         // ---------------------------------------------------------------
@@ -158,19 +177,19 @@ $(document).ready(function() {
         themeSystem: 'bootstrap4', 
         aspectRatio: 1,
         height: 650,
-        //eventLimit: true, // allow "more" link when too many events
+        eventLimit: true, // allow "more" link when too many events
         // put your options and callbacks here
         eventSources: [
               // your event source
               {
-                //url: 'api/fullcalendar-listar-horario-ocupado-json?idMedico=' + idMedico,  // use the 'url' property
-                //color: 'yellow',    // an option!
-                //textColor: 'black'  // an option!
+                  url: 'api/fullcalendar-listar-horario-ocupado-json?idMedico=' + idMedico,  // use the 'url' property
+                  //color: 'yellow',    // an option!
+                  //textColor: 'black'  // an option!
               },
               {
                   url: 'api/fullcalendar-listar-horario-vago-json?idMedico=' + idMedico,  // use the 'url' property
-                  color: 'white',    // an option!
-                  textColor: 'black'  // an option!
+                  //color: 'white',    // an option!
+                  //textColor: 'black'  // an option!
               }
               
         ]
@@ -181,8 +200,9 @@ $(document).ready(function() {
     $('#medico').on('select2:select', function (event) {
         // Do something
         // alert(JSON.stringify(event.params.data, null, 4));
-        var idMedico = event.params.data.id;
+        idMedico = event.params.data.id;
         window.location.replace("exibir-calendario-vagas-agendamento-medico?idMedico=" + idMedico);
+        //('#calendar').fullCalendar( 'refetchEvents');
     });
     
     $('#medico').select2({
@@ -209,7 +229,7 @@ $(document).ready(function() {
         }
      });    
       
-    $('#paciente').select2({
+    $('#pacienteSelect2').select2({
         placeholder: "Selecione o paciente",
         language: "pt-BR",        
         theme: "bootstrap",
@@ -231,7 +251,15 @@ $(document).ready(function() {
                   };
                 },
         }
-     });       
+     });     
+    
+    $('#pacienteSelect2').on('select2:select', function (event) {
+        // Do something
+        // alert(JSON.stringify(event.params.data, null, 4));
+        idPaciente = event.params.data.id;
+        var nomePaciente = event.params.data.nome;
+        $('#pacienteMarcado').text(nomePaciente);
+    });
       
     // Datatable
     var table = $('#itemDataTable').DataTable( {
@@ -255,6 +283,79 @@ $(document).ready(function() {
     } ); 
 
 } );
+
+
+$( "#btnMarcarConsultaModal" ).click(function() {
+	    consultaMarcadaComSucesso = false;
+	    
+    	$.ajax({
+			url : "api/marcar-horario-ajax-json",
+			type : 'GET',
+			data : {
+				idAgendamento : idAgendamento,
+				idPaciente : idPaciente
+			},
+			beforeSend : function() {
+				//$("#resultado").html("ENVIANDO...");
+				//alert('antes de enviar a requicocao http');
+			}
+		}).done(function(msg) {
+			
+			afterMarcarHorario();
+/*
+			//$("#resultado").html(msg);
+			//alert('sucesso');
+			consultaMarcadaComSucesso = true;
+	        if (consultaMarcadaComSucesso) {
+	            //alert("marcar a consulta em ajax!");
+	            $('#tituloModal').text("Horario marcado com sucesso!");
+	            $('#btnMarcarConsultaModal').prop("disabled", true);
+	            $('#btnMarcarConsultaModal').hide();
+	            $('#divPacienteSelect2').hide();
+	            $('#pacienteMarcado').show();
+	            //window.location.replace("exibir-calendario-vagas-agendamento-medico?idMedico=" + idMedico);
+	        } else {
+	            alert('problema na hora de marcar a consulta!');
+	        }
+*/	        
+		}).fail(function(jqXHR, textStatus, msg) {
+			//alert(msg);
+			consultaMarcadaComSucesso = false;
+			//alert('fail');
+			alert('problema na hora de marcar a consulta!');
+		});
+
+		
+	
+	});
+
+
+
+	// $('#agendamentoEventModal').modal();
+	$("#agendamentoEventModal").on('hidden.bs.modal', function(e) {
+	    // window.location.replace("exibir-calendario-vagas-agendamento-medico?idMedico=" + idMedico);
+		beforeMarcarHorario();
+    });
+	
+	function beforeMarcarHorario(){
+        $('#tituloModal').text("Marcar horário");
+        $('#btnMarcarConsultaModal').prop("disabled", false);
+        $('#btnMarcarConsultaModal').show();
+        $('#pacienteSelect2').val('').trigger('change'); // Zerar o select
+        $('#divPacienteSelect2').show();
+        $('#pacienteMarcado').hide();		
+	}
+	
+    function afterMarcarHorario(){
+        $('#tituloModal').text("Horario marcado com sucesso!");
+        $('#btnMarcarConsultaModal').prop("disabled", true);
+        $('#btnMarcarConsultaModal').hide();
+        $('#divPacienteSelect2').hide();
+        $('#pacienteMarcado').show();
+        $('#calendar').fullCalendar( 'refetchEvents');
+    }
+	
+	
 </script> 
  
  
