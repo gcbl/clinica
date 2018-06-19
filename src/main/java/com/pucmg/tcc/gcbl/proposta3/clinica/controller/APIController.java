@@ -139,6 +139,19 @@ public class APIController extends BaseController {
         return agendamentoList;
     }      
     
+    @ResponseBody
+    @RequestMapping(value={"/marcar-horario-ajax-json"}, method = RequestMethod.GET)
+    public Agendamento marcarHorarioJson(@RequestParam( "idAgendamento" ) String idAgendamento,
+                                         @RequestParam(    "idPaciente" ) String idPaciente ){
+        Agendamento agendamento = agendamentoService.findOne(idAgendamento);
+        Paciente paciente = pacienteService.findOne(idPaciente);
+        
+        agendamento.setPaciente(paciente);
+        
+        agendamentoService.salvar(agendamento);
+        
+        return agendamento;
+    }      
     
     // -------------------------
 
