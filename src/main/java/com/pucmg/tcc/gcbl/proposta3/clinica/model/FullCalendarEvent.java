@@ -101,7 +101,7 @@ public class FullCalendarEvent {
     }
     
     public String getTextColor(){
-        return isVago() ? "black" : "white";
+        return isVago() ? "white" : "black";
     }    
 
     public String getId(){
