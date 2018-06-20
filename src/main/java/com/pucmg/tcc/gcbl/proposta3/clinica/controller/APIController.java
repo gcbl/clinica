@@ -140,9 +140,10 @@ public class APIController extends BaseController {
     }      
     
     @ResponseBody
-    @RequestMapping(value={"/marcar-horario-ajax-json"}, method = RequestMethod.GET)
+    @RequestMapping(value={"/marcar-horario-ajax-json"}, method = RequestMethod.POST)
     public Agendamento marcarHorarioJson(@RequestParam( "idAgendamento" ) String idAgendamento,
                                          @RequestParam(    "idPaciente" ) String idPaciente ){
+        // TODO: Tratar excecao de parametros vazios
         Agendamento agendamento = agendamentoService.findOne(idAgendamento);
         Paciente paciente = pacienteService.findOne(idPaciente);
         
@@ -153,6 +154,18 @@ public class APIController extends BaseController {
         return agendamento;
     }      
     
+    @ResponseBody
+    @RequestMapping(value={"/desmarcar-horario-ajax-json"}, method = RequestMethod.POST)
+    public Agendamento desmarcarHorarioJson(@RequestParam( "idAgendamento" ) String idAgendamento,
+                                            @RequestParam(    "idPaciente" ) String idPaciente ){
+        // TODO: Tratar excecao de parametros vazios
+        Agendamento agendamento = agendamentoService.findOne(idAgendamento);
+        Paciente paciente = pacienteService.findOne(idPaciente);
+        
+        agendamentoService.liberarAgendamento(agendamento, paciente);
+
+        return agendamento;
+    }      
     // -------------------------
 
     @ResponseBody
