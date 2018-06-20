@@ -5,7 +5,7 @@
  
  
         <div class="body">
-            <h1>Pagina de abertura</h1>
+            <h1 class="animated fadeInLeft">Bem vindo</h1>
  
             <p>${dataHora}.</p>
         </div>

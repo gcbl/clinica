@@ -26,6 +26,6 @@
     </div>
  --%>
      <tiles:insertAttribute name="rodapePublico" />
-	 <script src="resources/js/funcoes.js"></script> 
+
 </body>
 </html>

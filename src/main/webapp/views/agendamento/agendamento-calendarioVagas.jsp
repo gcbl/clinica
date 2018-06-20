@@ -98,7 +98,8 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
          <div class="modal-header">
-             <h5 class="modal-title"><b><span id="tituloModal">Marcar horário</span></b></h5>
+             <h5 id="tituloModal"        class="modal-title"><b>Marcar horário</b></h5>
+             <h5 id="tituloModalSucesso" class="modal-title text-success" ><b><i class="fas fa-check"></i> Horário marcado com sucesso!</b></h5>
              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                <span aria-hidden="true">&times;</span>
              </button>
@@ -141,6 +142,8 @@ var idMedico;
 var idAgendamento;
 var idPaciente;
 $(document).ready(function() {
+	beforeMarcarHorario();
+	
 	$('#pacienteMarcado').hide();
 	
     idMedico = '${medico.id}';
@@ -340,7 +343,8 @@ $( "#btnMarcarHorarioModal" ).click(function() {
     });
 	
 	function beforeMarcarHorario(){
-        $('#tituloModal').text("Marcar horário");
+        $('#tituloModalSucesso').hide();
+        $('#tituloModal').show();
         $('#btnMarcarHorarioModal').prop("disabled", false);
         $('#btnMarcarHorarioModal').show();
         $('#pacienteSelect2').val('').trigger('change'); // Zerar o select
@@ -349,7 +353,9 @@ $( "#btnMarcarHorarioModal" ).click(function() {
 	}
 	
     function afterMarcarHorario(){
-        $('#tituloModal').text("Horario marcado com sucesso!");
+        $('#tituloModal').hide();
+        $('#tituloModalSucesso').addClass('animated bounceIn');
+        $('#tituloModalSucesso').show();
         $('#btnMarcarHorarioModal').prop("disabled", true);
         $('#btnMarcarHorarioModal').hide();
         $('#divPacienteSelect2').hide();
