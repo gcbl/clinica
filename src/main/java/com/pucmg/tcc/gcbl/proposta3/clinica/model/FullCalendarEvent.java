@@ -87,6 +87,10 @@ public class FullCalendarEvent {
         return paciente;
     }
     
+    public String getidPaciente(){
+        return isVago() ? "" : agendamento.getPaciente().getId();
+    }    
+    
     public String getColor(){
         String cor = COR_HORARIO_VAGO;
         if(agendamento.getMedico() != null){
