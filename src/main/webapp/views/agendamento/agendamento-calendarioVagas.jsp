@@ -115,9 +115,9 @@
              </div>
          </div>
          <div class="modal-footer">
-             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
              <button type="button" class="btn btn-primary" id="btnMarcarHorarioModal">Marcar horário</button>
              <button type="button" class="btn btn-warning" id="btnDesmarcarHorarioModal">Desmarcar horário</button>
+             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>             
          </div>
     </div>
   </div>
@@ -164,11 +164,8 @@ $(document).ready(function() {
             $('#modalBodyMedico').text(event.medico);
             $('#modalBodyhorarioCompleto').text(event.horarioCompleto);
             
-            if(event.vago){
-            	alert('horario vago');
-            }else{
-            	alert('horario ocupado');
-            }
+            
+            configuraModal(event);
             
             $('#agendamentoEventModal').modal();
         },        
@@ -176,7 +173,7 @@ $(document).ready(function() {
         header: {
             left: 'prev,next today',
             center: 'title',
-            right: 'month, agendaDay, listMonth, listWeek, basicWeek'
+            right: 'month, basicWeek, agendaDay, listWeek'
         },
         themeSystem: 'bootstrap4', 
         aspectRatio: 1,
@@ -342,11 +339,30 @@ $( "#btnMarcarHorarioModal" ).click(function() {
 		beforeMarcarHorario();
     });
 	
+	function configuraModal(event){
+		
+		$('#pacienteMarcado').text(event.paciente);
+		
+		if(event.vago){
+			$('#btnMarcarHorarioModal').prop("disabled", false);
+			$('#btnDesmarcarHorarioModal').prop("disabled", true);
+			
+			$('#divPacienteSelect2').show();
+	        $('#pacienteMarcado').hide();
+		}else{
+            $('#btnMarcarHorarioModal').prop("disabled", true);
+            $('#btnDesmarcarHorarioModal').prop("disabled", false);
+            
+            $('#divPacienteSelect2').hide();
+            $('#pacienteMarcado').show();
+		}
+	}
+	
 	function beforeMarcarHorario(){
         $('#tituloModalSucesso').hide();
         $('#tituloModal').show();
         $('#btnMarcarHorarioModal').prop("disabled", false);
-        $('#btnMarcarHorarioModal').show();
+        // $('#btnMarcarHorarioModal').show();
         $('#pacienteSelect2').val('').trigger('change'); // Zerar o select
         $('#divPacienteSelect2').show();
         $('#pacienteMarcado').hide();		
@@ -356,8 +372,10 @@ $( "#btnMarcarHorarioModal" ).click(function() {
         $('#tituloModal').hide();
         $('#tituloModalSucesso').addClass('animated bounceIn');
         $('#tituloModalSucesso').show();
+
         $('#btnMarcarHorarioModal').prop("disabled", true);
-        $('#btnMarcarHorarioModal').hide();
+        //$('#btnMarcarHorarioModal').hide();
+
         $('#divPacienteSelect2').hide();
         $('#pacienteMarcado').show();
         $('#calendar').fullCalendar( 'refetchEvents');
