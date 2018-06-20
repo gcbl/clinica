@@ -7,8 +7,11 @@ import org.springframework.stereotype.Service;
 
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Agendamento;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.AgendamentoRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.util.StringUtils;
+
+import lombok.NonNull;
 
 @Service
 public class AgendamentoService{
@@ -50,7 +53,17 @@ public class AgendamentoService{
         return agendamentoList;
     }
 
+    public void preencherAgendamento(@NonNull Agendamento agendamento, @NonNull Paciente paciente) {
+        // TODO: Fazer verificação de NULL 
+        agendamento.setPaciente(paciente);
+        salvar(agendamento);
+    }
     
+    public void liberarAgendamento(@NonNull Agendamento agendamento, Paciente paciente) {
+        // TODO: Fazer verificacoes se o paciente liberado é o que estava marcado no agendamento
+        agendamento.setPaciente(null);
+        salvar(agendamento);
+    }    
     
     //-------------
     
