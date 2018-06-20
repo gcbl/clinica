@@ -106,9 +106,11 @@
          </div>
          <div class="modal-body">
          
-             <div class="text-danger"><b>Agendamento:</b> <div id="modalBodyAgendamento"></div></div>
+             <!-- <div class="text-danger"><b>Agendamento:</b> <div id="modalBodyAgendamento"></div></div> -->
              <div><b>Médico:</b> <div id="modalBodyMedico"></div></div>
+             <br>
              <div><b>Horário:</b> <div id="modalBodyhorarioCompleto"></div></div>
+             <br>
              <div><b>Paciente:</b>
                     <div id="divPacienteSelect2"><select required id="pacienteSelect2" style="width: 100%"></select></div>
                     <div id="pacienteMarcado"></div>
@@ -143,8 +145,6 @@ var idAgendamento;
 var idPaciente;
 $(document).ready(function() {
 	beforeMarcarHorario();
-	
-	$('#pacienteMarcado').hide();
 	
     idMedico = '${medico.id}';
     
