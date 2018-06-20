@@ -19,3 +19,18 @@ function mascaraCpf(valor) {
 
 // --------------------------------------------------------------------
 
+function habilitaBotao(idBotao, classe){
+	$('#' + idBotao).prop("disabled", false);
+	setButtonClass(idBotao, classe)
+}
+
+function desabilitaBotao(idBotao, classe){
+    $('#' + idBotao).prop("disabled", true);
+    setButtonClass(idBotao, classe)
+}
+
+function setButtonClass(idBotao, classe){    
+    $('#' + idBotao).removeClass();
+    $('#' + idBotao).addClass('btn');
+    $('#' + idBotao).addClass(classe);
+}
