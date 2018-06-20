@@ -110,7 +110,7 @@
              <div><b>Médico:</b> <div id="modalBodyMedico"></div></div>
              <div><b>Horário:</b> <div id="modalBodyhorarioCompleto"></div></div>
              <div><b>Paciente:</b>
-                    <div id="divPacienteSelect2"><select path="paciente" id="pacienteSelect2" style="width: 100%"></select></div>
+                    <div id="divPacienteSelect2"><select required id="pacienteSelect2" style="width: 100%"></select></div>
                     <div id="pacienteMarcado"></div>
              </div>
          </div>
@@ -267,6 +267,8 @@ $(document).ready(function() {
         idPaciente = event.params.data.id;
         var nomePaciente = event.params.data.nome;
         $('#pacienteMarcado').text(nomePaciente);
+
+        habilitaBotao('btnMarcarHorarioModal', 'btn-primary')
     });
       
     // Datatable
@@ -308,12 +310,12 @@ $(document).ready(function() {
 				// $("#resultado").html("ENVIANDO...");
 				// alert('antes de enviar a requicocao http');
 				// $("#btnMarcarHorarioModal").text("Marcando horário...");
-				$('#btnMarcarHorarioModal').prop("disabled", true);
+				desabilitaBotao('btnMarcarHorarioModal', 'btn-light');
 			}
 		}).done(function(msg) {
 			afterMarcarHorario();
 		}).fail(function(jqXHR, textStatus, msg) {
-			$('#btnMarcarHorarioModal').prop("disabled", false); 
+			habilitaBotao('btnMarcarHorarioModal', 'btn-primary');
 			alert('problema na hora de marcar a consulta!');
  		});
 	 });
@@ -354,20 +356,39 @@ $(document).ready(function() {
 		$('#pacienteMarcado').text(event.paciente);
 		
 		if(event.vago){
-			$('#btnMarcarHorarioModal').prop("disabled", false);
-			$('#btnDesmarcarHorarioModal').prop("disabled", true);
+			desabilitaBotao('btnMarcarHorarioModal','btn-light')
+			desabilitaBotao('btnDesmarcarHorarioModal','btn-light')
 			
 			$('#divPacienteSelect2').show();
 	        $('#pacienteMarcado').hide();
 		}else{
-            $('#btnMarcarHorarioModal').prop("disabled", true);
-            $('#btnDesmarcarHorarioModal').prop("disabled", false);
+            desabilitaBotao('btnMarcarHorarioModal','btn-light')
+            habilitaBotao('btnDesmarcarHorarioModal','btn-warning')
             
             $('#divPacienteSelect2').hide();
             $('#pacienteMarcado').show();
 		}
 	}
 
+	/*
+	function habilitaBotao(idBotao, classe){
+		$('#' + idBotao).prop("disabled", false);
+		setButtonClass(idBotao, classe)
+	}
+	
+    function desabilitaBotao(idBotao, classe){
+        $('#' + idBotao).prop("disabled", true);
+        setButtonClass(idBotao, classe)
+    }
+	
+    function setButtonClass(idBotao, classe){    
+        $('#' + idBotao).removeClass();
+        $('#' + idBotao).addClass('btn');
+        $('#' + idBotao).addClass(classe);
+    }
+    */
+
+    
     /**
      *
      */
@@ -376,8 +397,8 @@ $(document).ready(function() {
         $('#tituloModalDesmarcarSucesso').hide();
         $('#tituloModal').show();
         
-        $('#btnMarcarHorarioModal').prop("disabled", false);
-        $('#btnDesmarcarHorarioModal').prop("disabled", true);
+        desabilitaBotao('btnMarcarHorarioModal', 'btn-light');
+        desabilitaBotao('btnDesmarcarHorarioModal', 'btn-light');
         
         $('#pacienteSelect2').val('').trigger('change'); // Zerar o select
         $('#divPacienteSelect2').show();
@@ -395,8 +416,10 @@ $(document).ready(function() {
         $('#tituloModalMarcarSucesso').addClass('animated bounceIn');
         $('#tituloModalMarcarSucesso').show();
         
-        $('#btnMarcarHorarioModal').prop("disabled", true);
-        $('#btnDesmarcarHorarioModal').prop("disabled", false);
+        
+        desabilitaBotao('btnMarcarHorarioModal', 'btn-light');
+        habilitaBotao('btnDesmarcarHorarioModal', 'btn-warning');
+        
         
         $('#divPacienteSelect2').hide();
         $('#pacienteMarcado').show();
@@ -418,6 +441,9 @@ $(document).ready(function() {
         
         $('#btnMarcarHorarioModal').prop("disabled", false);
         $('#btnDesmarcarHorarioModal').prop("disabled", true);
+        
+        desabilitaBotao('btnMarcarHorarioModal', 'btn-light');
+        desabilitaBotao('btnDesmarcarHorarioModal', 'btn-light');        
         
         $('#calendar').fullCalendar( 'refetchEvents');
     }    
