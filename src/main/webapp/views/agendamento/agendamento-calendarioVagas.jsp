@@ -88,7 +88,6 @@
                      -->
             </table>
         </div>    
-                
 <hr> 
 <!-- ########################################################################### -->
         </div>
@@ -98,15 +97,16 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
          <div class="modal-header">
-             <h5 id="tituloModal"        class="modal-title"><b>Marcar horário</b></h5>
-             <h5 id="tituloModalSucesso" class="modal-title text-success" ><b><i class="fas fa-check"></i> Horário marcado com sucesso!</b></h5>
+             <h5 id="tituloModal"        class="modal-title"><b>Agendamento</b></h5>
+             <h5 id="tituloModalMarcarSucesso" class="modal-title text-primary" ><b><i class="fas fa-check"></i> Horário <u>marcado</u> com sucesso!</b></h5>
+             <h5 id="tituloModalDesmarcarSucesso" class="modal-title text-warning" ><b><i class="fas fa-check"></i> Horário <u>desmarcado</u> com sucesso!</b></h5>
              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                <span aria-hidden="true">&times;</span>
              </button>
          </div>
          <div class="modal-body">
          
-             <div><b>Agendamento:</b> <div id="modalBodyAgendamento"></div></div>
+             <div class="text-danger"><b>Agendamento:</b> <div id="modalBodyAgendamento"></div></div>
              <div><b>Médico:</b> <div id="modalBodyMedico"></div></div>
              <div><b>Horário:</b> <div id="modalBodyhorarioCompleto"></div></div>
              <div><b>Paciente:</b>
@@ -147,23 +147,28 @@ $(document).ready(function() {
 	$('#pacienteMarcado').hide();
 	
     idMedico = '${medico.id}';
+    
     $('#calendar').fullCalendar({
-    	eventAfterAllRender: function( view ) {
-    		//beforeMarcarHorario();
-    	},
-    	// ---------------------------------------------------------------
-    	// Modal:
+        eventAfterAllRender: function( view ) {
+            //beforeMarcarHorario();
+        },
+        // ---------------------------------------------------------------
+        // Modal:
         eventClick:  function(event, jsEvent, view) {
             //alert('Event: ' + event.title);
             //alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
             //alert('View: ' + view.name);
             //alert(event.color);
             //$('#tituloModal').html(event.medico);
+
+            //var myJSON = JSON.stringify(event); 
+            //alert(myJSON);
+
             idAgendamento = event.id;
+            idPaciente = event.idPaciente;
             $('#modalBodyAgendamento').text(event.id);
             $('#modalBodyMedico').text(event.medico);
             $('#modalBodyhorarioCompleto').text(event.horarioCompleto);
-            
             
             configuraModal(event);
             
@@ -195,7 +200,8 @@ $(document).ready(function() {
               
         ]
        
-      })
+      })    
+
 
     // Select2
     $('#medico').on('select2:select', function (event) {
@@ -287,60 +293,64 @@ $(document).ready(function() {
 } );
 
 
-$( "#btnMarcarHorarioModal" ).click(function() {
-	    consultaMarcadaComSucesso = false;
-	    
+    /**
+     * Marcando consulta
+     */
+     $( "#btnMarcarHorarioModal" ).click(function() {
     	$.ajax({
 			url : "api/marcar-horario-ajax-json",
-			type : 'GET',
+			type : 'POST',
 			data : {
 				idAgendamento : idAgendamento,
 				idPaciente : idPaciente
 			},
 			beforeSend : function() {
-				//$("#resultado").html("ENVIANDO...");
-				//alert('antes de enviar a requicocao http');
+				// $("#resultado").html("ENVIANDO...");
+				// alert('antes de enviar a requicocao http');
+				// $("#btnMarcarHorarioModal").text("Marcando horário...");
+				$('#btnMarcarHorarioModal').prop("disabled", true);
 			}
 		}).done(function(msg) {
-			
 			afterMarcarHorario();
-/*
-			//$("#resultado").html(msg);
-			//alert('sucesso');
-			consultaMarcadaComSucesso = true;
-	        if (consultaMarcadaComSucesso) {
-	            //alert("marcar a consulta em ajax!");
-	            $('#tituloModal').text("Horario marcado com sucesso!");
-	            $('#btnMarcarHorarioModal').prop("disabled", true);
-	            $('#btnMarcarHorarioModal').hide();
-	            $('#divPacienteSelect2').hide();
-	            $('#pacienteMarcado').show();
-	            //window.location.replace("exibir-calendario-vagas-agendamento-medico?idMedico=" + idMedico);
-	        } else {
-	            alert('problema na hora de marcar a consulta!');
-	        }
-*/	        
 		}).fail(function(jqXHR, textStatus, msg) {
-			//alert(msg);
-			consultaMarcadaComSucesso = false;
-			//alert('fail');
+			$('#btnMarcarHorarioModal').prop("disabled", false); 
 			alert('problema na hora de marcar a consulta!');
-		});
+ 		});
+	 });
 
-		
-	
-	});
+    /**
+     * Desmarcando consulta
+     */
+     $( "#btnDesmarcarHorarioModal" ).click(function() {
+         $.ajax({
+             url : "api/desmarcar-horario-ajax-json",
+             type : 'POST',
+             data : {
+                 idAgendamento : idAgendamento,
+                 idPaciente : idPaciente
+             },
+             beforeSend : function() {
+                 //$("#btnMarcarHorarioModal").text("Desmarcando horário...");
+                 //alert('antes de enviar a requicocao http');
+             }
+         }).done(function(msg) {
+             afterDesmarcarHorario();
+         }).fail(function(jqXHR, textStatus, msg) {
+             //alert('fail');
+             alert('problema na hora de desmarcar a consulta!');
+         });
+     });
+   
 
-
-
-	// $('#agendamentoEventModal').modal();
 	$("#agendamentoEventModal").on('hidden.bs.modal', function(e) {
 	    // window.location.replace("exibir-calendario-vagas-agendamento-medico?idMedico=" + idMedico);
 		beforeMarcarHorario();
     });
-	
+
+	/**
+	 *
+	 */
 	function configuraModal(event){
-		
 		$('#pacienteMarcado').text(event.paciente);
 		
 		if(event.vago){
@@ -357,29 +367,60 @@ $( "#btnMarcarHorarioModal" ).click(function() {
             $('#pacienteMarcado').show();
 		}
 	}
-	
+
+    /**
+     *
+     */
 	function beforeMarcarHorario(){
-        $('#tituloModalSucesso').hide();
+        $('#tituloModalMarcarSucesso').hide();
+        $('#tituloModalDesmarcarSucesso').hide();
         $('#tituloModal').show();
+        
         $('#btnMarcarHorarioModal').prop("disabled", false);
-        // $('#btnMarcarHorarioModal').show();
+        $('#btnDesmarcarHorarioModal').prop("disabled", true);
+        
         $('#pacienteSelect2').val('').trigger('change'); // Zerar o select
         $('#divPacienteSelect2').show();
+        
         $('#pacienteMarcado').hide();		
 	}
-	
+
+    /**
+     *
+     */
     function afterMarcarHorario(){
         $('#tituloModal').hide();
-        $('#tituloModalSucesso').addClass('animated bounceIn');
-        $('#tituloModalSucesso').show();
+        $('#tituloModalDesmarcarSucesso').hide();
 
+        $('#tituloModalMarcarSucesso').addClass('animated bounceIn');
+        $('#tituloModalMarcarSucesso').show();
+        
         $('#btnMarcarHorarioModal').prop("disabled", true);
-        //$('#btnMarcarHorarioModal').hide();
-
+        $('#btnDesmarcarHorarioModal').prop("disabled", false);
+        
         $('#divPacienteSelect2').hide();
         $('#pacienteMarcado').show();
+        
         $('#calendar').fullCalendar( 'refetchEvents');
     }
+    
+    function afterDesmarcarHorario(){
+        $('#tituloModal').hide();
+        $('#tituloModalMarcarSucesso').hide();
+        
+        $('#tituloModalDesmarcarSucesso').addClass('animated bounceIn');
+        $('#tituloModalDesmarcarSucesso').show();
+        
+        $('#pacienteMarcado').hide();
+        $('#pacienteSelect2').val('').trigger('change'); // Zerar o select
+        $('#divPacienteSelect2').show();
+        
+        
+        $('#btnMarcarHorarioModal').prop("disabled", false);
+        $('#btnDesmarcarHorarioModal').prop("disabled", true);
+        
+        $('#calendar').fullCalendar( 'refetchEvents');
+    }    
 	
 	
 </script> 
