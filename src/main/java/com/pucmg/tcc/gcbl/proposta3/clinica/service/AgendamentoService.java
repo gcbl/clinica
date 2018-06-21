@@ -54,6 +54,10 @@ public class AgendamentoService{
         // TODO: Producao: Limitar a distancia maxima entre uma data e outra
         return repository.findByMedicoIsNotNullAndPacienteIsNotNull();
     }
+
+    public List<Agendamento> getHorarioOcupadoList(Medico medico, LocalDate dataInicio, LocalDate datafim) {
+        return repository.findByMedicoAndPacienteIsNotNullAndDataBetween(medico, dataInicio, datafim);
+    }    
     
     
     public List<Agendamento> findByLikeDataHoraInicioHoraFim(Medico medico, String queryTerm) {
