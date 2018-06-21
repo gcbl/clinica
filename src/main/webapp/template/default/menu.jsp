@@ -45,14 +45,15 @@
             <i class="far fa-calendar-alt"></i> Agenda
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-          <a class="dropdown-item" href="incluir-consulta-agendamento">Marcar Consulta</a>
-          <a class="dropdown-item" href="incluir-agendamento">Agendar "Encaixe"</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="exibir-calendario-agendamento">Exibir Marcações Calendario</a>
           <a class="dropdown-item" href="exibir-calendario-vagas-agendamento">Exibir Vagas Calendario</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="incluir-agendaForm">Criar agenda</a>
           <a class="dropdown-item" href="listar-agendamento">Listar Agendamento</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="incluir-agendamento">Agendar "Encaixe"</a>
+          <a class="dropdown-item" href="incluir-agendaForm">Criar agenda</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="exibir-calendario-agendamento"><i class="fas fa-flask"></i> Exibir Marcações Calendario</a>
+          <a class="dropdown-item" href="exibir-calendario-vagas-agendamento"><i class="fas fa-flask"></i> Exibir Vagas Calendario</a>
+          <a class="dropdown-item" href="incluir-consulta-agendamento"><i class="fas fa-flask"></i> Marcar Consulta</a>
         </div>
       </li>        
       <li class="nav-item dropdown">
