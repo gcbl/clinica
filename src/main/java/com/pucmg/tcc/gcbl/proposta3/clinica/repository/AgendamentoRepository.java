@@ -36,14 +36,21 @@ public interface AgendamentoRepository extends JpaRepository<Agendamento, String
     
     // Vagas disponiveis para o médico
     public List<Agendamento> findByMedicoAndPacienteIsNull(Medico medico);
+    public List<Agendamento> findByMedicoAndPacienteIsNullAndDataBetween(Medico medico, LocalDate dataInicio, LocalDate datafim);
     
     // Vagas preenchidas para o medico
     public List<Agendamento> findByMedicoAndPacienteIsNotNull(Medico medico);
+    public List<Agendamento> findByMedicoAndPacienteIsNotNullAndDataBetween(Medico medico, LocalDate dataInicio, LocalDate datafim);
 
     // Todas as vagas disponiveis de qualquer medico
     public List<Agendamento> findByPacienteIsNull();
+    public List<Agendamento> findByPacienteIsNullAndDataBetween(LocalDate dataInicio, LocalDate datafim);
 
     // Todas as vagas preenchidas 
     public List<Agendamento> findByMedicoIsNotNullAndPacienteIsNotNull();
+
+    // Todas as vagas preenchidas 
+    public List<Agendamento> findByMedicoIsNotNullAndPacienteIsNotNullAndDataBetween(LocalDate dataInicio, LocalDate datafim);
+    
     
 }
