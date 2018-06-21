@@ -85,14 +85,17 @@ public class APIController extends BaseController {
     public List<FullCalendarEvent> listarHorariosOcupadosFullCalendarJson(@RequestParam( Constantes.PARAMETER_START_DATE ) String start, 
                                                               @RequestParam( Constantes.PARAMETER_END_DATE   ) String end,
                                                               @RequestParam( "idMedico"                      ) String idMedico){
-        
+        // TODO: Tratar erro de data invalida parseDate
+        LocalDate dataInicio = LocalDate.parse(start);
+        LocalDate dataFim = LocalDate.parse(end);
+
         
         Medico medico = medicoService.findOne(idMedico);
         List<Agendamento> agendamentoList;
         if(medico == null){
-            agendamentoList = agendamentoService.getHorarioOcupadoList();
+            agendamentoList = agendamentoService.getHorarioOcupadoList(dataInicio, dataFim);
         }else{
-            agendamentoList = agendamentoService.getHorarioOcupadoMedicoList(medico);    
+            agendamentoList = agendamentoService.getHorarioOcupadoList(medico, dataInicio, dataFim);
         }
         
         List<FullCalendarEvent> eventList = FullCalendarEvent.toFullCalendarEventList(agendamentoList);
