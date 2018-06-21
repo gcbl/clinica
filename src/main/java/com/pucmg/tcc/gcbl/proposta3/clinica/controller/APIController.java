@@ -1,5 +1,6 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -104,12 +105,17 @@ public class APIController extends BaseController {
     public List<FullCalendarEvent> listarHorariosVagosFullCalendarJson(@RequestParam( Constantes.PARAMETER_START_DATE ) String start, 
                                                            @RequestParam( Constantes.PARAMETER_END_DATE   ) String end,
                                                            @RequestParam( "idMedico"                      ) String idMedico ){
+
+        // TODO: Tratar erro de data invalida parseDate
+        LocalDate dataInicio = LocalDate.parse(start);
+        LocalDate dataFim = LocalDate.parse(end);
+
         Medico medico = medicoService.findOne(idMedico);
         List<Agendamento> agendamentoList;
         if(medico == null){
-            agendamentoList = agendamentoService.getHorarioDisponivelList();
+            agendamentoList = agendamentoService.getHorarioDisponivelList(dataInicio, dataFim);
         }else{
-            agendamentoList = agendamentoService.getHorarioDisponivelMedicoList(medico);    
+            agendamentoList = agendamentoService.getHorarioDisponivelMedicoList(medico, dataInicio, dataFim);
         }
         
         List<FullCalendarEvent> eventList = FullCalendarEvent.toFullCalendarEventList(agendamentoList);
