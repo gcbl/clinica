@@ -13,9 +13,11 @@
  
  
         <div class="body">
-        
-        <hr>
-            <h1>Marcar consulta <div id="nomeMedico">${medico.nome}</div> <div id="idMedico">${medico.id}</div></h1>
+
+            <h1>Marcar consulta 
+                <c:if test="${not empty medico}">
+                    <span id="nomeMedico">com ${medico.nome}</span>
+                </c:if> </h1>
             <hr>
             <!-- Select input-->
             <div class="form-group">
@@ -43,9 +45,10 @@
                <div id="calendar"></div>
             <hr>
         
-            <h2 class="text-capitalize">Listar ${MODEL}</h2>
- 
 <!-- ########################################################################### -->
+<%--
+         <h2 class="text-capitalize">Listar ${MODEL}</h2>
+         
          <div class="table-responsive table-sm">
             <table id="itemDataTable" class="table table-striped table-bordered">
                     <thead>
@@ -87,8 +90,10 @@
                     </tfoot>
                      -->
             </table>
-        </div>    
+        </div>
 <hr> 
+ --%>            
+
 <!-- ########################################################################### -->
         </div>
  
@@ -155,15 +160,6 @@ $(document).ready(function() {
         // ---------------------------------------------------------------
         // Modal:
         eventClick:  function(event, jsEvent, view) {
-            //alert('Event: ' + event.title);
-            //alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-            //alert('View: ' + view.name);
-            //alert(event.color);
-            //$('#tituloModal').html(event.medico);
-
-            //var myJSON = JSON.stringify(event); 
-            //alert(myJSON);
-
             idAgendamento = event.id;
             idPaciente = event.idPaciente;
             $('#modalBodyAgendamento').text(event.id);
@@ -178,11 +174,12 @@ $(document).ready(function() {
         header: {
             left: 'prev,next today',
             center: 'title',
-            right: 'month, basicWeek, agendaDay, listWeek'
+            right: 'basicWeek, agendaDay, listWeek, month'
         },
+        defaultView: 'basicWeek',
         themeSystem: 'bootstrap4', 
-        aspectRatio: 1,
-        height: 650,
+        //aspectRatio: 1,
+        //height: 650,
         eventLimit: true, // allow "more" link when too many events
         // put your options and callbacks here
         eventSources: [
