@@ -1,5 +1,6 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +27,20 @@ public class AgendamentoService{
     public List<Agendamento> getHorarioDisponivelList() {
         return repository.findByPacienteIsNull();
     }    
+
+    public List<Agendamento> getHorarioDisponivelList(LocalDate dataInicio, LocalDate datafim) {
+        // TODO: Producao: Limitar a distancia maxima entre uma data e outra
+        return repository.findByPacienteIsNullAndDataBetween(dataInicio, datafim);
+    }    
+    
     
     public List<Agendamento> getHorarioDisponivelMedicoList(Medico medico) {
         return repository.findByMedicoAndPacienteIsNull(medico);
     }
+    
+    public List<Agendamento> getHorarioDisponivelMedicoList(Medico medico, LocalDate dataInicio, LocalDate datafim) {
+        return repository.findByMedicoAndPacienteIsNullAndDataBetween(medico, dataInicio, datafim);
+    }    
 
     public List<Agendamento> getHorarioOcupadoMedicoList(Medico medico) {
         return repository.findByMedicoAndPacienteIsNotNull(medico);
@@ -39,6 +50,12 @@ public class AgendamentoService{
         return repository.findByMedicoIsNotNullAndPacienteIsNotNull();
     }
 
+    public List<Agendamento> getHorarioOcupadoList(LocalDate dataInicio, LocalDate datafim) {
+        // TODO: Producao: Limitar a distancia maxima entre uma data e outra
+        return repository.findByMedicoIsNotNullAndPacienteIsNotNull();
+    }
+    
+    
     public List<Agendamento> findByLikeDataHoraInicioHoraFim(Medico medico, String queryTerm) {
         queryTerm = StringUtils.removerAcentos(queryTerm);
         queryTerm = queryTerm.toUpperCase();
