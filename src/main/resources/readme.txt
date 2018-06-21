@@ -33,3 +33,6 @@ https://www.web2cal.com/
 
 https://www.mkyong.com/spring-mvc/spring-mvc-controllerclassnamehandlermapping-example/
 https://docs.spring.io/spring/docs/3.2.18.RELEASE/javadoc-api/org/springframework/web/servlet/mvc/support/ControllerClassNameHandlerMapping.html
+
+Template de agenda:
+https://bootsnipp.com/snippets/VgzeR
