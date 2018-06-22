@@ -231,9 +231,13 @@ $(document).ready(function() {
                     results: resultsData
                   };
                 },
+            //success: good_response,
+            error: function (xhr,status) {
+            	alert('HTTP ' + xhr.status + ' Error Encountered: ' + xhr.statusText);
+            }
         }
      });    
-      
+
     $('#pacienteSelect2').select2({
         placeholder: "Selecione o paciente",
         language: "pt-BR",        
