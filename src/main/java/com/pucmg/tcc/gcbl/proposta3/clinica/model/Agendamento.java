@@ -3,6 +3,7 @@ package com.pucmg.tcc.gcbl.proposta3.clinica.model;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,7 +25,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "SC_AGENDAMENTO")
-public class Agendamento  extends BaseEntity {
+public class Agendamento extends BaseEntity implements Comparable<Agendamento>{
 
 	@JsonIgnore
     @Column(name = "DT_AGENDAMENTO")
@@ -78,6 +79,17 @@ public class Agendamento  extends BaseEntity {
         //String horarioCompletoInicioStr = localDate.format(formatterInicio);
         
         return dataStr + " de " + localTimeInicio +  " às " + localTimeFim;
+    }
+
+
+    @Override
+    public int compareTo(Agendamento o) {
+        return Comparator.comparing(Agendamento::getData)
+                .thenComparing(Agendamento::getHoraInicio)
+                .thenComparing(Agendamento::getHoraFim)
+                .thenComparing(Agendamento::getMedico)                
+                .thenComparing(Agendamento::getPaciente)
+                .compare(this, o);
     }    
     
     
