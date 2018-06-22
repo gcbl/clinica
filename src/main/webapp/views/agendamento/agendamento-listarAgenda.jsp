@@ -11,43 +11,38 @@
 <tiles:insertDefinition name="defaultTemplate">
     <tiles:putAttribute name="body">
  
-    <c:out value="${pageContext.request.locale.language}"/>  
- 
         <div class="body">
-            <h2 class="text-capitalize">Listar ${MODEL}</h2>
+            <h2 class="text-capitalize">Agenda [parametros]</h2>
 <!-- ########################################################################### --> 
 <hr>
-    <c:forEach items="${itemList}" var="item">
+    <c:forEach items="${itemList}" var="item" varStatus="contador"> 
         <div class="row row-striped">
             <div class="col-2 text-right">
                 <h1 class="display-4"><span class="badge badge-secondary"><tags:localDate date="${item.data}" pattern="dd"/></span></h1>
                 <h4><tags:localDate date="${item.data}" pattern="MMM/YY"/></h4>
             </div>
-            <div class="col-10">
-                <h3 class="text-capitalize"><strong>${item.paciente.nome} </strong></h3>
+            <div class="col-9">
+                <h3 class="text-capitalize"> <strong>${item.paciente.nome} </strong></h3>
                 <ul class="list-inline">
                     <li class="list-inline-item"><i class="far fa-calendar"></i> <tags:localDate date="${item.data}" pattern="EEEE"/></li>
-                    <li class="list-inline-item"><i class="far fa-clock"></i> das ${item.horaInicio} até ${item.horaFim} </li>
+                    <li class="list-inline-item"><i class="far fa-clock"></i> das <b>${item.horaInicio}</b> até <b>${item.horaFim}</b> </li>
                     <!-- <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> Cafe</li> -->
                 </ul>
                 <ul class="list-inline">
-                    <li class="list-inline-item"><h5><i class="fas fa-user-md"></i> ${item.medico.nome}</h5></li>
+                    <li class="list-inline-item"><h5><i class="fas fa-user-md"></i> Dr(a). ${item.medico.nome}</h5></li>
                 </ul>
                 <!-- <p><i class="fas fa-user-md"></i> ${item.medico.nome} </p> -->
                 <!--  <h5 class="text-capitalize"><strong><i class="fas fa-user-md"></i> ${item.medico.nome} </strong></h5> -->
             </div>
+            <div class="col-1 text-right">
+                <span class="badge badge-pill badge-secondary">${contador.count}&ordm;</span>
+            </div>            
         </div>
     </c:forEach>     
 <hr>
 <!-- ########################################################################### -->
-<hr>
-        <div class="">
-            <c:forEach items="${itemList}" var="item">
-                    ${item}
-            </c:forEach>
-        </div>    
-                
-<hr> 
+
+
 <!-- ########################################################################### -->
         </div>
  
