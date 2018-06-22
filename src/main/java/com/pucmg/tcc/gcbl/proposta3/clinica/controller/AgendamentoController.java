@@ -1,5 +1,6 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.controller;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -148,6 +149,23 @@ public class AgendamentoController extends ModelController {
     }    
     
     // ###############################################################################
+    
+    @RequestMapping(value={"/FORM-MUDE-exibir-agenda-agendamento"}, method = RequestMethod.GET)
+    public String exibirAgendaForm(Model model){
+        model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
+        
+        model.addAttribute(getModelName(), new Agendamento());
+        return getViewPath() + "incluirForm";
+    } 
+
+    @RequestMapping(value={"/exibir-agenda-agendamento"}, method = RequestMethod.GET)
+    public String exibirAgenda(Model model){
+        List<Agendamento> itemList = modelService.getHorarioOcupadoList();
+        Collections.sort(itemList);
+        
+        model.addAttribute("itemList", itemList);
+        return getViewPath() + "listarAgenda";
+    }        
     
     @RequestMapping(value={"/exibir-calendario-agendamento"}, method = RequestMethod.GET)
     public String exibirCalendario(Model model){
