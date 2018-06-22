@@ -174,6 +174,8 @@ public class TesteService{
         agendamentoService.salvar(horariosMarcados);
         // --- Fim de Marcando horarios ---
 
+//-------------------------------------------------------------------
+/*        
         // Encaixe
         Random random = new Random();
         
@@ -210,7 +212,8 @@ public class TesteService{
         agendamento2.setMedico(medico);
 
         agendamentoRepository.save(agendamento2);
-
+*/        
+//-------------------------------------------------------------------
 
         
         System.out.println("pausa");
