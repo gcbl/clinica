@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,8 +19,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Agendamento;
-import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.MarcacaoConsultaForm;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.AgendamentoService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicoService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.util.Constantes;
@@ -150,17 +152,21 @@ public class AgendamentoController extends ModelController {
     
     // ###############################################################################
     
-    @RequestMapping(value={"/FORM-MUDE-exibir-agenda-agendamento"}, method = RequestMethod.GET)
-    public String exibirAgendaForm(Model model){
-        model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
+    @RequestMapping(value={"/procurar-agendamento"}, method = RequestMethod.GET)
+    public String exibirAgendaForm(Agendamento item, BindingResult result, Model model) {                         
+        model.addAttribute(Constantes.ACAO, "procurar");
         
         model.addAttribute(getModelName(), new Agendamento());
         return getViewPath() + "incluirForm";
     } 
 
-    @RequestMapping(value={"/exibir-agenda-agendamento"}, method = RequestMethod.GET)
-    public String exibirAgenda(Model model){
-        List<Agendamento> itemList = modelService.getHorarioOcupadoList();
+    @RequestMapping(value={"/procurar-agendamento"}, method = RequestMethod.POST)
+    public String exibirAgenda(@Valid Agendamento item, BindingResult result, Model model) {
+
+    	item.setId(null);
+    	Example<Agendamento> agendamentoExample = Example.of(item);
+        List<Agendamento> itemList = modelService.findAll(agendamentoExample);
+        itemList.removeIf(agendamento -> agendamento.getPaciente() == null);
         Collections.sort(itemList);
         
         model.addAttribute("itemList", itemList);
