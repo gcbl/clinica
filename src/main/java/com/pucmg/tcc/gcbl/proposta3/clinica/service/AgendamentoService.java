@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Agendamento;
@@ -111,6 +112,10 @@ public class AgendamentoService{
     
     public List<Agendamento> findAll() {
         return repository.findAll();
+    }
+    
+    public List<Agendamento> findAll(Example<Agendamento> agendamentoExample) {
+        return repository.findAll(agendamentoExample);
     }
 
     
