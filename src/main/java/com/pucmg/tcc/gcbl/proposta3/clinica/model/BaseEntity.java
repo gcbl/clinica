@@ -34,7 +34,9 @@ public class BaseEntity {
     
     @PrePersist
     public void prePersist() {
-        dataCriacao = LocalDateTime.now();
+        if(dataCriacao == null){
+            dataCriacao = LocalDateTime.now();
+        }
         //createdBy = LoggedUser.get();
     }
     
