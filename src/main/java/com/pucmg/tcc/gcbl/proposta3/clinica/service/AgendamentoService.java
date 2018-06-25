@@ -1,6 +1,7 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.service;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,6 +87,15 @@ public class AgendamentoService{
         agendamento.setPaciente(null);
         salvar(agendamento);
     }    
+    
+    public List<Agendamento> findAllByExamplePacienteIsNotNull(Example<Agendamento> agendamentoExample) {
+    	List<Agendamento> itemList = repository.findAll(agendamentoExample);
+        itemList.removeIf(agendamento -> agendamento.getPaciente() == null);
+        Collections.sort(itemList);
+
+        return itemList;
+    }
+
     
     //-------------
     
