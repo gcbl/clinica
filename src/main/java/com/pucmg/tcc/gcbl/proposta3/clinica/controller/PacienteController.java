@@ -1,5 +1,6 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.controller;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -16,7 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.HistoricoClinico;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.HistoricoClinicoComparator;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
+import com.pucmg.tcc.gcbl.proposta3.clinica.service.HistoricoClinicoService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.PacienteService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.util.Constantes;
 
@@ -30,6 +34,10 @@ public class PacienteController extends ModelController {
     @Autowired
     private PacienteService modelService;
 
+    @Autowired
+    private HistoricoClinicoService historicoClinicoService;
+
+    
     @Override
     protected Class<Paciente> getModelClass() {
         return Paciente.class;
@@ -143,5 +151,30 @@ public class PacienteController extends ModelController {
     }    
     
 
+    @RequestMapping(value={"/exibir-historico-clinico-paciente"}, method = RequestMethod.GET)
+    public String exibirHistoricoClinico(@RequestParam("id") String id, Model model, Locale locale, HttpServletRequest request){
+        model.addAttribute(Constantes.ACAO, Constantes.ACAO_LISTAR);
+        
+        if( modelService.exists(id) ){
+            
+            Paciente paciente = modelService.findOne(id);
+            
+            List<HistoricoClinico> historicoClinicoList = historicoClinicoService.getHistoricoClinico( paciente );
+            
+            Collections.sort(historicoClinicoList, new HistoricoClinicoComparator());
+            
+            model.addAttribute("historicoClinicoList", historicoClinicoList );
+            
+            return getViewPath() + "historicoClinico";
+        }else{
+            String mensagem = messageSource.getMessage("formulario.nao-encontrado", new Object[]{ getModelName() }, locale);
+            adicionarAlertaWarning(model, mensagem);
+            return consultar(model);
+        }
+
+            
+        
+        //return getViewPath() + "alterarForm"; 
+    }
 
 }
