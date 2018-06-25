@@ -161,7 +161,6 @@ public class PacienteController extends ModelController {
             
             List<HistoricoClinico> historicoClinicoList = historicoClinicoService.getHistoricoClinico( paciente );
             
-            Collections.sort(historicoClinicoList, new HistoricoClinicoComparator());
             
             model.addAttribute("historicoClinicoList", historicoClinicoList );
             
