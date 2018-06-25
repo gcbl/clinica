@@ -44,3 +44,8 @@ q12345678
 https://www.codeply.com/go/dI6CknFxts/bootstrap-4-timeline
 https://github.com/ucffool/boostrap-4-timeline
 https://stackoverflow.com/questions/35408873/create-responsive-timeline-with-bootstrap-rows
+
+
+TagLib java8 time
+https://stackoverflow.com/questions/35606551/jstl-localdatetime-format
+https://github.com/sargue/java-time-jsptags
