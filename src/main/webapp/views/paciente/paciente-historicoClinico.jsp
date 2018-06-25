@@ -20,8 +20,8 @@
    
 
    <c:forEach var="historicoClinico" items="${historicoClinicoList}">
-        <br><b>${historicoClinico['class']} ***</b>
-        <br> * ${historicoClinico.dataCriacao} - ${historicoClinico.historicoClinico} 
+        <br>${historicoClinico.dataCriacao} : <b>${historicoClinico['class']} ***</b> : ${historicoClinico.paciente.nome} 
+        <br>${historicoClinico.historicoClinico} 
         <br><br>
    </c:forEach>
 
