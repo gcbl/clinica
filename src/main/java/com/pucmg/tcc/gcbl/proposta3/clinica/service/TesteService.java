@@ -1,12 +1,14 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -85,6 +87,13 @@ public class TesteService{
 //        
 //        pessoaBDRepository.save(p);
  
+        // Limpandos as solicitacoes de exames
+        List<SolicitacaoExame> solicitacoesRemover = solicitacaoExameRepository.findAll();
+        solicitacaoExameRepository.delete(solicitacoesRemover);        
+        
+        List<Receita> receitasRemover = receitaRepository.findAll();
+        receitaRepository.delete(receitasRemover);        
+                
         
         List<Medicamento> medicamentos = medicamentoService.findAll();
         Collections.shuffle(medicamentos);
@@ -102,22 +111,22 @@ public class TesteService{
         Paciente paciente = pacientes.get(0);
         
         
-        Receita receita = new Receita();
-        receita.setPaciente(paciente);
-        receita.setMedico(medico);
+        Receita receitaNova = new Receita();
+        receitaNova.setPaciente(paciente);
+        receitaNova.setMedico(medico);
         
-        Set<Medicamento> medicamentosReceitaSet = new HashSet<>();
-        medicamentosReceitaSet.add(medicamentos.get(0));
-        medicamentosReceitaSet.add(medicamentos.get(1));
-        medicamentosReceitaSet.add(medicamentos.get(2));
+        Set<Medicamento> medicamentosReceitaNovaSet = new HashSet<>();
+        medicamentosReceitaNovaSet.add(medicamentos.get(0));
+        medicamentosReceitaNovaSet.add(medicamentos.get(1));
+        medicamentosReceitaNovaSet.add(medicamentos.get(2));
         
-        receita.setMedicamentos(medicamentosReceitaSet);
+        receitaNova.setMedicamentos(medicamentosReceitaNovaSet);
         
 //        List<Medicamento> list = new ArrayList<Medicamento>(medicamentosReceitaSet);
 //        receita.setMedicamentos(list);        
         
-        receita.setConteudo("1 comprimido de 8 em 8 horas");
-        receitaRepository.save(receita);
+        receitaNova.setConteudo("1 comprimido de 8 em 8 horas");
+        receitaRepository.save(receitaNova);
         
         //Receita receita2 = new Receita();
         //receitaRepository.save(receita2);
@@ -125,25 +134,20 @@ public class TesteService{
         List<Receita> receitas = receitaRepository.findAll();
         
         
+//        SolicitacaoExame solicitacaoExame = new SolicitacaoExame();
+//        solicitacaoExame.setDataSolicitacao(new Date());
+//        solicitacaoExame.setPaciente(paciente);
+//        solicitacaoExame.setMedicoSolicitante(medico);
+//        
+//        Set<Exame> examesSolicitacaoSet = new HashSet<>();
+//        examesSolicitacaoSet.add(exames.get(0));
+//        examesSolicitacaoSet.add(exames.get(1));
+//        examesSolicitacaoSet.add(exames.get(2));
+//        
+//        solicitacaoExame.setExames(examesSolicitacaoSet);
+//        solicitacaoExameRepository.save(solicitacaoExame);
         
-        SolicitacaoExame solicitacaoExame = new SolicitacaoExame();
-        solicitacaoExame.setDataSolicitacao(new Date());
-        solicitacaoExame.setPaciente(paciente);
-        solicitacaoExame.setMedicoSolicitante(medico);
-        
-        Set<Exame> examesSolicitacaoSet = new HashSet<>();
-        examesSolicitacaoSet.add(exames.get(0));
-        examesSolicitacaoSet.add(exames.get(1));
-        examesSolicitacaoSet.add(exames.get(2));
-        
-        solicitacaoExame.setExames(examesSolicitacaoSet);
-        
-//        List<Exame> list = new ArrayList<Exame>(examesSolicitacaoSet);
-//        solicitacaoExame.setExames(list);
-        
-        solicitacaoExameRepository.save(solicitacaoExame);
-        
-        List<SolicitacaoExame> solicitacaoExameList = solicitacaoExameRepository.findAll();
+//        List<SolicitacaoExame> solicitacaoExameList = solicitacaoExameRepository.findAll();
         
         
         // Criando agenda pra os medicos
@@ -160,19 +164,98 @@ public class TesteService{
         int qtdPacientes = pacientes.size();
         
         List<Agendamento> horariosMarcados = new ArrayList<Agendamento>();
-        // Marcando um horario pra cada paciente
-        for(int contador = 0; contador < qtdPacientes; contador++){
-            Agendamento agendamento = horariosVagos.get(contador);
-            Paciente pacienteAgendando = pacientes.get(contador);
-            
-            // Setando o paciente no horario vago
-            agendamento.setPaciente(pacienteAgendando);
+        List<SolicitacaoExame> solicitacaoExameList = new ArrayList<SolicitacaoExame>();
+        List<Receita> receitasList = new ArrayList<Receita>();
 
-            horariosMarcados.add(agendamento);
+        // *** POPULANDO DADOS! ***
+        // Loop em todos os pacientes
+        for(int contador = 0; contador < qtdPacientes; contador++){
+            // Marcando *TRES* horario pra cada paciente
+            Paciente pacienteAgendando = pacientes.get(contador);
+
+            Agendamento agendamento1 = horariosVagos.get(3*contador);
+            Agendamento agendamento2 = horariosVagos.get(3*contador + 1);
+            Agendamento agendamento3 = horariosVagos.get(3*contador + 2);
+
+            // Setando o paciente no horario vago
+            agendamento1.setPaciente(pacienteAgendando);
+            agendamento2.setPaciente(pacienteAgendando);
+            agendamento3.setPaciente(pacienteAgendando);
+
+            horariosMarcados.add(agendamento1);
+            horariosMarcados.add(agendamento2);
+            horariosMarcados.add(agendamento3);
+            // Fim da marcação de horarios
+            
+            Agendamento[] agendamentos = {agendamento1, agendamento2, agendamento3};
+            
+            
+            for(int s = 0; s < agendamentos.length ; s++){
+                // Incluindo 1 solicitacoes de exames pra cada agendamento
+                SolicitacaoExame solicitacaoExame = new SolicitacaoExame();
+                
+                int qtdMinutos = ThreadLocalRandom.current().nextInt(1, 10 + 1); // Inclui entre 1 e 
+                // Seta dataCriacao para "um pouco depois" de iniciar a consulta
+                LocalDateTime dataCriacaoSolicitacaoExame =  LocalDateTime.of( agendamentos[s].getData(), agendamentos[s].getHoraInicio().plusMinutes( qtdMinutos ) ); 
+                solicitacaoExame.setDataCriacao(  dataCriacaoSolicitacaoExame   );
+                
+                solicitacaoExame.setDataSolicitacao( DataUtils.asDate( agendamentos[s].getData() )  );
+                solicitacaoExame.setPaciente(agendamentos[s].getPaciente());
+                solicitacaoExame.setMedicoSolicitante( agendamentos[s].getMedico() );
+                
+                
+                Set<Exame> examesSolicitacaoSet = new HashSet<>();
+
+                int qtdExames = ThreadLocalRandom.current().nextInt(1, (2*agendamentos.length) + 1); // Inclui entre 1 e [2*agendamentos.length] exames na solicitacao
+                for(int e = 0; e < qtdExames; e++){
+                    examesSolicitacaoSet.add(exames.get(e));    
+                }
+                
+                solicitacaoExame.setExames(examesSolicitacaoSet);
+                
+                solicitacaoExameList.add(solicitacaoExame);
+                Collections.shuffle(exames);
+                
+                // Fim da inclusao dos exames
+                
+                // Inclusao de receitas
+                Receita receita = new Receita();
+                
+                qtdMinutos = ThreadLocalRandom.current().nextInt(1, 10 + 1); // Inclui entre 1 e 
+                // Seta dataCriacao para "um pouco depois" de iniciar a consulta
+                LocalDateTime dataCriacaoReceita =  LocalDateTime.of( agendamentos[s].getData(), agendamentos[s].getHoraInicio().plusMinutes( qtdMinutos ) ); 
+                receita.setDataCriacao(  dataCriacaoReceita   );
+                
+                receita.setPaciente( agendamentos[s].getPaciente() );
+                receita.setMedico( agendamentos[s].getMedico() );
+                
+                Set<Medicamento> medicamentosReceitaSet = new HashSet<>();
+                
+                int qtdMedicamentos = ThreadLocalRandom.current().nextInt(1, (2*agendamentos.length) + 1); // Inclui entre 1 e [2*agendamentos.length] exames na solicitacao
+                for(int qtd = 0; qtd < qtdMedicamentos; qtd++){
+                    medicamentosReceitaSet.add(medicamentos.get(qtd));
+                }
+                receita.setMedicamentos(medicamentosReceitaSet);
+                
+//                List<Medicamento> list = new ArrayList<Medicamento>(medicamentosReceitaSet);
+//                receita.setMedicamentos(list);        
+                
+                int intervaloHora = ThreadLocalRandom.current().nextInt(1, (12) + 1); // Inclui entre 1 e [2*agendamentos.length] exames na solicitacao
+                receita.setConteudo("1 comprimido de " + intervaloHora + " em " + intervaloHora + " horas");
+                receitasList.add(receita);
+                
+                Collections.shuffle(medicamentos);
+                // fim da inclusao de receitas
+                
+            }
+            
+            
         }
         
         // Salvando a lista de agendamentos
         agendamentoService.salvar(horariosMarcados);
+        solicitacaoExameRepository.save(solicitacaoExameList);
+        receitaRepository.save(receitasList);
         // --- Fim de Marcando horarios ---
 
         
