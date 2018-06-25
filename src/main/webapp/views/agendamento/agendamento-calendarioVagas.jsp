@@ -99,12 +99,12 @@
  
 <!-- ##### MODALS ##### -->
 <div class="modal fade" id="agendamentoEventModal" role="dialog" aria-labelledby="agendamentoEventModal" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
          <div class="modal-header">
-             <h5 id="tituloModal"        class="modal-title"><b>Agendamento</b></h5>
-             <h5 id="tituloModalMarcarSucesso" class="modal-title text-primary" ><b><i class="fas fa-check"></i> Horário <u>marcado</u> com sucesso!</b></h5>
-             <h5 id="tituloModalDesmarcarSucesso" class="modal-title text-warning" ><b><i class="fas fa-check"></i> Horário <u>desmarcado</u> com sucesso!</b></h5>
+             <h5 id="tituloModal"        class="modal-title"><i class="far fa-calendar"></i> <b>Agendamento</b></h5>
+             <h5 id="tituloModalMarcarSucesso" class="modal-title text-primary" ><i class="far fa-calendar-check"></i> <b>Horário <u>marcado</u> com sucesso!</b></h5>
+             <h5 id="tituloModalDesmarcarSucesso" class="modal-title text-warning" ><i class="far fa-calendar-times"></i> <b>Horário <u>desmarcado</u> com sucesso!</b></h5>
              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                <span aria-hidden="true">&times;</span>
              </button>
@@ -112,9 +112,9 @@
          <div class="modal-body">
          
              <!-- <div class="text-danger"><b>Agendamento:</b> <div id="modalBodyAgendamento"></div></div> -->
-             <div><b>Médico:</b> <div id="modalBodyMedico"></div></div>
+             <div><i class="fas fa-user-md"></i> <b>Médico:</b> <div id="modalBodyMedico"></div></div>
              <br>
-             <div><b>Horário:</b> <div id="modalBodyhorarioCompleto"></div></div>
+             <div><i class="far fa-clock"></i> <b>Horário:</b> <div id="modalBodyhorarioCompleto"></div></div>
              <br>
              <div><b>Paciente:</b>
                     <div id="divPacienteSelect2"><select required id="pacienteSelect2" style="width: 100%"></select></div>
@@ -122,8 +122,8 @@
              </div>
          </div>
          <div class="modal-footer">
-             <button type="button" class="btn btn-primary" id="btnMarcarHorarioModal">Marcar horário</button>
-             <button type="button" class="btn btn-warning" id="btnDesmarcarHorarioModal">Desmarcar horário</button>
+             <button type="button" class="btn btn-primary" id="btnMarcarHorarioModal"><i class="far fa-calendar-check"></i> Marcar horário</button>
+             <button type="button" class="btn btn-warning" id="btnDesmarcarHorarioModal"><i class="far fa-calendar-times"></i> Desmarcar horário</button>
              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>             
          </div>
     </div>
