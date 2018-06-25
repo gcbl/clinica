@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.SolicitacaoExame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.SolicitacaoExameRepository;
 
@@ -33,6 +34,10 @@ public class SolicitacaoExameService{
     
     public List<SolicitacaoExame> findAll() {
         return repository.findAll();
+    }
+
+    public List<SolicitacaoExame> findByPaciente(Paciente paciente) {
+        return repository.findByPaciente(paciente);
     }
 
     
