@@ -163,7 +163,7 @@ public class AgendamentoController extends ModelController {
     @RequestMapping(value={"/procurar-agendamento"}, method = RequestMethod.POST)
     public String exibirAgenda(Agendamento item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {
 
-    	item.setId(null);
+    	item.setId(null); // id vem como string vazio =( Forçando null!
     	Example<Agendamento> agendamentoExample = Example.of(item);
         
         List<Agendamento> itemList = modelService.findAllByExamplePacienteIsNotNull(agendamentoExample);        
