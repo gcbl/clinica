@@ -12,7 +12,7 @@
     <tiles:putAttribute name="body">
  
         <div class="body">
-            <h2 class="text-capitalize">Agenda [parametros]</h2>
+            <h2 class="text-capitalize">Agenda</h2>
 <!-- ########################################################################### --> 
 <hr>
     <c:forEach items="${itemList}" var="item" varStatus="contador"> 
@@ -29,7 +29,7 @@
                     <!-- <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> Cafe</li> -->
                 </ul>
                 <ul class="list-inline">
-                    <li class="list-inline-item"><h5><i class="fas fa-user-md"></i> Dr(a). ${item.medico.nome}</h5></li>
+                    <li class="list-inline-item"><h5><i class="fas fa-user-md"></i> Médico: <b>Dr(a). ${item.medico.nome}</b></h5></li>
                 </ul>
                 <!-- <p><i class="fas fa-user-md"></i> ${item.medico.nome} </p> -->
                 <!--  <h5 class="text-capitalize"><strong><i class="fas fa-user-md"></i> ${item.medico.nome} </strong></h5> -->
