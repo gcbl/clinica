@@ -115,6 +115,8 @@
           <a class="dropdown-item" href="listar-paciente">Consultar</a>
           <a class="dropdown-item" href="incluir-paciente">Incluir</a>          
           <div class="dropdown-divider"></div>
+          <a class="dropdown-item disabled" href="exibir-historico-paciente">Exibir Historico</a>
+          <div class="dropdown-divider"></div>
           <a class="dropdown-item disabled" href="#">Estatisticas</a>
         </div>
       </li>
