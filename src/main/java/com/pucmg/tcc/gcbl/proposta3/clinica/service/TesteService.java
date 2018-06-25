@@ -1,13 +1,11 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.service;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Random;
 import java.util.Set;
 
 import org.apache.commons.logging.Log;
@@ -17,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Agendamento;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Exame;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.HistoricoClinico;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medicamento;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
@@ -63,6 +62,8 @@ public class TesteService{
     @Autowired
     private AgendaService agendaService;
 
+    @Autowired
+    private HistoricoClinicoService historicoClinicoService;
     
     public void popula(){
         User userForm = new User();
@@ -174,6 +175,9 @@ public class TesteService{
         agendamentoService.salvar(horariosMarcados);
         // --- Fim de Marcando horarios ---
 
+        
+        List<HistoricoClinico> historicoClinicoList = historicoClinicoService.getHistoricoClinico(paciente);
+        
 //-------------------------------------------------------------------
 /*        
         // Encaixe
