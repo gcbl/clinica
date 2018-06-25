@@ -25,7 +25,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "SC_SOLICITACAO_EXAME")
-public class SolicitacaoExame  extends BaseEntity {
+public class SolicitacaoExame extends BaseEntity implements HistoricoClinico{
 
     @Column(name = "DT_SOLICITACAO")
     @DateTimeFormat(pattern = "dd/MM/yyyy" )
@@ -53,7 +53,12 @@ public class SolicitacaoExame  extends BaseEntity {
     @JoinTable(name = "SC_EXAME_SOLICITACAO_EXAME", 
                joinColumns = @JoinColumn(name = "ID_SOLICITACAO"), 
                inverseJoinColumns = @JoinColumn(name = "ID_EXAME"))
-    private Set<Exame> exames = new HashSet<>();    
+    private Set<Exame> exames = new HashSet<>();
+
+    @Override
+    public String getHistoricoClinico() {
+        return "sol exame - historico clinico:" + this.toString();
+    }    
 
     
     
