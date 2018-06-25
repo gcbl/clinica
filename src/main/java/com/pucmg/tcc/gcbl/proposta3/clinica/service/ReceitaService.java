@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Receita;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.ReceitaRepository;
 
 @Service
@@ -34,5 +35,9 @@ public class ReceitaService{
     public List<Receita> findAll() {
         return repository.findAll();
     }
+    
+    public List<Receita> findByPaciente(Paciente paciente) {
+        return repository.findByPaciente(paciente);
+    }    
     
 }
