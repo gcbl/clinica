@@ -153,7 +153,7 @@ public class AgendamentoController extends ModelController {
     // ###############################################################################
     
     @RequestMapping(value={"/procurar-agendamento"}, method = RequestMethod.GET)
-    public String exibirAgendaForm(Agendamento item, BindingResult result, Model model) {                         
+    public String exibirAgendaForm(Agendamento item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {                         
         model.addAttribute(Constantes.ACAO, "procurar");
         
         model.addAttribute(getModelName(), new Agendamento());
@@ -161,13 +161,12 @@ public class AgendamentoController extends ModelController {
     } 
 
     @RequestMapping(value={"/procurar-agendamento"}, method = RequestMethod.POST)
-    public String exibirAgenda(@Valid Agendamento item, BindingResult result, Model model) {
+    public String exibirAgenda(Agendamento item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {
 
     	item.setId(null);
     	Example<Agendamento> agendamentoExample = Example.of(item);
-        List<Agendamento> itemList = modelService.findAll(agendamentoExample);
-        itemList.removeIf(agendamento -> agendamento.getPaciente() == null);
-        Collections.sort(itemList);
+        
+        List<Agendamento> itemList = modelService.findAllByExamplePacienteIsNotNull(agendamentoExample);        
         
         model.addAttribute("itemList", itemList);
         return getViewPath() + "listarAgenda";
