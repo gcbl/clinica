@@ -158,7 +158,9 @@ public class TesteService{
         }
         
         // --- Marcando horarios ---
-        List<Agendamento> horariosVagos = agendamentoService.getHorarioDisponivelList();
+        List<Agendamento> horariosVagosTudo = agendamentoService.getHorarioDisponivelList();
+        
+        List<Agendamento> horariosVagos = agendamentoService.getHorarioDisponivelList(diaInicioAgenda, LocalDate.now().minusDays(1) );
         Collections.shuffle(horariosVagos);
         
         int qtdPacientes = pacientes.size();
