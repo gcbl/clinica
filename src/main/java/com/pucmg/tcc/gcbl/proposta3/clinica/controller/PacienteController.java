@@ -1,6 +1,5 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.controller;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.HistoricoClinico;
-import com.pucmg.tcc.gcbl.proposta3.clinica.model.HistoricoClinicoComparator;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.HistoricoClinicoService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.PacienteService;
@@ -161,6 +159,7 @@ public class PacienteController extends ModelController {
             
             List<HistoricoClinico> historicoClinicoList = historicoClinicoService.getHistoricoClinico( paciente );
             
+            request.getSession().setAttribute("historicoClinicoList", historicoClinicoList);
             
             model.addAttribute("historicoClinicoList", historicoClinicoList );
             
@@ -170,8 +169,6 @@ public class PacienteController extends ModelController {
             adicionarAlertaWarning(model, mensagem);
             return consultar(model);
         }
-
-            
         
         //return getViewPath() + "alterarForm"; 
     }
