@@ -11,21 +11,29 @@
  
  
         <div class="body">
-            <h2 class="text-capitalize">Historico clinico ${MODEL}</h2>
+            <h2 class="text-capitalize"><i class="fas fa-clipboard-list"></i> Histórico clínico de ${paciente.nome}</h2>
  
 <!-- ########################################################################### -->
 			<hr>
-			
-			   <c:import url="paciente-historicoClinico-timeline-Fim.jsp"/>
-			   <c:forEach var="historicoClinico" items="${historicoClinicoList}">
-			   		<%-- Detectando o TIPO --%>
-			   		<c:set var="TIPO"                    scope="session" value="${historicoClinico['class'].simpleName }"/>
-			        <c:set var="historicoClinicoSession" scope="session" value="${historicoClinico}" />
-			
-			        <c:import url="paciente-historicoClinico-timeline-${TIPO}.jsp"/>
-			   </c:forEach>
-			   <c:import url="paciente-historicoClinico-timeline-Inicio.jsp"/>
-			   
+   
+               <c:choose>
+                  <c:when test = "${empty historicoClinicoList}">
+                       <c:import url="paciente-historicoClinico-timeline-Fim.jsp"/>
+                  </c:when>
+                  <c:otherwise>
+                      <%-- Timeline do historico --%>
+                      <c:import url="paciente-historicoClinico-timeline-Fim.jsp"/>
+                      <c:forEach var="historicoClinico" items="${historicoClinicoList}">
+                           <%-- Detectando o TIPO --%>
+                           <c:set var="TIPO"                    scope="session" value="${historicoClinico['class'].simpleName }"/>
+                           <c:set var="historicoClinicoSession" scope="session" value="${historicoClinico}" />
+                   
+                           <c:import url="paciente-historicoClinico-timeline-${TIPO}.jsp"/>
+                      </c:forEach>
+                      <c:import url="paciente-historicoClinico-timeline-Inicio.jsp"/>
+                      <%-- /Timeline do historico --%>
+                  </c:otherwise>
+               </c:choose>
 			<hr> 
 <!-- ########################################################################### -->
         </div>
