@@ -23,7 +23,16 @@
             <div class="card shadow">
                 <div class="card-body">
                     <div class="float-right text-muted">&nbsp;</div>
-                    <h4 class="card-title">Fim histórico clínico ${historicoClinicoSession.paciente.nome}</h4>
+                    <h5 class="card-title">
+                        <c:choose>
+                            <c:when test = "${empty historicoClinicoList}">
+                                 Não há registros no histórico clínico de ${paciente.nome}</b></h5>
+                            </c:when>
+                            <c:otherwise>
+                                Fim do histórico clínico de <b>${historicoClinicoSession.paciente.nome}</b>
+                            </c:otherwise>
+                        </c:choose>
+                    </h5>
                     <!-- <p class="card-text">&nbsp;</p> -->
                 </div>
             </div>
