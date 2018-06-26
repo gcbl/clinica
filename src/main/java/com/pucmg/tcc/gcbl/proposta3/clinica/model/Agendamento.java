@@ -25,7 +25,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "SC_AGENDAMENTO")
-public class Agendamento extends BaseEntity implements Comparable<Agendamento>{
+public class Agendamento extends BaseEntity implements Comparable<Agendamento>, HistoricoClinico{
 
 	@JsonIgnore
     @Column(name = "DT_AGENDAMENTO")

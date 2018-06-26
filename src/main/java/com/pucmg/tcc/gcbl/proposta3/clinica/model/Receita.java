@@ -52,11 +52,5 @@ public class Receita extends BaseEntity implements HistoricoClinico {
                  inverseJoinColumns = @JoinColumn(name = "ID_MEDICAMENTO"))
       private Set<Medicamento> medicamentos = new HashSet<>();
 
-    @Override
-    public String getHistoricoClinico() {
-        return "historico clinico:" + this.toString();
-    }
-      
-      
 	
 }

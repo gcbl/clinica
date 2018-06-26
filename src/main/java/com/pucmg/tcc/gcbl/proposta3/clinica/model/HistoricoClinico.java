@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 
 public interface HistoricoClinico{
 
-    public String getHistoricoClinico();
     public LocalDateTime getDataCriacao();
     
 }

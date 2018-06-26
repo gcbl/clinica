@@ -55,13 +55,6 @@ public class SolicitacaoExame extends BaseEntity implements HistoricoClinico{
                inverseJoinColumns = @JoinColumn(name = "ID_EXAME"))
     private Set<Exame> exames = new HashSet<>();
 
-    @Override
-    public String getHistoricoClinico() {
-        return "sol exame - historico clinico:" + this.toString();
-    }    
-
-    
-    
     
 }
 
