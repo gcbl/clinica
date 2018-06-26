@@ -9,6 +9,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Agendamento;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.HistoricoClinico;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.AgendamentoRepository;
@@ -126,6 +127,10 @@ public class AgendamentoService{
     
     public List<Agendamento> findAll(Example<Agendamento> agendamentoExample) {
         return repository.findAll(agendamentoExample);
+    }
+
+    public List<Agendamento> findByPaciente(Paciente paciente) {
+        return repository.findByPaciente(paciente);
     }
 
     
