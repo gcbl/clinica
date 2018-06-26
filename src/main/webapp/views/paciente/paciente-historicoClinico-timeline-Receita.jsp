@@ -21,7 +21,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="float-right text-muted">${historicoClinicoSession.dataCriacao}</div>
-                    <h4 class="card-title">${TIPO}</h4>
+                    <h4 class="card-title"><i class="fas fa-pills"></i> ${TIPO}</h4>
                     <p>
                     id: ${historicoClinicoSession.id}
                     <br>Médico solicitante: ${historicoClinicoSession.medico.nome}

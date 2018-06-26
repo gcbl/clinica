@@ -11,7 +11,7 @@
                 <div class="col">&nbsp;</div>
             </div>
             <h5 class="m-2">
-                <span class="badge badge-pill bg-info border">&nbsp;</span>
+                <span class="badge badge-pill bg-secondary border">&nbsp;</span>
             </h5>
             <div class="row h-50">
                 <div class="col border-right">&nbsp;</div>

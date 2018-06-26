@@ -18,10 +18,10 @@
             </div>
         </div>
         <div class="col py-2">
-            <div class="card border-success">
+            <div class="card ">
                 <div class="card-body">
-                    <div class="float-right text-success">${historicoClinicoSession.dataCriacao}</div>
-                    <h4 class="card-title text-success">${TIPO}</h4>
+                    <div class="float-right ">${historicoClinicoSession.dataCriacao}</div>
+                    <h4 class="card-title "><i class="fas fa-vials"></i> ${TIPO}</h4>
                     <p class="card-text">
                     id: ${historicoClinicoSession.id}
                     <br>Data da Solicitação: ${historicoClinicoSession.dataSolicitacao}

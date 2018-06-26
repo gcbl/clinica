@@ -10,7 +10,7 @@
                 <div class="col">&nbsp;</div>
             </div>
             <h5 class="m-2">
-                <span class="badge badge-pill bg-light border">&nbsp;</span>
+                <span class="badge badge-pill bg-secondary border">&nbsp;</span>
             </h5>
             <div class="row h-50">
                 <div class="col">&nbsp;</div>
@@ -22,7 +22,7 @@
                 <div class="card-body">
                     <div class="float-right text-muted">&nbsp;</div>
                     <h4 class="card-title">Início histórico clínico ${historicoClinicoSession.paciente.nome}</h4>
-                    <p>&nbsp;</p>
+                    <!-- <p>&nbsp;</p> -->
                 </div>
             </div>
         </div>
