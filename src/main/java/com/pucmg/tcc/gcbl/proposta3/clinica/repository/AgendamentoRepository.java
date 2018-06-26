@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Agendamento;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
 
 @Repository
 public interface AgendamentoRepository extends JpaRepository<Agendamento, String> {
@@ -52,5 +53,7 @@ public interface AgendamentoRepository extends JpaRepository<Agendamento, String
     // Todas as vagas preenchidas 
     public List<Agendamento> findByMedicoIsNotNullAndPacienteIsNotNullAndDataBetween(LocalDate dataInicio, LocalDate datafim);
     
+    // Horarios do paciente
+    public List<Agendamento> findByPaciente(Paciente paciente);
     
 }
