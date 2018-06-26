@@ -42,7 +42,11 @@ public class BaseEntity {
     
     @PreUpdate
     public void preUpdate() {
-        dataAtualizacao = LocalDateTime.now();
+        if(dataCriacao == null){
+            dataCriacao = LocalDateTime.now();
+        }
+
+    	dataAtualizacao = LocalDateTime.now();
         //createdBy = LoggedUser.get();
     }
     
