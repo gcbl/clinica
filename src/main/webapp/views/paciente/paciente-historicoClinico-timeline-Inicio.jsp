@@ -21,7 +21,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="float-right text-muted">&nbsp;</div>
-                    <h4 class="card-title">Início histórico clínico ${historicoClinicoSession.paciente.nome}</h4>
+                    <h5 class="card-title">Início do histórico clínico de <b>${historicoClinicoSession.paciente.nome}</b></h5>
                     <!-- <p>&nbsp;</p> -->
                 </div>
             </div>
