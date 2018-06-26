@@ -5,8 +5,6 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="tags"%>
-
-
 <tiles:insertDefinition name="defaultTemplate">
     <tiles:putAttribute name="body">
  
@@ -18,42 +16,16 @@
 <!-- ########################################################################### -->
 <hr>
 
+   <c:import url="paciente-historicoClinico-timeline-Fim.jsp"/>
    <c:forEach var="historicoClinico" items="${historicoClinicoList}">
-        <hr>
-        <br>${historicoClinico.dataCriacao} : <b>${historicoClinico['class']} ***</b> : ${historicoClinico.paciente.nome} 
-        <br>${historicoClinico.historicoClinico} 
-        <br><br>
-        <hr>
-        <!-- timeline item 1 -->
-        <div class="row">
-            <!-- timeline item 1 left dot -->
-            <div class="col-auto text-center flex-column d-none d-sm-flex">
-                <div class="row h-50">
-                    <div class="col">&nbsp;</div>
-                    <div class="col">&nbsp;</div>
-                </div>
-                <h5 class="m-2">
-                    <span class="badge badge-pill bg-info border">&nbsp;</span>
-                </h5>
-                <div class="row h-50">
-                    <div class="col border-right">&nbsp;</div>
-                    <div class="col">&nbsp;</div>
-                </div>
-            </div>
-            <!-- timeline item 1 event content -->
-            <div class="col py-2">
-                <div class="card shadow">
-                    <div class="card-body">
-                        <div class="float-right text-muted"> <javatime:parseLocalDateTime value="${historicoClinico.dataCriacao}" pattern="yyyy-MM-dd" var="parsedDate" /> </div>
-                        <h4 class="card-title text-muted">Day 1 Orientation</h4>
-                        <p class="card-text">Welcome to the campus, introduction and get started with the tour.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/row-->        
-        
+   		<%-- Detectando o TIPO --%>
+   		<c:set var="TIPO"                    scope="session" value="${historicoClinico['class'].simpleName }"/>
+        <c:set var="historicoClinicoSession" scope="session" value="${historicoClinico}" />
+
+        <c:import url="paciente-historicoClinico-timeline-${TIPO}.jsp"/>
    </c:forEach>
+   <c:import url="paciente-historicoClinico-timeline-Inicio.jsp"/>
+   
 
 <hr> 
 <!-- ########################################################################### -->
