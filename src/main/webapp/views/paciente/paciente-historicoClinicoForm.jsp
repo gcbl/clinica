@@ -14,30 +14,21 @@
  
         <div class="body">
 
-                <form:form action="${acao}-${MODEL}" class="form-horizontal" modelAttribute="${MODEL}" id="${acao}-${MODEL}">
+                <%-- <form:form action="${acao}-${MODEL}" class="form-horizontal" modelAttribute="${MODEL}" id="${acao}-${MODEL}"> --%>
+                <form action="${acao}-historico-clinico-${MODEL}" method="POST">
                     <fieldset>
-                    
-                    
                     
                     <!-- Form Name -->
                     <hr>
-                    <c:if test = "${acao != ACAO_INCLUIR}">
-                       <form:hidden path="id" placeholder="id" class="form-control input-md"/> <form:errors path="id" cssClass="text-danger" />
-                    </c:if>
                     
-                    <h2 class="text-capitalize">${acao} ${MODEL}</h2>
+                    <h2 class="text-capitalize">Histórico Clínico ${MODEL}</h2>
                     <br><br>                    
                     <!-- Select input-->
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="paciente">Paciente:</label>  
                       <div class="col-md-4">
-                          <form:select path="paciente" id="paciente" style="width: 100%">
-                              <%-- No caso de estar editando --%>
-                              <c:if test="${not empty receita}">
-                                  <form:option value="${receita.paciente.id}" label="${receita.paciente.nome}" />
-                              </c:if>
-                          </form:select>
-                          <form:errors path="paciente" cssClass="text-danger" />
+                          <select name="id" id="paciente" style="width: 100%">
+                          </select>
                           <!-- <span class="help-block">texto de help-block</span> -->   
                       </div>
                     </div>
@@ -45,12 +36,14 @@
                     <!-- Button -->
                     <div class="form-group">
                       <div class="col-md-4">
-                        <button id="btnSalvar" name="btnSalvar" class="btn btn-primary">Salvar</button>
+                        <button id="btnSalvar" name="btnSalvar" class="btn btn-primary">Exibir histórico clínico</button>
                       </div>
                     </div>
                     
                     </fieldset>
-                </form:form>
+                </form>
+                <%-- </form:form> --%>
+                
             
             <hr>
            
