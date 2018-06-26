@@ -37,7 +37,7 @@
                             </c:forEach>
                             <br>
                             <c:if test="${not empty historicoClinicoSession.conteudo}">
-							    Conteudo: ${historicoClinicoSession.conteudo}
+							    Conteúdo: ${historicoClinicoSession.conteudo}
 							</c:if>
                         </div>
                     </div>
