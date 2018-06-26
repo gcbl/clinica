@@ -6,12 +6,8 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="tags"%>
 
-
-es"%>
-
 <tiles:insertDefinition name="defaultTemplate">
     <tiles:putAttribute name="body">
- 
  
  
         <div class="body">
@@ -50,6 +46,7 @@ es"%>
                                 <td>${item.planoSaude}</td>                                
                                 <td class="actions text-right">
                                     <div class="btn-group" role="group" aria-label="Basic example">
+                                      <a href="exibir-historico-clinico-${MODEL}?id=${item.id}" class="btn btn-sm btn-primary"><i class="fas fa-clipboard-list"></i> Histórico</a>
                                       <a href="editar-${MODEL}?id=${item.id}" class="btn btn-sm btn-info"><i class="far fa-edit"></i> Editar</a>
                                       <a href="excluir-${MODEL}?id=${item.id}" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i> Remover</a>
                                     </div>
