@@ -148,7 +148,16 @@ public class PacienteController extends ModelController {
         return consultar(model);
     }    
     
+    @RequestMapping(value={"/exibir-historico-clinico-paciente-form"}, method = RequestMethod.GET)
+    public String exibirHistoricoClinicoForm(Model model, Locale locale, HttpServletRequest request){
+        System.out.println("para!");
+        model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
+        
+        model.addAttribute(getModelName(), new Paciente());
+        return getViewPath() + "historicoClinicoForm";
+    }
 
+    
     @RequestMapping(value={"/exibir-historico-clinico-paciente"}, method = RequestMethod.GET)
     public String exibirHistoricoClinico(@RequestParam("id") String id, Model model, Locale locale, HttpServletRequest request){
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_LISTAR);
@@ -159,8 +168,9 @@ public class PacienteController extends ModelController {
             
             List<HistoricoClinico> historicoClinicoList = historicoClinicoService.getHistoricoClinico( paciente );
             
-            request.getSession().setAttribute("historicoClinicoList", historicoClinicoList);
+            //request.getSession().setAttribute("historicoClinicoList", historicoClinicoList);
             
+            model.addAttribute("paciente", paciente );
             model.addAttribute("historicoClinicoList", historicoClinicoList );
             
             return getViewPath() + "historicoClinico";
