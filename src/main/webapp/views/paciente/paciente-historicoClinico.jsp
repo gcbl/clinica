@@ -42,11 +42,12 @@
 <c:set var="TIPO"                    scope="session" value="1"/>
 <c:set var="historicoClinicoSession" scope="session" value="1" />
 <c:set var="historicoClinicoList" scope="session" value="1" />
+--%>
 
 <c:remove var="TIPO"/>
 <c:remove var="historicoClinicoSession"/>
 <c:remove var="historicoClinicoList"/>
---%>
+
  
 <!-- ##### MODALS ##### -->
 

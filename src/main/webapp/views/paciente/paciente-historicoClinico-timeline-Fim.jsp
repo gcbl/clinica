@@ -26,10 +26,10 @@
                     <h5 class="card-title">
                         <c:choose>
                             <c:when test = "${empty historicoClinicoList}">
-                                 Não há registros no histórico clínico de ${paciente.nome}</b></h5>
+                                 Não há registros no histórico clínico de <b>${paciente.nome}</b></h5>
                             </c:when>
                             <c:otherwise>
-                                Fim do histórico clínico de <b>${historicoClinicoSession.paciente.nome}</b>
+                                Fim do histórico clínico de <b>${paciente.nome}</b>
                             </c:otherwise>
                         </c:choose>
                     </h5>
