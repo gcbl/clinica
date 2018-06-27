@@ -28,7 +28,7 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="paciente">Paciente:</label>  
                       <div class="col-md-4">
-                          <select name="idPaciente" id="paciente" style="width: 100%">
+                          <select name="id" id="paciente" style="width: 100%">
                           </select>
                           <form:errors path="paciente" cssClass="text-danger" />
                           <c:if test="${pacienteVazio}">
