@@ -1,4 +1,11 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="tags"%>
+
 <%@ page session="true"%>
 <%@ page isELIgnored="false"%>
 
@@ -23,12 +30,12 @@
                     <div class="float-right text-muted">${historicoClinicoSession.dataCriacao}</div>
                     <h4 class="card-title"><i class="far fa-calendar-alt"></i> ${TIPO}</h4>
                     <p>
-                    <br>
-                    <div class="">
-                        <div><i class="fas fa-user-md"></i> <b>Médico:</b> <div>${historicoClinicoSession.medico.nome}</div> </div>
-                        <br>
-                        <div><i class="far fa-clock"></i> <b>Horário:</b> <div>${historicoClinicoSession.horarioCompleto}</div>  </div>
-                    </div>
+                        <div class="">
+                            <br>
+                            <div><i class="fas fa-user-md"></i> <b>Médico:</b> <div>${historicoClinicoSession.medico.nome}</div> </div>
+                            <br>
+                            <div><i class="far fa-clock"></i> <b>Horário:</b> <div>${historicoClinicoSession.horarioCompleto}</div>  </div>
+                        </div>
                     </p>
                     
                     <%--
