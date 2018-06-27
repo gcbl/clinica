@@ -20,15 +20,20 @@
                     
                     <!-- Form Name -->
                     <hr>
-                    
-                    <h2 class="text-capitalize">Histórico Clínico ${MODEL}</h2>
-                    <br><br>                    
+                    <div class="form-group">
+                        <h2 class="text-capitalize">&nbsp;Histórico Clínico ${MODEL}</h2>
+                    </div>
+                    <br>           
                     <!-- Select input-->
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="paciente">Paciente:</label>  
                       <div class="col-md-4">
-                          <select name="id" id="paciente" style="width: 100%">
+                          <select name="idPaciente" id="paciente" style="width: 100%">
                           </select>
+                          <form:errors path="paciente" cssClass="text-danger" />
+                          <c:if test="${pacienteVazio}">
+                                <span id="nome.errors" class="text-danger">*Por favor informe o paciente</span>
+                          </c:if>
                           <!-- <span class="help-block">texto de help-block</span> -->   
                       </div>
                     </div>
@@ -36,6 +41,7 @@
                     <!-- Button -->
                     <div class="form-group">
                       <div class="col-md-4">
+                      <br>
                         <button id="btnSalvar" name="btnSalvar" class="btn btn-primary">Exibir histórico clínico</button>
                       </div>
                     </div>
