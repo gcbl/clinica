@@ -23,10 +23,12 @@
                     <div class="float-right text-muted">${historicoClinicoSession.dataCriacao}</div>
                     <h4 class="card-title"><i class="far fa-calendar-alt"></i> ${TIPO}</h4>
                     <p>
-                    id: ${historicoClinicoSession.id}
-                    <br>Médico solicitante: ${historicoClinicoSession.medico.nome}
-                    
-                     ${historicoClinicoSession}
+                    <br>
+                    <div class="">
+                        <div><i class="fas fa-user-md"></i> <b>Médico:</b> <div>${historicoClinicoSession.medico.nome}</div> </div>
+                        <br>
+                        <div><i class="far fa-clock"></i> <b>Horário:</b> <div>${historicoClinicoSession.horarioCompleto}</div>  </div>
+                    </div>
                     </p>
                     
                     <%--
