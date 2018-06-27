@@ -157,30 +157,38 @@ public class PacienteController extends ModelController {
 
     
     @RequestMapping(value={"/listar-historico-clinico-paciente"}, method = RequestMethod.GET)
-    public String exibirHistoricoClinicoGet(@RequestParam("id") String id, Model model, Locale locale, HttpServletRequest request){
-        return exibirHistoricoClinico( id, model, locale, request);
+    public String exibirHistoricoClinicoGet(Model model, Locale locale, HttpServletRequest request){
+        return exibirHistoricoClinico(model, locale, request);
     }
     
     @RequestMapping(value={"/listar-historico-clinico-paciente"}, method = RequestMethod.POST)
-    public String exibirHistoricoClinico(@RequestParam("id") String id, Model model, Locale locale, HttpServletRequest request){
-        model.addAttribute(Constantes.ACAO, Constantes.ACAO_LISTAR);
+    public String exibirHistoricoClinico(Model model, Locale locale, HttpServletRequest request){
         
-        if( modelService.exists(id) ){
-            
-            Paciente paciente = modelService.findOne(id);
-            
-            List<HistoricoClinico> historicoClinicoList = historicoClinicoService.getHistoricoClinico( paciente );
-            
-            //request.getSession().setAttribute("historicoClinicoList", historicoClinicoList);
-            
-            model.addAttribute("paciente", paciente );
-            model.addAttribute("historicoClinicoList", historicoClinicoList );
-            
-            return getViewPath() + "historicoClinico";
+        String idPaciente = request.getParameter("idPaciente");
+        
+        if("".equals(idPaciente) || idPaciente == null){
+            // TODO: Fazer o tratamento de erro corretamente usando os objetos do spring mVC
+            model.addAttribute("pacienteVazio", true );
+            return exibirHistoricoClinicoForm(model, locale, request);
         }else{
-            String mensagem = messageSource.getMessage("formulario.nao-encontrado", new Object[]{ getModelName() }, locale);
-            adicionarAlertaWarning(model, mensagem);
-            return consultar(model);
+            model.addAttribute(Constantes.ACAO, Constantes.ACAO_LISTAR);
+            if( modelService.exists(idPaciente) ){
+                
+                Paciente paciente = modelService.findOne(idPaciente);
+                
+                List<HistoricoClinico> historicoClinicoList = historicoClinicoService.getHistoricoClinico( paciente );
+                
+                //request.getSession().setAttribute("historicoClinicoList", historicoClinicoList);
+                
+                model.addAttribute("paciente", paciente );
+                model.addAttribute("historicoClinicoList", historicoClinicoList );
+                
+                return getViewPath() + "historicoClinico";
+            }else{
+                String mensagem = messageSource.getMessage("formulario.nao-encontrado", new Object[]{ getModelName() }, locale);
+                adicionarAlertaWarning(model, mensagem);
+                return exibirHistoricoClinicoForm(model, locale, request);
+            }
         }
         
         //return getViewPath() + "alterarForm"; 
