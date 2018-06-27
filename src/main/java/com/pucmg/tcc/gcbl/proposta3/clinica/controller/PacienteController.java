@@ -164,7 +164,7 @@ public class PacienteController extends ModelController {
     @RequestMapping(value={"/listar-historico-clinico-paciente"}, method = RequestMethod.POST)
     public String exibirHistoricoClinico(Model model, Locale locale, HttpServletRequest request){
         
-        String idPaciente = request.getParameter("idPaciente");
+        String idPaciente = request.getParameter("id");
         
         if("".equals(idPaciente) || idPaciente == null){
             // TODO: Fazer o tratamento de erro corretamente usando os objetos do spring mVC
