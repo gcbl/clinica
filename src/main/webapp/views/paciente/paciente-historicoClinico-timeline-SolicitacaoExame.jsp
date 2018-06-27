@@ -1,4 +1,11 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="tags"%>
+
 <%@ page session="true"%>
 <%@ page isELIgnored="false"%>
 						
@@ -23,10 +30,11 @@
                     <div class="float-right ">${historicoClinicoSession.dataCriacao}</div>
                     <h4 class="card-title "><i class="fas fa-vials"></i> ${TIPO}</h4>
                     <p class="card-text">
-                    id: ${historicoClinicoSession.id}
-                    <br>Data da Solicitação: ${historicoClinicoSession.dataSolicitacao}
-                    <br>Médico solicitante: ${historicoClinicoSession.medicoSolicitante.nome}
-
+                        <div class="">
+                            <div><i class="fas fa-user-md"></i> <b>Data da solicitação:</b> <div><fmt:formatDate value="${historicoClinicoSession.dataSolicitacao}" pattern="dd/MM/yyyy"/></div> </div>
+                            <br>
+                            <div><i class="fas fa-user-md"></i> <b>Médico solicitante:</b> <div>${historicoClinicoSession.medicoSolicitante.nome}</div> </div>
+                        </div>
                     </p>
                     <button class="btn btn-sm btn-outline-secondary" type="button" data-target="#t2_details_${historicoClinicoSession.id}" data-toggle="collapse">Exames solicitados</button>
                     <div class="collapse border" id="t2_details_${historicoClinicoSession.id}">
