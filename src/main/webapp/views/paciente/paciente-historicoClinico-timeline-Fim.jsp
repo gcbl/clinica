@@ -18,8 +18,9 @@
                 <div class="col">&nbsp;</div>
                 <div class="col">&nbsp;</div>
             </div>
-            <h5 class="m-2">
-                <span class="badge badge-pill bg-secondary border">&nbsp;</span>
+            <h5 class="m-2 text-secondary">
+                <i class="far fa-dot-circle fa-fw fa-2x"></i>
+                <!-- <span class="badge badge-pill bg-primary border">&nbsp;</span> -->
             </h5>
             <div class="row h-50">
                 <div class="col border-right">&nbsp;</div>
@@ -28,7 +29,7 @@
         </div>
         <!-- timeline item 1 event content -->
         <div class="col py-2">
-            <div class="card shadow">
+            <div class="card">
                 <div class="card-body">
                     <div class="float-right text-muted">&nbsp;</div>
                     <h5 class="card-title">
