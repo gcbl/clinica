@@ -17,8 +17,9 @@
                 <div class="col border-right">&nbsp;</div>
                 <div class="col">&nbsp;</div>
             </div>
-            <h5 class="m-2">
-                <span class="badge badge-pill bg-secondary border">&nbsp;</span>
+            <h5 class="m-2 text-secondary">
+                <i class="far fa-circle fa-fw fa-2x"></i>
+                <!-- <span class="badge badge-pill bg-primary border">&nbsp;</span> -->
             </h5>
             <div class="row h-50">
                 <div class="col">&nbsp;</div>
