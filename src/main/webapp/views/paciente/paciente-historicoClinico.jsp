@@ -11,18 +11,20 @@
  
  
         <div class="body">
-            <h2 class="text-capitalize"><i class="fas fa-clipboard-list"></i> Histórico clínico de ${paciente.nome}</h2>
  
 <!-- ########################################################################### -->
                <br><br>
+               <c:import url="paciente-historicoClinico-timeline-FichaPessoal.jsp"/>
+               <br><br><br> 
+
+               <h2 class="text-capitalize"><i class="fas fa-clipboard-list"></i> Histórico clínico de ${paciente.nome}</h2>
+               <br><br>                
                <c:choose>
                   <c:when test = "${empty historicoClinicoList}">
                        <c:import url="paciente-historicoClinico-timeline-Fim.jsp"/>
                   </c:when>
                   <c:otherwise>
                       <%-- Timeline do historico --%>
-                      <c:import url="paciente-historicoClinico-timeline-FichaPessoal.jsp"/>
-                      <br><br><br><br>
                       <c:import url="paciente-historicoClinico-timeline-Fim.jsp"/>
                       <c:forEach var="historicoClinico" items="${historicoClinicoList}">
                            <%-- Detectando o TIPO --%>
