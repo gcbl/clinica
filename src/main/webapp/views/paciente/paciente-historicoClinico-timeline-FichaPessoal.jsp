@@ -37,6 +37,8 @@
                               <br><b>Nome:</b> ${paciente.nome}
                               <br><b>Data de Nascimento:</b> <fmt:formatDate value="${paciente.dataNascimento}" pattern="dd/MM/yyyy"/>
                               <br><b>Idade:</b> ${paciente.idade}
+                              <br><b>CPF:</b> ${paciente.cpf}
+                              <br>
                               <br><b>Plano de Saúde:</b> ${paciente.planoSaude}
                             </div>
                             <div class="col-sm-3">
@@ -44,6 +46,7 @@
                               <br>${paciente.endereco}
                               <br>Bairro: ${paciente.bairro}
                               <br>${paciente.cidade} - ${paciente.estado}
+                              <br>CEP: ${paciente.cep}
                               <br><br>
                             </div>
                         </div>
