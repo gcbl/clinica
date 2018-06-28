@@ -24,6 +24,7 @@ public class Constantes {
     public static final String ACAO_INCLUIR = "incluir";
     public static final String ACAO_EXCLUIR = "excluir";
     public static final String ACAO_EDITAR = "editar";
+    public static final String ACAO_PESQUISAR = "pesquisar";
     
 
     // API Ajax search
