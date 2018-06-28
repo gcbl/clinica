@@ -152,15 +152,15 @@ public class AgendamentoController extends ModelController {
     
     // ###############################################################################
     
-    @RequestMapping(value={"/procurar-agendamento"}, method = RequestMethod.GET)
+    @RequestMapping(value={"/pesquisar-agendamento"}, method = RequestMethod.GET)
     public String exibirAgendaForm(Agendamento item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {                         
-        model.addAttribute(Constantes.ACAO, "procurar");
+        model.addAttribute(Constantes.ACAO, Constantes.ACAO_PESQUISAR);
         
         model.addAttribute(getModelName(), new Agendamento());
         return getViewPath() + "incluirForm";
     } 
 
-    @RequestMapping(value={"/procurar-agendamento"}, method = RequestMethod.POST)
+    @RequestMapping(value={"/pesquisar-agendamento"}, method = RequestMethod.POST)
     public String exibirAgenda(Agendamento item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {
 
     	item.setId(null); // id vem como string vazio =( Forçando null!
