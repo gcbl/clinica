@@ -110,7 +110,6 @@
              </button>
          </div>
          <div class="modal-body">
-         
              <!-- <div class="text-danger"><b>Agendamento:</b> <div id="modalBodyAgendamento"></div></div> -->
              <div><i class="fas fa-user-md"></i> <b>Médico:</b> <div id="modalBodyMedico"></div></div>
              <br>
