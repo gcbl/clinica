@@ -48,7 +48,7 @@
           <a class="dropdown-item" href="exibir-calendario-vagas-agendamento">Exibir Calendário</a>
           <a class="dropdown-item" href="incluir-agendamento">Agendar "Encaixe"</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="procurar-agendamento">Procurar Agendamentos</a>
+          <a class="dropdown-item" href="pesquisar-agendamento">Pesquisar Agendamentos</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="incluir-agendaForm">Criar agenda</a>
 		  <a class="dropdown-item" href="listar-agendamento">Listar Agendamentos</a>
