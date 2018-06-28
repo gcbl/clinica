@@ -267,6 +267,8 @@ $(document).ready(function() {
         // alert(JSON.stringify(event.params.data, null, 4));
         idPaciente = event.params.data.id;
         var nomePaciente = event.params.data.nome;
+        var idade = event.params.data.idade;
+        var planoSaude = event.params.data.planoSaude;
         $('#pacienteMarcado').text(nomePaciente);
 
         habilitaBotao('btnMarcarHorarioModal', 'btn-primary')
