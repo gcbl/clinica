@@ -5,6 +5,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.pucmg.tcc.gcbl.proposta3.clinica.util.DataUtils;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -24,5 +26,8 @@ public class Paciente extends Pessoa {
 //    @OneToMany(mappedBy = "paciente")
 //    private List<Receita> receitas = new ArrayList<Receita>();
      
+    public String getIdade(){
+        return DataUtils.calculaIdadeAnoMesDia(this.getDataNascimento());
+    }
     
 }
