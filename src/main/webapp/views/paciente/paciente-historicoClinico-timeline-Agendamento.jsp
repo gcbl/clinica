@@ -16,8 +16,9 @@
                 <div class="col border-right">&nbsp;</div>
                 <div class="col">&nbsp;</div>
             </div>
-            <h5 class="m-2">
-                <span class="badge badge-pill bg-info border">&nbsp;</span>
+            <h5 class="m-2 text-info">
+                <i class="far fa-calendar-alt fa-fw fa-2x"></i>
+                <!-- <span class="badge badge-pill bg-primary border">&nbsp;</span> -->
             </h5>
             <div class="row h-50">
                 <div class="col border-right">&nbsp;</div>
