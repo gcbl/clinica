@@ -121,7 +121,7 @@ public class DataUtils {
     
     // -------
     private static final DecimalFormat CPF_FORMAT = new DecimalFormat("00000000000");
-    public String getCpfFormatado(long cpf){
+    public static String formatarCPF(long cpf){
         final String stringNumber = CPF_FORMAT.format(cpf);
         return stringNumber.replaceAll("([0-9]{3})([0-9]{3})([0-9]{3})([0-9]{2})", "$1.$2.$3-$4");   
     }
