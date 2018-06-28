@@ -29,30 +29,12 @@
                 <div class="card-body">
                     <div class="float-right text-muted">${historicoClinicoSession.dataCriacao}</div>
                     <h4 class="card-title"><i class="far fa-calendar-alt"></i> ${TIPO}</h4>
-                    <p>
-                        <div class="">
-                            <br>
-                            <div><i class="fas fa-user-md"></i> <b>Médico:</b> <div>${historicoClinicoSession.medico.nome}</div> </div>
-                            <br>
-                            <div><i class="far fa-clock"></i> <b>Horário:</b> <div>${historicoClinicoSession.horarioCompleto}</div>  </div>
-                        </div>
-                    </p>
-                    
-                    <%--
-                    <button class="btn btn-sm btn-outline-secondary" type="button" data-target="#t2_details_${historicoClinicoSession.id}" data-toggle="collapse">Medicamentos prescritos</button>
-                    <div class="collapse border" id="t2_details_${historicoClinicoSession.id}">
-                        <div class="p-2 ">
-                            <br>
-                            <c:forEach items="${historicoClinicoSession.medicamentos}" var="itemList">
-                                <li>${itemList.nomeCompleto}</li>
-                            </c:forEach>
-                            <br>
-                            <c:if test="${not empty historicoClinicoSession.conteudo}">
-                                Conteúdo: ${historicoClinicoSession.conteudo}
-                            </c:if>
-                        </div>
+                    <div class="">
+                        <br>
+                        <div><i class="fas fa-user-md"></i> <b>Médico:</b> <div>${historicoClinicoSession.medico.nome}</div> </div>
+                        <br>
+                        <div><i class="far fa-clock"></i> <b>Horário:</b> <div>${historicoClinicoSession.horarioCompleto}</div>  </div>
                     </div>
-                     --%>
                 </div>
             </div>
         </div>
