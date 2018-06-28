@@ -31,7 +31,7 @@
                     <h4 class="card-title "><i class="fas fa-vials"></i> ${TIPO}</h4>
                     <p class="card-text">
                         <div class="">
-                            <div><i class="fas fa-user-md"></i> <b>Data da solicitação:</b> <div><fmt:formatDate value="${historicoClinicoSession.dataSolicitacao}" pattern="dd/MM/yyyy"/></div> </div>
+                            <div><i class="far fa-calendar"></i> <b>Data da solicitação:</b> <div><fmt:formatDate value="${historicoClinicoSession.dataSolicitacao}" pattern="dd/MM/yyyy"/></div> </div>
                             <br>
                             <div><i class="fas fa-user-md"></i> <b>Médico solicitante:</b> <div>${historicoClinicoSession.medicoSolicitante.nome}</div> </div>
                         </div>
