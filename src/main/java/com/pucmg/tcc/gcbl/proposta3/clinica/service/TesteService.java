@@ -22,6 +22,7 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medicamento;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Receita;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.ResultadoExame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.SolicitacaoExame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.User;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.AgendamentoRepository;
@@ -303,7 +304,15 @@ public class TesteService{
         agendamentoRepository.save(agendamento2);
 */        
 //-------------------------------------------------------------------
-
+//        SolicitacaoExame solicitacaoExame = solicitacaoExameList.get(0);
+//        ResultadoExame resultadoExame = new ResultadoExame();
+//        resultadoExame.setResultado("este eh o resultado");
+//        resultadoExame.setDisponibilizadoPaciente(true);
+//        
+//        
+//        solicitacaoExame.setResultadoExame(resultadoExame);
+//        
+//        solicitacaoExameRepository.save(solicitacaoExame);
         
         System.out.println("pausa");
         
