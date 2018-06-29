@@ -17,7 +17,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "SC_RESULTADO_EXAME")
-public class ResultadoExame extends BaseEntity {
+public class ResultadoExame extends BaseEntity implements HistoricoClinico {
     
     @NotNull(message = "*Por favor informe o paciente")
     @ManyToOne(fetch=FetchType.LAZY)
