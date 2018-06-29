@@ -19,6 +19,10 @@ public class HistoricoClinicoService{
 
     @Autowired
     private SolicitacaoExameService solicitacaoExameService;
+
+    @Autowired
+    private ResultadoExameService resultadoExameService;
+
     
     @Autowired
     private AgendamentoService agendamentoService;
@@ -27,6 +31,7 @@ public class HistoricoClinicoService{
     public List<HistoricoClinico> getHistoricoClinico(Paciente paciente){
         List<? extends HistoricoClinico> receitaList = receitaService.findByPaciente(paciente);
         List<? extends HistoricoClinico> solicitacaoExameList = solicitacaoExameService.findByPaciente(paciente);
+        List<? extends HistoricoClinico> resultadoExameList = resultadoExameService.findByPaciente(paciente);
         
         List<? extends HistoricoClinico> agendamentoList = agendamentoService.findByPaciente(paciente);
         
@@ -34,13 +39,12 @@ public class HistoricoClinicoService{
         
         historicoClinicoList.addAll(receitaList);
         historicoClinicoList.addAll(solicitacaoExameList);
+        historicoClinicoList.addAll(resultadoExameList);
         historicoClinicoList.addAll(agendamentoList);
         
         Collections.sort(historicoClinicoList, new HistoricoClinicoComparator());
         
-        
         return historicoClinicoList;
-        
     }
 
     
