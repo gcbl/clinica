@@ -68,6 +68,10 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="listar-solicitacaoExame">Listar Solicitações de Exames</a>
           <a class="dropdown-item" href="incluir-solicitacaoExame">Solicitar exame</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="listar-resultadoExame">Listar Resultado de Exames</a>
+          <a class="dropdown-item" href="incluir-resultadoExame">Receber resultado</a>
+                    
           <a class="dropdown-item disabled" href="#">Receber exame</a>
         </div>
       </li>      
