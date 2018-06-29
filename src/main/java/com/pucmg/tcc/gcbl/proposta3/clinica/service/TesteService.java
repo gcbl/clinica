@@ -230,7 +230,7 @@ public class TesteService{
                 // ----- Inclusao de Resultado de exames -----
                 if(s % 3 == 0){
                     ResultadoExame resultadoExame = new ResultadoExame();
-                    boolean disponibilizadoPaciente = ( s % 5 == 0 ) ? true : false;
+                    boolean disponibilizadoPaciente = ( s % 2 == 0 ) ? true : false;
                     int valorResultado = ThreadLocalRandom.current().nextInt(20, 200 + 1); // Inclui entre 1 e
                     
                     resultadoExame.setPaciente( agendamentos[s].getPaciente() );
