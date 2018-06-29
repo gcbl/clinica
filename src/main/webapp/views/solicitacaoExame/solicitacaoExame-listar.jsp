@@ -46,6 +46,7 @@
                                 <td>${item.observacao}</td>
                                 <td class="actions text-right">
                                     <div class="btn-group" role="group" aria-label="Basic example">
+                                      <a href="inserir-resultado-${MODEL}?id=${item.id}" class="btn btn-sm btn-primary"><i class="fas fa-file-medical-alt"></i> Receber resultado</a>
                                       <a href="editar-${MODEL}?id=${item.id}" class="btn btn-sm btn-info"><i class="far fa-edit"></i> Editar</a>
                                       <a href="excluir-${MODEL}?id=${item.id}" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i> Remover</a>
                                     </div>
