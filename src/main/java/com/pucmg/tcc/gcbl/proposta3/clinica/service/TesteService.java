@@ -30,6 +30,7 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.repository.ExameRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.MedicoRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.PacienteRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.ReceitaRepository;
+import com.pucmg.tcc.gcbl.proposta3.clinica.repository.ResultadoExameRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.SolicitacaoExameRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.util.DataUtils;
 
@@ -56,6 +57,9 @@ public class TesteService{
     @Autowired
     private SolicitacaoExameRepository solicitacaoExameRepository;
 
+    @Autowired
+    private ResultadoExameRepository resultadoExameRepository;    
+    
     @Autowired
     private AgendamentoRepository agendamentoRepository;
     
@@ -169,6 +173,7 @@ public class TesteService{
         List<Agendamento> horariosMarcados = new ArrayList<Agendamento>();
         List<SolicitacaoExame> solicitacaoExameList = new ArrayList<SolicitacaoExame>();
         List<Receita> receitasList = new ArrayList<Receita>();
+        List<ResultadoExame> resultadoExameList = new ArrayList<ResultadoExame>();
 
         // *** POPULANDO DADOS! ***
         // Loop em todos os pacientes
@@ -221,6 +226,21 @@ public class TesteService{
                 
                 // Fim da inclusao dos exames
                 
+                
+                // ----- Inclusao de Resultado de exames -----
+                if(s % 3 == 0){
+                    ResultadoExame resultadoExame = new ResultadoExame();
+                    boolean disponibilizadoPaciente = ( s % 5 == 0 ) ? true : false;
+                    int valorResultado = ThreadLocalRandom.current().nextInt(20, 200 + 1); // Inclui entre 1 e
+                    
+                    resultadoExame.setPaciente( agendamentos[s].getPaciente() );
+                    resultadoExame.setDisponibilizadoPaciente(disponibilizadoPaciente);
+                    resultadoExame.setResultado("O resultado do deste exame é " + valorResultado + "mg/dl.");
+                    resultadoExameList.add(resultadoExame);
+                }
+
+                // ----- Fim da inclusao de Resultado de exames -----
+                
                 // Inclusao de receitas
                 Receita receita = new Receita();
                 
@@ -259,6 +279,7 @@ public class TesteService{
         agendamentoService.salvar(horariosMarcados);
         solicitacaoExameRepository.save(solicitacaoExameList);
         receitaRepository.save(receitasList);
+        resultadoExameRepository.save(resultadoExameList);
         // --- Fim de Marcando horarios ---
 
         
