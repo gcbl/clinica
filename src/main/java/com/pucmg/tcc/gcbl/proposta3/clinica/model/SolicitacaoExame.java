@@ -12,7 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -56,9 +55,6 @@ public class SolicitacaoExame extends BaseEntity implements HistoricoClinico{
                inverseJoinColumns = @JoinColumn(name = "ID_EXAME"))
     private Set<Exame> exames = new HashSet<>();
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="ID_RESULTADO_EXAME")
-    private ResultadoExame resultadoExame;
     
 }
 
