@@ -68,6 +68,9 @@ public class Agendamento extends BaseEntity implements Comparable<Agendamento>, 
     @JoinColumn(name="ID_PACIENTE")
     private Paciente paciente;
 
+    public boolean isVago() {
+    	return (this.getPaciente() == null) ? true : false;
+    }
     
     public String getHorarioCompleto(){
         LocalDate localDate = this.getData();

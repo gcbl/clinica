@@ -154,11 +154,15 @@ public class APIController extends BaseController {
                                          @RequestParam(    "idPaciente" ) String idPaciente ){
         // TODO: Tratar excecao de parametros vazios
         Agendamento agendamento = agendamentoService.findOne(idAgendamento);
-        Paciente paciente = pacienteService.findOne(idPaciente);
         
-        agendamento.setPaciente(paciente);
+        if(agendamento.isVago()){
+            Paciente paciente = pacienteService.findOne(idPaciente);
+            agendamento.setPaciente(paciente);
+            agendamentoService.salvar(agendamento);
+        }else {
+        	throw new RuntimeException("Horario ja ocupado");
+        }
         
-        agendamentoService.salvar(agendamento);
         
         return agendamento;
     }      

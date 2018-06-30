@@ -317,8 +317,17 @@ $(document).ready(function() {
 		}).done(function(msg) {
 			afterMarcarHorario();
 		}).fail(function(jqXHR, textStatus, msg) {
-			habilitaBotao('btnMarcarHorarioModal', 'btn-primary');
+			alert(jqXHR.responseJSON.message);
+			/*
 			alert('problema na hora de marcar a consulta!');
+			var teste = JSON.stringify(jqXHR, null, 2);
+			alert(teste);
+			alert(jqXHR);
+			alert(jqXHR.responseJSON.message);
+			alert(textStatus);
+			alert(msg);
+			*/
+			habilitaBotao('btnMarcarHorarioModal', 'btn-primary');
  		});
 	 });
 
