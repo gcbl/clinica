@@ -350,7 +350,8 @@ $(document).ready(function() {
              afterDesmarcarHorario();
          }).fail(function(jqXHR, textStatus, msg) {
              //alert('fail');
-             alert('problema na hora de desmarcar a consulta!');
+             alert(jqXHR.responseJSON.message);
+             //alert('problema na hora de desmarcar a consulta!');
          });
      });
    
