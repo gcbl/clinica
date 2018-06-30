@@ -318,17 +318,12 @@ $(document).ready(function() {
 			afterMarcarHorario();
 		}).fail(function(jqXHR, textStatus, msg) {
 			alert(jqXHR.responseJSON.message);
-			/*
-			alert('problema na hora de marcar a consulta!');
-			var teste = JSON.stringify(jqXHR, null, 2);
-			alert(teste);
-			alert(jqXHR);
-			alert(jqXHR.responseJSON.message);
-			alert(textStatus);
-			alert(msg);
-			*/
-			habilitaBotao('btnMarcarHorarioModal', 'btn-primary');
- 		});
+
+			// Horario ja ocupado!
+			$('#calendar').fullCalendar( 'refetchEvents');
+			$("#agendamentoEventModal").modal("hide");
+
+		});
 	 });
 
     /**
@@ -351,7 +346,12 @@ $(document).ready(function() {
          }).fail(function(jqXHR, textStatus, msg) {
              //alert('fail');
              alert(jqXHR.responseJSON.message);
-             //alert('problema na hora de desmarcar a consulta!');
+
+             // Horario ja esta vago
+             
+             $('#calendar').fullCalendar( 'refetchEvents');
+             $("#agendamentoEventModal").modal("hide");
+             
          });
      });
    
