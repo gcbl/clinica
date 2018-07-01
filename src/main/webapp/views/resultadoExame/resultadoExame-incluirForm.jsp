@@ -11,6 +11,14 @@
 
 <tiles:insertDefinition name="defaultTemplate">
     <tiles:putAttribute name="body">
+
+		<style>
+			.toggle.ios, .toggle-on.ios, .toggle-off.ios { border-radius: 20px; }
+			.toggle.ios .toggle-handle { border-radius: 20px; }
+			.toggle.android { border-radius: 0px;}
+			.toggle.android .toggle-handle { border-radius: 0px; }
+		</style>
+
  
         <div class="body">
 
@@ -54,12 +62,10 @@
                     
                     <!-- Text input-->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="disponibilizadoPaciente">disponibilizadoPaciente:</label>  
-                      <div class="col-md-4">
-                      <form:checkbox path="disponibilizadoPaciente" /></td>
+                      <label class="col-md-6 control-label" for="disponibilizadoPaciente">Disponibilizar resultado para o paciente:</label>  
+                      <div class="col-md-6">
+                      <form:checkbox path="disponibilizadoPaciente" data-toggle="toggle" data-on="Disponibilizar" data-off="Não disponibilizar" data-onstyle="success" data-offstyle="danger" data-style="android"/> </td>
                       <form:errors path="disponibilizadoPaciente" cssClass="text-danger" /></td>
-                      <%-- <form:input path="disponibilizadoPaciente" placeholder="disponibilizadoPaciente" class="form-control input-md"/> <form:errors path="disponibilizadoPaciente" cssClass="text-danger" /> --%>
-                      <!-- <span class="help-block">Informe a concentração e forma farmaceutica ou uma breve descrição </span> -->  
                       </div>
                     </div>                        
                     
@@ -67,6 +73,7 @@
                     <!-- Button -->
                     <div class="form-group">
                       <div class="col-md-4">
+                        <br><br>
                         <button id="btnSalvar" name="btnSalvar" class="btn btn-primary">Salvar</button>
                       </div>
                     </div>
