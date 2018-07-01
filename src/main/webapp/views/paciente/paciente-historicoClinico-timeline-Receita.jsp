@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-auto text-center flex-column d-none d-sm-flex">
             <div class="row h-50">
-                <div class="col border-right">&nbsp;</div>
+                <div class="col border-right border-secondary">&nbsp;</div>
                 <div class="col">&nbsp;</div>
             </div>
             <h5 class="m-2 text-primary">
@@ -23,14 +23,14 @@
                 <!-- <span class="badge badge-pill bg-primary border">&nbsp;</span> -->
             </h5>
             <div class="row h-50">
-                <div class="col border-right">&nbsp;</div>
+                <div class="col border-right border-secondary">&nbsp;</div>
                 <div class="col">&nbsp;</div>
             </div>
         </div>
         <div class="col py-2">
             <div class="card">
                 <div class="card-body">
-                    <div class="float-right text-muted"><javatime:format value="${historicoClinicoSession.dataCriacao}" style="MS" /></div>
+                    <div class="float-right text-muted"><javatime:format value="${historicoClinicoSession.dataHistorico}" style="MS" /></div>
                     <h4 class="card-title"><i class="fas fa-pills"></i> ${TIPO}</h4>
                     <p>
                     <div class="">

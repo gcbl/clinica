@@ -14,7 +14,7 @@
     <div class="row">
         <div class="col-auto text-center flex-column d-none d-sm-flex">
             <div class="row h-50">
-                <div class="col border-right">&nbsp;</div>
+                <div class="col border-right border-secondary">&nbsp;</div>
                 <div class="col">&nbsp;</div>
             </div>
             <h5 class="m-2 text-success">
@@ -22,14 +22,14 @@
                 <!-- <span class="badge badge-pill bg-primary border">&nbsp;</span> -->
             </h5>
             <div class="row h-50">
-                <div class="col border-right">&nbsp;</div>
+                <div class="col border-right border-secondary">&nbsp;</div>
                 <div class="col">&nbsp;</div>
             </div>
         </div>
         <div class="col py-2">
-            <div class="card ">
+            <div class="card">
                 <div class="card-body bg-warning">
-                    <div class="float-right "><javatime:format value="${historicoClinicoSession.dataCriacao}" style="MS" /></div>
+                    <div class="float-right "><javatime:format value="${historicoClinicoSession.dataHistorico}" style="MS" /></div>
                     <h4 class="card-title "><i class="fas fa-file-medical"></i> ${TIPO}</h4>
                     <p class="card-text">
                         <div class="">
@@ -39,6 +39,8 @@
                             <br>
                             <div><i class="far fa-calendar-alt"></i> <b>Data do exame:</b> <div>COLOQUE AQUI A DATA</div> </div>                            
                             <br>
+                            <div><i class="fas fa-user-md"></i> <b>Responsavél técnico:</b> <div>${historicoClinicoSession.anexos}</div> </div>                            
+							<br>
                             <div><i class="fas fa-globe"></i> <b>Disponível para o paciente:</b> <div>${historicoClinicoSession.disponibilizadoPaciente}</div> </div>
                             <br>
                             <div><i class="fas fa-paperclip"></i> <b>Anexos:</b> <div>${historicoClinicoSession.anexos}</div> </div>                            
@@ -61,7 +63,6 @@
 							    Observação: ${historicoClinicoSession.observacao}
 							</c:if>
                             --%>
-                            <div><i class="fas fa-user-md"></i> <b>Responsavél técnico:</b> <div>${historicoClinicoSession.anexos}</div> </div>                            
                         </div>
                     </div>
                     <br><br>

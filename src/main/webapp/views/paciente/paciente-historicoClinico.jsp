@@ -27,7 +27,7 @@
                   </c:when>
                   <c:otherwise>
                       <%-- Timeline do historico --%>
-                      <c:import url="paciente-historicoClinico-timeline-Fim.jsp"/>
+                      <c:import url="paciente-historicoClinico-timeline-Inicio.jsp"/>
                       <c:forEach var="historicoClinico" items="${historicoClinicoList}">
                            <%-- Detectando o TIPO --%>
                            <c:set var="TIPO"                    scope="session" value="${historicoClinico['class'].simpleName }"/>
@@ -35,7 +35,7 @@
                    
                            <c:import url="paciente-historicoClinico-timeline-${TIPO}.jsp"/>
                       </c:forEach>
-                      <c:import url="paciente-historicoClinico-timeline-Inicio.jsp"/>
+                      <c:import url="paciente-historicoClinico-timeline-Fim.jsp"/>
                       <%-- /Timeline do historico --%>
                   </c:otherwise>
                </c:choose>
