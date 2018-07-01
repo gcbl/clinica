@@ -33,7 +33,7 @@
                     <h4 class="card-title"><i class="far fa-address-card"></i> Ficha pessoal de <b>${paciente.nome}</b>:</h4>
                     <div class="">
                         <div class="row">
-                            <div class="col-sm-3">
+                            <div class="col-sm-6">
                               <br><b>Nome:</b> ${paciente.nome}
                               <br><b>Data de Nascimento:</b> <fmt:formatDate value="${paciente.dataNascimento}" pattern="dd/MM/yyyy"/>
                               <br><b>Idade:</b> ${paciente.idade}
@@ -41,7 +41,7 @@
                               <br>
                               <br><b>Plano de Saúde:</b> ${paciente.planoSaude}
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-6">
                               <br><i class="fas fa-map-marker-alt"></i> <b>Endereço:</b>
                               <br>${paciente.endereco}
                               <br>Bairro: ${paciente.bairro}
