@@ -49,3 +49,8 @@ https://stackoverflow.com/questions/35408873/create-responsive-timeline-with-boo
 TagLib java8 time
 https://stackoverflow.com/questions/35606551/jstl-localdatetime-format
 https://github.com/sargue/java-time-jsptags
+
+
+Custom Switch pra usar no check de receber exame:
+Verificar se funciona no mobile
+https://github.com/haubek/bootstrap4c-custom-switch
