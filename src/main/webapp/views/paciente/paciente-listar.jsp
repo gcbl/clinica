@@ -26,7 +26,6 @@
                             <th>Bairro</th>
                             <th>Cep</th>
                             <th>Cidade</th>
-                            <th>Estado</th>
                             <th>Plano de Saúde</th>                            
                             <th class="text-right"><a href="incluir-${MODEL}" class="btn btn-sm btn-success"><i class="fas fa-plus-circle"></i> Adicionar novo ${MODEL}</a></th>
                         </tr>
@@ -41,8 +40,7 @@
                                 <td>${item.endereco}</td>
                                 <td>${item.bairro}</td>
                                 <td>${item.cep}</td>
-                                <td>${item.cidade}</td>
-                                <td>${item.estado}</td>
+                                <td>${item.cidade}-${item.estado}</td>
                                 <td>${item.planoSaude}</td>                                
                                 <td class="actions text-right">
                                     <div class="btn-group" role="group" aria-label="Basic example">
