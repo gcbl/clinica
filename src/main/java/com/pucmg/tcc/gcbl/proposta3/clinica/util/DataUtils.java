@@ -115,7 +115,6 @@ public class DataUtils {
             }
         }
         
-        System.out.println(anos + "a " + meses + "m " + dias + "d");
         return anos + " anos, " + meses + " meses e " + dias + " dias";
     }    
     
