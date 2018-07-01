@@ -4,6 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://sargue.net/jsptags/time" prefix="javatime" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="tags"%>
 
 <%@ page session="true"%>
@@ -28,7 +29,7 @@
         <div class="col py-2">
             <div class="card ">
                 <div class="card-body bg-warning">
-                    <div class="float-right ">${historicoClinicoSession.dataCriacao}</div>
+                    <div class="float-right "><javatime:format value="${historicoClinicoSession.dataCriacao}" style="MS" /></div>
                     <h4 class="card-title "><i class="fas fa-file-medical"></i> ${TIPO}</h4>
                     <p class="card-text">
                         <div class="">
@@ -43,6 +44,7 @@
                             <div><i class="fas fa-paperclip"></i> <b>Anexos:</b> <div>${historicoClinicoSession.anexos}</div> </div>                            
                         </div>
                     </p>
+                    <div><i class="fas fa-file-medical"></i> <b>Resultados:</b> <div>${historicoClinicoSession.anexos}</div> </div>                            
                     <button class="btn btn-sm btn-outline-secondary" type="button" data-target="#t2_details_${TIPO}-${historicoClinicoSession.id}" data-toggle="collapse"><i class="fas fa-file-medical"></i> Resultado do exame</button>
                     <div class="collapse border" id="t2_details_${TIPO}-${historicoClinicoSession.id}">
                         <div class="p-2 ">
@@ -59,8 +61,11 @@
 							    Observação: ${historicoClinicoSession.observacao}
 							</c:if>
                             --%>
+                            <div><i class="fas fa-user-md"></i> <b>Responsavél técnico:</b> <div>${historicoClinicoSession.anexos}</div> </div>                            
                         </div>
                     </div>
+                    <br><br>
+                    
                 </div>
             </div>
         </div>

@@ -4,8 +4,8 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://sargue.net/jsptags/time" prefix="javatime" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="tags"%>
-
 
 <%@ page session="true"%>
 <%@ page isELIgnored="false"%>

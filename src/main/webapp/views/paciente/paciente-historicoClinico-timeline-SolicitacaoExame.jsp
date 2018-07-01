@@ -4,6 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://sargue.net/jsptags/time" prefix="javatime" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="tags"%>
 
 <%@ page session="true"%>
@@ -28,7 +29,7 @@
         <div class="col py-2">
             <div class="card ">
                 <div class="card-body">
-                    <div class="float-right ">${historicoClinicoSession.dataCriacao}</div>
+                    <div class="float-right "><javatime:format value="${historicoClinicoSession.dataCriacao}" style="MS" /></div>
                     <h4 class="card-title "><i class="fas fa-vials"></i> ${TIPO}</h4>
                     <p class="card-text">
                         <div class="">
