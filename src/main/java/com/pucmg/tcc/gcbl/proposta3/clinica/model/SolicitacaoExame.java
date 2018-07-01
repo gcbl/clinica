@@ -1,5 +1,6 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -54,6 +55,11 @@ public class SolicitacaoExame extends BaseEntity implements HistoricoClinico{
                joinColumns = @JoinColumn(name = "ID_SOLICITACAO"), 
                inverseJoinColumns = @JoinColumn(name = "ID_EXAME"))
     private Set<Exame> exames = new HashSet<>();
+
+	@Override
+	public LocalDateTime getDataHistorico() {
+		return this.getDataCriacao();
+	}
 
     
 }
