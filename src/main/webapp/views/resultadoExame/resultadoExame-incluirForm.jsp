@@ -64,8 +64,8 @@
                     <div class="form-group">
                       <label class="col-md-6 control-label" for="disponibilizadoPaciente">Disponibilizar resultado para o paciente:</label>  
                       <div class="col-md-6">
-                      <form:checkbox path="disponibilizadoPaciente" data-toggle="toggle" data-on="Disponibilizar" data-off="Não disponibilizar" data-onstyle="success" data-offstyle="danger" data-style="android"/> </td>
-                      <form:errors path="disponibilizadoPaciente" cssClass="text-danger" /></td>
+                      <form:checkbox path="disponibilizadoPaciente" data-toggle="toggle" data-on="<i class='fas fa-lock-open'></i>&nbsp;&nbsp; Disponibilizar" data-off="<i class='fas fa-lock'></i>&nbsp;&nbsp; Não disponibilizar" data-onstyle="success" data-offstyle="danger" data-style="android"/>
+                      <form:errors path="disponibilizadoPaciente" cssClass="text-danger" />
                       </div>
                     </div>                        
                     
