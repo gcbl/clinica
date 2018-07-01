@@ -23,8 +23,9 @@
                     <thead>
                         <tr>
                             <th>id</th>
+                            <th>Paciente</th>
                             <th>Resultado</th>
-                            <th>disponibilizadoPaciente</th>
+                            <th>Publicado</th>
                             <th class="text-right"><a href="incluir-${MODEL}" class="btn btn-sm btn-success"><i class="fas fa-plus-circle"></i> Adicionar novo ${MODEL}</a></th>
                         </tr>
                     </thead>
@@ -32,6 +33,7 @@
                         <c:forEach items="${itemList}" var="item">
                             <tr>
                                 <td>${item.id}</td>
+                                <td>${item.paciente.nome}</td>
                                 <td>${item.resultado}</td>
                                 <td>${item.disponibilizadoPaciente}</td>
                                 <td class="actions text-right">
