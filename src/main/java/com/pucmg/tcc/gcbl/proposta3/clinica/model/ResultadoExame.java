@@ -1,5 +1,7 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,7 +20,13 @@ import lombok.EqualsAndHashCode;
 @Entity
 @Table(name = "SC_RESULTADO_EXAME")
 public class ResultadoExame extends BaseEntity implements HistoricoClinico {
-    
+    /*
+     Laboratorio
+     Responsavel Tecnico
+     Data do exame
+     */
+	
+	
     @NotNull(message = "*Por favor informe o paciente")
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="ID_PACIENTE")
@@ -38,4 +46,9 @@ public class ResultadoExame extends BaseEntity implements HistoricoClinico {
 //    @OneToOne(mappedBy="resultadoExame")
 //    private SolicitacaoExame solicitacaoExame;
     
+	@Override
+	public LocalDateTime getDataHistorico() {
+		return this.getDataCriacao();
+	}
+
 }
