@@ -1,6 +1,7 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
@@ -68,6 +69,13 @@ public class Agendamento extends BaseEntity implements Comparable<Agendamento>, 
     @JoinColumn(name="ID_PACIENTE")
     private Paciente paciente;
 
+    
+	@Override
+	public LocalDateTime getDataHistorico() {
+		LocalDateTime dataHistorico = LocalDateTime.of(this.getData(), this.getHoraInicio());
+		return dataHistorico;
+	}
+    
     public boolean isVago() {
     	return (this.getPaciente() == null) ? true : false;
     }
