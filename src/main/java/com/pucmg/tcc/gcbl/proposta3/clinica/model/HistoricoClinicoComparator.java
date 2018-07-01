@@ -6,6 +6,6 @@ public class HistoricoClinicoComparator implements Comparator<HistoricoClinico> 
     
     public int compare(HistoricoClinico conta, HistoricoClinico outraConta) {
         // Ordem inversa. O historico é mostrado dos eventos mais recentes para os mais antigos
-        return outraConta.getDataCriacao().compareTo( conta.getDataCriacao() );
+        return conta.getDataHistorico().compareTo( outraConta.getDataHistorico() );
     }
 }
