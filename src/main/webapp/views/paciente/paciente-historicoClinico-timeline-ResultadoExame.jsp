@@ -17,7 +17,7 @@
                 <div class="col border-right border-secondary">&nbsp;</div>
                 <div class="col">&nbsp;</div>
             </div>
-            <h5 class="m-2 text-success">
+            <h5 class="m-2 text-primary">
                 <i class="fas fa-file-medical fa-fw fa-2x"></i>
                 <!-- <span class="badge badge-pill bg-primary border">&nbsp;</span> -->
             </h5>
