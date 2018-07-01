@@ -43,8 +43,8 @@
                             <div><i class="fas fa-paperclip"></i> <b>Anexos:</b> <div>${historicoClinicoSession.anexos}</div> </div>                            
                         </div>
                     </p>
-                    <button class="btn btn-sm btn-outline-secondary" type="button" data-target="#t2_details_${historicoClinicoSession.id}" data-toggle="collapse"><i class="fas fa-file-medical"></i> Resultado do exame</button>
-                    <div class="collapse border" id="t2_details_${historicoClinicoSession.id}">
+                    <button class="btn btn-sm btn-outline-secondary" type="button" data-target="#t2_details_${TIPO}-${historicoClinicoSession.id}" data-toggle="collapse"><i class="fas fa-file-medical"></i> Resultado do exame</button>
+                    <div class="collapse border" id="t2_details_${TIPO}-${historicoClinicoSession.id}">
                         <div class="p-2 ">
                         	<br>
                                 <ul>
