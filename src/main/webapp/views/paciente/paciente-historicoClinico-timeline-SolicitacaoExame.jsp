@@ -37,8 +37,8 @@
                             <div><i class="fas fa-user-md"></i> <b>Médico solicitante:</b> <div>${historicoClinicoSession.medicoSolicitante.nome}</div> </div>
                         </div>
                     </p>
-                    <button class="btn btn-sm btn-outline-secondary" type="button" data-target="#t2_details_${historicoClinicoSession.id}" data-toggle="collapse">Exames solicitados</button>
-                    <div class="collapse border" id="t2_details_${historicoClinicoSession.id}">
+                    <button class="btn btn-sm btn-outline-secondary" type="button" data-target="#t2_details_${TIPO}-${historicoClinicoSession.id}" data-toggle="collapse">Exames solicitados</button>
+                    <div class="collapse border" id="t2_details_${TIPO}-${historicoClinicoSession.id}">
                         <div class="p-2 ">
                         	<br>
                             <c:forEach items="${historicoClinicoSession.exames}" var="itemList">
