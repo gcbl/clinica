@@ -1,5 +1,6 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.model;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -35,8 +36,6 @@ public class Receita extends BaseEntity implements HistoricoClinico {
       @JoinColumn(name="ID_MEDICO")
       private Medico medico;
 
-      
-      
       @NotEmpty(message = "*Por favor informe o texto da receita")
       @Column(name = "CONTEUDO")
       private String conteudo;
@@ -52,5 +51,12 @@ public class Receita extends BaseEntity implements HistoricoClinico {
                  inverseJoinColumns = @JoinColumn(name = "ID_MEDICAMENTO"))
       private Set<Medicamento> medicamentos = new HashSet<>();
 
+	@Override
+	public LocalDateTime getDataHistorico() {
+		return this.getDataCriacao();
+	}
+
+      
+      
 	
 }
