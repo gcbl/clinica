@@ -41,8 +41,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/i18n/pt-BR.js" integrity="sha256-SYr7ePu2amNnWuiooknttfQaa6jBNCy1hUAZnPS6SMw=" crossorigin="anonymous"></script>
 
 	<!-- Bootstrap Toggle -->
+    <!-- 
 	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    -->
+    <link href="/resources/static/libs/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="/resources/static/libs/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
 
     <!-- Number format -->
