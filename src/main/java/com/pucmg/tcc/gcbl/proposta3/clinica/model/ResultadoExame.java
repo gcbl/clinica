@@ -1,7 +1,7 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -45,7 +45,7 @@ public class ResultadoExame extends BaseEntity implements HistoricoClinico {
     @Column(name = "DT_EXAME")
     @DateTimeFormat(pattern = "dd/MM/yyyy" )
     //@NotNull(message = "*Por favor informe a data que o exame foi feito")
-    private Date dataExame;
+    private LocalDate data;
     
     @Column(name = "LOB_ANEXOS")
     private byte[] anexos;
