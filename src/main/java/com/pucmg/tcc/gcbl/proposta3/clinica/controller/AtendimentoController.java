@@ -74,7 +74,7 @@ public class AtendimentoController extends ModelController {
             atendimento.setPaciente( agendamento.getPaciente() );
 
             model.addAttribute(getModelName(), atendimento);
-            
+            model.addAttribute("ATENDER", true); // Indica que está havendo um atendimento
             
             return getViewPath() + "incluirForm";
         }else{
