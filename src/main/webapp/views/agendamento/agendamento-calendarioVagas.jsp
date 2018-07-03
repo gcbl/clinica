@@ -99,7 +99,7 @@
  
 <!-- ##### MODALS ##### -->
 <div class="modal fade" id="agendamentoEventModal" role="dialog" aria-labelledby="agendamentoEventModal" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
          <div class="modal-header">
              <h5 id="tituloModal"        class="modal-title"><i class="far fa-calendar"></i> <b>Agendamento</b></h5>
@@ -119,10 +119,20 @@
                     <div id="divPacienteSelect2"><select required id="pacienteSelect2" style="width: 100%"></select></div>
                     <div id="pacienteMarcado"></div>
              </div>
+             <br>
+             <hr>
+             <div class="text-center">
+                 <button type="button" class="btn btn-primary" id="btnMarcarHorarioModal"><i class="far fa-calendar-check"></i> Marcar horário</button>
+                 <button type="button" class="btn btn-warning" id="btnDesmarcarHorarioModal"><i class="far fa-calendar-times"></i> Desmarcar horário</button>
+                 <button type="button" class="btn btn-success" id="btnAtenderModal"><i class="fas fa-user-md"></i> Atender</button>
+             </div>
          </div>
          <div class="modal-footer">
+             <!-- 
              <button type="button" class="btn btn-primary" id="btnMarcarHorarioModal"><i class="far fa-calendar-check"></i> Marcar horário</button>
              <button type="button" class="btn btn-warning" id="btnDesmarcarHorarioModal"><i class="far fa-calendar-times"></i> Desmarcar horário</button>
+             <button type="button" class="btn btn-info" id="btnAtenderModal"><i class="far fa-calendar-times"></i> Atender</button>
+              -->
              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>             
          </div>
     </div>
@@ -139,6 +149,7 @@
   
   .fc-sat {  background-color: #F2F2F2 }
   .fc-sun {  background-color: #F2F2F2 }
+  
   
 </style> 
  
@@ -370,12 +381,14 @@ $(document).ready(function() {
 		if(event.vago){
 			desabilitaBotao('btnMarcarHorarioModal','btn-light')
 			desabilitaBotao('btnDesmarcarHorarioModal','btn-light')
+			desabilitaBotao('btnAtenderModal','btn-light')
 			
 			$('#divPacienteSelect2').show();
 	        $('#pacienteMarcado').hide();
 		}else{
             desabilitaBotao('btnMarcarHorarioModal','btn-light')
             habilitaBotao('btnDesmarcarHorarioModal','btn-warning')
+            habilitaBotao('btnAtenderModal','btn-success')
             
             $('#divPacienteSelect2').hide();
             $('#pacienteMarcado').show();
@@ -411,6 +424,7 @@ $(document).ready(function() {
         
         desabilitaBotao('btnMarcarHorarioModal', 'btn-light');
         desabilitaBotao('btnDesmarcarHorarioModal', 'btn-light');
+        desabilitaBotao('btnAtenderModal', 'btn-light');
         
         $('#pacienteSelect2').val('').trigger('change'); // Zerar o select
         $('#divPacienteSelect2').show();
@@ -431,6 +445,7 @@ $(document).ready(function() {
         
         desabilitaBotao('btnMarcarHorarioModal', 'btn-light');
         habilitaBotao('btnDesmarcarHorarioModal', 'btn-warning');
+        habilitaBotao('btnAtenderModal', 'btn-success');
         
         
         $('#divPacienteSelect2').hide();
@@ -456,10 +471,14 @@ $(document).ready(function() {
         
         desabilitaBotao('btnMarcarHorarioModal', 'btn-light');
         desabilitaBotao('btnDesmarcarHorarioModal', 'btn-light');        
+        desabilitaBotao('btnAtenderModal', 'btn-light');
         
         $('#calendar').fullCalendar( 'refetchEvents');
     }    
-	
+    
+    $( "#btnAtenderModal" ).click(function() {
+        window.location.replace("atender?idAgendamento=" + idAgendamento);
+    });
 	
 </script> 
  
