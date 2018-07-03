@@ -15,10 +15,10 @@
         <div class="body">
  
 <!-- ########################################################################### -->
+               <a name="inicioHistorico"></a>
                <br><br>
                <c:import url="paciente-historicoClinico-timeline-FichaPessoal.jsp"/>
                <br><br><br> 
-
                <h2 class="text-capitalize"><i class="fas fa-clipboard-list"></i> Histórico clínico de ${paciente.nome}</h2>
                <br><br>                
                <c:choose>
