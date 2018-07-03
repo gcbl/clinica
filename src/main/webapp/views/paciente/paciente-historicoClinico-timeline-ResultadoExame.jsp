@@ -27,23 +27,27 @@
             </div>
         </div>
         <div class="col py-2">
-            <div class="card">
-                <div class="card-body bg-warning">
+            <div class="card bg-warning">
+                <div class="card-body">
                     <div class="float-right "><javatime:format value="${historicoClinicoSession.dataHistorico}" style="MS" /></div>
                     <h4 class="card-title "><i class="fas fa-file-medical"></i> ${TIPO}</h4>
                     <p class="card-text">
                         <div class="">
-                            <div><i class="far fa-calendar-alt"></i> <b>Data do recebimento:</b> <div>COLOQUE AQUI A DATA</div> </div>                            
-                            <br>                            
                             <div><i class="fas fa-flask"></i> <b>Laboratório:</b> <div>${historicoClinicoSession.laboratorio}</div> </div>
                             <br>
-                            <div><i class="far fa-calendar-alt"></i> <b>Data do exame:</b> <div>COLOQUE AQUI A DATA</div> </div>                            
-                            <br> 
-                            <div><i class="fas fa-user-md"></i> <b>Responsavél técnico:</b> <div>${historicoClinicoSession.reponsavel}</div> </div>                            
+                            <div><i class="far fa-calendar-alt"></i> <b>Data do exame:</b> <div><tags:localDate date="${historicoClinicoSession.data}" pattern="dd/MM/yyyy"/></div> </div>                            
+                            <br>
+                            <div><i class="fas fa-user-md"></i> <b>Responsavél técnico:</b> <div>${historicoClinicoSession.responsavelTecnico}</div> </div>                            
 							<br>
                             <div><i class="fas fa-globe"></i> <b>Disponível para o paciente:</b> <div>${historicoClinicoSession.disponibilizadoPaciente}</div> </div>
+                            <!-- 
                             <br>
-                            <div><i class="fas fa-paperclip"></i> <b>Anexos:</b> <div>${historicoClinicoSession.anexos}</div> </div>                            
+                            <div><i class="fas fa-paperclip"></i> <b>Anexos:</b> <div>${historicoClinicoSession.anexos}</div> </div>
+                             -->                            
+                             <hr>
+                             <div><i class="fas fa-paperclip"></i> <b>Anexos:</b> <div>${historicoClinicoSession}</div> </div>
+                             <hr>
+                             
                         </div>
                     </p>
                     <div><i class="fas fa-file-medical"></i> <b>Resultados:</b> <div>${historicoClinicoSession.anexos}</div> </div>                            
