@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Agendamento;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Atendimento;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.AtendimentoService;
+import com.pucmg.tcc.gcbl.proposta3.clinica.service.AgendamentoService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.util.Constantes;
 
 
@@ -30,6 +32,10 @@ public class AtendimentoController extends ModelController {
     @Autowired
     private AtendimentoService modelService;
 
+    @Autowired
+    private AgendamentoService agendamentoService;
+    
+    
     @Override
     protected Class<Atendimento> getModelClass() {
         return Atendimento.class;
@@ -52,6 +58,41 @@ public class AtendimentoController extends ModelController {
         model.addAttribute(getModelName(), new Atendimento());
         return getViewPath() + "incluirForm";
     }
+
+    @RequestMapping(value={"/atender"}, method = RequestMethod.GET)
+    public String atenderForm(@RequestParam("idAgendamento") String idAgendamento, Model model, Locale locale){
+        
+        model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
+        
+        
+        if( agendamentoService.exists(idAgendamento) ){
+            
+            Agendamento agendamento = agendamentoService.findOne(idAgendamento);
+            
+            Atendimento atendimento = new Atendimento();
+            atendimento.setMedico( agendamento.getMedico() );
+            atendimento.setPaciente( agendamento.getPaciente() );
+
+            model.addAttribute(getModelName(), atendimento);
+            
+            
+            return getViewPath() + "incluirForm";
+        }else{
+            String mensagem = messageSource.getMessage("formulario.nao-encontrado", new Object[]{ getModelName() }, locale);
+            adicionarAlertaWarning(model, mensagem);
+            return "redirect:exibir-calendario-vagas-agendamento";
+        }
+        
+//        
+//        
+//        
+//        
+//        
+//        model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
+//        
+//        model.addAttribute(getModelName(), new Atendimento());
+//        return getViewPath() + "incluirForm";
+    }    
     
     @RequestMapping(value={"/incluir-atendimento"}, method = RequestMethod.POST)
     public String inserir(@Valid Atendimento item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {                         
