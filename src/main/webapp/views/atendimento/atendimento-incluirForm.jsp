@@ -25,7 +25,7 @@
                        <form:hidden path="id" placeholder="id" class="form-control input-md"/> <form:errors path="id" cssClass="text-danger" />
                     </c:if>
                     
-                    <h2 class="text-capitalize">${acao} ${MODEL}</h2>
+                    <h2 class="text-capitalize">${acao} ${MODEL} [ATENDER=${ATENDER}]</h2>
                     <br><br>                    
                     <!-- Select input-->
                     <div class="form-group">
@@ -62,7 +62,7 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="conteudo">Conteúdo da atendimento:</label>  
                       <div class="col-md-4">
-                      <form:textarea path="conteudo" placeholder="Exemplo: 1 comprimido de 8 em 8 horas" class="form-control input-md"/> <form:errors path="conteudo" cssClass="text-danger" />
+                      <form:textarea path="conteudo" placeholder="Descreva queixas, sintomas, história clínica e procedimentos" class="form-control input-md"/> <form:errors path="conteudo" cssClass="text-danger" />
                       <!-- <span class="help-block">Informe a concentração e forma farmaceutica ou uma breve descrição </span> -->  
                       </div>
                     </div>     
@@ -137,6 +137,19 @@
 	 
 	 
 });
+
+<c:if test="${not empty ATENDER}">
+	// Desabilita os selects se for um atendimento
+	$("#paciente").prop("disabled", true);
+    $("#medico").prop("disabled", true);
+ 
+ 	// Habilita novamente ao submeter
+    $("#${acao}-${MODEL}").submit(function() {
+	    $("#paciente").prop("disabled", false);
+    	$("#medico").prop("disabled", false);
+    });
+</c:if>
+ 
  </script>
  
  
