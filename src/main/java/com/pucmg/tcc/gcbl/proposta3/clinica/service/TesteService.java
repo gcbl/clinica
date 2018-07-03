@@ -42,8 +42,10 @@ public class TesteService{
     private String queixas[] = {"cefaléia", "dor abdominal", "dor na coluna", "insônia", "visão cansada", "dor no peito"};
     private String frequencia[] = {"dias", "semanas", "meses"};
     private String planosDeSaude[] = {"AMIL", "Unimed", "GEAP", "Hapvida", "Bradesco Saúde"};
-
+    private String laboratorios[] = {"Exato Laboratório", "Laboratório Pasteur", "Laboratório Sabin", "Cerpe Diagnósticos", "Ciac - Centro Integrado de Análises Clínicas"};
+    private String responsavelTecnico[] = {"Beatriz Osório", "Letícia Bivar", "Horácio Amarante", "Hélio Castilhos", "Vanderlei Silvestre"};
 	
+    
     private static Log log = LogFactory.getLog(TesteService.class);
     
     @Autowired
@@ -230,21 +232,21 @@ public class TesteService{
             // Loop nos agendamentos
             for(int s = 0; s < agendamentos.length ; s++){
             	// Incluindo 1 atendimento pra cada agendamento
-                int um_a_dez = ThreadLocalRandom.current().nextInt(2, 10 + 1); // Inclui entre 2 e 10
+                int zero_a_dez = geraValor(0, 10); // valor entre 2 e 10
 
                 Atendimento atendimento = new Atendimento();
-                LocalDateTime dataCriacaoAtendimento =  LocalDateTime.of( agendamentos[s].getData(), agendamentos[s].getHoraInicio().plusMinutes( um_a_dez ) ); 
+                LocalDateTime dataCriacaoAtendimento =  LocalDateTime.of( agendamentos[s].getData(), agendamentos[s].getHoraInicio().plusMinutes( zero_a_dez ) ); 
                 atendimento.setDataCriacao(  dataCriacaoAtendimento   );
 
                 atendimento.setPaciente(agendamentos[s].getPaciente());
                 atendimento.setMedico( agendamentos[s].getMedico() );
-                atendimento.setConteudo("Paciente com queixa de " + queixas[um_a_dez%queixas.length] + " há " + um_a_dez + " " + frequencia[ um_a_dez % frequencia.length]);
+                atendimento.setConteudo("Paciente com queixa de " + queixas[zero_a_dez % queixas.length] + " há " + (zero_a_dez + 1) + " " + frequencia[ zero_a_dez % frequencia.length]);
                 atendimentoList.add(atendimento);
                 
             	// Incluindo 1 solicitacoes de exames pra cada agendamento
                 SolicitacaoExame solicitacaoExame = new SolicitacaoExame();
                 
-                int qtdMinutos = ThreadLocalRandom.current().nextInt(15, 20 + 1); // Inclui entre 15 e 20
+                int qtdMinutos = geraValor(15, 20); // Valor entre 15 e 20
                 // Seta dataCriacao para "um pouco depois" de iniciar a consulta
                 LocalDateTime dataCriacaoSolicitacaoExame =  LocalDateTime.of( agendamentos[s].getData(), agendamentos[s].getHoraInicio().plusMinutes( qtdMinutos ) ); 
                 solicitacaoExame.setDataCriacao(  dataCriacaoSolicitacaoExame   );
@@ -256,7 +258,7 @@ public class TesteService{
                 
                 Set<Exame> examesSolicitacaoSet = new HashSet<>();
 
-                int qtdExames = ThreadLocalRandom.current().nextInt(1, (2*agendamentos.length) + 1); // Inclui entre 1 e [2*agendamentos.length] exames na solicitacao
+                int qtdExames = geraValor( 1, 10 ); // Valor entre 1 e 10 exames na solicitacao
                 for(int e = 0; e < qtdExames; e++){
                     examesSolicitacaoSet.add(exames.get(e));    
                 }
@@ -270,14 +272,20 @@ public class TesteService{
                 
                 
                 // ----- Inclusao de Resultado de exames -----
+                ResultadoExame resultadoExame = new ResultadoExame();
+                boolean disponibilizadoPaciente = ( s % 2 == 0 ) ? true : false;
+                int valorResultado = geraValor(20, 200); // Valor entre 20 e 200
+                
+                resultadoExame.setPaciente( agendamentos[s].getPaciente() );
+                resultadoExame.setDisponibilizadoPaciente(disponibilizadoPaciente);
+                resultadoExame.setLaboratorio( laboratorios[s % laboratorios.length] );
+                resultadoExame.setResponsavelTecnico(responsavelTecnico[s % responsavelTecnico.length] );
+                //resultadoExame.setData( agendamentos[s].getData().plusDays( s % 3 )  );
+                resultadoExame.setData( DataUtils.asLocalDate( solicitacaoExame.getDataSolicitacao() ) );
+                resultadoExame.setDataCriacao( solicitacaoExame.getDataCriacao().plusMinutes( geraValor(300, 1000) )  );
+                resultadoExame.setResultado("O resultado deste exame é " + valorResultado + "mg/dl.");
+                // Resultado pra 1/3 dos exames
                 if(s % 3 == 0){
-                    ResultadoExame resultadoExame = new ResultadoExame();
-                    boolean disponibilizadoPaciente = ( s % 2 == 0 ) ? true : false;
-                    int valorResultado = ThreadLocalRandom.current().nextInt(20, 200 + 1); // Inclui entre 1 e
-                    
-                    resultadoExame.setPaciente( agendamentos[s].getPaciente() );
-                    resultadoExame.setDisponibilizadoPaciente(disponibilizadoPaciente);
-                    resultadoExame.setResultado("O resultado deste exame é " + valorResultado + "mg/dl.");
                     resultadoExameList.add(resultadoExame);
                 }
 
@@ -286,7 +294,7 @@ public class TesteService{
                 // Inclusao de receitas
                 Receita receita = new Receita();
                 
-                qtdMinutos = ThreadLocalRandom.current().nextInt(15, 20 + 1); // Inclui entre 1 e 
+                qtdMinutos = geraValor(15, 20); // Valor entre 15 e 20 
                 // Seta dataCriacao para "um pouco depois" de iniciar a consulta
                 LocalDateTime dataCriacaoReceita =  LocalDateTime.of( agendamentos[s].getData(), agendamentos[s].getHoraInicio().plusMinutes( qtdMinutos ) ); 
                 receita.setDataCriacao(  dataCriacaoReceita   );
@@ -296,7 +304,7 @@ public class TesteService{
                 
                 Set<Medicamento> medicamentosReceitaSet = new HashSet<>();
                 
-                int qtdMedicamentos = ThreadLocalRandom.current().nextInt(1, (2*agendamentos.length) + 1); // Inclui entre 1 e [2*agendamentos.length] exames na solicitacao
+                int qtdMedicamentos = geraValor(1, 5); // Inclui entre 1 e 5 medicamentos na receita
                 for(int qtd = 0; qtd < qtdMedicamentos; qtd++){
                     medicamentosReceitaSet.add(medicamentos.get(qtd));
                 }
@@ -305,7 +313,7 @@ public class TesteService{
 //                List<Medicamento> list = new ArrayList<Medicamento>(medicamentosReceitaSet);
 //                receita.setMedicamentos(list);        
                 
-                int intervaloHora = ThreadLocalRandom.current().nextInt(1, (12) + 1); // Inclui entre 1 e [2*agendamentos.length] exames na solicitacao
+                int intervaloHora = geraValor(1, 12); // Valor entre 1 e 12
                 receita.setConteudo("1 comprimido de " + intervaloHora + " em " + intervaloHora + " horas");
                 receitasList.add(receita);
                 
@@ -398,6 +406,8 @@ public class TesteService{
 
     }
 
-
+    private int geraValor(int valorInicio, int valorFim){
+        return ThreadLocalRandom.current().nextInt(valorInicio, valorFim + 1);
+    }
     
 }
