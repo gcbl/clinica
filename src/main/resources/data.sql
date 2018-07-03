@@ -5,8 +5,9 @@ DELETE FROM SC_EXAME_SOLICITACAO_EXAME;
 DELETE FROM SC_SOLICITACAO_EXAME;
 DELETE FROM SC_EXAME; 
 DELETE FROM SC_MEDICAMENTO; 
-DELETE FROM SC_MEDICO;
+DELETE FROM SC_ATENDIMENTO;
 DELETE FROM SC_RESULTADO_EXAME;
+DELETE FROM SC_MEDICO;
 DELETE FROM SC_PACIENTE; 
 
 
@@ -342,7 +343,7 @@ INSERT INTO TEMP_PESSOA (ID, NOME, CPF, DT_NASCIMENTO, ENDERECO, BAIRRO, CEP, CI
 ( 129, 'Emanuel Carvalho', '870.645.759-22', '1951-09-11', 'Rua F, 564', 'Primeiro de Maio', '50000-000', 'Recife', 'PE'),
 ( 130, 'Igor Leão', '864.001.528-73', '1982-09-20', 'Av. João Pombo, 93', 'Cinco', '86300-000', 'Cornélio Procópio', 'PR'),
 ( 131, 'Brenda Mauricio', '794.538.065-44', '1970-06-09', 'Rua João Gabriel, 707', 'João Rocha', '70999-000', 'Brasília', 'DF'),
-( 132, 'Francisco Nogueira', '02.157.105-84', '1981-09-04', 'Rua 1, 710', 'Conjunto B', '79680-000', 'Água Clara', 'MS'),
+( 132, 'Francisco Nogueira', '772.974.670-06', '1981-09-04', 'Rua 1, 710', 'Conjunto B', '79680-000', 'Água Clara', 'MS'),
 ( 133, 'Anabela Bernardes', '641.126.064-86', '1996-03-23', 'Rua Nove, 1748', 'Martins de Souza', '30000-000', 'Belo Horizonte', 'MG'),
 ( 134, 'Cecília Monteiro', '463.078.405-52', '1958-02-13', 'Rua D, 1544', 'Conjuto B', '82999-000', 'Curitiba', 'PR'),
 ( 135, 'Danilo Marques', '556.695.251-83', '1998-08-14', 'Rua Paraíba, 1163', 'Dois', '69339-000', 'Boa Vista', 'RR'),

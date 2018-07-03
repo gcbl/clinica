@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Agendamento;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Atendimento;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Exame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.HistoricoClinico;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medicamento;
@@ -26,6 +27,7 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.model.ResultadoExame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.SolicitacaoExame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.User;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.AgendamentoRepository;
+import com.pucmg.tcc.gcbl.proposta3.clinica.repository.AtendimentoRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.ExameRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.MedicoRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.PacienteRepository;
@@ -37,6 +39,11 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.util.DataUtils;
 @Service
 public class TesteService{
     
+    private String queixas[] = {"cefaléia", "dor abdominal", "dor na coluna", "insônia", "visão cansada", "dor no peito"};
+    private String frequencia[] = {"dias", "semanas", "meses"};
+    private String planosDeSaude[] = {"AMIL", "Unimed", "GEAP", "Hapvida", "Bradesco Saúde"};
+
+	
     private static Log log = LogFactory.getLog(TesteService.class);
     
     @Autowired
@@ -67,6 +74,10 @@ public class TesteService{
     private AgendamentoService agendamentoService;
 
     @Autowired
+    private AtendimentoRepository atendimentoRepository;
+    
+    
+    @Autowired
     private AgendaService agendaService;
 
     @Autowired
@@ -92,10 +103,16 @@ public class TesteService{
 //        
 //        pessoaBDRepository.save(p);
  
+        // Limpandos os atendimentos
+        List<Atendimento> atendimentoRemover = atendimentoRepository.findAll();
+        atendimentoRepository.delete(atendimentoRemover);        
+        
+        
         // Limpandos as solicitacoes de exames
         List<SolicitacaoExame> solicitacoesRemover = solicitacaoExameRepository.findAll();
         solicitacaoExameRepository.delete(solicitacoesRemover);        
         
+        // Limpando as receitas
         List<Receita> receitasRemover = receitaRepository.findAll();
         receitaRepository.delete(receitasRemover);        
                 
@@ -110,7 +127,19 @@ public class TesteService{
         Collections.shuffle(medicos);
         
         List<Paciente> pacientes = pacienteRepository.findAll();
-        Collections.shuffle(pacientes);        
+        Collections.shuffle(pacientes);
+        
+        // Atualiza plano de Saude
+        int contadorPlano = 0;
+        for (Paciente paciente : pacientes) {
+			paciente.setPlanoSaude( planosDeSaude[ contadorPlano % planosDeSaude.length ] );
+			contadorPlano++;
+			if ( !DataUtils.isCPF( paciente.getCpf() )) {
+				System.out.println("invalido!");
+			}
+			//System.out.println("Salvando: " + contadorPlano + " " + paciente.getId() +  " " + paciente.getNome());
+		}
+        pacienteRepository.save(pacientes);
         
         Medico medico = medicos.get(0);
         Paciente paciente = pacientes.get(0);
@@ -174,6 +203,7 @@ public class TesteService{
         List<SolicitacaoExame> solicitacaoExameList = new ArrayList<SolicitacaoExame>();
         List<Receita> receitasList = new ArrayList<Receita>();
         List<ResultadoExame> resultadoExameList = new ArrayList<ResultadoExame>();
+        List<Atendimento> atendimentoList = new ArrayList<Atendimento>();
 
         // *** POPULANDO DADOS! ***
         // Loop em todos os pacientes
@@ -197,12 +227,24 @@ public class TesteService{
             
             Agendamento[] agendamentos = {agendamento1, agendamento2, agendamento3};
             
-            
+            // Loop nos agendamentos
             for(int s = 0; s < agendamentos.length ; s++){
-                // Incluindo 1 solicitacoes de exames pra cada agendamento
+            	// Incluindo 1 atendimento pra cada agendamento
+                int um_a_dez = ThreadLocalRandom.current().nextInt(2, 10 + 1); // Inclui entre 2 e 10
+
+                Atendimento atendimento = new Atendimento();
+                LocalDateTime dataCriacaoAtendimento =  LocalDateTime.of( agendamentos[s].getData(), agendamentos[s].getHoraInicio().plusMinutes( um_a_dez ) ); 
+                atendimento.setDataCriacao(  dataCriacaoAtendimento   );
+
+                atendimento.setPaciente(agendamentos[s].getPaciente());
+                atendimento.setMedico( agendamentos[s].getMedico() );
+                atendimento.setConteudo("Paciente com queixa de " + queixas[um_a_dez%queixas.length] + " há " + um_a_dez + " " + frequencia[ um_a_dez % frequencia.length]);
+                atendimentoList.add(atendimento);
+                
+            	// Incluindo 1 solicitacoes de exames pra cada agendamento
                 SolicitacaoExame solicitacaoExame = new SolicitacaoExame();
                 
-                int qtdMinutos = ThreadLocalRandom.current().nextInt(1, 10 + 1); // Inclui entre 1 e 
+                int qtdMinutos = ThreadLocalRandom.current().nextInt(15, 20 + 1); // Inclui entre 15 e 20
                 // Seta dataCriacao para "um pouco depois" de iniciar a consulta
                 LocalDateTime dataCriacaoSolicitacaoExame =  LocalDateTime.of( agendamentos[s].getData(), agendamentos[s].getHoraInicio().plusMinutes( qtdMinutos ) ); 
                 solicitacaoExame.setDataCriacao(  dataCriacaoSolicitacaoExame   );
@@ -235,7 +277,7 @@ public class TesteService{
                     
                     resultadoExame.setPaciente( agendamentos[s].getPaciente() );
                     resultadoExame.setDisponibilizadoPaciente(disponibilizadoPaciente);
-                    resultadoExame.setResultado("O resultado do deste exame é " + valorResultado + "mg/dl.");
+                    resultadoExame.setResultado("O resultado deste exame é " + valorResultado + "mg/dl.");
                     resultadoExameList.add(resultadoExame);
                 }
 
@@ -244,7 +286,7 @@ public class TesteService{
                 // Inclusao de receitas
                 Receita receita = new Receita();
                 
-                qtdMinutos = ThreadLocalRandom.current().nextInt(1, 10 + 1); // Inclui entre 1 e 
+                qtdMinutos = ThreadLocalRandom.current().nextInt(15, 20 + 1); // Inclui entre 1 e 
                 // Seta dataCriacao para "um pouco depois" de iniciar a consulta
                 LocalDateTime dataCriacaoReceita =  LocalDateTime.of( agendamentos[s].getData(), agendamentos[s].getHoraInicio().plusMinutes( qtdMinutos ) ); 
                 receita.setDataCriacao(  dataCriacaoReceita   );
@@ -277,6 +319,7 @@ public class TesteService{
         
         // Salvando a lista de agendamentos
         agendamentoService.salvar(horariosMarcados);
+        atendimentoRepository.save(atendimentoList);
         solicitacaoExameRepository.save(solicitacaoExameList);
         receitaRepository.save(receitasList);
         resultadoExameRepository.save(resultadoExameList);
