@@ -134,6 +134,10 @@ public class TesteService{
         for (Paciente paciente : pacientes) {
 			paciente.setPlanoSaude( planosDeSaude[ contadorPlano % planosDeSaude.length ] );
 			contadorPlano++;
+			if ( !DataUtils.isCPF( paciente.getCpf() )) {
+				System.out.println("invalido!");
+			}
+			//System.out.println("Salvando: " + contadorPlano + " " + paciente.getId() +  " " + paciente.getNome());
 		}
         pacienteRepository.save(pacientes);
         
