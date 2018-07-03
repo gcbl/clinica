@@ -30,7 +30,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="float-right text-muted">&nbsp;</div>
-                    <h5 class="card-title">Início do histórico clínico de <b>${paciente.nome}</b></h5>
+                    <h5 class="card-title">Início do histórico clínico de <b>${paciente.nome}</b></h5> <a href="#fimHistorico"><small>ir para o fim do histórico</small></a>
                     <!-- <p>&nbsp;</p> -->
                 </div>
             </div>
