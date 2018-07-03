@@ -38,7 +38,7 @@
                             <div><i class="fas fa-flask"></i> <b>Laboratório:</b> <div>${historicoClinicoSession.laboratorio}</div> </div>
                             <br>
                             <div><i class="far fa-calendar-alt"></i> <b>Data do exame:</b> <div>COLOQUE AQUI A DATA</div> </div>                            
-                            <br>
+                            <br> 
                             <div><i class="fas fa-user-md"></i> <b>Responsavél técnico:</b> <div>${historicoClinicoSession.reponsavel}</div> </div>                            
 							<br>
                             <div><i class="fas fa-globe"></i> <b>Disponível para o paciente:</b> <div>${historicoClinicoSession.disponibilizadoPaciente}</div> </div>
