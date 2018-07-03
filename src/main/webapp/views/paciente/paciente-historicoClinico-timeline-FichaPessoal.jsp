@@ -30,7 +30,7 @@
         <div class="col py-2">
             <div class="card shadow">
                 <div class="card-body">
-                    <div class="float-right text-muted">${paciente.dataCriacao}</div>
+                    <div class="float-right text-muted"><javatime:format value="${paciente.dataCriacao}" style="MS" /></div>
                     <h4 class="card-title"><i class="far fa-address-card"></i> Ficha pessoal de <b>${paciente.nome}</b>:</h4>
                     <div class="">
                         <div class="row">
