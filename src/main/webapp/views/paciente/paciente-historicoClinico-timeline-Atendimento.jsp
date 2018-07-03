@@ -31,7 +31,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="float-right text-muted"><javatime:format value="${historicoClinicoSession.dataHistorico}" style="MS" /></div>
-                    <h4 class="card-title"><i class="fas fa-pills"></i> ${TIPO}</h4>
+                    <h4 class="card-title"><i class="fas fa-user-md"></i> ${TIPO}</h4>
                     <p>
                     <div class="">
                         <div><i class="fas fa-user-md"></i> <b>Médico:</b> <div>${historicoClinicoSession.medico.nome}</div> </div>
