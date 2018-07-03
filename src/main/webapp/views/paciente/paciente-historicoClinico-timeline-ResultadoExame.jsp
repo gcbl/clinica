@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="col py-2">
-            <div class="card bg-warning">
+            <div class="card">
                 <div class="card-body">
                     <div class="float-right "><javatime:format value="${historicoClinicoSession.dataHistorico}" style="MS" /></div>
                     <h4 class="card-title "><i class="fas fa-file-medical"></i> ${TIPO}</h4>
@@ -39,15 +39,11 @@
                             <br>
                             <div><i class="fas fa-user-md"></i> <b>Responsavél técnico:</b> <div>${historicoClinicoSession.responsavelTecnico}</div> </div>                            
 							<br>
-                            <div><i class="fas fa-globe"></i> <b>Disponível para o paciente:</b> <div>${historicoClinicoSession.disponibilizadoPaciente}</div> </div>
+                            <div><i class="fas fa-globe"></i> <b>Disponível para o paciente:</b> <div><c:out value="${historicoClinicoSession.disponibilizadoPaciente ? 'Sim' : 'Não'}" /></div> </div>
                             <!-- 
                             <br>
                             <div><i class="fas fa-paperclip"></i> <b>Anexos:</b> <div>${historicoClinicoSession.anexos}</div> </div>
-                             -->                            
-                             <hr>
-                             <div><i class="fas fa-paperclip"></i> <b>Anexos:</b> <div>${historicoClinicoSession}</div> </div>
-                             <hr>
-                             
+                            -->                            
                         </div>
                     </p>
                     <div><i class="fas fa-file-medical"></i> <b>Resultados:</b> <div>${historicoClinicoSession.anexos}</div> </div>                            
