@@ -117,7 +117,11 @@ public class TesteService{
         // Limpando as receitas
         List<Receita> receitasRemover = receitaRepository.findAll();
         receitaRepository.delete(receitasRemover);        
-                
+
+        // Limpando os resultados dos exames
+        List<ResultadoExame> resultadoExameRemover = resultadoExameRepository.findAll();
+        resultadoExameRepository.delete(resultadoExameRemover);        
+        
         
         List<Medicamento> medicamentos = medicamentoService.findAll();
         Collections.shuffle(medicamentos);
@@ -273,7 +277,8 @@ public class TesteService{
                 
                 // ----- Inclusao de Resultado de exames -----
                 ResultadoExame resultadoExame = new ResultadoExame();
-                boolean disponibilizadoPaciente = ( s % 2 == 0 ) ? true : false;
+                
+                boolean disponibilizadoPaciente = ( geraValor(0, 1) == 0 ) ? true : false;
                 int valorResultado = geraValor(20, 200); // Valor entre 20 e 200
                 
                 resultadoExame.setPaciente( agendamentos[s].getPaciente() );
@@ -285,7 +290,9 @@ public class TesteService{
                 resultadoExame.setDataCriacao( solicitacaoExame.getDataCriacao().plusMinutes( geraValor(300, 1000) )  );
                 resultadoExame.setResultado("O resultado deste exame é " + valorResultado + "mg/dl.");
                 // Resultado pra 1/3 dos exames
-                if(s % 3 == 0){
+                
+                boolean persistirResultado = ( geraValor(0, 1) == 0 ) ? true : false;
+                if(persistirResultado){
                     resultadoExameList.add(resultadoExame);
                 }
 
