@@ -33,6 +33,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="float-right text-muted">&nbsp;</div>
+                    <a name="fimHistorico"></a>
                     <h5 class="card-title">
                         <c:choose>
                             <c:when test = "${empty historicoClinicoList}">
@@ -43,6 +44,7 @@
                             </c:otherwise>
                         </c:choose>
                     </h5>
+                    <a href="#inicioHistorico"><small>ir para o início do histórico</small></a>
                     <!-- <p class="card-text">&nbsp;</p> -->
                 </div>
             </div>
