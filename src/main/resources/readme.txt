@@ -54,3 +54,7 @@ https://github.com/sargue/java-time-jsptags
 Custom Switch pra usar no check de receber exame:
 Verificar se funciona no mobile
 https://github.com/haubek/bootstrap4c-custom-switch
+
+
+Spring Security
+http://blog.algaworks.com/spring-security/

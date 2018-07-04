@@ -16,6 +16,14 @@ DELETE FROM USER_ROLE;
 DELETE FROM ROLE;
 DELETE FROM USER;
 
+DELETE FROM SC_SEC_GRUPO_PERMISSOES;
+DELETE FROM SC_SEC_USUARIO_GRUPOS;
+DELETE FROM SC_SEC_USUARIO_PERMISSOES;
+DELETE FROM SC_SEC_GRUPO;
+DELETE FROM SC_SEC_PERMISSAO;
+DELETE FROM SC_SEC_USUARIO;
+
+
 -- USUARIOS
 INSERT INTO ROLE VALUES (1, 'ADMIN');
 
@@ -442,3 +450,19 @@ WHERE rownum BETWEEN 101 AND 200;
 
 DELETE FROM TEMP_PESSOA;
 DROP TABLE TEMP_PESSOA;
+
+-- SECURITY
+insert into SC_SEC_Usuario (id, nome, login, senha, ativo) values (1, 'teste', 'teste', 'teste', true);
+insert into SC_SEC_Usuario (id, nome, login, senha, ativo) values (2, 'Alexandre Afonso', 'teste@teste.com', '$2a$10$IzpvPiq.R5pAMhPbA430yekFGV18tOVw9YLAbhJuqf5.MbWjvj6cm', true);
+
+insert into SC_SEC_Grupo (id, nome, descricao) values (1, 'ANALISTA', 'Grupo de analistas');
+
+insert into SC_SEC_Permissao (id, nome) values (1, 'USUARIO');
+insert into SC_SEC_Permissao (id, nome) values (2, 'VISUALIZAR_RELATORIO_CUSTOS');
+insert into SC_SEC_Permissao (id, nome) values (3, 'VISUALIZAR_RELATORIO_EQUIPE');
+
+insert into SC_SEC_Usuario_Grupos (usuarios_id, grupos_id) values (1, 1);
+
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 1);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 2);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 3);
