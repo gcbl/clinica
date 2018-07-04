@@ -34,7 +34,8 @@ public class LoginController {
      * @param model
      * @return
      */
-    @RequestMapping(value={"/", "/login"}, method = RequestMethod.GET)
+    //@RequestMapping(value={"/", "/login"}, method = RequestMethod.GET)
+    @RequestMapping(value={"/logar"}, method = RequestMethod.GET)
     public String  login(Model model){
         return "views/login";
     }
