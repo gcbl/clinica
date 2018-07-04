@@ -70,4 +70,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
            .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**", "/console/**");
     }
 
+    public static void main(String[] args) {
+        System.out.println(new BCryptPasswordEncoder().encode("123"));
+    }    
+    
 }
