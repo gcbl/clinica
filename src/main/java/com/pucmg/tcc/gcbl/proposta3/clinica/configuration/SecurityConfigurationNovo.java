@@ -11,7 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import com.pucmg.tcc.gcbl.proposta3.clinica.model.security.CustomUserDetailsService;
+import com.pucmg.tcc.gcbl.proposta3.clinica.service.security.CustomUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
@@ -58,7 +58,7 @@ public class SecurityConfigurationNovo extends WebSecurityConfigurerAdapter {
     private void configurarAutorizacoes(HttpSecurity httpSecurity) throws Exception{
         httpSecurity.
             authorizeRequests()
-                .antMatchers("/vendas/relatorios/equipe").hasRole("VISUALIZAR_RELATORIO_EQUIPE")
+                .antMatchers("/privado/**-receita").hasRole("VISUALIZAR_RELATORIO_EQUIPE")
                 .antMatchers("/vendas/relatorios/custos").hasRole("VISUALIZAR_RELATORIO_CUSTOS");
         
     }    
