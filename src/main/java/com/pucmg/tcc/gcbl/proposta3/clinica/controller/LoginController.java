@@ -19,6 +19,7 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.service.TesteService;
 
 
 @Controller
+@RequestMapping("/antigo/**")
 public class LoginController {
     @Autowired
     private TesteService testeService;
@@ -34,8 +35,7 @@ public class LoginController {
      * @param model
      * @return
      */
-    //@RequestMapping(value={"/", "/login"}, method = RequestMethod.GET)
-    @RequestMapping(value={"/logar"}, method = RequestMethod.GET)
+    @RequestMapping(value={"/", "/login"}, method = RequestMethod.GET)
     public String  login(Model model){
         return "views/login";
     }
