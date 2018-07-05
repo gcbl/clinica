@@ -35,12 +35,15 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Usuario usuario = usuarioRepository.findByLogin(username);
+
         
         if (usuario == null) {
             throw new UsernameNotFoundException("Usuário não encontrado!");
         }
+
+        Collection<? extends GrantedAuthority> permissaoList = authorities(usuario);
         
-        return new UsuarioSistema(usuario.getNome(), usuario.getLogin(), usuario.getSenha(), authorities(usuario));
+        return new UsuarioSistema(usuario.getNome(), usuario.getLogin(), usuario.getSenha(), permissaoList);
     }
     
     public Collection<? extends GrantedAuthority> authorities(Usuario usuario) {
