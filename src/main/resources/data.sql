@@ -463,6 +463,7 @@ insert into SC_SEC_Permissao (id, nome) values (2, 'VISUALIZAR_RELATORIO_CUSTOS'
 insert into SC_SEC_Permissao (id, nome) values (3, 'VISUALIZAR_RELATORIO_EQUIPE');
 
 insert into SC_SEC_Usuario_Grupos (usuarios_id, grupos_id) values (1, 1);
+insert into SC_SEC_Usuario_Grupos (usuarios_id, grupos_id) values (2, 1);
 
 insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 1);
 insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 2);
