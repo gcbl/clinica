@@ -1,25 +1,33 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.controller;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.ui.Model;
 
-import com.pucmg.tcc.gcbl.proposta3.clinica.model.User;
 import com.pucmg.tcc.gcbl.proposta3.clinica.util.Constantes;
 
 public abstract class BaseController {
 
     public static final String MODEL_STR = "MODEL";
     
-    
     @Autowired
     MessageSource messageSource;
     
-    public User getUsuarioLogado(HttpServletRequest request){
-        return (User) request.getSession().getAttribute("usuarioLogado");
+    //-------------------
+    private static final String USUARIO_LOGADO = "usuarioLogado";
+
+    public Principal getUsuarioLogado(HttpServletRequest request){
+        return (Principal) request.getSession().getAttribute(USUARIO_LOGADO);
     }
+
+    public void setUsuarioLogado(HttpServletRequest request, Principal usuarioLogado){
+        request.getSession().setAttribute(USUARIO_LOGADO, usuarioLogado);
+    }
+    //-------------------
     
     public String getVersaoSistema(HttpServletRequest request){
         return Constantes.VERSAO_DO_SISTEMA;
