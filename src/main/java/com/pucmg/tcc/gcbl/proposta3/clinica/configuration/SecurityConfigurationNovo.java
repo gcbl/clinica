@@ -36,6 +36,8 @@ public class SecurityConfigurationNovo extends WebSecurityConfigurerAdapter {
         httpSecurity
             .authorizeRequests()
                 .antMatchers("/").permitAll()
+                .antMatchers("/privado/**-receita").hasRole("VISUALIZAR_RELATORIO_EQUIPE")
+                .antMatchers("/vendas/relatorios/custos").hasRole("VISUALIZAR_RELATORIO_CUSTOS")
                 .anyRequest().authenticated()
             .and()
             //.csrf().disable()
@@ -48,17 +50,17 @@ public class SecurityConfigurationNovo extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/")
             .and()
                 .exceptionHandling()
-                .accessDeniedPage("/access-denied")
+                .accessDeniedPage("/acesso-negado")
             .and()
             .rememberMe(); // <<< Habilita a função de "lembrar-me".        
         
-            configurarAutorizacoes(httpSecurity);
+            //configurarAutorizacoes(httpSecurity);
     }
 
     private void configurarAutorizacoes(HttpSecurity httpSecurity) throws Exception{
         httpSecurity.
             authorizeRequests()
-                .antMatchers("/privado/**-receita").hasRole("VISUALIZAR_RELATORIO_EQUIPE")
+                .antMatchers("/privado/listar-receita").hasRole("VISUALIZAR_RELATORIO_EQUIPE")
                 .antMatchers("/vendas/relatorios/custos").hasRole("VISUALIZAR_RELATORIO_CUSTOS");
         
     }    
