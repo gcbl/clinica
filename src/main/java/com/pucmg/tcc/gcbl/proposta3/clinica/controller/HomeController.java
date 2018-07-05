@@ -1,5 +1,9 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.controller;
 
+import java.security.Principal;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.TesteService;
 
 @Controller
-public class HomeController {
+public class HomeController extends BaseController{
     
     @Autowired
     private TesteService testeService;
@@ -24,14 +28,15 @@ public class HomeController {
     }
 
     @GetMapping("/privado/inicio")
-    public String inicio() { // login com sucesso!
+    public String inicio(HttpServletRequest request, Principal principal) { // login com sucesso!
+        setUsuarioLogado(request, principal);
         return "views/autenticacao/inicio";
     }
     
     @GetMapping("/privado/home")
-    public String home() {
+    public String home(HttpServletRequest request, Principal principal) {
         testeService.popula();
-        return inicio();
+        return inicio(request, principal);
     }    
     
     
