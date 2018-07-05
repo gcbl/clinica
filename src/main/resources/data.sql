@@ -453,7 +453,8 @@ DROP TABLE TEMP_PESSOA;
 
 -- SECURITY
 insert into SC_SEC_Usuario (id, nome, login, senha, ativo) values (1, 'teste', 'teste', 'teste', true);
-insert into SC_SEC_Usuario (id, nome, login, senha, ativo) values (2, 'Alexandre Afonso', 'teste@teste.com', '$2a$10$IzpvPiq.R5pAMhPbA430yekFGV18tOVw9YLAbhJuqf5.MbWjvj6cm', true);
+insert into SC_SEC_Usuario (id, nome, login, senha, ativo) values (2, 'teste2', 'teste2', 'teste2', true);
+insert into SC_SEC_Usuario (id, nome, login, senha, ativo) values (3, 'Alexandre Afonso', 'teste@teste.com', '$2a$10$IzpvPiq.R5pAMhPbA430yekFGV18tOVw9YLAbhJuqf5.MbWjvj6cm', true);
 
 insert into SC_SEC_Grupo (id, nome, descricao) values (1, 'ANALISTA', 'Grupo de analistas');
 
