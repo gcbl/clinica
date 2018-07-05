@@ -37,7 +37,12 @@ public class HomeController extends BaseController{
     public String home(HttpServletRequest request, Principal principal) {
         testeService.popula();
         return inicio(request, principal);
-    }    
+    }  
+    
+    @GetMapping("/acesso-negado")
+    public String acessoNegado() {
+        return "views/autenticacao/acessoNegado";
+    }        
     
     
 }
