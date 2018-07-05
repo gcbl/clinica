@@ -24,17 +24,17 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.repository.security.UsuarioRepositor
 public class CustomUserDetailsService implements UserDetailsService {
     
     @Autowired
-    private UsuarioRepository usuarios;
+    private UsuarioRepository usuarioRepository;
 
     @Autowired
-    private GrupoRepossitory grupos;
+    private GrupoRepossitory grupoRepository;
     
     @Autowired
-    private PermissaoRepository permissoes;
+    private PermissaoRepository permissaoRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Usuario usuario = usuarios.findByLogin(username);
+        Usuario usuario = usuarioRepository.findByLogin(username);
         
         if (usuario == null) {
             throw new UsernameNotFoundException("Usuário não encontrado!");
@@ -44,14 +44,14 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
     
     public Collection<? extends GrantedAuthority> authorities(Usuario usuario) {
-        return authorities(grupos.findByUsuariosIn(usuario));
+        return authorities(grupoRepository.findByUsuariosIn(usuario));
     }
     
     public Collection<? extends GrantedAuthority> authorities(List<Grupo> grupos) {
         Collection<GrantedAuthority> auths = new ArrayList<>();
         
         for (Grupo grupo: grupos) {
-            List<Permissao> lista = permissoes.findByGruposIn(grupo);
+            List<Permissao> lista = permissaoRepository.findByGruposIn(grupo);
             
             for (Permissao permissao: lista) {
                 auths.add(new SimpleGrantedAuthority("ROLE_" + permissao.getNome()));
