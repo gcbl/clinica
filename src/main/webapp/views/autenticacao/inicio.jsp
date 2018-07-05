@@ -7,7 +7,11 @@
         <div class="body">
             <h1 class="animated fadeInLeft">Bem vindo INICIO</h1>
 
-            <p>${dataHora}.</p>
+            <p>${usuarioLogado}</p>
+            
+            <hr>
+            ${usuarioLogado.principal.authorities}
+            <hr>
         </div>
  
  
