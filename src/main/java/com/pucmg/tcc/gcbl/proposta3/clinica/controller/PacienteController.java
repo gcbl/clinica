@@ -161,8 +161,9 @@ public class PacienteController extends ModelController {
         return exibirHistoricoClinico(model, locale, request);
     }
     
-    @RequestMapping(value={"/listar-historico-clinico-paciente"}, method = RequestMethod.POST)
-    public String exibirHistoricoClinico(Model model, Locale locale, HttpServletRequest request){
+    //@RequestMapping(value={"/listar-historico-clinico-paciente"}, method = RequestMethod.POST)
+    //@PostMapping("/listar-historico-clinico-paciente")
+    private String exibirHistoricoClinico(Model model, Locale locale, HttpServletRequest request){
         
         String idPaciente = request.getParameter("id");
         
