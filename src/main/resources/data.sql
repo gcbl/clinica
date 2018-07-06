@@ -458,31 +458,50 @@ insert into SC_SEC_Usuario (id, nome, login, senha, ativo) values (3, 'Alexandre
 
 insert into SC_SEC_Grupo (id, nome, descricao) values (1, 'ANALISTA', 'Grupo de analistas');
 
-insert into SC_SEC_Permissao (id, nome) values (1, 'LISTAR_RECEITA');
-insert into SC_SEC_Permissao (id, nome) values (2, 'INCLUIR_RECEITA');
-insert into SC_SEC_Permissao (id, nome) values (3, 'LISTAR_ATENDIMENTO');
-insert into SC_SEC_Permissao (id, nome) values (4, 'INCLUIR_ATENDIMENTO');
-insert into SC_SEC_Permissao (id, nome) values (5, 'LISTAR_MEDICAMENTO');
-insert into SC_SEC_Permissao (id, nome) values (6, 'INCLUIR_MEDICAMENTO');
-insert into SC_SEC_Permissao (id, nome) values (7, 'LISTAR_MEDICO');
-insert into SC_SEC_Permissao (id, nome) values (8, 'INCLUIR_MEDICO');
-insert into SC_SEC_Permissao (id, nome) values (9, 'LISTAR_PACIENTE');
-insert into SC_SEC_Permissao (id, nome) values (10, 'INCLUIR_PACIENTE');
-insert into SC_SEC_Permissao (id, nome) values (11, 'LISTAR_HISTORICO_CLINICO_PACIENTE_FORM');
-insert into SC_SEC_Permissao (id, nome) values (12, 'LISTAR_HISTORICO_CLINICO_PACIENTE');
+insert into SC_SEC_Permissao (id, nome) values (11, 'LISTAR_SOLICITACAO_EXAME');
+insert into SC_SEC_Permissao (id, nome) values (12, 'INCLUIR_SOLICITACAO_EXAME');
+insert into SC_SEC_Permissao (id, nome) values (13, 'EXCLUIR_SOLICITACAO_EXAME');
+insert into SC_SEC_Permissao (id, nome) values (14, 'EDITAR_SOLICITACAO_EXAME');
+insert into SC_SEC_Permissao (id, nome) values (21, 'LISTAR_RESULTADO_EXAME');
+insert into SC_SEC_Permissao (id, nome) values (22, 'INCLUIR_RESULTADO_EXAME');
+insert into SC_SEC_Permissao (id, nome) values (23, 'EXCLUIR_RESULTADO_EXAME');
+insert into SC_SEC_Permissao (id, nome) values (24, 'EDITAR_RESULTADO_EXAME');
+
+insert into SC_SEC_Permissao (id, nome) values (101, 'LISTAR_RECEITA');
+insert into SC_SEC_Permissao (id, nome) values (102, 'INCLUIR_RECEITA');
+insert into SC_SEC_Permissao (id, nome) values (103, 'LISTAR_ATENDIMENTO');
+insert into SC_SEC_Permissao (id, nome) values (104, 'INCLUIR_ATENDIMENTO');
+insert into SC_SEC_Permissao (id, nome) values (105, 'LISTAR_MEDICAMENTO');
+insert into SC_SEC_Permissao (id, nome) values (106, 'INCLUIR_MEDICAMENTO');
+insert into SC_SEC_Permissao (id, nome) values (107, 'LISTAR_MEDICO');
+insert into SC_SEC_Permissao (id, nome) values (108, 'INCLUIR_MEDICO');
+insert into SC_SEC_Permissao (id, nome) values (109, 'LISTAR_PACIENTE');
+insert into SC_SEC_Permissao (id, nome) values (110, 'INCLUIR_PACIENTE');
+insert into SC_SEC_Permissao (id, nome) values (111, 'LISTAR_HISTORICO_CLINICO_PACIENTE_FORM');
+insert into SC_SEC_Permissao (id, nome) values (112, 'LISTAR_HISTORICO_CLINICO_PACIENTE');
 
 
 insert into SC_SEC_Usuario_Grupos (usuarios_id, grupos_id) values (1, 1);
 
-insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 1);
-insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 2);
-insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 3);
-insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 4);
-insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 5);
-insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 6);
-insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 7);
-insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 8);
-insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 9);
-insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 10);
 insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 11);
 insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 12);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 13);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 14);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 21);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 22);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 23);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 24);
+
+
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 101);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 102);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 103);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 104);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 105);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 106);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 107);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 108);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 109);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 110);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 111);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 112);
