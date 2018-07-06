@@ -15,7 +15,7 @@
         <div class="body">
 
                 <%-- <form:form action="${acao}-${MODEL}" class="form-horizontal" modelAttribute="${MODEL}" id="${acao}-${MODEL}"> --%>
-                <form action="${acao}-historico-clinico-${MODEL}" method="POST">
+                <form action="${acao}-historico-clinico-${MODEL}" method="GET">
                     <fieldset>
                     
                     <!-- Form Name -->
