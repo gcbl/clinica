@@ -25,7 +25,7 @@
                        <form:hidden path="id" placeholder="id" class="form-control input-md"/> <form:errors path="id" cssClass="text-danger" />
                     </c:if>
                     
-                    <h2 class="text-capitalize">${acao} ${MODEL} [ATENDER=${ATENDER}]</h2>
+                    <h2 class="text-capitalize">${acao} ${MODEL}</h2>
                     <br><br>                    
                     <!-- Select input-->
                     <div class="form-group">
