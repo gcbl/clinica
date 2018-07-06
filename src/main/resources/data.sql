@@ -458,9 +458,19 @@ insert into SC_SEC_Usuario (id, nome, login, senha, ativo) values (3, 'Alexandre
 
 insert into SC_SEC_Grupo (id, nome, descricao) values (1, 'ANALISTA', 'Grupo de analistas');
 
-insert into SC_SEC_Permissao (id, nome) values (1, 'USUARIO');
-insert into SC_SEC_Permissao (id, nome) values (2, 'VISUALIZAR_RELATORIO_CUSTOS');
-insert into SC_SEC_Permissao (id, nome) values (3, 'VISUALIZAR_RELATORIO_EQUIPE');
+insert into SC_SEC_Permissao (id, nome) values (1, 'LISTAR_RECEITA');
+insert into SC_SEC_Permissao (id, nome) values (2, 'INCLUIR_RECEITA');
+insert into SC_SEC_Permissao (id, nome) values (3, 'LISTAR_ATENDIMENTO');
+insert into SC_SEC_Permissao (id, nome) values (4, 'INCLUIR_ATENDIMENTO');
+insert into SC_SEC_Permissao (id, nome) values (5, 'LISTAR_MEDICAMENTO');
+insert into SC_SEC_Permissao (id, nome) values (6, 'INCLUIR_MEDICAMENTO');
+insert into SC_SEC_Permissao (id, nome) values (7, 'LISTAR_MEDICO');
+insert into SC_SEC_Permissao (id, nome) values (8, 'INCLUIR_MEDICO');
+insert into SC_SEC_Permissao (id, nome) values (9, 'LISTAR_PACIENTE');
+insert into SC_SEC_Permissao (id, nome) values (10, 'INCLUIR_PACIENTE');
+insert into SC_SEC_Permissao (id, nome) values (11, 'LISTAR_HISTORICO_CLINICO_PACIENTE_FORM');
+insert into SC_SEC_Permissao (id, nome) values (12, 'LISTAR_HISTORICO_CLINICO_PACIENTE');
+
 
 insert into SC_SEC_Usuario_Grupos (usuarios_id, grupos_id) values (1, 1);
 insert into SC_SEC_Usuario_Grupos (usuarios_id, grupos_id) values (2, 1);
