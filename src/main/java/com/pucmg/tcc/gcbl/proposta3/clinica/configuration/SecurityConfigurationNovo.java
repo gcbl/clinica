@@ -35,10 +35,28 @@ public class SecurityConfigurationNovo extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
             .authorizeRequests()
+                // ---###--- PERMISSOES ---###---
                 .antMatchers("/").permitAll()
-                .antMatchers("/privado/**-receita").hasRole("VISUALIZAR_RELATORIO_EQUIPE")
-                .antMatchers("/vendas/relatorios/custos").hasRole("VISUALIZAR_RELATORIO_CUSTOS")
-                .anyRequest().authenticated()
+                .antMatchers("/privado/inicio").permitAll()
+                .antMatchers("/privado/home").permitAll()
+                .antMatchers("/privado/api/**").permitAll() // TODO: Colocar roles pra cada acao da API
+                .antMatchers("/privado/listar-solicitacaoExame").hasRole("LISTAR_SOLICITACAO_EXAME")
+                .antMatchers("/privado/incluir-solicitacaoExame").hasRole("INCLUIR_SOLICITACAO_EXAME")
+                .antMatchers("/privado/excluir-solicitacaoExame").hasRole("EXCLUIR_SOLICITACAO_EXAME")
+                .antMatchers("/privado/editar-solicitacaoExame").hasRole("EDITAR_SOLICITACAO_EXAME")
+                .antMatchers("/privado/listar-resultadoExame").hasRole("LISTAR_RESULTADO_EXAME")
+                .antMatchers("/privado/incluir-resultadoExame").hasRole("INCLUIR_RESULTADO_EXAME")
+                .antMatchers("/privado/excluir-resultadoExame").hasRole("EXCLUIR_RESULTADO_EXAME")
+                .antMatchers("/privado/editar-resultadoExame").hasRole("EDITAR_RESULTADO_EXAME")
+                
+//                .antMatchers("/privado/listar-receita").hasRole("LISTAR_RECEITA")
+//                .antMatchers("/privado/incluir-receita").hasRole("INCLUIR_RECEITA")
+//                .antMatchers("/privado/listar-atendimento").hasRole("LISTAR_ATENDIMENTO")
+//                .antMatchers("/privado/incluir-atendimento").hasRole("INCLUIR_ATENDIMENTO")
+                
+                .anyRequest().denyAll()                
+                // ---###--- FIM DAS PEMISSOES ---###--- 
+                //.anyRequest().authenticated()
             .and()
             //.csrf().disable()
             .formLogin()
