@@ -473,8 +473,16 @@ insert into SC_SEC_Permissao (id, nome) values (12, 'LISTAR_HISTORICO_CLINICO_PA
 
 
 insert into SC_SEC_Usuario_Grupos (usuarios_id, grupos_id) values (1, 1);
-insert into SC_SEC_Usuario_Grupos (usuarios_id, grupos_id) values (2, 1);
 
 insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 1);
 insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 2);
 insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 3);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 4);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 5);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 6);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 7);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 8);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 9);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 10);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 11);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 12);
