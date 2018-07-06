@@ -103,7 +103,7 @@
                             </c:if>
                             <form class="form-signin" action="/login" method="post">
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>                            
-                                <input type="text"     class="form-control" name="username" value="teste@teste.com" placeholder="Email" required autofocus>
+                                <input type="text"     class="form-control" name="username" value="teste" placeholder="Email" required autofocus>
                                 <input type="password" class="form-control" name="password" value="teste" placeholder="Senha"     required>
                                 <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar no sistema</button>
                             </form>
