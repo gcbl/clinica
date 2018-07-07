@@ -14,7 +14,7 @@
   <%-- <img width="10%" height="10%" src="https://seeklogo.com/images/B/bitcoin-logo-DDAEEA68FA-seeklogo.com.png"> --%>
   <span class="fa-stack fa-lg fa-2x">
 	    <i class="fas fa-medkit fa-stack-1x text-info"></i>
-  </span>recepcionista
+  </span>SisClinica REC
   </a>
   
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,6 +69,37 @@
           <a class="dropdown-item" href="listar-exame">Consultar</a>
           <a class="dropdown-item" href="incluir-exame">Incluir</a>
           <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="listar-solicitacaoExame">Listar Solicitações de Exames</a>
+          <a class="dropdown-item" href="incluir-solicitacaoExame">Solicitar exame</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="listar-resultadoExame">Listar Resultado de Exames</a>
+          <a class="dropdown-item" href="incluir-resultadoExame">Receber resultado</a>
+                    
+          <a class="dropdown-item disabled" href="#">Receber exame</a>
+        </div>
+      </li>      
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="far fa-file-alt"></i> Receita
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+          <a class="dropdown-item" href="listar-receita">Consultar</a>
+          <a class="dropdown-item" href="incluir-receita">Incluir</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item disabled" href="#">Estatisticas</a>
+        </div>
+      </li>      
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="far fa-file-alt"></i> Atendimento
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+          <a class="dropdown-item" href="listar-atendimento">Consultar</a>
+          <a class="dropdown-item" href="incluir-atendimento">Incluir</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item disabled" href="#">Estatisticas</a>
         </div>
       </li>      
 
@@ -79,6 +110,8 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
           <a class="dropdown-item" href="listar-medicamento">Consultar</a>
           <a class="dropdown-item" href="incluir-medicamento">Incluir</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item disabled" href="#">Estatisticas</a>
         </div>
       </li>
       
@@ -107,6 +140,33 @@
         </div>
       </li>
 
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="far fa-id-card"></i> Recepcionista
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+          <a class="dropdown-item" href="listar-recepcionista">Consultar</a>
+          <a class="dropdown-item" href="incluir-recepcionista">Incluir</a>          
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item disabled" href="#">Estatisticas</a>
+        </div>
+      </li>      
+      
+      <!-- 
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-gear" aria-hidden="true"></i> Configuração
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+            <a class="dropdown-item" href="config" disabled><i class="fa fa-university" aria-hidden="true"></i> Gerais</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item disabled" href="#" disabled> Outras configurações</a>            
+        </div>
+      </li>      
+      <li class="nav-item">
+        <a class="nav-link" href="about"><i class="fa fa-info-circle" aria-hidden="true"></i> Sobre</a>
+      </li>
+       -->
     </ul>
     
     <ul class="nav navbar-nav navbar-right">
