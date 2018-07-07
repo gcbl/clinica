@@ -37,6 +37,9 @@ public class SecurityConfigurationNovo extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
                 // ---###--- PERMISSOES ---###---
                 .antMatchers("/").permitAll()
+                .antMatchers("/**").permitAll()
+                
+/*                
                 .antMatchers("/privado/inicio").permitAll()
                 .antMatchers("/privado/home").permitAll()
                 .antMatchers("/privado/api/**").permitAll() // TODO: Colocar roles pra cada acao da API
@@ -48,17 +51,13 @@ public class SecurityConfigurationNovo extends WebSecurityConfigurerAdapter {
                 .antMatchers("/privado/incluir-resultadoExame").hasRole("INCLUIR_RESULTADO_EXAME")
                 .antMatchers("/privado/excluir-resultadoExame").hasRole("EXCLUIR_RESULTADO_EXAME")
                 .antMatchers("/privado/editar-resultadoExame").hasRole("EDITAR_RESULTADO_EXAME")
-                
-//                .antMatchers("/privado/listar-receita").hasRole("LISTAR_RECEITA")
-//                .antMatchers("/privado/incluir-receita").hasRole("INCLUIR_RECEITA")
-//                .antMatchers("/privado/listar-atendimento").hasRole("LISTAR_ATENDIMENTO")
-//                .antMatchers("/privado/incluir-atendimento").hasRole("INCLUIR_ATENDIMENTO")
+*/                
                 
                 .anyRequest().denyAll()                
                 // ---###--- FIM DAS PEMISSOES ---###--- 
                 //.anyRequest().authenticated()
             .and()
-            //.csrf().disable()
+            .csrf().disable()
             .formLogin()
                 .loginPage("/login").permitAll()
                 .defaultSuccessUrl("/privado/inicio")
@@ -71,18 +70,8 @@ public class SecurityConfigurationNovo extends WebSecurityConfigurerAdapter {
                 .accessDeniedPage("/acesso-negado")
             .and()
             .rememberMe(); // <<< Habilita a função de "lembrar-me".        
-        
-            //configurarAutorizacoes(httpSecurity);
     }
 
-    private void configurarAutorizacoes(HttpSecurity httpSecurity) throws Exception{
-        httpSecurity.
-            authorizeRequests()
-                .antMatchers("/privado/listar-receita").hasRole("VISUALIZAR_RELATORIO_EQUIPE")
-                .antMatchers("/vendas/relatorios/custos").hasRole("VISUALIZAR_RELATORIO_CUSTOS");
-        
-    }    
-    
     @Override
     public void configure(WebSecurity web) throws Exception {
         web
