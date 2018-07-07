@@ -37,6 +37,11 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-taglibs</artifactId>
+		</dependency>
+
 
         <!-- https://www.thoughts-on-java.org/hibernate-5-date-and-time/ --> 
         <dependency>
