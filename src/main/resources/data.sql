@@ -452,14 +452,17 @@ DELETE FROM TEMP_PESSOA;
 DROP TABLE TEMP_PESSOA;
 
 -- SECURITY
+insert into SC_SEC_Usuario (id, nome, login, senha, ativo) values (0, 'admin', 'admin', 'admin', true);
 insert into SC_SEC_Usuario (id, nome, login, senha, ativo) values (1, 'med', 'med', 'med', true);
 insert into SC_SEC_Usuario (id, nome, login, senha, ativo) values (2, 'rec', 'rec', 'rec', true);
 insert into SC_SEC_Usuario (id, nome, login, senha, ativo) values (3, 'Alexandre Afonso', 'teste@teste.com', '$2a$10$IzpvPiq.R5pAMhPbA430yekFGV18tOVw9YLAbhJuqf5.MbWjvj6cm', true);
 
-insert into SC_SEC_Grupo (id, nome, descricao) values (1, 'MEDICOS', 'Grupo de medicos');
-insert into SC_SEC_Grupo (id, nome, descricao) values (2, 'RECEPCIONISTAS', 'Grupo de recepcionista');
+insert into SC_SEC_Grupo (id, nome, descricao) values (0, 'ADMNINSTRADORES', 'Grupo de Administradores do Sistema');
+insert into SC_SEC_Grupo (id, nome, descricao) values (1, 'MEDICOS', 'Grupo de Médicos');
+insert into SC_SEC_Grupo (id, nome, descricao) values (2, 'RECEPCIONISTAS', 'Grupo de Recepcionista');
 
 -- ----
+insert into SC_SEC_Permissao (id, nome) values (1000, 'ADMIN');
 insert into SC_SEC_Permissao (id, nome) values (1001, 'MEDICO');
 insert into SC_SEC_Permissao (id, nome) values (1002, 'RECEPCIONISTA');
 
@@ -486,6 +489,7 @@ insert into SC_SEC_Permissao (id, nome) values (111, 'LISTAR_HISTORICO_CLINICO_P
 insert into SC_SEC_Permissao (id, nome) values (112, 'LISTAR_HISTORICO_CLINICO_PACIENTE');
 
 -- 
+insert into SC_SEC_Usuario_Grupos (usuarios_id, grupos_id) values (0, 0);
 insert into SC_SEC_Usuario_Grupos (usuarios_id, grupos_id) values (1, 1);
 insert into SC_SEC_Usuario_Grupos (usuarios_id, grupos_id) values (2, 2);
 
@@ -514,5 +518,6 @@ insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 111);
 insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 112);
 
 
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (0, 1000);
 insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 1001);
 insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (2, 1002);
