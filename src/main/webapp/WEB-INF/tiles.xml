@@ -11,6 +11,7 @@
         <put-attribute name="cabecalho" value="/template/default/cabecalho.jsp" />
         <put-attribute name="rodape" value="/template/default/rodape.jsp" />
         
+        <put-attribute name="menu-admin" value="/template/default/menu/menu-admin.jsp" />
         <put-attribute name="menu-medico" value="/template/default/menu/menu-medico.jsp" />
         <put-attribute name="menu-recepcionista" value="/template/default/menu/menu-recepcionista.jsp" />
     </definition>
