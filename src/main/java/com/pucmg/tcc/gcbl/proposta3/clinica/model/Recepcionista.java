@@ -7,6 +7,8 @@ import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.security.Usuario;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -14,9 +16,10 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "SC_RECEPCIONISTA")
-public class Recepcionista extends Pessoa {
+public class Recepcionista extends Usuario{
 
-    @Column(name = "MATRICULA")
+    @Column(name = "MATRICULA",
+    		nullable = false)
     @NotEmpty(message = "*Por favor informe a matricula")
     private String matricula;
 

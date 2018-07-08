@@ -13,23 +13,27 @@
     </head>
 <body>
 	<%-- Verificando as roles --%>
-    <sec:authorize access="hasRole('ROLE_ADMIN')" var="isAdmin"  />
-	<sec:authorize access="hasRole('ROLE_MEDICO')" var="isMedico" />
-	<sec:authorize access="hasRole('ROLE_RECEPCIONISTA')" var="isRecepcionista" />
+    <sec:authorize access="hasRole('ROLE_PERFIL_ADMIN')" var="isAdmin"  />
+	<sec:authorize access="hasRole('ROLE_PERFIL_MEDICO')" var="isMedico" />
+	<sec:authorize access="hasRole('ROLE_PERFIL_RECEPCIONISTA')" var="isRecepcionista" />
 	<%-- /Verificando as roles --%>
 
 	<%-- Importando o menu de acordo com as roles --%>
     <c:choose>
         <c:when test = "${isAdmin}">
+	        ADMIN
 	        <tiles:insertAttribute name="menu-admin" />
         </c:when>
         <c:when test = "${isMedico}">
+        	MEDICO
             <tiles:insertAttribute name="menu-medico" />
         </c:when>
         <c:when test = "${isRecepcionista}">
+        	RECEPCIONISTA
      	    <tiles:insertAttribute name="menu-recepcionista" />
         </c:when>
         <c:otherwise>
+        	NENHUM PERFIL
             <tiles:insertAttribute name="menu" />
         </c:otherwise>
     </c:choose>

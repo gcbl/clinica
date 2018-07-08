@@ -4,11 +4,12 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.pucmg.tcc.gcbl.proposta3.clinica.model.BaseEntity;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Pessoa;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -17,14 +18,16 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "SC_SEC_USUARIO")
-public class Usuario extends BaseEntity implements Serializable {
+@Inheritance(
+	    strategy = InheritanceType.JOINED
+)
+public class Usuario extends Pessoa implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
-    private String nome;
     private String login;
     private String senha;
-    private boolean ativo;
+//    private boolean ativo;
     
     @ManyToMany
     private List<Grupo> grupos;

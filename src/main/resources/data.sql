@@ -7,18 +7,17 @@ DELETE FROM SC_EXAME;
 DELETE FROM SC_MEDICAMENTO; 
 DELETE FROM SC_ATENDIMENTO;
 DELETE FROM SC_RESULTADO_EXAME;
+DELETE FROM SC_PACIENTE;
 DELETE FROM SC_MEDICO;
-DELETE FROM SC_PACIENTE; 
-
-
+DELETE FROM SC_RECEPCIONISTA;
 
 DELETE FROM USER_ROLE;
 DELETE FROM ROLE;
 DELETE FROM USER;
 
-DELETE FROM SC_SEC_GRUPO_PERMISSOES;
 DELETE FROM SC_SEC_USUARIO_GRUPOS;
 DELETE FROM SC_SEC_USUARIO_PERMISSOES;
+DELETE FROM SC_SEC_GRUPO_PERMISSOES;
 DELETE FROM SC_SEC_GRUPO;
 DELETE FROM SC_SEC_PERMISSAO;
 DELETE FROM SC_SEC_USUARIO;
@@ -422,24 +421,48 @@ INSERT INTO TEMP_PESSOA (ID, NOME, CPF, DT_NASCIMENTO, ENDERECO, BAIRRO, CEP, CI
 ( 200, 'Lucas Martins', '880.057.361-42', '1963-11-07', 'Av. João Pombo, 1372', 'Conjunto C', '69339-000', 'Boa Vista', 'RR');
 
 -- INSERT 20 MEDICOS
-DELETE FROM SC_MEDICO;
-INSERT INTO SC_MEDICO (ID, CEP, CIDADE, CPF, DT_NASCIMENTO, ENDERECO, BAIRRO, ESTADO, NOME, CRM, COR_CALENDARIO)
-SELECT ID, CEP, CIDADE, CPF, DT_NASCIMENTO, ENDERECO, BAIRRO, ESTADO, NOME, CONCAT(ID, '09', ID) CRM,
+--INSERT INTO SC_MEDICO (ID, CEP, CIDADE, CPF, DT_NASCIMENTO, ENDERECO, BAIRRO, ESTADO, NOME, CRM, COR_CALENDARIO)
+--SELECT ID, CEP, CIDADE, CPF, DT_NASCIMENTO, ENDERECO, BAIRRO, ESTADO, NOME, CONCAT(ID, '09', ID) CRM,
+--       concat('', 
+--              SELECT concat('#', SUBSTR((CAST(CAST(A AS INT) AS BINARY)), 3)) FROM (SELECT floor(random() * (CAST(CAST('FFFFFF' AS BINARY) AS INT) - CAST(CAST('100000' AS BINARY) AS INT) + 1) + CAST(CAST('100000' AS BINARY) AS INT) ) AS A )
+--       )
+--FROM TEMP_PESSOA
+--WHERE rownum BETWEEN 1 AND 20;
+
+-- INSERE 20 USUARIOS - ESTES SERAO OS MEDICOS
+INSERT INTO SC_SEC_USUARIO (ID, CEP, CIDADE, CPF, DT_NASCIMENTO, ENDERECO, BAIRRO, ESTADO, NOME, LOGIN, SENHA)
+SELECT ID, CEP, CIDADE, CPF, DT_NASCIMENTO, ENDERECO, BAIRRO, ESTADO, NOME, CONCAT(ID, '') LOGIN, CONCAT(ID, '') SENHA
+FROM TEMP_PESSOA
+WHERE rownum BETWEEN 1 AND 20;
+
+
+-- INSERE OS MEDICOS COM OS MESMOS IDS - JOINED TABLE COM USUARIO
+INSERT INTO SC_MEDICO (ID, CRM , COR_CALENDARIO)
+SELECT ID, CONCAT(ID, '00', ID) CRM,
        concat('', 
               SELECT concat('#', SUBSTR((CAST(CAST(A AS INT) AS BINARY)), 3)) FROM (SELECT floor(random() * (CAST(CAST('FFFFFF' AS BINARY) AS INT) - CAST(CAST('100000' AS BINARY) AS INT) + 1) + CAST(CAST('100000' AS BINARY) AS INT) ) AS A )
        )
 FROM TEMP_PESSOA
 WHERE rownum BETWEEN 1 AND 20;
 
--- COR
--- SELECT concat('#', SUBSTR((CAST(CAST(A AS INT) AS BINARY)), 3)) FROM (SELECT floor(random() * (CAST(CAST('FFFFFF' AS BINARY) AS INT) - CAST(CAST('100000' AS BINARY) AS INT) + 1) + CAST(CAST('100000' AS BINARY) AS INT) ) AS A );
-
--- INSERT 5 RECEPCIONISTAS
-DELETE FROM SC_RECEPCIONISTA ;
-INSERT INTO SC_RECEPCIONISTA  (ID, CEP, CIDADE, CPF, DT_NASCIMENTO, ENDERECO, BAIRRO, ESTADO, NOME, MATRICULA)
-SELECT ID, CEP, CIDADE, CPF, DT_NASCIMENTO, ENDERECO, BAIRRO, ESTADO, NOME, CONCAT(ID, '11', ID) MATRICULA
+-- INSERE 5 USUARIOS - ESTES SERAO OS RECEPCIONISTAS
+INSERT INTO SC_SEC_USUARIO (ID, CEP, CIDADE, CPF, DT_NASCIMENTO, ENDERECO, BAIRRO, ESTADO, NOME, LOGIN, SENHA)
+SELECT ID, CEP, CIDADE, CPF, DT_NASCIMENTO, ENDERECO, BAIRRO, ESTADO, NOME, CONCAT(ID, '') LOGIN, CONCAT(ID, '') SENHA
 FROM TEMP_PESSOA
 WHERE rownum BETWEEN 21 AND 25;
+
+-- INSERE OS RECEPCIONISTAS COM OS MESMOS IDS - JOINED TABLE COM O USUARIO
+INSERT INTO SC_RECEPCIONISTA (ID, MATRICULA)
+SELECT ID, CONCAT(ID, '99', ID) MATRICULA
+FROM TEMP_PESSOA
+WHERE rownum BETWEEN 21 AND 25;
+
+-- INSERT 5 RECEPCIONISTAS
+--DELETE FROM SC_RECEPCIONISTA ;
+--INSERT INTO SC_RECEPCIONISTA  (ID, CEP, CIDADE, CPF, DT_NASCIMENTO, ENDERECO, BAIRRO, ESTADO, NOME, MATRICULA)
+--SELECT ID, CEP, CIDADE, CPF, DT_NASCIMENTO, ENDERECO, BAIRRO, ESTADO, NOME, CONCAT(ID, '11', ID) MATRICULA
+--FROM TEMP_PESSOA
+--WHERE rownum BETWEEN 21 AND 25;
 
 -- INSERT 100 PACIENTES
 DELETE FROM SC_PACIENTE;
@@ -452,19 +475,30 @@ DELETE FROM TEMP_PESSOA;
 DROP TABLE TEMP_PESSOA;
 
 -- SECURITY
-insert into SC_SEC_Usuario (id, nome, login, senha, ativo) values (0, 'admin', 'admin', 'admin', true);
-insert into SC_SEC_Usuario (id, nome, login, senha, ativo) values (1, 'med', 'med', 'med', true);
-insert into SC_SEC_Usuario (id, nome, login, senha, ativo) values (2, 'rec', 'rec', 'rec', true);
-insert into SC_SEC_Usuario (id, nome, login, senha, ativo) values (3, 'Alexandre Afonso', 'teste@teste.com', '$2a$10$IzpvPiq.R5pAMhPbA430yekFGV18tOVw9YLAbhJuqf5.MbWjvj6cm', true);
+-- insert into SC_SEC_Usuario (id, nome, login, senha, ativo) values (0, 'admin', 'admin', 'admin', true);
+-- insert into SC_SEC_Usuario (id, nome, login, senha, ativo) values (1, 'med', 'med', 'med', true);
+-- insert into SC_SEC_Usuario (id, nome, login, senha, ativo) values (2, 'rec', 'rec', 'rec', true);
+-- insert into SC_SEC_Usuario (id, nome, login, senha, ativo) values (3, 'Alexandre Afonso', 'teste@teste.com', '$2a$10$IzpvPiq.R5pAMhPbA430yekFGV18tOVw9YLAbhJuqf5.MbWjvj6cm', true);
 
 insert into SC_SEC_Grupo (id, nome, descricao) values (0, 'ADMNINSTRADORES', 'Grupo de Administradores do Sistema');
 insert into SC_SEC_Grupo (id, nome, descricao) values (1, 'MEDICOS', 'Grupo de Médicos');
 insert into SC_SEC_Grupo (id, nome, descricao) values (2, 'RECEPCIONISTAS', 'Grupo de Recepcionista');
 
 -- ----
-insert into SC_SEC_Permissao (id, nome) values (1000, 'ADMIN');
-insert into SC_SEC_Permissao (id, nome) values (1001, 'MEDICO');
-insert into SC_SEC_Permissao (id, nome) values (1002, 'RECEPCIONISTA');
+insert into SC_SEC_Permissao (id, nome) values (1000, 'PERFIL_ADMIN');
+insert into SC_SEC_Permissao (id, nome) values (1001, 'PERFIL_MEDICO');
+insert into SC_SEC_Permissao (id, nome) values (1002, 'PERFIL_RECEPCIONISTA');
+
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (0, 1000);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 1001);
+insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (2, 1002);
+
+insert into SC_SEC_Usuario_Grupos (usuarios_id, grupos_id) values (1, 0);
+insert into SC_SEC_Usuario_Grupos (usuarios_id, grupos_id) values (10, 1);
+insert into SC_SEC_Usuario_Grupos (usuarios_id, grupos_id) values (20, 2);
+
+
+-- ----
 
 insert into SC_SEC_Permissao (id, nome) values (11, 'LISTAR_SOLICITACAO_EXAME');
 insert into SC_SEC_Permissao (id, nome) values (12, 'INCLUIR_SOLICITACAO_EXAME');
@@ -489,9 +523,9 @@ insert into SC_SEC_Permissao (id, nome) values (111, 'LISTAR_HISTORICO_CLINICO_P
 insert into SC_SEC_Permissao (id, nome) values (112, 'LISTAR_HISTORICO_CLINICO_PACIENTE');
 
 -- 
-insert into SC_SEC_Usuario_Grupos (usuarios_id, grupos_id) values (0, 0);
-insert into SC_SEC_Usuario_Grupos (usuarios_id, grupos_id) values (1, 1);
-insert into SC_SEC_Usuario_Grupos (usuarios_id, grupos_id) values (2, 2);
+-- insert into SC_SEC_Usuario_Grupos (usuarios_id, grupos_id) values (0, 0);
+-- insert into SC_SEC_Usuario_Grupos (usuarios_id, grupos_id) values (1, 1);
+-- insert into SC_SEC_Usuario_Grupos (usuarios_id, grupos_id) values (2, 2);
 
 
 insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 11);
@@ -518,6 +552,3 @@ insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 111);
 insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 112);
 
 
-insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (0, 1000);
-insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (1, 1001);
-insert into SC_SEC_Grupo_Permissoes (grupos_id, permissoes_id) values (2, 1002);
