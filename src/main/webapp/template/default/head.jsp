@@ -1,4 +1,9 @@
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- sec:csrfMetaTags -->
+    <sec:csrfMetaTags />
+    <!-- /sec:csrfMetaTags -->
     <title>TCC</title>
 
 	<!-- livereload -->
