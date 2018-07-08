@@ -58,3 +58,6 @@ https://github.com/haubek/bootstrap4c-custom-switch
 
 Spring Security
 http://blog.algaworks.com/spring-security/
+
+Joined Table como heranca
+https://vladmihalcea.com/the-best-way-to-use-entity-inheritance-with-jpa-and-hibernate/
