@@ -200,6 +200,7 @@ public class TesteService{
         // --- Marcando horarios ---
         List<Agendamento> horariosVagosTudo = agendamentoService.getHorarioDisponivelList();
         
+        // Agenda consultas "até ontem"
         List<Agendamento> horariosVagos = agendamentoService.getHorarioDisponivelList(diaInicioAgenda, LocalDate.now().minusDays(1) );
         Collections.shuffle(horariosVagos);
         
