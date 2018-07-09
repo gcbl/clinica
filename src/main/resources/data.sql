@@ -560,12 +560,21 @@ insert into SC_SEC_Permissao (id, nome) values (80, '/privado/home');
 insert into SC_SEC_Permissao (id, nome) values (81, '/privado/inicio');
 insert into SC_SEC_Permissao (id, nome) values (82, '/registration');
 
--- ADM PODE TUDO
+-- ADICIONANDO TODAS AS PERMISSOES PARA O GRUPO DE ID = 0
 INSERT INTO SC_SEC_Grupo_Permissoes (GRUPO_ID, permissoes_id)
 SELECT '0', ID FROM SC_SEC_PERMISSAO;
 
+-- ADICIONANDO PERMISSOES PARA O GRUPO DE ID = 2
+-- RECEPCIONISTA NAO PODE INCLUIR/EXCLUIR/EDITAR nada
+INSERT INTO SC_SEC_Grupo_Permissoes (GRUPO_ID, permissoes_id)
+SELECT '2', ID FROM SC_SEC_PERMISSAO WHERE UPPER(NOME) NOT LIKE '%INCLUIR%' and UPPER(NOME) NOT LIKE '%EXCLUIR%' and UPPER(NOME) NOT LIKE '%EDITAR%';
+
+
+
+
 -- ADICIONANDO O USUARIO 1 no grupo de administradores
 insert into SC_SEC_Usuario_Grupos (usuario_id, grupos_id) values (1, 0);
+insert into SC_SEC_Usuario_Grupos (usuario_id, grupos_id) values (20, 2);
 
 
 -- ----
