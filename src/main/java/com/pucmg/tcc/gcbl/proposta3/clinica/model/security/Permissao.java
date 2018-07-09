@@ -1,10 +1,8 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.model.security;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
