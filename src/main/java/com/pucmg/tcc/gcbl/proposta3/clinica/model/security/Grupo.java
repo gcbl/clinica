@@ -29,7 +29,7 @@ public class Grupo extends BaseEntity implements Serializable {
 //    private List<Usuario> usuarios;
     
     //@ManyToMany
-    @ManyToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Permissao> permissoes;
     
