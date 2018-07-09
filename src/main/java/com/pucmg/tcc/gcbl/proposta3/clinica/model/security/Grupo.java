@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.BaseEntity;
 
 import lombok.Data;
@@ -29,6 +30,7 @@ public class Grupo extends BaseEntity implements Serializable {
     
     //@ManyToMany
     @ManyToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Permissao> permissoes;
     
 }

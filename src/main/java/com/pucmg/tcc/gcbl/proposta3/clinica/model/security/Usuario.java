@@ -11,6 +11,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Pessoa;
 
 import lombok.Data;
@@ -32,9 +33,16 @@ public class Usuario extends Pessoa implements Serializable {
 //    private boolean ativo;
     
     @ManyToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Grupo> grupos;
-    
+
 //    @ManyToMany
 //    private List<Permissao> permissoes;
+
+//	@Override
+//	public String toString() {
+//		return super.toString().replace( this.getSenha(), "[PROTEGIDO]");
+//	}
+    
 
 }

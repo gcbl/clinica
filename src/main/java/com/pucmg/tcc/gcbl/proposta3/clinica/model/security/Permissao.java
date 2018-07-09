@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.BaseEntity;
 
 import lombok.Data;
@@ -20,6 +21,7 @@ public class Permissao extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
+    @JsonIgnore
     private String nome;
     
 //    @ManyToMany(mappedBy = "permissoes")
