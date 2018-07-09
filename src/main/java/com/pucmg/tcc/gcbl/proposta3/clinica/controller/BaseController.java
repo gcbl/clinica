@@ -4,6 +4,8 @@ import java.security.Principal;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.hibernate.SessionFactory;
+import org.hibernate.stat.Statistics;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.ui.Model;
@@ -12,6 +14,9 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.util.Constantes;
 
 public abstract class BaseController {
 
+    @Autowired
+    private SessionFactory sessionFactory;
+    
     public static final String MODEL_STR = "MODEL";
     
     @Autowired
@@ -66,5 +71,9 @@ public abstract class BaseController {
         model.addAttribute(Constantes.ALERTA_DARK , mensagem);
     }  
     
-
+    public Statistics getHibernateStatistics(){
+        // Para gerar estatisticas habilite o spring.jpa.properties.hibernate.generate_statistics=true em application.properties 
+        return sessionFactory.getStatistics();
+    }
+    
 }
