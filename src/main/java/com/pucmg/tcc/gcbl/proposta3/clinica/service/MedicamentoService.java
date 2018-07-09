@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medicamento;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.MedicamentoRepository;
 
-//@Service("userService")
 @Service
 public class MedicamentoService{
 
