@@ -15,7 +15,8 @@ DELETE FROM USER_ROLE;
 DELETE FROM ROLE;
 DELETE FROM USER;
 
-DELETE FROM SC_SEC_USUARIO_GRUPOS;
+--DELETE FROM SC_SEC_USUARIO_GRUPOS;
+DELETE FROM SC_SEC_USUARIO_GRUPO;
 --DELETE FROM SC_SEC_USUARIO_PERMISSOES;
 DELETE FROM SC_SEC_GRUPO_PERMISSOES;
 DELETE FROM SC_SEC_GRUPO;
@@ -573,8 +574,9 @@ SELECT '2', ID FROM SC_SEC_PERMISSAO WHERE UPPER(NOME) NOT LIKE '%INCLUIR%' and 
 
 
 -- ADICIONANDO O USUARIO 1 no grupo de administradores
-insert into SC_SEC_Usuario_Grupos (usuario_id, grupos_id) values (1, 0);
-insert into SC_SEC_Usuario_Grupos (usuario_id, grupos_id) values (20, 2);
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values ( 1, 0);
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (10, 1);
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (20, 2);
 
 
 -- ----
@@ -586,5 +588,5 @@ insert into SC_SEC_Grupo_Permissoes (grupo_id, permissoes_id) values (0, 1000);
 insert into SC_SEC_Grupo_Permissoes (grupo_id, permissoes_id) values (1, 1001);
 insert into SC_SEC_Grupo_Permissoes (grupo_id, permissoes_id) values (2, 1002);
 
-insert into SC_SEC_Usuario_Grupos (usuario_id, grupos_id) values (10, 1);
-insert into SC_SEC_Usuario_Grupos (usuario_id, grupos_id) values (20, 2);
+
+--insert into SC_SEC_Usuario_Grupos (usuario_id, grupos_id) values (20, 2);
