@@ -152,7 +152,19 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item disabled" href="#">Estatisticas</a>
         </div>
-      </li>      
+      </li>
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="far fa-id-card"></i> Autorizações
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+          <a class="dropdown-item" href="listar-grupo">Consultar Grupo</a>
+          <a class="dropdown-item" href="incluir-grupo">Incluir Grupo</a>          
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item disabled" href="#">Estatisticas</a>
+        </div>
+      </li>            
       
       <!-- 
       <li class="nav-item dropdown">
