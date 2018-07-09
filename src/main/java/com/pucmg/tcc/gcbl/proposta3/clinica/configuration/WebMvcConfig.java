@@ -2,6 +2,8 @@ package com.pucmg.tcc.gcbl.proposta3.clinica.configuration;
 
 import java.util.Locale;
 
+import org.hibernate.SessionFactory;
+import org.hibernate.jpa.HibernateEntityManagerFactory;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,6 +24,11 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.controller.RequestInterceptor;
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
+    @Bean
+    public SessionFactory sessionFactory(HibernateEntityManagerFactory hemf) {
+        return hemf.getSessionFactory();
+    }
+    
     
     @Bean
     public ViewResolver getViewResolver() {
