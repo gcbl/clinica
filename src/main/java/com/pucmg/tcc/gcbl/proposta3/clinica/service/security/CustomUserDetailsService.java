@@ -16,7 +16,7 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.model.security.Grupo;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.security.Permissao;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.security.Usuario;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.security.UsuarioSistema;
-import com.pucmg.tcc.gcbl.proposta3.clinica.repository.security.GrupoRepossitory;
+import com.pucmg.tcc.gcbl.proposta3.clinica.repository.security.GrupoRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.security.PermissaoRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.security.UsuarioRepository;
 
@@ -25,12 +25,6 @@ public class CustomUserDetailsService implements UserDetailsService {
     
     @Autowired
     private UsuarioRepository usuarioRepository;
-
-    @Autowired
-    private GrupoRepossitory grupoRepository;
-    
-    @Autowired
-    private PermissaoRepository permissaoRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
