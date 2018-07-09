@@ -65,6 +65,9 @@ public abstract class Pessoa extends BaseEntity implements Comparable<Pessoa> {
     @JsonIgnore
     private String estado;
     
+    public String getPrimeiroNome(){
+        return getNome().split(" ")[0];
+    }
     
     @Override
     public int compareTo(Pessoa o) {
