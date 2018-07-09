@@ -32,7 +32,7 @@ public class Usuario extends Pessoa implements Serializable {
     private String senha;
 //    private boolean ativo;
     
-    @ManyToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Grupo> grupos;
 
