@@ -5,12 +5,12 @@
  
  
         <div class="body">
-            <h1 class="animated fadeInLeft">Bem vindo INICIO</h1>
+            <h1 class="animated fadeInLeft">Bem vindo ${usuarioLogado.principal.usuario.primeiroNome}!</h1>
 
-            <p>${usuarioLogado}</p>
+            <br><br><br>
             
-            <hr>
-            ${usuarioLogado.principal.authorities}
+            <p>O que você gostaria de fazer?</p>
+            
             <hr>
         </div>
  
