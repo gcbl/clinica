@@ -37,7 +37,12 @@ public class SecurityConfigurationNovo extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
                 // ---###--- PERMISSOES ---###---
                 .antMatchers("/").permitAll()
-                .antMatchers("/**").permitAll()
+                .antMatchers("/privado/inicio").permitAll()
+                .antMatchers("/privado/home").permitAll()
+                .antMatchers("/privado/api/**").permitAll()
+                
+                .antMatchers("/privado/**solicitacaoExame**").hasAnyRole("PERFIL_ADMIN, PERFIL_MEDICO")
+                .antMatchers("/**").hasRole("PERFIL_ADMIN")
                 
 /*                
                 .antMatchers("/privado/inicio").permitAll()
