@@ -43,7 +43,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         Collection<? extends GrantedAuthority> permissaoList = authorities(usuario);
         
-        return new UsuarioSistema(usuario.getNome(), usuario.getLogin(), usuario.getSenha(), permissaoList);
+        return new UsuarioSistema(usuario, usuario.getLogin(), usuario.getSenha(), permissaoList);
     }
     
     public Collection<? extends GrantedAuthority> authorities(Usuario usuario) {
@@ -58,8 +58,21 @@ public class CustomUserDetailsService implements UserDetailsService {
             //List<Permissao> lista = permissaoRepository.findByGruposIn(grupo);
         	List<Permissao> lista = grupo.getPermissoes();
         	
+        	String nomePermissao = "";
             for (Permissao permissao: lista) {
-                auths.add(new SimpleGrantedAuthority("ROLE_" + permissao.getNome()));
+            	nomePermissao = permissao.getNome();
+            	
+            	// Tratando
+            	nomePermissao = nomePermissao.replaceAll("/", "");
+            	nomePermissao = nomePermissao.replace("*", "");
+            	nomePermissao = nomePermissao.replace("-", "_");
+            	nomePermissao = nomePermissao.toUpperCase();
+            	//---
+            	
+            	if(!"".equals(nomePermissao)) {
+                    auths.add(new SimpleGrantedAuthority("ROLE_" + nomePermissao));
+            	}
+            	
             }
         }
         
