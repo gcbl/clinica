@@ -107,6 +107,8 @@ public class GrupoController extends ModelController {
             // Seta na sessao o id do item que esta sendo editado para checagem posterior
             request.getSession().setAttribute(Constantes.ACAO_EDITAR, id);
             
+            model.addAttribute("permissoesList", permissaoService.findAll());
+            
             return getViewPath() + "incluirForm";
         }else{
             String mensagem = messageSource.getMessage("formulario.nao-encontrado", new Object[]{ getModelName() }, locale);
