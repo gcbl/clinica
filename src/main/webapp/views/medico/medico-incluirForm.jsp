@@ -102,7 +102,24 @@
                       <!-- <span class="help-block">help block</span> -->   
                       </div>
                     </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="login">Login:</label>  
+                      <div class="col-md-4">
+                      <form:input path="login" placeholder="login" class="form-control input-md"/> <form:errors path="login" cssClass="text-danger" />
+                      <!-- <span class="help-block">help block</span> -->   
+                      </div>
+                    </div>
                     
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="senha">Senha:</label>  
+                      <div class="col-md-4">
+                      <form:input path="senha" placeholder="senha" class="form-control input-md"/> <form:errors path="senha" cssClass="text-danger" />
+                      <!-- <span class="help-block">help block</span> -->   
+                      </div>
+                    </div>
                                         
                     <!-- Button -->
                     <div class="form-group">
