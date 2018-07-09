@@ -17,9 +17,11 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.model.BaseEntity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
+@ToString(callSuper = true)
 @Entity
 @Table(name = "SC_SEC_GRUPO")
 public class Grupo extends BaseEntity implements Serializable {
@@ -32,10 +34,10 @@ public class Grupo extends BaseEntity implements Serializable {
     @NotEmpty(message = "*Por favor informe a descricao do grupo")    
     private String descricao;
     
-//    @ManyToMany(mappedBy = "grupos")
-//    private List<Usuario> usuarios;
+    @ManyToMany(mappedBy = "grupos")
+    @JsonIgnore
+    private List<Usuario> usuarios;
     
-    //@ManyToMany
     @ManyToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Permissao> permissoes;
