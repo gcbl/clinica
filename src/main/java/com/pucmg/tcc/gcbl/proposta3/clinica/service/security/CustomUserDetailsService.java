@@ -47,15 +47,17 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
     
     public Collection<? extends GrantedAuthority> authorities(Usuario usuario) {
-        return authorities(grupoRepository.findByUsuariosIn(usuario));
+    	//return authorities(grupoRepository.findByUsuariosIn(usuario));
+    	return authorities(  usuario.getGrupos()  );
     }
     
     public Collection<? extends GrantedAuthority> authorities(List<Grupo> grupos) {
         Collection<GrantedAuthority> auths = new ArrayList<>();
         
         for (Grupo grupo: grupos) {
-            List<Permissao> lista = permissaoRepository.findByGruposIn(grupo);
-            
+            //List<Permissao> lista = permissaoRepository.findByGruposIn(grupo);
+        	List<Permissao> lista = grupo.getPermissoes();
+        	
             for (Permissao permissao: lista) {
                 auths.add(new SimpleGrantedAuthority("ROLE_" + permissao.getNome()));
             }
