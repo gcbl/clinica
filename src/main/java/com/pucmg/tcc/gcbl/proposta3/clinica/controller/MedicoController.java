@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -135,7 +136,13 @@ public class MedicoController extends ModelController {
             return consultar(model);
         }
         
-        modelService.salvar(item);
+        try{
+            modelService.salvar(item);
+        }catch(DataIntegrityViolationException dive){
+            mensagem = messageSource.getMessage("formulario.operacao.alteracao.login-ja-utilizado", new Object[]{ getModelName() }, locale);
+            adicionarAlertaDanger(model, mensagem);
+            return editarForm(item.getId(), model, locale, request);
+        }
         
         mensagem = messageSource.getMessage("formulario.operacao.alteracao.sucesso", new Object[]{ getModelName() }, locale);
         adicionarAlertaSuccess(model, mensagem);
