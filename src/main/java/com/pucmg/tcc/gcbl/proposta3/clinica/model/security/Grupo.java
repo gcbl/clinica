@@ -3,8 +3,9 @@ package com.pucmg.tcc.gcbl.proposta3.clinica.model.security;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -23,10 +24,11 @@ public class Grupo extends BaseEntity implements Serializable {
     
     private String descricao;
     
-    @ManyToMany(mappedBy = "grupos")
-    private List<Usuario> usuarios;
+//    @ManyToMany(mappedBy = "grupos")
+//    private List<Usuario> usuarios;
     
-    @ManyToMany
+    //@ManyToMany
+    @ManyToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER)
     private List<Permissao> permissoes;
     
 }

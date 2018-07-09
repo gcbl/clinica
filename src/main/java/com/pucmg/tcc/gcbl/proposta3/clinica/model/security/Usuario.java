@@ -3,7 +3,9 @@ package com.pucmg.tcc.gcbl.proposta3.clinica.model.security;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
@@ -29,10 +31,10 @@ public class Usuario extends Pessoa implements Serializable {
     private String senha;
 //    private boolean ativo;
     
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER)
     private List<Grupo> grupos;
     
-    @ManyToMany
-    private List<Permissao> permissoes;
+//    @ManyToMany
+//    private List<Permissao> permissoes;
 
 }

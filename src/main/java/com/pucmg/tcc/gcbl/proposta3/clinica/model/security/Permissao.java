@@ -22,10 +22,10 @@ public class Permissao extends BaseEntity implements Serializable {
     
     private String nome;
     
-    @ManyToMany(mappedBy = "permissoes")
-    private List<Usuario> usuarios;
+//    @ManyToMany(mappedBy = "permissoes")
+//    private List<Usuario> usuarios;
     
-    @ManyToMany(mappedBy = "permissoes")
-    private List<Grupo> grupos;    
+//    @ManyToMany(mappedBy = "permissoes")
+//    private List<Grupo> grupos;    
     
 }
