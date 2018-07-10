@@ -46,6 +46,9 @@
                                 </td>
                                 <td class="actions text-right">
                                     <div class="btn-group" role="group" aria-label="Basic example">
+                                      <a href="#" id="btnUsuarios" class="btn btn-sm btn-primary"><i class="fas fa-users"></i> Usuários</a>                               
+                                      <a href="editar-${MODEL}-usuario?id=${item.id}" class="btn btn-sm btn-primary"><i class="far fa-edit"></i> Permissões</a>&nbsp;&nbsp;
+                                      <a href="editar-${MODEL}?id=${item.id}" class="btn btn-sm btn-primary"><i class="far fa-edit"></i> Permissões</a>&nbsp;&nbsp;
                                       <a href="editar-${MODEL}?id=${item.id}" class="btn btn-sm btn-info"><i class="far fa-edit"></i> Editar</a>
                                       <a href="excluir-${MODEL}?id=${item.id}" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i> Remover</a>
                                     </div>
@@ -74,32 +77,34 @@
 <!-- ##### MODALS ##### -->
 
 <div class="modal fade" id="grupoUsuariosModal" role="dialog" aria-labelledby="grupoUsuariosModal" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
          <div class="modal-header">
-             <h5 id="tituloModal"        class="modal-title"><i class="far fa-calendar"></i> <b>Agendamento</b></h5>
-             <h5 id="tituloModalMarcarSucesso" class="modal-title text-primary" ><i class="far fa-calendar-check"></i> <b>Horário <u>marcado</u> com sucesso!</b></h5>
-             <h5 id="tituloModalDesmarcarSucesso" class="modal-title text-warning" ><i class="far fa-calendar-times"></i> <b>Horário <u>desmarcado</u> com sucesso!</b></h5>
+             <h5 id="tituloModal"        class="modal-title"><i class="fas fa-users"></i> <b>Usuários do grupo</b></h5>
              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                <span aria-hidden="true">&times;</span>
              </button>
          </div>
          <div class="modal-body">
              <!-- <div class="text-danger"><b>Agendamento:</b> <div id="modalBodyAgendamento"></div></div> -->
-             <div><i class="fas fa-user-md"></i> <b>Médico:</b> <div id="modalBodyMedico"></div></div>
+             <div><i class="fas fa-user-md"></i> <b>qualquer coisa:</b> <div id="modalBodyMedico"></div></div>
              <br>
-             <div><i class="far fa-clock"></i> <b>Horário:</b> <div id="modalBodyhorarioCompleto"></div></div>
              <br>
-             <div><b>Paciente:</b>
-                    <div id="divPacienteSelect2"><select required id="pacienteSelect2" style="width: 100%"></select></div>
-                    <div id="pacienteMarcado"></div>
+             <div><b>Usuários:</b>
+                    <div id="divUsuariosSelect2"><select id="usuariosSelect2" multiple="true" required style="width: 100%"></select></div>
+<%-- 
+                    <form:select path="medicamentos" multiple="true" style="width: 100%">
+                        <c:if test="${not empty receita}">
+                            <form:options items="${receita.medicamentos}" itemValue="id" itemLabel="nomeCompleto"/>
+                        </c:if>
+                    </form:select>
+--%>
+                    
              </div>
              <br>
              <hr>
              <div class="text-center">
-                 <button type="button" class="btn btn-primary" id="btnMarcarHorarioModal"><i class="far fa-calendar-check"></i> Marcar horário</button>
-                 <button type="button" class="btn btn-warning" id="btnDesmarcarHorarioModal"><i class="far fa-calendar-times"></i> Desmarcar horário</button>
-                 <button type="button" class="btn btn-success" id="btnAtenderModal"><i class="fas fa-user-md"></i> Atender</button>
+                 <button type="button" class="btn btn-primary" id="btnMarcarHorarioModal"><i class="far fa-calendar-check"></i> Salvar</button>
              </div>
          </div>
          <div class="modal-footer">
@@ -119,6 +124,34 @@
  
 <script>
 $(document).ready(function() {
+	
+    $( "#btnUsuarios" ).click(function() {
+        $('#grupoUsuariosModal').modal();
+    });    
+      
+    $('#usuariosSelect2').select2({
+        placeholder: "Selecione o paciente",
+        language: "pt-BR",        
+        theme: "bootstrap",
+        allowClear: true,
+        minimumInputLength: 1,
+        closeOnSelect: true,
+        ajax: {
+            url: 'api/listar-usuario-json',
+            dataType: 'json',
+            processResults: function (data, params) {
+                  var resultsData = $.map(data, function (obj) {
+                    obj.id = obj.id || obj.nome; // replace name with the property used for the text
+                    obj.text = obj.text || obj.nome; // replace name with the property used for the text
+                    return obj;
+                  });
+
+                  return {
+                    results: resultsData
+                  };
+                },
+        }
+     });  	
 
 	var table = $('#itemDataTable').DataTable( {
 		responsive: true,
