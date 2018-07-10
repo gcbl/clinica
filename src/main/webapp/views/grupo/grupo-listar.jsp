@@ -26,6 +26,7 @@
                             <th nowrap>Grupo</th>
                             <th nowrap>Descricao</th>                            
                             <th>Permissões</th>
+                            <th>Usuarios</th>
                             <th class="text-right"><a href="incluir-${MODEL}" class="btn btn-sm btn-success"><i class="fas fa-plus-circle"></i> Adicionar novo ${MODEL}</a></th>
                         </tr>
                     </thead>
@@ -35,14 +36,13 @@
                                 <td nowrap>${item.id}</td>
                                 <td nowrap>${item.nome}</td>
                                 <td nowrap>${item.descricao}</td>
-                                <td>${fn:length(item.permissoes)} permissões
-                                    <%-- 
+                                <td>${fn:length(item.permissoes)} permissões</td>
+                                <td>
                                     <ul>
-                                        <c:forEach items="${item.permissoes}" var="itemList">
-                                            <li>${itemList.nome}</li>
+                                        <c:forEach items="${item.usuarios}" var="itemList">
+                                            <li>${itemList['class'].simpleName} ${itemList.nome}</li>
                                         </c:forEach>
                                     </ul>
-                                     --%> 
                                 </td>
                                 <td class="actions text-right">
                                     <div class="btn-group" role="group" aria-label="Basic example">
