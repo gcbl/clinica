@@ -574,10 +574,7 @@ SELECT '2', ID FROM SC_SEC_PERMISSAO WHERE UPPER(NOME) NOT LIKE '%INCLUIR%' and 
 
 
 -- ADICIONANDO O USUARIO 1 no grupo de administradores
---insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values ( 1, 0);
-insert into sc_sec_usuario_grupo (id_usuario, id_grupo) values (1, 0);
---insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (10, 1);
---insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (20, 2);
+--insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (1, 0);
 
 
 -- ----
