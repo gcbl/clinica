@@ -45,7 +45,22 @@
                       <form:input path="descricao" placeholder="descricao" class="form-control input-md"/> <form:errors path="descricao" cssClass="text-danger" />
                       <!-- <span class="help-block">Informe a concentração e forma farmaceutica ou uma breve descrição </span> -->  
                       </div>
-                    </div>                      
+                    </div>  
+                    
+                    <!-- Select input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="usuarios">Usuários:</label>  
+                      <div class="col-md-4"> 
+                          <form:select path="usuarios" multiple="true" style="width: 100%">
+                              <%-- No caso de estar editando --%>
+                              <c:if test="${not empty grupo}">
+                                  <form:options items="${grupo.usuarios}" itemValue="id" itemLabel="nome"/>
+                              </c:if>
+                          </form:select>
+                          <form:errors path="usuarios" cssClass="text-danger" />
+                          <!-- <span class="help-block">texto de help-block</span> -->   
+                      </div>
+                    </div>   
 
                     <!-- Select input-->
                     <div class="form-group">
@@ -87,6 +102,31 @@
  
  <script>
  $(document).ready(function() {
+        $('#usuarios').select2({
+            placeholder: "Selecione os medicamentos",
+            language: "pt-BR",
+            theme: "bootstrap",
+            allowClear: true,
+            minimumInputLength: 1,
+            closeOnSelect: true,
+            ajax: {
+                url: 'api/listar-usuario-json',
+                dataType: 'json',
+                processResults: function (data, params) {
+                      
+                      var resultsData = $.map(data, function (obj) {
+                        obj.id = obj.id || obj.nome; // replace name with the property used for the text
+                        obj.text = obj.text || obj.nome; // replace name with the property used for the text
+                        return obj;
+                      });
+   
+                      return {
+                        results: resultsData
+                      };
+                    },
+            }
+        });  	 
+	 
  
         $('#permissoes2').select2({
             placeholder: "Selecione as permissões",
