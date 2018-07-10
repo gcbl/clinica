@@ -7,6 +7,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -34,7 +36,11 @@ public class Grupo extends BaseEntity implements Serializable {
     @NotEmpty(message = "*Por favor informe a descricao do grupo")    
     private String descricao;
     
-    @ManyToMany(mappedBy = "grupos", cascade={CascadeType.PERSIST}, fetch=FetchType.LAZY)
+    // Dono da relacao, logo quem vai updatear os grupos dos objetos usuarios
+    @ManyToMany(cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY)
+    @JoinTable(name = "SC_SEC_USUARIO_GRUPO", 
+               joinColumns = @JoinColumn(name = "ID_GRUPO"), 
+               inverseJoinColumns = @JoinColumn(name = "ID_USUARIO"))
     @JsonIgnore
     private List<Usuario> usuarios;
     

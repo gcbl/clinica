@@ -43,11 +43,7 @@ public class Usuario extends Pessoa implements Serializable {
     private String senha;
 //    private boolean ativo;
     
-    @ManyToMany(cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY)
-    @JoinTable(name = "SC_SEC_USUARIO_GRUPO", 
-               joinColumns = @JoinColumn(name = "ID_USUARIO"), 
-               inverseJoinColumns = @JoinColumn(name = "ID_GRUPO"))
-    @JsonIgnore
+    @ManyToMany(mappedBy = "usuarios", cascade={CascadeType.MERGE}, fetch=FetchType.LAZY)
     private List<Grupo> grupos;
 
 //    @ManyToMany
