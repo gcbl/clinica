@@ -128,32 +128,6 @@
         });  	 
 	 
  
-        $('#permissoes2').select2({
-            placeholder: "Selecione as permissões",
-            language: "pt-BR",
-            theme: "bootstrap",
-            allowClear: true,
-            minimumInputLength: 1,
-            closeOnSelect: true,
-            ajax: {
-                url: 'api/listar-exame-json',
-                dataType: 'json',
-                processResults: function (data, params) {
-                      
-                      var resultsData = $.map(data, function (obj) {
-                        obj.id = obj.id || obj.nome; // replace name with the property used for the text
-                        obj.text = obj.text || obj.nome; // replace name with the property used for the text
-                        return obj;
-                      });
-
-                      return {
-                        results: resultsData
-                      };
-                    },
-            }
-        });  
-
-     
 });
  </script>
  
