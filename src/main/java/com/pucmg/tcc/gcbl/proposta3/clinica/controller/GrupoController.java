@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.apache.commons.logging.Log;
@@ -120,7 +121,8 @@ public class GrupoController extends ModelController {
         
         //return getViewPath() + "alterarForm"; 
     }
-    
+
+    @Transactional
     @RequestMapping(value={"/editar-grupo"}, method = RequestMethod.POST)
     public String editar(@Valid Grupo item, BindingResult result, Model model, HttpServletRequest request, Locale locale) {
         String mensagem = "";
@@ -145,7 +147,11 @@ public class GrupoController extends ModelController {
         }
         
         try{
-            modelService.salvar(item);
+            //modelService.salvar(item);
+        	Grupo grupo = modelService.findOne(item.getId());
+        	grupo.setUsuarios(item.getUsuarios());
+        	modelService.salvar(grupo);
+        	
         }catch(DataIntegrityViolationException dive){
             mensagem = messageSource.getMessage("formulario.operacao.alteracao.login-ja-utilizado", new Object[]{ getModelName() }, locale);
             adicionarAlertaDanger(model, mensagem);

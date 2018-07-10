@@ -18,12 +18,15 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.model.FullCalendarEvent;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medicamento;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.security.Usuario;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.AgendamentoService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.ExameService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicamentoService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicoService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.PacienteService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.util.Constantes;
+
+import com.pucmg.tcc.gcbl.proposta3.clinica.service.UsuarioService;
 
 
 @Controller
@@ -46,6 +49,9 @@ public class APIController extends BaseController {
 
     @Autowired
     private AgendamentoService agendamentoService;    
+
+    @Autowired
+    private UsuarioService usuarioService;    
     
 
     // -----------------------------------------------------------------------------------
@@ -181,11 +187,16 @@ public class APIController extends BaseController {
         	throw new RuntimeException("Horario já está vago");
         }
 
-        
-        
-
         return agendamento;
-    }      
+    }
+    
+    @ResponseBody
+    @RequestMapping(value={"/listar-usuario-json"}, method = RequestMethod.GET)
+    public List<Usuario> listarUsuarioJson(@RequestParam( Constantes.PARAMETER_QUERY_SEARCH ) String q){
+        List<Usuario> itemList = usuarioService.findByNomeContainingIgnoreCaseOrderByNomeAsc(q);
+        return itemList;
+    }
+    
     // -------------------------
 
     @ResponseBody
