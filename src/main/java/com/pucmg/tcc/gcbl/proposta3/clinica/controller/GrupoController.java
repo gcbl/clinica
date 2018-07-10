@@ -151,9 +151,9 @@ public class GrupoController extends ModelController {
         }
         
         try{
-        	Grupo grupo = modelService.findOne(item.getId());
-        	// Mantem os mesmos usuarios
-        	item.setUsuarios( grupo.getUsuarios() );
+//            // Mantem os mesmos usuarios
+//        	Grupo grupo = modelService.findOne(item.getId());
+//        	item.setUsuarios( grupo.getUsuarios() );
 
         	modelService.salvar(item);
         }catch(DataIntegrityViolationException dive){
