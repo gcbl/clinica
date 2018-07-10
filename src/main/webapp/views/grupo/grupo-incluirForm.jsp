@@ -101,6 +101,47 @@
         </div>
  
  <script>
+ 
+ function setCurrency (currency) {
+	 var str = JSON.stringify(currency, null, 2);
+     if (!currency.id) {
+    	 return currency.text;
+     }
+     
+     var $currency = $('<small>' + currency.nome + '</small>');
+     if (currency.id % 2 == 0){
+    	 $currency = $('<i class="fas fa-user-md"></i>' + currency.nome);
+     }else{
+    	 $currency = $(currency.nome);
+     }
+     
+     return $currency;
+ };
+ 
+ function formatRepo (repo) {
+	  if (repo.loading) {
+	    return repo.text;
+	  }
+	  
+	  var markup = "";
+	  var icone = "";
+	  if(repo.tipo === "Recepcionista"){
+		  icone = "<i class='far fa-id-badge'></i> ";
+	  }else if(repo.tipo === "Medico"){
+		  icone = "<i class='fas fa-user-md'></i> "
+	  }
+
+	  markup =  icone + repo.nome + " - <small><small>" + repo.tipo + "</small></small>";
+	  return markup;
+	  
+	}
+ 
+ function formatRepoSelection (repo) {
+     //return repo.nome || "<b>" + repo.text + "</b>";
+	 return repo.nome || repo.text;
+     //return formatRepo(repo);
+ } 
+ 
  $(document).ready(function() {
 	 
         $('#usuarios').select2({
@@ -108,6 +149,7 @@
             language: "pt-BR",
             theme: "bootstrap",
             allowClear: true,
+            escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
             minimumInputLength: 1,
             closeOnSelect: true,
             ajax: {
@@ -117,7 +159,7 @@
                       
                       var resultsData = $.map(data, function (obj) {
                         obj.id = obj.id || obj.nome; // replace name with the property used for the text
-                        obj.text = obj.text || obj.nome + ' ' + obj.tipo; // replace name with the property used for the text
+                        obj.text = obj.text || obj.nome; // replace name with the property used for the text
                         return obj;
                       });
    
@@ -125,7 +167,9 @@
                         results: resultsData
                       };
                     },
-            }
+            },
+            templateResult: formatRepo,
+            templateSelection: formatRepoSelection
         });  	 
 	 
  
