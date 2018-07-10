@@ -15,17 +15,25 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "SC_SEC_PERMISSAO")
-public class Permissao extends BaseEntity implements Serializable {
+public class Permissao extends BaseEntity implements Comparable<Permissao>, Serializable {
 
     private static final long serialVersionUID = 1L;
     
     @JsonIgnore
     private String nome;
+
     
 //    @ManyToMany(mappedBy = "permissoes")
 //    private List<Usuario> usuarios;
     
 //    @ManyToMany(mappedBy = "permissoes")
 //    private List<Grupo> grupos;    
+
+    public int compareTo(Permissao o) {
+        return nome.compareTo(o.getNome());
+    }
+
+
+    
     
 }
