@@ -102,6 +102,7 @@
  
  <script>
  $(document).ready(function() {
+	 
         $('#usuarios').select2({
             placeholder: "Selecione os medicamentos",
             language: "pt-BR",
@@ -116,7 +117,7 @@
                       
                       var resultsData = $.map(data, function (obj) {
                         obj.id = obj.id || obj.nome; // replace name with the property used for the text
-                        obj.text = obj.text || obj.nome; // replace name with the property used for the text
+                        obj.text = obj.text || obj.nome + ' ' + obj.tipo; // replace name with the property used for the text
                         return obj;
                       });
    
