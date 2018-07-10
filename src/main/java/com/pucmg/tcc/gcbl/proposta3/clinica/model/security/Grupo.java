@@ -44,7 +44,7 @@ public class Grupo extends BaseEntity implements Serializable {
     @JsonIgnore
     private List<Usuario> usuarios;
     
-    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Permissao> permissoes;
     
