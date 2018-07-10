@@ -122,8 +122,6 @@ public class GrupoController extends ModelController {
             adicionarAlertaWarning(model, mensagem);
             return consultar(model);
         }
-
-            
         
         //return getViewPath() + "alterarForm"; 
     }
