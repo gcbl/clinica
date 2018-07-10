@@ -42,8 +42,14 @@ public abstract class Usuario extends Pessoa implements Serializable {
 //    private boolean ativo;
     
     @ManyToMany(mappedBy = "usuarios", cascade={CascadeType.MERGE}, fetch=FetchType.LAZY)
+    @JsonIgnore
     private List<Grupo> grupos;
 
+    
+    public String getTipo(){
+       return this.getClass().getSimpleName();
+    }
+    
 //    @ManyToMany
 //    private List<Permissao> permissoes;
 
