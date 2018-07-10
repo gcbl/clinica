@@ -39,10 +39,11 @@ public class Usuario extends Pessoa implements Serializable {
     
     @Column(name = "SENHA", nullable=false, unique=false)
     @NotEmpty(message = "*Por favor informe a senha")
+    @JsonIgnore
     private String senha;
 //    private boolean ativo;
     
-    @ManyToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY)
     @JoinTable(name = "SC_SEC_USUARIO_GRUPO", 
                joinColumns = @JoinColumn(name = "ID_USUARIO"), 
                inverseJoinColumns = @JoinColumn(name = "ID_GRUPO"))

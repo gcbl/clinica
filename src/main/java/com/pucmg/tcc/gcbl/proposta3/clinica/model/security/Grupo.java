@@ -34,11 +34,11 @@ public class Grupo extends BaseEntity implements Serializable {
     @NotEmpty(message = "*Por favor informe a descricao do grupo")    
     private String descricao;
     
-    @ManyToMany(mappedBy = "grupos")
+    @ManyToMany(mappedBy = "grupos", cascade={CascadeType.PERSIST}, fetch=FetchType.LAZY)
     @JsonIgnore
     private List<Usuario> usuarios;
     
-    @ManyToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Permissao> permissoes;
     
