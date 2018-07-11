@@ -30,8 +30,8 @@
 
                     <!-- Text input-->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="dataSolicitacao">Nome:</label>  
-                      <div class="col-md-4">
+                      <label class="col-sm-4 control-label" for="dataSolicitacao">Nome:</label>  
+                      <div class="col-sm-4">
                       <form:input path="nome" placeholder="nome" class="form-control input-md"/>
                       <form:errors path="nome" cssClass="text-danger" />
                       <!-- <span class="help-block">help block</span> -->  
@@ -49,9 +49,12 @@
                     
                     <!-- Select input-->
                     <div class="form-group">
-	                    <div class="row">
-		                      <label class="col-md-4 control-label" for="usuarios">Usuários:</label>  
-		                      <div class="col-md-4"> 
+                            <label class="col-md-4 control-label" for="usuarios">Usuários:</label>
+                    </div>
+                    
+                    <div class="form-group form-inline">
+		                      <!-- <label class="col-md-4 control-label" for="usuarios">Usuários:</label> -->
+		                      <div class="col-md-4">
 		                          <form:select path="usuarios" multiple="true" style="width: 100%">
 		                              <%-- No caso de estar editando --%>
 		                              <c:if test="${not empty grupo}">
@@ -61,10 +64,9 @@
 		                          <form:errors path="usuarios" cssClass="text-danger" />
 		                          <!-- <span class="help-block">texto de help-block</span> -->   
 		                      </div>
-		                      <div class="col-md-4"> kkk
-		                          <button id="btnSalvar" name="btnSalvar" class="btn btn-primary">Salvar</button>
-		                      </div>
-                        </div>
+                              <div class="col-md-4">
+                              <button id="btnSalvar" name="btnSalvar" class="btn btn-primary">Salvar</button>
+                              </div>
                     </div>   
 
                     <!-- Select input-->
@@ -150,7 +152,7 @@
  $(document).ready(function() {
 	 
         $('#usuarios').select2({
-            placeholder: "Selecione os medicamentos",
+            placeholder: "Selecione os usuários",
             language: "pt-BR",
             theme: "bootstrap",
             allowClear: true,
