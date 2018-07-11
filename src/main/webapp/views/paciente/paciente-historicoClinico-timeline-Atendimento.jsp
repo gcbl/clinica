@@ -19,7 +19,7 @@
                 <div class="col">&nbsp;</div>
             </div>
             <h5 class="m-2 text-success">
-                <i class="fas fa-user-md fa-fw fa-2x"></i>
+                <i class="fas fa-briefcase-medical fa-fw fa-2x"></i>
                 <!-- <span class="badge badge-pill bg-primary border">&nbsp;</span> -->
             </h5>
             <div class="row h-50">
@@ -31,7 +31,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="float-right text-muted"><javatime:format value="${historicoClinicoSession.dataHistorico}" style="MS" /></div>
-                    <h4 class="card-title"><i class="fas fa-user-md"></i> ${TIPO}</h4>
+                    <h4 class="card-title"><i class="fas fa-briefcase-medical"></i> ${TIPO}</h4>
                     <p>
                     <div class="">
                         <div><i class="fas fa-user-md"></i> <b>Médico:</b> <div>${historicoClinicoSession.medico.nome}</div> </div>
