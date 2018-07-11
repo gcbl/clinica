@@ -18,8 +18,6 @@
 	<sec:authorize access="hasRole('ROLE_PERFIL_RECEPCIONISTA')" var="isRecepcionista" />
 	<%-- /Verificando as roles --%>
 
-    <tiles:insertAttribute name="sec" />
-
     <tiles:insertAttribute name="menu-sec" />
 	
 	<%-- Importando o menu de acordo com as roles --%>
