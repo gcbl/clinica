@@ -508,6 +508,11 @@ insert into SC_SEC_Permissao (id, nome) values (31, '/excluir-paciente');
 -- insert into SC_SEC_Permissao (id, nome) values (62, '/listar-historico-clinico-paciente-form');
 insert into SC_SEC_Permissao (id, nome) values (61, '/listar-historico-clinico-paciente');
 
+insert into SC_SEC_Permissao (id, nome) values (83, '/listar-grupo');
+insert into SC_SEC_Permissao (id, nome) values (84, '/incluir-grupo');
+insert into SC_SEC_Permissao (id, nome) values (85, '/editar-grupo');
+insert into SC_SEC_Permissao (id, nome) values (86, '/excluir-grupo');
+
 
 insert into SC_SEC_Permissao (id, nome) values (11, '/');
 insert into SC_SEC_Permissao (id, nome) values (12, '/antigo/**');
@@ -578,10 +583,7 @@ insert into SC_SEC_Permissao (id, nome) values (80, '/privado/home');
 insert into SC_SEC_Permissao (id, nome) values (81, '/privado/inicio');
 insert into SC_SEC_Permissao (id, nome) values (82, '/registration');
 
-insert into SC_SEC_Permissao (id, nome) values (83, '/listar-grupo');
-insert into SC_SEC_Permissao (id, nome) values (84, '/incluir-grupo');
-insert into SC_SEC_Permissao (id, nome) values (85, '/editar-grupo');
-insert into SC_SEC_Permissao (id, nome) values (86, '/excluir-grupo');
+
 
 
 -- ADICIONANDO TODAS AS PERMISSOES PARA O GRUPO DE ID = 0
