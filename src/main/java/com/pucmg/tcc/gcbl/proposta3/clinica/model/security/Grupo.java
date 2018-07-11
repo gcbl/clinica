@@ -1,6 +1,7 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.model.security;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -42,10 +43,10 @@ public class Grupo extends BaseEntity implements Serializable {
                joinColumns = @JoinColumn(name = "ID_GRUPO"), 
                inverseJoinColumns = @JoinColumn(name = "ID_USUARIO"))
     @JsonIgnore
-    private List<Usuario> usuarios;
+    private List<Usuario> usuarios = new ArrayList<Usuario>();
     
     @ManyToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.LAZY)
     @JsonIgnore
-    private List<Permissao> permissoes;
+    private List<Permissao> permissoes = new ArrayList<Permissao>();
     
 }
