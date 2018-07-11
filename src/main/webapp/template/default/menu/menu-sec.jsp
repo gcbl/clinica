@@ -59,6 +59,21 @@
 <sec:authorize access="hasRole('ROLE_EXCLUIR_RECEITA' )" var="excluirReceita" />
 <c:set var="funcoesReceita" value="${listarReceita || incluirReceita || editarReceita || excluirReceita}"/>
 
+<%-- # Exames # --%>
+<%-- ResultadoExame --%>
+<sec:authorize access="hasRole('ROLE_LISTAR_RESULTADOEXAME'  )" var="listarResultadoExame"  />
+<sec:authorize access="hasRole('ROLE_INCLUIR_RESULTADOEXAME' )" var="incluirResultadoExame" />
+<sec:authorize access="hasRole('ROLE_EDITAR_RESULTADOEXAME'  )" var="editarResultadoExame" />
+<sec:authorize access="hasRole('ROLE_EXCLUIR_RESULTADOEXAME' )" var="excluirResultadoExame" />
+<c:set var="funcoesResultadoExame" value="${listarResultadoExame || incluirResultadoExame || editarResultadoExame || excluirResultadoExame}"/>
+
+<%-- SolicitacaoExame --%>
+<sec:authorize access="hasRole('ROLE_LISTAR_SOLICITACAOEXAME'  )" var="listarSolicitacaoExame"  />
+<sec:authorize access="hasRole('ROLE_INCLUIR_SOLICITACAOEXAME' )" var="incluirSolicitacaoExame" />
+<sec:authorize access="hasRole('ROLE_EDITAR_SOLICITACAOEXAME'  )" var="editarSolicitacaoExame" />
+<sec:authorize access="hasRole('ROLE_EXCLUIR_SOLICITACAOEXAME' )" var="excluirSolicitacaoExame" />
+<c:set var="funcoesSolicitacaoExame" value="${listarSolicitacaoExame || incluirSolicitacaoExame || editarSolicitacaoExame || excluirSolicitacaoExame}"/>
+
 <%-- ################################################################################################## --%>
 <%-- ###   FIM DAS VARIAVEIS DE SEGURANCA                                                        ### --%>
 <%-- ################################################################################################## --%>
@@ -119,23 +134,35 @@
           <a class="dropdown-item" href="incluir-consulta-agendamento"><i class="fas fa-flask"></i> Marcar Consulta</a>
         </div>
       </li>        
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-vials"></i> Exame
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-          <a class="dropdown-item" href="listar-exame">Consultar</a>
-          <a class="dropdown-item" href="incluir-exame">Incluir</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="listar-solicitacaoExame">Listar Solicitações de Exames</a>
-          <a class="dropdown-item" href="incluir-solicitacaoExame">Solicitar exame</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="listar-resultadoExame">Listar Resultado de Exames</a>
-          <a class="dropdown-item" href="incluir-resultadoExame">Receber resultado</a>
-                    
-          <a class="dropdown-item disabled" href="#">Receber exame</a>
-        </div>
-      </li>      
+      
+      
+        <c:if test = "${funcoesResultadoExame || true}">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-vials"></i> Exame
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                    <a class="dropdown-item" href="listar-exame">Consultar</a>
+                    <a class="dropdown-item" href="incluir-exame">Incluir</a>
+                  
+                    <div class="dropdown-divider"></div>
+                    <c:if test = "${listarSolicitacaoExame || editarSolicitacaoExame || excluirSolicitacaoExame}">
+                        <a class="dropdown-item" href="listar-solicitacaoExame">Listar Solicitações de Exames</a>
+                    </c:if>
+                    <c:if test = "${incluirSolicitacaoExame}">
+                        <a class="dropdown-item" href="incluir-solicitacaoExame">Solicitar exame</a>
+                    </c:if>
+                  
+                    <div class="dropdown-divider"></div>
+                    <c:if test = "${listarResultadoExame || editarResultadoExame || excluirResultadoExame}">
+                        <a class="dropdown-item" href="listar-resultadoExame">Listar Resultado de Exames</a>
+                    </c:if>
+                    <c:if test = "${incluirResultadoExame}">                
+                        <a class="dropdown-item" href="incluir-resultadoExame">Receber resultado</a>
+                    </c:if>                
+                </div>
+            </li>   
+        </c:if>   
 
         <%-- OK - Receita --%>
         <c:if test = "${funcoesReceita}">
