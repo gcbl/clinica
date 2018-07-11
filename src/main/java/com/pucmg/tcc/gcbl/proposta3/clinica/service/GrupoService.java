@@ -1,5 +1,6 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.security.Grupo;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.security.Usuario;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.security.Permissao;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.security.GrupoRepository;
 
 @Service
@@ -56,7 +58,15 @@ public class GrupoService{
         }
     }
     
-    
+    public void removerPermissoes(Grupo grupo){
+        grupo.setPermissoes(new ArrayList<Permissao>());
+        salvar(grupo);
+    }
+
+    public void removerUsuarios(Grupo grupo){
+        grupo.setUsuarios(new ArrayList<Usuario>());
+        salvar(grupo);
+    }
 
     
 }
