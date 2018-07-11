@@ -31,6 +31,14 @@
 <sec:authorize access="hasRole('ROLE_EDITAR_RECEPCIONISTA'  )" var="editarRecepcionista" />
 <sec:authorize access="hasRole('ROLE_EXCLUIR_RECEPCIONISTA' )" var="excluirRecepcionista" />
 <c:set var="funcoesRecepcionista" value="${listarRecepcionista || incluirRecepcionista || editarRecepcionista || excluirRecepcionista}"/>
+
+<%-- Grupo --%>
+<sec:authorize access="hasRole('ROLE_LISTAR_GRUPO'  )" var="listarGrupo"  />
+<sec:authorize access="hasRole('ROLE_INCLUIR_GRUPO' )" var="incluirGrupo" />
+<sec:authorize access="hasRole('ROLE_EDITAR_GRUPO'  )" var="editarGrupo" />
+<sec:authorize access="hasRole('ROLE_EXCLUIR_GRUPO' )" var="excluirGrupo" />
+<c:set var="funcoesGrupo" value="${listarGrupo || incluirGrupo || editarGrupo || excluirGrupo}"/>
+
 <%-- ################################################################################################## --%>
 <%-- ###   FIM DAS VARIAVEIS DE SEGURANCA                                                        ### --%>
 <%-- ################################################################################################## --%>
@@ -145,7 +153,7 @@
         </div>
       </li>
       
-        <%-- Medico --%>
+        <%-- OK - Medico --%>
         <c:if test = "${funcoesMedico}">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -163,7 +171,7 @@
             </li>
         </c:if>
 
-        <%-- Paciente --%>
+        <%-- OK - Paciente --%>
         <c:if test = "${funcoesPaciente}">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -185,7 +193,7 @@
             </li>
         </c:if>
 
-        <%-- Recepcionista --%>
+        <%-- OK - Recepcionista --%>
         <c:if test = "${funcoesRecepcionista}">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -203,17 +211,23 @@
             </li>
         </c:if>
       
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="far fa-id-badge"></i> Autorizações
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-          <a class="dropdown-item" href="listar-grupo">Consultar Grupo</a>
-          <a class="dropdown-item" href="incluir-grupo">Incluir Grupo</a>          
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item disabled" href="#">Estatisticas</a>
-        </div>
-      </li>            
+        <%-- Grupo --%>
+        <c:if test = "${funcoesGrupo}">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="far fa-id-badge"></i> Autorizações
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                  <c:if test = "${listarGrupo || editarGrupo || excluirGrupo}">
+                      <a class="dropdown-item" href="listar-grupo">Consultar Grupo</a>
+                  </c:if>
+                  <c:if test = "${incluirGrupo}">
+                      <a class="dropdown-item" href="incluir-grupo">Incluir Grupo</a>
+                  </c:if>          
+                  <div class="dropdown-divider"></div>
+                </div>
+            </li>      
+        </c:if>      
       
       <!-- 
       <li class="nav-item dropdown">
