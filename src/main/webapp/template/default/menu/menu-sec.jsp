@@ -81,6 +81,21 @@
 <sec:authorize access="hasRole('ROLE_EXCLUIR_EXAME' )" var="excluirExame" />
 <c:set var="funcoesExame" value="${listarExame || incluirExame || editarExame || excluirExame}"/>
 
+<%-- Agendamento --%>
+<sec:authorize access="hasRole('ROLE_LISTAR_AGENDAMENTO'  )" var="listarAgendamento"  />
+<sec:authorize access="hasRole('ROLE_INCLUIR_AGENDAMENTO' )" var="incluirAgendamento" />
+<sec:authorize access="hasRole('ROLE_EDITAR_AGENDAMENTO'  )" var="editarAgendamento" />
+<sec:authorize access="hasRole('ROLE_EXCLUIR_AGENDAMENTO' )" var="excluirAgendamento" />
+<c:set var="funcoesAgendamento" value="${listarAgendamento || incluirAgendamento || editarAgendamento || excluirAgendamento}"/>
+
+<sec:authorize access="hasRole('ROLE_PESQUISAR_AGENDAMENTO' )" var="pesquisarAgendamento" />
+<sec:authorize access="hasRole('ROLE_INCLUIR_AGENDAFORM' )" var="incluirAgendaForm" />
+
+<sec:authorize access="hasRole('ROLE_EXIBIR_CALENDARIO_VAGAS_AGENDAMENTO' )" var="exibirCalendarioVagasAgendamento" />
+<sec:authorize access="hasRole('ROLE_EXIBIR_CALENDARIO_VAGAS_AGENDAMENTO_MEDICO' )" var="exibirCalendarioVagasAgendamentoMedico" />
+<c:set var="funcoesCalendarioVagasAgendamento" value="${exibirCalendarioVagasAgendamento || exibirCalendarioVagasAgendamentoMedico}"/>
+
+
 <%-- ################################################################################################## --%>
 <%-- ###   FIM DAS VARIAVEIS DE SEGURANCA                                                        ### --%>
 <%-- ################################################################################################## --%>
@@ -123,26 +138,37 @@
         </div>
       </li>
  -->      
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="far fa-calendar-alt"></i> Agenda
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-          <a class="dropdown-item" href="exibir-calendario-vagas-agendamento">Exibir Calendário</a>
-          <a class="dropdown-item" href="incluir-agendamento">Agendar "Encaixe"</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="pesquisar-agendamento">Pesquisar Agendamentos</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="incluir-agendaForm">Criar agenda</a>
-		  <a class="dropdown-item" href="listar-agendamento">Listar Agendamentos</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="exibir-calendario-agendamento"><i class="fas fa-flask"></i> Exibir Marcações Calendario</a>
-          <a class="dropdown-item" href="exibir-calendario-vagas-agendamento"><i class="fas fa-flask"></i> Exibir Vagas Calendario</a>
-          <a class="dropdown-item" href="incluir-consulta-agendamento"><i class="fas fa-flask"></i> Marcar Consulta</a>
-        </div>
-      </li>        
+        <%-- Agendamento --%>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="far fa-calendar-alt"></i> Agenda
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+            <c:if test = "${funcoesCalendarioVagasAgendamento}">
+                <a class="dropdown-item" href="exibir-calendario-vagas-agendamento">Exibir Calendário</a>
+            </c:if>
+            <c:if test = "${incluirAgendamento}">
+                <a class="dropdown-item" href="incluir-agendamento">Agendar "Encaixe"</a>
+            </c:if>
+            <div class="dropdown-divider"></div>
+            <c:if test = "${pesquisarAgendamento}">
+                <a class="dropdown-item" href="pesquisar-agendamento">Pesquisar Agendamentos</a>
+            </c:if>
+            <div class="dropdown-divider"></div>
+            <c:if test = "${incluirAgendaForm}">
+                <a class="dropdown-item" href="incluir-agendaForm">Criar agenda</a>
+            </c:if>
+            <c:if test = "${listarAgendamento}">
+                <a class="dropdown-item" href="listar-agendamento">Listar Agendamentos</a>
+            </c:if>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="exibir-calendario-agendamento"><i class="fas fa-flask"></i> Exibir Marcações Calendario</a>
+            <a class="dropdown-item" href="exibir-calendario-vagas-agendamento"><i class="fas fa-flask"></i> Exibir Vagas Calendario</a>
+            <a class="dropdown-item" href="incluir-consulta-agendamento"><i class="fas fa-flask"></i> Marcar Consulta</a>
+            </div>
+        </li>        
       
-      
+        <%-- OK - Exame --%>
         <c:if test = "${funcoesExame || funcoesResultadoExame || funcoesSolicitacaoExame}">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
