@@ -68,7 +68,7 @@ public abstract class Pessoa extends BaseEntity implements Comparable<Pessoa> {
     @JsonIgnore
     public String getPrimeiroNome(){
     	String primeiroNome = "";   
-    	if(this != null) {
+    	if(this != null && this.getNome() != null) {
     		primeiroNome = getNome().split(" ")[0];
         }
         return primeiroNome;
@@ -78,7 +78,7 @@ public abstract class Pessoa extends BaseEntity implements Comparable<Pessoa> {
     public int compareTo(Pessoa o) {
         int resultado = StringUtils.removerAcentos(nome).compareTo( StringUtils.removerAcentos(o.getNome()) );
         return resultado;
-        //return nome.compareTo(o.getNome());
+        // return nome.compareTo(o.getNome());
     }
     
 }
