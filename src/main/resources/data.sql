@@ -539,6 +539,14 @@ insert into SC_SEC_Permissao (id, nome) values (53, '/incluir-solicitacaoExame')
 insert into SC_SEC_Permissao (id, nome) values (25, '/editar-solicitacaoExame');
 insert into SC_SEC_Permissao (id, nome) values (35, '/excluir-solicitacaoExame');
 
+insert into SC_SEC_Permissao (id, nome) values (59, '/listar-exame');
+insert into SC_SEC_Permissao (id, nome) values (46, '/incluir-exame');
+insert into SC_SEC_Permissao (id, nome) values (18, '/editar-exame');
+insert into SC_SEC_Permissao (id, nome) values (28, '/excluir-exame');
+--insert into SC_SEC_Permissao (id, nome) values (55, '/listar-all-exame-json');
+--insert into SC_SEC_Permissao (id, nome) values (60, '/listar-exame-json');
+
+
 -- --------------
 insert into SC_SEC_Permissao (id, nome) values (11, '/');
 insert into SC_SEC_Permissao (id, nome) values (12, '/antigo/**');
@@ -547,13 +555,13 @@ insert into SC_SEC_Permissao (id, nome) values (14, '/criar-agenda-agendamento')
 insert into SC_SEC_Permissao (id, nome) values (15, '/desmarcar-horario-ajax-json');
 insert into SC_SEC_Permissao (id, nome) values (16, '/editar-agendamento');
 
-insert into SC_SEC_Permissao (id, nome) values (18, '/editar-exame');
+
 
 
 
 insert into SC_SEC_Permissao (id, nome) values (26, '/excluir-agendamento');
 
-insert into SC_SEC_Permissao (id, nome) values (28, '/excluir-exame');
+
 
 
 
@@ -567,19 +575,13 @@ insert into SC_SEC_Permissao (id, nome) values (42, '/incluir-agendaForm');
 insert into SC_SEC_Permissao (id, nome) values (43, '/incluir-agendamento');
 
 insert into SC_SEC_Permissao (id, nome) values (45, '/incluir-consulta-agendamento');
-insert into SC_SEC_Permissao (id, nome) values (46, '/incluir-exame');
+
 
 
 
 
 
 insert into SC_SEC_Permissao (id, nome) values (54, '/listar-agendamento');
-insert into SC_SEC_Permissao (id, nome) values (55, '/listar-all-exame-json');
-
-
-
-insert into SC_SEC_Permissao (id, nome) values (59, '/listar-exame');
-insert into SC_SEC_Permissao (id, nome) values (60, '/listar-exame-json');
 insert into SC_SEC_Permissao (id, nome) values (63, '/listar-horario-vago-json');
 
 

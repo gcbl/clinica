@@ -74,6 +74,13 @@
 <sec:authorize access="hasRole('ROLE_EXCLUIR_SOLICITACAOEXAME' )" var="excluirSolicitacaoExame" />
 <c:set var="funcoesSolicitacaoExame" value="${listarSolicitacaoExame || incluirSolicitacaoExame || editarSolicitacaoExame || excluirSolicitacaoExame}"/>
 
+<%-- Exame --%>
+<sec:authorize access="hasRole('ROLE_LISTAR_EXAME'  )" var="listarExame"  />
+<sec:authorize access="hasRole('ROLE_INCLUIR_EXAME' )" var="incluirExame" />
+<sec:authorize access="hasRole('ROLE_EDITAR_EXAME'  )" var="editarExame" />
+<sec:authorize access="hasRole('ROLE_EXCLUIR_EXAME' )" var="excluirExame" />
+<c:set var="funcoesExame" value="${listarExame || incluirExame || editarExame || excluirExame}"/>
+
 <%-- ################################################################################################## --%>
 <%-- ###   FIM DAS VARIAVEIS DE SEGURANCA                                                        ### --%>
 <%-- ################################################################################################## --%>
@@ -136,14 +143,18 @@
       </li>        
       
       
-        <c:if test = "${funcoesResultadoExame || true}">
+        <c:if test = "${funcoesExame || funcoesResultadoExame || funcoesSolicitacaoExame}">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-vials"></i> Exame
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                    <a class="dropdown-item" href="listar-exame">Consultar</a>
-                    <a class="dropdown-item" href="incluir-exame">Incluir</a>
+                    <c:if test = "${listarExame || editarExame || excluirExame}">
+                        <a class="dropdown-item" href="listar-exame">Consultar</a>
+                    </c:if>
+                    <c:if test = "${incluirExame}">
+                        <a class="dropdown-item" href="incluir-exame">Incluir</a>
+                    </c:if>
                   
                     <div class="dropdown-divider"></div>
                     <c:if test = "${listarSolicitacaoExame || editarSolicitacaoExame || excluirSolicitacaoExame}">
