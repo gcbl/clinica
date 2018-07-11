@@ -546,6 +546,17 @@ insert into SC_SEC_Permissao (id, nome) values (28, '/excluir-exame');
 --insert into SC_SEC_Permissao (id, nome) values (55, '/listar-all-exame-json');
 --insert into SC_SEC_Permissao (id, nome) values (60, '/listar-exame-json');
 
+insert into SC_SEC_Permissao (id, nome) values (54, '/listar-agendamento');
+insert into SC_SEC_Permissao (id, nome) values (43, '/incluir-agendamento');
+insert into SC_SEC_Permissao (id, nome) values (16, '/editar-agendamento');
+insert into SC_SEC_Permissao (id, nome) values (26, '/excluir-agendamento');
+
+insert into SC_SEC_Permissao (id, nome) values (77, '/pesquisar-agendamento');
+insert into SC_SEC_Permissao (id, nome) values (42, '/incluir-agendaForm');
+
+insert into SC_SEC_Permissao (id, nome) values (38, '/exibir-calendario-vagas-agendamento');
+insert into SC_SEC_Permissao (id, nome) values (39, '/exibir-calendario-vagas-agendamento-medico');
+
 
 -- --------------
 insert into SC_SEC_Permissao (id, nome) values (11, '/');
@@ -553,13 +564,7 @@ insert into SC_SEC_Permissao (id, nome) values (12, '/antigo/**');
 insert into SC_SEC_Permissao (id, nome) values (13, '/atender');
 insert into SC_SEC_Permissao (id, nome) values (14, '/criar-agenda-agendamento');
 insert into SC_SEC_Permissao (id, nome) values (15, '/desmarcar-horario-ajax-json');
-insert into SC_SEC_Permissao (id, nome) values (16, '/editar-agendamento');
 
-
-
-
-
-insert into SC_SEC_Permissao (id, nome) values (26, '/excluir-agendamento');
 
 
 
@@ -567,21 +572,12 @@ insert into SC_SEC_Permissao (id, nome) values (26, '/excluir-agendamento');
 
 insert into SC_SEC_Permissao (id, nome) values (36, '/exibir-calendario-agendamento');
 insert into SC_SEC_Permissao (id, nome) values (37, '/exibir-calendario-agendamento-medico');
-insert into SC_SEC_Permissao (id, nome) values (38, '/exibir-calendario-vagas-agendamento');
-insert into SC_SEC_Permissao (id, nome) values (39, '/exibir-calendario-vagas-agendamento-medico');
 insert into SC_SEC_Permissao (id, nome) values (40, '/fullcalendar-listar-horario-ocupado-json');
 insert into SC_SEC_Permissao (id, nome) values (41, '/fullcalendar-listar-horario-vago-json');
-insert into SC_SEC_Permissao (id, nome) values (42, '/incluir-agendaForm');
-insert into SC_SEC_Permissao (id, nome) values (43, '/incluir-agendamento');
 
 insert into SC_SEC_Permissao (id, nome) values (45, '/incluir-consulta-agendamento');
 
 
-
-
-
-
-insert into SC_SEC_Permissao (id, nome) values (54, '/listar-agendamento');
 insert into SC_SEC_Permissao (id, nome) values (63, '/listar-horario-vago-json');
 
 
@@ -589,7 +585,6 @@ insert into SC_SEC_Permissao (id, nome) values (63, '/listar-horario-vago-json')
 insert into SC_SEC_Permissao (id, nome) values (74, '/login');
 insert into SC_SEC_Permissao (id, nome) values (75, '/loginErrado');
 insert into SC_SEC_Permissao (id, nome) values (76, '/marcar-horario-ajax-json');
-insert into SC_SEC_Permissao (id, nome) values (77, '/pesquisar-agendamento');
 insert into SC_SEC_Permissao (id, nome) values (78, '/privado/**');
 insert into SC_SEC_Permissao (id, nome) values (79, '/privado/api/**');
 insert into SC_SEC_Permissao (id, nome) values (80, '/privado/home');
