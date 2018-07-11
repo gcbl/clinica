@@ -72,19 +72,35 @@
                     <!-- Select input-->
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="permissoes">Permissões:</label>  
-                      <div class="col-md-4"> 
-                          <%--
-                          <form:select path="permissoes" multiple="true" style="width: 100%">
-                              <!-- No caso de estar editando -->
-                              <c:if test="${not empty todasPermissoes}">
-                                  <form:options items="${todasPermissoes}" itemValue="id" itemLabel="nome"/>
-                              </c:if>
-                          </form:select>
-                          --%>
+                      <div class="col-md-4">
+                      <form:errors path="permissoes" cssClass="text-danger" /> 
+                          <%-- ##### --%>
+                              <div class="table-responsive table-sm">
+                                 <table id="itemDataTable" class="table table-striped table-bordered">
+                                         <thead>
+                                             <tr>
+                                                 <th>id</th>
+                                                 <th>Nome</th>
+                                                 <th>Ação</th>
+                                             </tr>
+                                         </thead>
+                                         <tbody>
+                                             <c:forEach items="${permissoesList}" var="item">
+                                                 <tr>
+                                                     <td>${item.id}</td>
+                                                     <td>${item.nome}</td>
+                                                     <td> <form:checkbox path="permissoes" value="${item.id}" label="${item.nome}" /> </td>                                
+                                                 </tr>
+                                             </c:forEach>
+                                         </tbody>
+                                 </table>
+                             </div>                          
+                          <%-- ##### --%>
                           
                           <!-- <span class="help-block">texto de help-block</span> -->
-                          <form:checkboxes items="${permissoesList}" path="permissoes" delimiter="<br/><br/>" itemLabel="nome" data-toggle="toggle" data-on="<i class='fas fa-lock-open'></i>" data-off="<i class='fas fa-lock'></i>" data-onstyle="success" data-offstyle="danger" data-style="android"/>
-                          <form:errors path="permissoes" cssClass="text-danger" />
+                          <%-- <form:checkboxes items="${permissoesList}" path="permissoes" delimiter="<br/><br/>" /> --%>                          
+                          <%-- <form:checkboxes items="${permissoesList}" path="permissoes" delimiter="<br/><br/>" itemLabel="nome" data-toggle="toggle" data-on="<i class='fas fa-lock-open'></i>" data-off="<i class='fas fa-lock'></i>" data-onstyle="success" data-offstyle="danger" data-style="android"/> --%>
+                          
                           
                       </div>
                     </div>                
@@ -180,6 +196,26 @@
         });  	 
 	 
  
+        var table = $('#itemDataTable').DataTable( {
+            responsive: true,
+            dom: 'Bfrtip',
+            buttons: [ 
+                      {
+                           extend: 'colvis',
+                           text: 'Colunas',
+                           columnText: function ( dt, idx, title ) { return (idx+1)+': '+title; }
+                       }
+                     ],
+            "paging":   false,
+            "ordering": true,
+            "columnDefs": [ { orderable: false, targets: -1 } ], // desabilita sort da ultima coluna 
+            "order": [[ 1, "asc" ]],
+            "info":     true,       
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese.json"
+            }
+        } );         
+        
 });
  </script>
  
