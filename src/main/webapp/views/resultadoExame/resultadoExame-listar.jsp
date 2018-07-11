@@ -35,7 +35,7 @@
                                 <td>${item.id}</td>
                                 <td>${item.paciente.nome}</td>
                                 <td>${item.resultado}</td>
-                                <td>${item.disponibilizadoPaciente}</td>
+                                <td><c:out value="${item.disponibilizadoPaciente ? 'Sim' : 'Não'}" /></td>
                                 <td class="actions text-right">
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                       <a href="editar-${MODEL}?id=${item.id}" class="btn btn-sm btn-info"><i class="far fa-edit"></i> Editar</a>
