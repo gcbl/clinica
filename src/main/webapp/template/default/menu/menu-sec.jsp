@@ -6,16 +6,39 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
-<!--  -->
+<%-- ################################################################################################## --%>
+<%-- ###   INICIO DAS VARIAVEIS DE SEGURANCA                                                        ### --%>
+<%-- ################################################################################################## --%>
+<%-- Medico --%>
 <sec:authorize access="hasRole('ROLE_LISTAR_MEDICO'  )" var="listarMedico"  />
 <sec:authorize access="hasRole('ROLE_INCLUIR_MEDICO' )" var="incluirMedico" />
 <sec:authorize access="hasRole('ROLE_EDITAR_MEDICO'  )" var="editarMedico" />
 <sec:authorize access="hasRole('ROLE_EXCLUIR_MEDICO' )" var="excluirMedico" />
+<c:set var="funcoesMedico" value="${listarMedico || incluirMedico || editarMedico || excluirMedico}"/>
 
-<c:set var="medico" value="${listarMedico || incluirMedico || editarMedico || excluirMedico}"/>
+<%-- Paciente --%>
+<sec:authorize access="hasRole('ROLE_LISTAR_PACIENTE'  )" var="listarPaciente"  />
+<sec:authorize access="hasRole('ROLE_INCLUIR_PACIENTE' )" var="incluirPaciente" />
+<sec:authorize access="hasRole('ROLE_EDITAR_PACIENTE'  )" var="editarPaciente" />
+<sec:authorize access="hasRole('ROLE_EXCLUIR_PACIENTE' )" var="excluirPaciente" />
+<sec:authorize access="hasRole('ROLE_LISTAR_HISTORICO_CLINICO_PACIENTE' )" var="listarHistoricoClinicoPaciente" />
+<c:set var="funcoesPaciente" value="${listarPaciente || incluirPaciente || editarPaciente || excluirPaciente || listarHistoricoClinicoPaciente}"/>
 
 
-<!--  -->
+<%-- Recepcionista --%>
+<sec:authorize access="hasRole('ROLE_LISTAR_RECEPCIONISTA'  )" var="listarRecepcionista"  />
+<sec:authorize access="hasRole('ROLE_INCLUIR_RECEPCIONISTA' )" var="incluirRecepcionista" />
+<sec:authorize access="hasRole('ROLE_EDITAR_RECEPCIONISTA'  )" var="editarRecepcionista" />
+<sec:authorize access="hasRole('ROLE_EXCLUIR_RECEPCIONISTA' )" var="excluirRecepcionista" />
+<c:set var="funcoesRecepcionista" value="${listarRecepcionista || incluirRecepcionista || editarRecepcionista || excluirRecepcionista}"/>
+<%-- ################################################################################################## --%>
+<%-- ###   FIM DAS VARIAVEIS DE SEGURANCA                                                        ### --%>
+<%-- ################################################################################################## --%>
+
+
+<%-- ################################################################################################## --%>
+<%-- ###   INICIO DO MENU                                                                           ### --%>
+<%-- ################################################################################################## --%>
 <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="home">
@@ -122,49 +145,63 @@
         </div>
       </li>
       
+        <%-- Medico --%>
+        <c:if test = "${funcoesMedico}">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user-md"></i> Médicos
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                    <c:if test = "${listarMedico || editarMedico || excluirMedico}">
+                        <a class="dropdown-item" href="listar-medico">Consultar</a>
+                    </c:if>
+                    <c:if test = "${incluirMedico}">  
+                        <a class="dropdown-item" href="incluir-medico">Incluir</a>          
+                    </c:if>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+        </c:if>
 
-		<c:if test = "${medico}">
-		      <li class="nav-item dropdown">
-		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		            <i class="fas fa-user-md"></i> Médicos
-		        </a>
-		        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-			        <c:if test = "${listarMedico}">
-			          <a class="dropdown-item" href="listar-medico">Consultar</a>
-			        </c:if>
-			        <c:if test = "${incluirMedico}">  
-			          <a class="dropdown-item" href="incluir-medico">Incluir</a>          
-			        </c:if>
-		        </div>
-		      </li>
-		</c:if>
+        <%-- Paciente --%>
+        <c:if test = "${funcoesPaciente}">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-users"></i> Pacientes
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                    <c:if test = "${listarPaciente || editarPaciente || excluirPaciente}">
+                        <a class="dropdown-item" href="listar-paciente">Consultar</a>
+                    </c:if>
+                    <c:if test = "${incluirPaciente}">
+                        <a class="dropdown-item" href="incluir-paciente">Incluir</a>
+                    </c:if>          
+                    <div class="dropdown-divider"></div>
+                    <c:if test = "${listarHistoricoClinicoPaciente}">
+                        <a class="dropdown-item" href="listar-historico-clinico-paciente-form">Exibir Historico</a>
+                    </c:if>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+        </c:if>
 
-
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-users"></i> Pacientes
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-          <a class="dropdown-item" href="listar-paciente">Consultar</a>
-          <a class="dropdown-item" href="incluir-paciente">Incluir</a>          
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="listar-historico-clinico-paciente-form">Exibir Historico</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item disabled" href="#">Estatisticas</a>
-        </div>
-      </li>
-
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="far fa-id-card"></i> Recepcionista
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-          <a class="dropdown-item" href="listar-recepcionista">Consultar</a>
-          <a class="dropdown-item" href="incluir-recepcionista">Incluir</a>          
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item disabled" href="#">Estatisticas</a>
-        </div>
-      </li>
+        <%-- Recepcionista --%>
+        <c:if test = "${funcoesRecepcionista}">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="far fa-id-card"></i> Recepcionista
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                    <c:if test = "${listarRecepcionista || editarRecepcionista || excluirRecepcionista}">
+                        <a class="dropdown-item" href="listar-recepcionista">Consultar</a>
+                    </c:if>
+                    <c:if test = "${incluirRecepcionista}">
+                        <a class="dropdown-item" href="incluir-recepcionista">Incluir</a>
+                    </c:if>          
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+        </c:if>
       
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -212,3 +249,6 @@
     --%>
   </div>
 </nav>
+<%-- ################################################################################################## --%>
+<%-- FIM DO MENU --%>
+<%-- ################################################################################################## --%>
