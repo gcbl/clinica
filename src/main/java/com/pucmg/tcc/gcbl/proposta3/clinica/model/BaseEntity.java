@@ -16,12 +16,17 @@ import lombok.Data;
 
 @Data
 @MappedSuperclass
-public class BaseEntity {
+public abstract class BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private String id;
+    
+    @JsonIgnore    
+    @Column(name = "is_active")
+    private boolean isActive = true;
+
     
     @JsonIgnore
     @Column(name = "DT_CRIACAO")
