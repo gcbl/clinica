@@ -12,6 +12,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -94,8 +95,14 @@ public class GrupoController extends ModelController {
             
             mensagem = messageSource.getMessage("formulario.operacao.exclusao.sucesso", new Object[]{ getModelName() }, locale);
             adicionarAlertaSuccess(model, mensagem);            
-        }catch(Throwable t){
+        }catch(EmptyResultDataAccessException erdae){
             mensagem = messageSource.getMessage("formulario.nao-encontrado", new Object[]{ getModelName() }, locale);
+            adicionarAlertaWarning(model, mensagem);
+        }catch(DataIntegrityViolationException dive){
+            mensagem = messageSource.getMessage("formulario.operacao.exclusao.integridade", new Object[]{ getModelName() }, locale);
+            adicionarAlertaWarning(model, mensagem);
+        }catch(Throwable t){
+            mensagem = messageSource.getMessage("formulario.operacao.falha", new Object[]{ getModelName(), t }, locale);
             adicionarAlertaWarning(model, mensagem);
         }
         return consultar(model);
@@ -165,7 +172,8 @@ public class GrupoController extends ModelController {
         mensagem = messageSource.getMessage("formulario.operacao.alteracao.sucesso", new Object[]{ getModelName() }, locale);
         adicionarAlertaSuccess(model, mensagem);
         
-        return consultar(model);
+        // return consultar(model);
+        return editarForm(item.getId(), model, locale, request);
     }    
     
 }

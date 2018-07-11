@@ -1,6 +1,5 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.controller;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -10,6 +9,8 @@ import javax.validation.Valid;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Agendamento;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.MarcacaoConsultaForm;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
-import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.AgendamentoService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.MedicoService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.util.Constantes;
@@ -90,10 +90,17 @@ public class AgendamentoController extends ModelController {
             
             mensagem = messageSource.getMessage("formulario.operacao.exclusao.sucesso", new Object[]{ getModelName() }, locale);
             adicionarAlertaSuccess(model, mensagem);            
-        }catch(Throwable t){
+        }catch(EmptyResultDataAccessException erdae){
             mensagem = messageSource.getMessage("formulario.nao-encontrado", new Object[]{ getModelName() }, locale);
             adicionarAlertaWarning(model, mensagem);
+        }catch(DataIntegrityViolationException dive){
+            mensagem = messageSource.getMessage("formulario.operacao.exclusao.integridade", new Object[]{ getModelName() }, locale);
+            adicionarAlertaWarning(model, mensagem);
+        }catch(Throwable t){
+            mensagem = messageSource.getMessage("formulario.operacao.falha", new Object[]{ getModelName(), t }, locale);
+            adicionarAlertaWarning(model, mensagem);
         }
+        
         return consultar(model);
     }
     
