@@ -23,9 +23,9 @@ public abstract class BaseEntity {
     @Column(name = "ID")
     private String id;
     
-    @JsonIgnore    
-    @Column(name = "is_active")
-    private boolean isActive = true;
+//    @JsonIgnore    
+//    @Column(name = "is_active")
+//    private boolean isActive = true;
 
     
     @JsonIgnore
