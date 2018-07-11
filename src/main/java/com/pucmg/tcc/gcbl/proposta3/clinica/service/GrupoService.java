@@ -58,6 +58,11 @@ public class GrupoService{
         }
     }
     
+    public void limparGrupo(Grupo grupo){
+        removerPermissoes(grupo);
+        removerUsuarios(grupo);
+    }
+    
     public void removerPermissoes(Grupo grupo){
         grupo.setPermissoes(new ArrayList<Permissao>());
         salvar(grupo);
