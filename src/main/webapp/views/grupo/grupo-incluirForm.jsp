@@ -49,17 +49,22 @@
                     
                     <!-- Select input-->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="usuarios">Usuários:</label>  
-                      <div class="col-md-4"> 
-                          <form:select path="usuarios" multiple="true" style="width: 100%">
-                              <%-- No caso de estar editando --%>
-                              <c:if test="${not empty grupo}">
-                                  <form:options items="${grupo.usuarios}" itemValue="id" itemLabel="nome"/>
-                              </c:if>
-                          </form:select>
-                          <form:errors path="usuarios" cssClass="text-danger" />
-                          <!-- <span class="help-block">texto de help-block</span> -->   
-                      </div>
+	                    <div class="row">
+		                      <label class="col-md-4 control-label" for="usuarios">Usuários:</label>  
+		                      <div class="col-md-4"> 
+		                          <form:select path="usuarios" multiple="true" style="width: 100%">
+		                              <%-- No caso de estar editando --%>
+		                              <c:if test="${not empty grupo}">
+		                                  <form:options items="${grupo.usuarios}" itemValue="id" itemLabel="nome"/>
+		                              </c:if>
+		                          </form:select>
+		                          <form:errors path="usuarios" cssClass="text-danger" />
+		                          <!-- <span class="help-block">texto de help-block</span> -->   
+		                      </div>
+		                      <div class="col-md-4"> kkk
+		                          <button id="btnSalvar" name="btnSalvar" class="btn btn-primary">Salvar</button>
+		                      </div>
+                        </div>
                     </div>   
 
                     <!-- Select input-->

@@ -29,7 +29,15 @@
             ${fn:length(usuarioLogado.principal.usuario.grupos)} grupos
             ${usuarioLogado.principal.usuario.grupos}
             --%>
-            
+
+<pre>eeeeee
+${listarMedico}
+${incluirMedico}
+${editarMedico}
+${excluirMedico}
+</pre>
+
+
             <hr>
         </div>
  

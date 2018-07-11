@@ -14,6 +14,10 @@
         <put-attribute name="menu-admin" value="/template/default/menu/menu-admin.jsp" />
         <put-attribute name="menu-medico" value="/template/default/menu/menu-medico.jsp" />
         <put-attribute name="menu-recepcionista" value="/template/default/menu/menu-recepcionista.jsp" />
+        
+        <put-attribute name="menu-sec" value="/template/default/menu/menu-sec.jsp" />
+        <put-attribute name="sec" value="/template/default/menu/sec.jsp" />
+
     </definition>
 
     <definition name="templatePublico" template="/template/publico/templatePublico.jsp">

@@ -18,7 +18,12 @@
 	<sec:authorize access="hasRole('ROLE_PERFIL_RECEPCIONISTA')" var="isRecepcionista" />
 	<%-- /Verificando as roles --%>
 
+    <tiles:insertAttribute name="sec" />
+
+    <tiles:insertAttribute name="menu-sec" />
+	
 	<%-- Importando o menu de acordo com as roles --%>
+    <%--
     <c:choose>
         <c:when test = "${isAdmin}">
 	        ADMIN
@@ -37,6 +42,7 @@
             <tiles:insertAttribute name="menu" />
         </c:otherwise>
     </c:choose>
+    --%>
 	<%-- /Importando o menu de acordo com as roles --%>
 
     <tiles:insertAttribute name="cabecalho" />
