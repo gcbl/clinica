@@ -24,7 +24,6 @@
 <sec:authorize access="hasRole('ROLE_LISTAR_HISTORICO_CLINICO_PACIENTE' )" var="listarHistoricoClinicoPaciente" />
 <c:set var="funcoesPaciente" value="${listarPaciente || incluirPaciente || editarPaciente || excluirPaciente || listarHistoricoClinicoPaciente}"/>
 
-
 <%-- Recepcionista --%>
 <sec:authorize access="hasRole('ROLE_LISTAR_RECEPCIONISTA'  )" var="listarRecepcionista"  />
 <sec:authorize access="hasRole('ROLE_INCLUIR_RECEPCIONISTA' )" var="incluirRecepcionista" />
@@ -38,6 +37,27 @@
 <sec:authorize access="hasRole('ROLE_EDITAR_GRUPO'  )" var="editarGrupo" />
 <sec:authorize access="hasRole('ROLE_EXCLUIR_GRUPO' )" var="excluirGrupo" />
 <c:set var="funcoesGrupo" value="${listarGrupo || incluirGrupo || editarGrupo || excluirGrupo}"/>
+
+<%-- Medicamento --%>
+<sec:authorize access="hasRole('ROLE_LISTAR_MEDICAMENTO'  )" var="listarMedicamento"  />
+<sec:authorize access="hasRole('ROLE_INCLUIR_MEDICAMENTO' )" var="incluirMedicamento" />
+<sec:authorize access="hasRole('ROLE_EDITAR_MEDICAMENTO'  )" var="editarMedicamento" />
+<sec:authorize access="hasRole('ROLE_EXCLUIR_MEDICAMENTO' )" var="excluirMedicamento" />
+<c:set var="funcoesMedicamento" value="${listarMedicamento || incluirMedicamento || editarMedicamento || excluirMedicamento}"/>
+
+<%-- Atendimento --%>
+<sec:authorize access="hasRole('ROLE_LISTAR_ATENDIMENTO'  )" var="listarAtendimento"  />
+<sec:authorize access="hasRole('ROLE_INCLUIR_ATENDIMENTO' )" var="incluirAtendimento" />
+<sec:authorize access="hasRole('ROLE_EDITAR_ATENDIMENTO'  )" var="editarAtendimento" />
+<sec:authorize access="hasRole('ROLE_EXCLUIR_ATENDIMENTO' )" var="excluirAtendimento" />
+<c:set var="funcoesAtendimento" value="${listarAtendimento || incluirAtendimento || editarAtendimento || excluirAtendimento}"/>
+
+<%-- Receita --%>
+<sec:authorize access="hasRole('ROLE_LISTAR_RECEITA'  )" var="listarReceita"  />
+<sec:authorize access="hasRole('ROLE_INCLUIR_RECEITA' )" var="incluirReceita" />
+<sec:authorize access="hasRole('ROLE_EDITAR_RECEITA'  )" var="editarReceita" />
+<sec:authorize access="hasRole('ROLE_EXCLUIR_RECEITA' )" var="excluirReceita" />
+<c:set var="funcoesReceita" value="${listarReceita || incluirReceita || editarReceita || excluirReceita}"/>
 
 <%-- ################################################################################################## --%>
 <%-- ###   FIM DAS VARIAVEIS DE SEGURANCA                                                        ### --%>
@@ -117,41 +137,59 @@
         </div>
       </li>      
 
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="far fa-file-alt"></i> Receita
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-          <a class="dropdown-item" href="listar-receita">Consultar</a>
-          <a class="dropdown-item" href="incluir-receita">Incluir</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item disabled" href="#">Estatisticas</a>
-        </div>
-      </li>      
+        <%-- OK - Receita --%>
+        <c:if test = "${funcoesReceita}">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="far fa-file-alt"></i> Receita
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                  <c:if test = "${listarReceita || editarReceita || excluirReceita}">
+                      <a class="dropdown-item" href="listar-receita">Consultar</a>
+                  </c:if>
+                  <c:if test = "${incluirReceita}">                
+                      <a class="dropdown-item" href="incluir-receita">Incluir</a>
+                  </c:if>
+                  <div class="dropdown-divider"></div>
+              </div>
+            </li>
+        </c:if>      
 
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-briefcase-medical"></i> Atendimento
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-          <a class="dropdown-item" href="listar-atendimento">Consultar</a>
-          <a class="dropdown-item" href="incluir-atendimento">Incluir</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item disabled" href="#">Estatisticas</a>
-        </div>
-      </li>      
+        <%-- OK - Atendimento --%>
+        <c:if test = "${funcoesAtendimento}">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-briefcase-medical"></i> Atendimento
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                  <c:if test = "${listarAtendimento || editarAtendimento || excluirAtendimento}">
+                      <a class="dropdown-item" href="listar-atendimento">Consultar</a>
+                  </c:if>
+                  <c:if test = "${incluirAtendimento}">
+                      <a class="dropdown-item" href="incluir-atendimento">Incluir</a>
+                  </c:if>
+                  <div class="dropdown-divider"></div>
+              </div>
+            </li>      
+        </c:if>
 
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-pills"></i> Medicamentos
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-          <a class="dropdown-item" href="listar-medicamento">Consultar</a>
-          <a class="dropdown-item" href="incluir-medicamento">Incluir</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item disabled" href="#">Estatisticas</a>
-        </div>
-      </li>
+        <%-- OK - Medicamento --%>
+        <c:if test = "${funcoesMedicamento}">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-pills"></i> Medicamentos
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                  <c:if test = "${listarMedicamento || editarMedicamento || excluirMedicamento}">
+                      <a class="dropdown-item" href="listar-medicamento">Consultar</a>
+                  </c:if>
+                  <c:if test = "${incluirMedicamento}">
+                      <a class="dropdown-item" href="incluir-medicamento">Incluir</a>
+                  </c:if>
+                  <div class="dropdown-divider"></div>
+              </div>
+            </li>
+        </c:if>
       
         <%-- OK - Medico --%>
         <c:if test = "${funcoesMedico}">
@@ -211,7 +249,7 @@
             </li>
         </c:if>
       
-        <%-- Grupo --%>
+        <%-- OK - Grupo --%>
         <c:if test = "${funcoesGrupo}">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
