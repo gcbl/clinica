@@ -9,8 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -29,7 +27,7 @@ import lombok.EqualsAndHashCode;
 @Inheritance(
 	    strategy = InheritanceType.JOINED
 )
-public class Usuario extends Pessoa implements Serializable {
+public abstract class Usuario extends Pessoa implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
@@ -43,13 +41,15 @@ public class Usuario extends Pessoa implements Serializable {
     private String senha;
 //    private boolean ativo;
     
-    @ManyToMany(cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY)
-    @JoinTable(name = "SC_SEC_USUARIO_GRUPO", 
-               joinColumns = @JoinColumn(name = "ID_USUARIO"), 
-               inverseJoinColumns = @JoinColumn(name = "ID_GRUPO"))
+    @ManyToMany(mappedBy = "usuarios", cascade={CascadeType.MERGE}, fetch=FetchType.LAZY)
     @JsonIgnore
     private List<Grupo> grupos;
 
+    
+    public String getTipo(){
+       return this.getClass().getSimpleName();
+    }
+    
 //    @ManyToMany
 //    private List<Permissao> permissoes;
 

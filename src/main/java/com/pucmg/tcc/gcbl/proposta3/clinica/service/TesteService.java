@@ -23,10 +23,12 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medicamento;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Paciente;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Receita;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Recepcionista;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.ResultadoExame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.SolicitacaoExame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.User;
-import com.pucmg.tcc.gcbl.proposta3.clinica.repository.AgendamentoRepository;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.security.Grupo;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.security.Usuario;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.AtendimentoRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.ExameRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.MedicoRepository;
@@ -70,9 +72,6 @@ public class TesteService{
     private ResultadoExameRepository resultadoExameRepository;    
     
     @Autowired
-    private AgendamentoRepository agendamentoRepository;
-    
-    @Autowired
     private AgendamentoService agendamentoService;
 
     @Autowired
@@ -84,6 +83,13 @@ public class TesteService{
 
     @Autowired
     private HistoricoClinicoService historicoClinicoService;
+
+    @Autowired
+    private GrupoService grupoService;
+
+    @Autowired
+    private RecepcionistaService recepcionistaService;
+    
     
     public void popula(){
         User userForm = new User();
@@ -104,6 +110,9 @@ public class TesteService{
 //        p.setEstado("UF");
 //        
 //        pessoaBDRepository.save(p);
+        
+        
+        
  
         // Limpandos os atendimentos
         List<Atendimento> atendimentoRemover = atendimentoRepository.findAll();
@@ -132,8 +141,43 @@ public class TesteService{
         List<Medico> medicos = medicoRepository.findAll();
         Collections.shuffle(medicos);
         
+        List<Recepcionista> recepcionistas = recepcionistaService.findAll();
+        Collections.shuffle(recepcionistas);
+
         List<Paciente> pacientes = pacienteRepository.findAll();
         Collections.shuffle(pacientes);
+        
+        // Usuarios nos grupos:
+        // Adicionando os usuarios aos grupos
+        List<Usuario> listaVazia = new ArrayList<Usuario>();
+        
+        
+        // Preenchendo grupo dos recepcionistas
+        List<Grupo> grupos = grupoService.findByNome("RECEPCIONISTAS");
+        // Zera o grupo
+        for (Grupo grupo : grupos) {
+            grupoService.adicionarUsuario(grupo, listaVazia);
+        }
+
+        // Adiciona todos os recepcionistas
+        for (Grupo grupo : grupos) {
+            grupoService.adicionarUsuario(grupo, recepcionistas);
+        }
+
+        grupos = grupoService.findByNome("MEDICOS");
+        // Zera o grupo
+        for (Grupo grupo : grupos) {
+            grupoService.adicionarUsuario(grupo, listaVazia);
+        }
+
+        // Adiciona todos os medicos
+        for (Grupo grupo : grupos) {
+            grupoService.adicionarUsuario(grupo, medicos);
+        }
+        // Fim do preenchimento dos grupos
+
+        grupos = grupoService.findAll();
+        
         
         // Atualiza plano de Saude
         int contadorPlano = 0;

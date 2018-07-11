@@ -45,7 +45,22 @@
                       <form:input path="descricao" placeholder="descricao" class="form-control input-md"/> <form:errors path="descricao" cssClass="text-danger" />
                       <!-- <span class="help-block">Informe a concentração e forma farmaceutica ou uma breve descrição </span> -->  
                       </div>
-                    </div>                      
+                    </div>  
+                    
+                    <!-- Select input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="usuarios">Usuários:</label>  
+                      <div class="col-md-4"> 
+                          <form:select path="usuarios" multiple="true" style="width: 100%">
+                              <%-- No caso de estar editando --%>
+                              <c:if test="${not empty grupo}">
+                                  <form:options items="${grupo.usuarios}" itemValue="id" itemLabel="nome"/>
+                              </c:if>
+                          </form:select>
+                          <form:errors path="usuarios" cssClass="text-danger" />
+                          <!-- <span class="help-block">texto de help-block</span> -->   
+                      </div>
+                    </div>   
 
                     <!-- Select input-->
                     <div class="form-group">
@@ -86,17 +101,59 @@
         </div>
  
  <script>
- $(document).ready(function() {
  
-        $('#permissoes2').select2({
-            placeholder: "Selecione as permissões",
+ function setCurrency (currency) {
+	 var str = JSON.stringify(currency, null, 2);
+     if (!currency.id) {
+    	 return currency.text;
+     }
+     
+     var $currency = $('<small>' + currency.nome + '</small>');
+     if (currency.id % 2 == 0){
+    	 $currency = $('<i class="fas fa-user-md"></i>' + currency.nome);
+     }else{
+    	 $currency = $(currency.nome);
+     }
+     
+     return $currency;
+ };
+ 
+ function formatRepo (repo) {
+	  if (repo.loading) {
+	    return repo.text;
+	  }
+	  
+	  var markup = "";
+	  var icone = "";
+	  if(repo.tipo === "Recepcionista"){
+		  icone = "<i class='far fa-id-badge'></i> ";
+	  }else if(repo.tipo === "Medico"){
+		  icone = "<i class='fas fa-user-md'></i> "
+	  }
+
+	  markup =  icone + repo.nome + " - <small><small>" + repo.tipo + "</small></small>";
+	  return markup;
+	  
+	}
+ 
+ function formatRepoSelection (repo) {
+     //return repo.nome || "<b>" + repo.text + "</b>";
+	 return repo.nome || repo.text;
+     //return formatRepo(repo);
+ } 
+ 
+ $(document).ready(function() {
+	 
+        $('#usuarios').select2({
+            placeholder: "Selecione os medicamentos",
             language: "pt-BR",
             theme: "bootstrap",
             allowClear: true,
+            escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
             minimumInputLength: 1,
             closeOnSelect: true,
             ajax: {
-                url: 'api/listar-exame-json',
+                url: 'api/listar-usuario-json',
                 dataType: 'json',
                 processResults: function (data, params) {
                       
@@ -105,15 +162,17 @@
                         obj.text = obj.text || obj.nome; // replace name with the property used for the text
                         return obj;
                       });
-
+   
                       return {
                         results: resultsData
                       };
                     },
-            }
-        });  
-
-     
+            },
+            templateResult: formatRepo,
+            templateSelection: formatRepoSelection
+        });  	 
+	 
+ 
 });
  </script>
  

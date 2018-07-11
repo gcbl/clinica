@@ -26,6 +26,7 @@
                             <th nowrap>Grupo</th>
                             <th nowrap>Descricao</th>                            
                             <th>Permissões</th>
+                            <th>Usuários</th>
                             <th class="text-right"><a href="incluir-${MODEL}" class="btn btn-sm btn-success"><i class="fas fa-plus-circle"></i> Adicionar novo ${MODEL}</a></th>
                         </tr>
                     </thead>
@@ -35,17 +36,20 @@
                                 <td nowrap>${item.id}</td>
                                 <td nowrap>${item.nome}</td>
                                 <td nowrap>${item.descricao}</td>
-                                <td>${fn:length(item.permissoes)} permissões
-                                    <%-- 
+                                <td>${fn:length(item.permissoes)} permissões</td>
+                                <td>
                                     <ul>
-                                        <c:forEach items="${item.permissoes}" var="itemList">
-                                            <li>${itemList.nome}</li>
+                                        <c:forEach items="${item.usuarios}" var="itemList">
+                                            <li>${itemList['class'].simpleName} ${itemList.nome}</li>
                                         </c:forEach>
                                     </ul>
-                                     --%> 
                                 </td>
                                 <td class="actions text-right">
                                     <div class="btn-group" role="group" aria-label="Basic example">
+                                      <%--
+                                      <a href="editar-${MODEL}-usuario?id=${item.id}" class="btn btn-sm btn-primary"><i class="fas fa-users"></i> Usuários</a>
+                                      <a href="editar-${MODEL}?id=${item.id}" class="btn btn-sm btn-primary"><i class="far fa-edit"></i> Permissões</a>&nbsp;&nbsp;
+                                      --%>
                                       <a href="editar-${MODEL}?id=${item.id}" class="btn btn-sm btn-info"><i class="far fa-edit"></i> Editar</a>
                                       <a href="excluir-${MODEL}?id=${item.id}" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i> Remover</a>
                                     </div>
@@ -73,12 +77,13 @@
  
 <!-- ##### MODALS ##### -->
 
+
 <!-- ##### FIM MODALS ##### --> 
  
  
 <script>
 $(document).ready(function() {
-
+	
 	var table = $('#itemDataTable').DataTable( {
 		responsive: true,
         dom: 'Bfrtip',

@@ -95,8 +95,11 @@ public class APIController extends BaseController {
         LocalDate dataInicio = LocalDate.parse(start);
         LocalDate dataFim = LocalDate.parse(end);
 
-        
-        Medico medico = medicoService.findOne(idMedico);
+        Medico medico = null;
+        if(idMedico != null){
+            medico = medicoService.findOne(idMedico);
+        }
+
         List<Agendamento> agendamentoList;
         if(medico == null){
             agendamentoList = agendamentoService.getHorarioOcupadoList(dataInicio, dataFim);
@@ -119,7 +122,11 @@ public class APIController extends BaseController {
         LocalDate dataInicio = LocalDate.parse(start);
         LocalDate dataFim = LocalDate.parse(end);
 
-        Medico medico = medicoService.findOne(idMedico);
+        Medico medico = null;
+        if(idMedico != null){
+            medico = medicoService.findOne(idMedico);
+        }
+        
         List<Agendamento> agendamentoList;
         if(medico == null){
             agendamentoList = agendamentoService.getHorarioDisponivelList(dataInicio, dataFim);

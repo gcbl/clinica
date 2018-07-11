@@ -104,6 +104,12 @@ public class SecurityConfigurationNovo extends WebSecurityConfigurerAdapter {
                 .antMatchers("/privado/listar-solicitacaoExame").hasRole("LISTAR_SOLICITACAOEXAME")
                 .antMatchers("/privado/marcar-horario-ajax-json").hasRole("MARCAR_HORARIO_AJAX_JSON")
                 .antMatchers("/privado/pesquisar-agendamento").hasRole("PESQUISAR_AGENDAMENTO")
+                
+                .antMatchers("/privado/listar-grupo").hasRole("LISTAR_GRUPO")
+                .antMatchers("/privado/incluir-grupo").hasRole("INCLUIR_GRUPO")
+                .antMatchers("/privado/editar-grupo").hasRole("EDITAR_GRUPO")
+                .antMatchers("/privado/excluir-grupo").hasRole("EXCLUIR_GRUPO")
+                
                 // -- /AUTOMATICA --
                 .antMatchers("/**").hasRole("PERFIL_ADMIN")
                 .anyRequest().denyAll()                

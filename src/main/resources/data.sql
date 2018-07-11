@@ -561,6 +561,12 @@ insert into SC_SEC_Permissao (id, nome) values (80, '/privado/home');
 insert into SC_SEC_Permissao (id, nome) values (81, '/privado/inicio');
 insert into SC_SEC_Permissao (id, nome) values (82, '/registration');
 
+insert into SC_SEC_Permissao (id, nome) values (83, '/listar-grupo');
+insert into SC_SEC_Permissao (id, nome) values (84, '/incluir-grupo');
+insert into SC_SEC_Permissao (id, nome) values (85, '/editar-grupo');
+insert into SC_SEC_Permissao (id, nome) values (86, '/excluir-grupo');
+
+
 -- ADICIONANDO TODAS AS PERMISSOES PARA O GRUPO DE ID = 0
 INSERT INTO SC_SEC_Grupo_Permissoes (GRUPO_ID, permissoes_id)
 SELECT '0', ID FROM SC_SEC_PERMISSAO;
@@ -574,9 +580,8 @@ SELECT '2', ID FROM SC_SEC_PERMISSAO WHERE UPPER(NOME) NOT LIKE '%INCLUIR%' and 
 
 
 -- ADICIONANDO O USUARIO 1 no grupo de administradores
-insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values ( 1, 0);
-insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (10, 1);
-insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (20, 2);
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (1, 0);
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (25, 0);
 
 
 -- ----

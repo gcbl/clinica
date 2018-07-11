@@ -1,5 +1,6 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.controller;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.security.Grupo;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.security.Permissao;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.GrupoService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.PermissaoService;
 import com.pucmg.tcc.gcbl.proposta3.clinica.util.Constantes;
@@ -56,7 +58,9 @@ public class GrupoController extends ModelController {
     public String inserirForm(Model model){
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
         
-        model.addAttribute("permissoesList", permissaoService.findAll());
+        List<Permissao> permissoesList = permissaoService.findAll();
+        Collections.sort(permissoesList);
+        model.addAttribute("permissoesList", permissoesList);
         
         model.addAttribute(getModelName(), new Grupo());
         return getViewPath() + "incluirForm";
@@ -108,7 +112,9 @@ public class GrupoController extends ModelController {
             // Seta na sessao o id do item que esta sendo editado para checagem posterior
             request.getSession().setAttribute(Constantes.ACAO_EDITAR, id);
             
-            model.addAttribute("permissoesList", permissaoService.findAll());
+            List<Permissao> permissoesList = permissaoService.findAll();
+            Collections.sort(permissoesList);
+            model.addAttribute("permissoesList", permissoesList);
             
             return getViewPath() + "incluirForm";
         }else{
@@ -116,8 +122,6 @@ public class GrupoController extends ModelController {
             adicionarAlertaWarning(model, mensagem);
             return consultar(model);
         }
-
-            
         
         //return getViewPath() + "alterarForm"; 
     }
@@ -147,11 +151,11 @@ public class GrupoController extends ModelController {
         }
         
         try{
-            //modelService.salvar(item);
-        	Grupo grupo = modelService.findOne(item.getId());
-        	grupo.setUsuarios(item.getUsuarios());
-        	modelService.salvar(grupo);
-        	
+//            // Mantem os mesmos usuarios
+//        	Grupo grupo = modelService.findOne(item.getId());
+//        	item.setUsuarios( grupo.getUsuarios() );
+
+        	modelService.salvar(item);
         }catch(DataIntegrityViolationException dive){
             mensagem = messageSource.getMessage("formulario.operacao.alteracao.login-ja-utilizado", new Object[]{ getModelName() }, locale);
             adicionarAlertaDanger(model, mensagem);
