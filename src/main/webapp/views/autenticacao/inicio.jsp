@@ -25,17 +25,9 @@
             <p>O que você gostaria de fazer?</p>
             
             
-            <%--
-            ${fn:length(usuarioLogado.principal.usuario.grupos)} grupos
-            ${usuarioLogado.principal.usuario.grupos}
-            --%>
 
-<pre>eeeeee
-${listarMedico}
-${incluirMedico}
-${editarMedico}
-${excluirMedico}
-</pre>
+            ${fn:length(usuarioLogado.principal.usuario.grupos)} grupos
+            ${usuarioLogado}
 
 
             <hr>
