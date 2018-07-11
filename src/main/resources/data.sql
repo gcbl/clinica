@@ -513,16 +513,27 @@ insert into SC_SEC_Permissao (id, nome) values (84, '/incluir-grupo');
 insert into SC_SEC_Permissao (id, nome) values (85, '/editar-grupo');
 insert into SC_SEC_Permissao (id, nome) values (86, '/excluir-grupo');
 
+insert into SC_SEC_Permissao (id, nome) values (64, '/listar-medicamento');
+-- insert into SC_SEC_Permissao (id, nome) values (65, '/listar-medicamento-json');
+insert into SC_SEC_Permissao (id, nome) values (47, '/incluir-medicamento');
+insert into SC_SEC_Permissao (id, nome) values (19, '/editar-medicamento');
+insert into SC_SEC_Permissao (id, nome) values (29, '/excluir-medicamento');
 
+insert into SC_SEC_Permissao (id, nome) values (58, '/listar-atendimento');
+insert into SC_SEC_Permissao (id, nome) values (44, '/incluir-atendimento');
+insert into SC_SEC_Permissao (id, nome) values (17, '/editar-atendimento');
+insert into SC_SEC_Permissao (id, nome) values (27, '/excluir-atendimento');
+
+-- --------------
 insert into SC_SEC_Permissao (id, nome) values (11, '/');
 insert into SC_SEC_Permissao (id, nome) values (12, '/antigo/**');
 insert into SC_SEC_Permissao (id, nome) values (13, '/atender');
 insert into SC_SEC_Permissao (id, nome) values (14, '/criar-agenda-agendamento');
 insert into SC_SEC_Permissao (id, nome) values (15, '/desmarcar-horario-ajax-json');
 insert into SC_SEC_Permissao (id, nome) values (16, '/editar-agendamento');
-insert into SC_SEC_Permissao (id, nome) values (17, '/editar-atendimento');
+
 insert into SC_SEC_Permissao (id, nome) values (18, '/editar-exame');
-insert into SC_SEC_Permissao (id, nome) values (19, '/editar-medicamento');
+
 
 
 insert into SC_SEC_Permissao (id, nome) values (22, '/editar-receita');
@@ -530,9 +541,9 @@ insert into SC_SEC_Permissao (id, nome) values (22, '/editar-receita');
 insert into SC_SEC_Permissao (id, nome) values (24, '/editar-resultadoExame');
 insert into SC_SEC_Permissao (id, nome) values (25, '/editar-solicitacaoExame');
 insert into SC_SEC_Permissao (id, nome) values (26, '/excluir-agendamento');
-insert into SC_SEC_Permissao (id, nome) values (27, '/excluir-atendimento');
+
 insert into SC_SEC_Permissao (id, nome) values (28, '/excluir-exame');
-insert into SC_SEC_Permissao (id, nome) values (29, '/excluir-medicamento');
+
 
 
 insert into SC_SEC_Permissao (id, nome) values (32, '/excluir-receita');
@@ -547,10 +558,10 @@ insert into SC_SEC_Permissao (id, nome) values (40, '/fullcalendar-listar-horari
 insert into SC_SEC_Permissao (id, nome) values (41, '/fullcalendar-listar-horario-vago-json');
 insert into SC_SEC_Permissao (id, nome) values (42, '/incluir-agendaForm');
 insert into SC_SEC_Permissao (id, nome) values (43, '/incluir-agendamento');
-insert into SC_SEC_Permissao (id, nome) values (44, '/incluir-atendimento');
+
 insert into SC_SEC_Permissao (id, nome) values (45, '/incluir-consulta-agendamento');
 insert into SC_SEC_Permissao (id, nome) values (46, '/incluir-exame');
-insert into SC_SEC_Permissao (id, nome) values (47, '/incluir-medicamento');
+
 
 
 insert into SC_SEC_Permissao (id, nome) values (50, '/incluir-receita');
@@ -561,12 +572,11 @@ insert into SC_SEC_Permissao (id, nome) values (54, '/listar-agendamento');
 insert into SC_SEC_Permissao (id, nome) values (55, '/listar-all-exame-json');
 
 
-insert into SC_SEC_Permissao (id, nome) values (58, '/listar-atendimento');
+
 insert into SC_SEC_Permissao (id, nome) values (59, '/listar-exame');
 insert into SC_SEC_Permissao (id, nome) values (60, '/listar-exame-json');
 insert into SC_SEC_Permissao (id, nome) values (63, '/listar-horario-vago-json');
-insert into SC_SEC_Permissao (id, nome) values (64, '/listar-medicamento');
-insert into SC_SEC_Permissao (id, nome) values (65, '/listar-medicamento-json');
+
 
 
 insert into SC_SEC_Permissao (id, nome) values (70, '/listar-receita');
@@ -605,13 +615,12 @@ insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (25, 3);
 
 
 -- ----
-insert into SC_SEC_Permissao (id, nome) values (1000, 'PERFIL_ADMIN');
-insert into SC_SEC_Permissao (id, nome) values (1001, 'PERFIL_MEDICO');
-insert into SC_SEC_Permissao (id, nome) values (1002, 'PERFIL_RECEPCIONISTA');
+-- insert into SC_SEC_Permissao (id, nome) values (1000, 'PERFIL_ADMIN');
+-- insert into SC_SEC_Permissao (id, nome) values (1001, 'PERFIL_MEDICO');
+-- insert into SC_SEC_Permissao (id, nome) values (1002, 'PERFIL_RECEPCIONISTA');
 
-insert into SC_SEC_Grupo_Permissoes (grupo_id, permissoes_id) values (0, 1000);
-insert into SC_SEC_Grupo_Permissoes (grupo_id, permissoes_id) values (1, 1001);
-insert into SC_SEC_Grupo_Permissoes (grupo_id, permissoes_id) values (2, 1002);
-
+-- insert into SC_SEC_Grupo_Permissoes (grupo_id, permissoes_id) values (0, 1000);
+-- insert into SC_SEC_Grupo_Permissoes (grupo_id, permissoes_id) values (1, 1001);
+-- insert into SC_SEC_Grupo_Permissoes (grupo_id, permissoes_id) values (2, 1002);
 
 --insert into SC_SEC_Usuario_Grupos (usuario_id, grupos_id) values (20, 2);
