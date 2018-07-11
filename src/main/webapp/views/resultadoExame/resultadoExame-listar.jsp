@@ -34,7 +34,7 @@
                             <tr>
                                 <td>${item.id}</td>
                                 <td>${item.paciente.nome}</td>
-                                <td>${item.resultado}</td>
+                                <td>${item.resultado}</td>  
                                 <td><c:out value="${item.disponibilizadoPaciente ? 'Sim' : 'Não'}" /></td>
                                 <td class="actions text-right">
                                     <div class="btn-group" role="group" aria-label="Basic example">
