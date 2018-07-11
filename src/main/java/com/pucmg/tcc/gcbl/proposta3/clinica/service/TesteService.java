@@ -149,14 +149,12 @@ public class TesteService{
         
         // Usuarios nos grupos:
         // Adicionando os usuarios aos grupos
-        List<Usuario> listaVazia = new ArrayList<Usuario>();
-        
         
         // Preenchendo grupo dos recepcionistas
         List<Grupo> grupos = grupoService.findByNome("RECEPCIONISTAS");
         // Zera o grupo
         for (Grupo grupo : grupos) {
-            grupoService.adicionarUsuario(grupo, listaVazia);
+            grupoService.limparGrupo(grupo);
         }
 
         // Adiciona todos os recepcionistas
@@ -167,7 +165,7 @@ public class TesteService{
         grupos = grupoService.findByNome("MEDICOS");
         // Zera o grupo
         for (Grupo grupo : grupos) {
-            grupoService.adicionarUsuario(grupo, listaVazia);
+            grupoService.limparGrupo(grupo);
         }
 
         // Adiciona todos os medicos
