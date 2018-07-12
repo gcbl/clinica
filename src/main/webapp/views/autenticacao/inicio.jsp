@@ -27,9 +27,11 @@
             --%>
             
             <hr>
+            <%--
             ${fn:length(principalLogado.principal.usuario.grupos)} grupos
             <hr>
             ${principalLogado.principal.usuario.grupos}
+             --%>
             <hr>
             ${principalLogado}
             <hr>
