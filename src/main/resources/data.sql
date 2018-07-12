@@ -436,7 +436,6 @@ SELECT ID, CEP, CIDADE, CPF, DT_NASCIMENTO, ENDERECO, BAIRRO, ESTADO, NOME, CONC
 FROM TEMP_PESSOA
 WHERE rownum BETWEEN 1 AND 20;
 
-
 -- INSERE OS MEDICOS COM OS MESMOS IDS - JOINED TABLE COM USUARIO
 INSERT INTO SC_MEDICO (ID, CRM , COR_CALENDARIO)
 SELECT ID, CONCAT(ID, '00', ID) CRM,
@@ -464,6 +463,10 @@ WHERE rownum BETWEEN 21 AND 25;
 --SELECT ID, CEP, CIDADE, CPF, DT_NASCIMENTO, ENDERECO, BAIRRO, ESTADO, NOME, CONCAT(ID, '11', ID) MATRICULA
 --FROM TEMP_PESSOA
 --WHERE rownum BETWEEN 21 AND 25;
+
+-- Atualiza todas as senhas para "senha"
+-- UPDATE SC_SEC_USUARIO SET SENHA = '$2a$10$ytQWDIUvR3HCQh5jwqO7xuF0tmv23qnHZ/4u0.UfRV/L1c2w7qrHq';
+
 
 -- INSERT 100 PACIENTES
 DELETE FROM SC_PACIENTE;
@@ -566,24 +569,23 @@ insert into SC_SEC_Permissao (id, nome) values (38, '/exibir-calendario-vagas-ag
 
 -- --------------
 -- Restante
-/*
-insert into SC_SEC_Permissao (id, nome) values (11, '/');
-insert into SC_SEC_Permissao (id, nome) values (12, '/antigo/**');
-insert into SC_SEC_Permissao (id, nome) values (14, '/criar-agenda-agendamento');
-insert into SC_SEC_Permissao (id, nome) values (15, '/desmarcar-horario-ajax-json');
-insert into SC_SEC_Permissao (id, nome) values (40, '/fullcalendar-listar-horario-ocupado-json');
-insert into SC_SEC_Permissao (id, nome) values (41, '/fullcalendar-listar-horario-vago-json');
-insert into SC_SEC_Permissao (id, nome) values (45, '/incluir-consulta-agendamento');
-insert into SC_SEC_Permissao (id, nome) values (63, '/listar-horario-vago-json');
-insert into SC_SEC_Permissao (id, nome) values (74, '/login');
-insert into SC_SEC_Permissao (id, nome) values (75, '/loginErrado');
-insert into SC_SEC_Permissao (id, nome) values (76, '/marcar-horario-ajax-json');
-insert into SC_SEC_Permissao (id, nome) values (78, '/privado/**');
-insert into SC_SEC_Permissao (id, nome) values (79, '/privado/api/**');
-insert into SC_SEC_Permissao (id, nome) values (80, '/privado/home');
-insert into SC_SEC_Permissao (id, nome) values (81, '/privado/inicio');
-insert into SC_SEC_Permissao (id, nome) values (82, '/registration');
-*/
+-- insert into SC_SEC_Permissao (id, nome) values (11, '/');
+-- insert into SC_SEC_Permissao (id, nome) values (12, '/antigo/**');
+-- insert into SC_SEC_Permissao (id, nome) values (14, '/criar-agenda-agendamento');
+-- insert into SC_SEC_Permissao (id, nome) values (15, '/desmarcar-horario-ajax-json');
+-- insert into SC_SEC_Permissao (id, nome) values (40, '/fullcalendar-listar-horario-ocupado-json');
+-- insert into SC_SEC_Permissao (id, nome) values (41, '/fullcalendar-listar-horario-vago-json');
+-- insert into SC_SEC_Permissao (id, nome) values (45, '/incluir-consulta-agendamento');
+-- insert into SC_SEC_Permissao (id, nome) values (63, '/listar-horario-vago-json');
+-- insert into SC_SEC_Permissao (id, nome) values (74, '/login');
+-- insert into SC_SEC_Permissao (id, nome) values (75, '/loginErrado');
+-- insert into SC_SEC_Permissao (id, nome) values (76, '/marcar-horario-ajax-json');
+-- insert into SC_SEC_Permissao (id, nome) values (78, '/privado/**');
+-- insert into SC_SEC_Permissao (id, nome) values (79, '/privado/api/**');
+-- insert into SC_SEC_Permissao (id, nome) values (80, '/privado/home');
+-- insert into SC_SEC_Permissao (id, nome) values (81, '/privado/inicio');
+-- insert into SC_SEC_Permissao (id, nome) values (82, '/registration');
+ 
 -- ---------------
 
 
