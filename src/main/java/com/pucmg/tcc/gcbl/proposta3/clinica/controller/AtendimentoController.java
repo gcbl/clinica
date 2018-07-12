@@ -61,7 +61,7 @@ public class AtendimentoController extends ModelController {
         return getViewPath() + "incluirForm";
     }
 
-    @RequestMapping(value={"/atender"}, method = RequestMethod.GET)
+    @RequestMapping(value={"/atender-paciente"}, method = RequestMethod.GET)
     public String atenderForm(@RequestParam("idAgendamento") String idAgendamento, Model model, Locale locale){
         
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
