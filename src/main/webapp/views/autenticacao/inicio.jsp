@@ -22,13 +22,12 @@
 
             <br><br><br>
             
+            <%--
             <p>O que você gostaria de fazer?</p>
             
-            
-
             ${fn:length(usuarioLogado.principal.usuario.grupos)} grupos
             ${usuarioLogado}
-
+            --%>
 
             <hr>
         </div>
