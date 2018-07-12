@@ -554,14 +554,19 @@ insert into SC_SEC_Permissao (id, nome) values (26, '/excluir-agendamento');
 insert into SC_SEC_Permissao (id, nome) values (77, '/pesquisar-agendamento');
 insert into SC_SEC_Permissao (id, nome) values (42, '/incluir-agendaForm');
 
-insert into SC_SEC_Permissao (id, nome) values (38, '/exibir-calendario-vagas-agendamento');
-insert into SC_SEC_Permissao (id, nome) values (39, '/exibir-calendario-vagas-agendamento-medico');
 
+insert into SC_SEC_Permissao (id, nome) values (36, '/exibir-calendario-agendamento');
+-- insert into SC_SEC_Permissao (id, nome) values (37, '/exibir-calendario-agendamento-medico');
+
+insert into SC_SEC_Permissao (id, nome) values (38, '/exibir-calendario-vagas-agendamento');
+--insert into SC_SEC_Permissao (id, nome) values (39, '/exibir-calendario-vagas-agendamento-medico');
+
+insert into SC_SEC_Permissao (id, nome) values (13, '/atender-paciente');
 
 -- --------------
 insert into SC_SEC_Permissao (id, nome) values (11, '/');
 insert into SC_SEC_Permissao (id, nome) values (12, '/antigo/**');
-insert into SC_SEC_Permissao (id, nome) values (13, '/atender');
+
 insert into SC_SEC_Permissao (id, nome) values (14, '/criar-agenda-agendamento');
 insert into SC_SEC_Permissao (id, nome) values (15, '/desmarcar-horario-ajax-json');
 
@@ -570,8 +575,7 @@ insert into SC_SEC_Permissao (id, nome) values (15, '/desmarcar-horario-ajax-jso
 
 
 
-insert into SC_SEC_Permissao (id, nome) values (36, '/exibir-calendario-agendamento');
-insert into SC_SEC_Permissao (id, nome) values (37, '/exibir-calendario-agendamento-medico');
+
 insert into SC_SEC_Permissao (id, nome) values (40, '/fullcalendar-listar-horario-ocupado-json');
 insert into SC_SEC_Permissao (id, nome) values (41, '/fullcalendar-listar-horario-vago-json');
 
