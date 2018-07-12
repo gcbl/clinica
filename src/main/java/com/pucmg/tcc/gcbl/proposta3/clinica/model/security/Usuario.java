@@ -11,8 +11,10 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Pessoa;
@@ -28,7 +30,7 @@ import lombok.EqualsAndHashCode;
 	    strategy = InheritanceType.JOINED
 )
 public abstract class Usuario extends Pessoa implements Serializable {
-
+    
     private static final long serialVersionUID = 1L;
     
     @Column(name = "LOGIN", nullable=false, unique=true)
@@ -41,7 +43,7 @@ public abstract class Usuario extends Pessoa implements Serializable {
     private String senha;
 
     @Column(name = "PRIMEIRO_LOGIN")
-    private boolean primeiroLogin;
+    private Boolean primeiroLogin;
     
     @ManyToMany(mappedBy = "usuarios", cascade={CascadeType.MERGE}, fetch=FetchType.LAZY)
     @JsonIgnore
@@ -60,5 +62,4 @@ public abstract class Usuario extends Pessoa implements Serializable {
 //		return super.toString().replace( this.getSenha(), "[PROTEGIDO]");
 //	}
     
-
 }
