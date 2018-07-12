@@ -8,8 +8,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.stat.Statistics;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.security.Usuario;
 import com.pucmg.tcc.gcbl.proposta3.clinica.util.Constantes;
 
 public abstract class BaseController {
@@ -23,14 +26,22 @@ public abstract class BaseController {
     MessageSource messageSource;
     
     //-------------------
+    private static final String PRINCIPAL_LOGADO = "principalLogado";
     private static final String USUARIO_LOGADO = "usuarioLogado";
 
-    public Principal getUsuarioLogado(HttpServletRequest request){
-        return (Principal) request.getSession().getAttribute(USUARIO_LOGADO);
+    public Usuario getUsuarioLogado(){
+        return null;
+    }    
+    
+    public Principal getPrincipalLogado(HttpServletRequest request){
+        return (Principal) request.getSession().getAttribute(PRINCIPAL_LOGADO);
     }
 
-    public void setUsuarioLogado(HttpServletRequest request, Principal usuarioLogado){
-        request.getSession().setAttribute(USUARIO_LOGADO, usuarioLogado);
+    public void setPrincipalLogado(HttpServletRequest request){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        
+        request.getSession().setAttribute(PRINCIPAL_LOGADO, auth);
+        request.getSession().setAttribute(USUARIO_LOGADO, auth.getPrincipal());
     }
     //-------------------
     
