@@ -26,9 +26,7 @@ import com.pucmg.tcc.gcbl.proposta3.clinica.model.Receita;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Recepcionista;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.ResultadoExame;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.SolicitacaoExame;
-import com.pucmg.tcc.gcbl.proposta3.clinica.model.User;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.security.Grupo;
-import com.pucmg.tcc.gcbl.proposta3.clinica.model.security.Usuario;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.AtendimentoRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.ExameRepository;
 import com.pucmg.tcc.gcbl.proposta3.clinica.repository.MedicoRepository;
@@ -92,12 +90,6 @@ public class TesteService{
     
     
     public void popula(){
-        User userForm = new User();
-        userForm.setEmail("teste@teste.com");
-        userForm.setPassword("teste");
-        userForm.setLastName("last name");
-        userForm.setName("name");
-        //userService.saveUser(userForm);
         
 //        PessoaBDApague p = new PessoaBDApague();
 //        p.setNome("NOME");
@@ -154,7 +146,8 @@ public class TesteService{
         List<Grupo> grupos = grupoService.findByNome("RECEPCIONISTAS");
         // Zera o grupo
         for (Grupo grupo : grupos) {
-            grupoService.limparGrupo(grupo);
+            grupoService.removerUsuarios(grupo);
+            // grupoService.limparGrupo(grupo);
         }
 
         // Adiciona todos os recepcionistas
@@ -165,7 +158,8 @@ public class TesteService{
         grupos = grupoService.findByNome("MEDICOS");
         // Zera o grupo
         for (Grupo grupo : grupos) {
-            grupoService.limparGrupo(grupo);
+            grupoService.removerUsuarios(grupo);
+            //grupoService.limparGrupo(grupo);
         }
 
         // Adiciona todos os medicos
