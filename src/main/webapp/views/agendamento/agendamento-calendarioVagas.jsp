@@ -4,13 +4,13 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="tags"%>
-
 
 <tiles:insertDefinition name="defaultTemplate">
     <tiles:putAttribute name="body">
  
-<sec:authorize access="hasRole('ROLE_ATENDER_PACIENTE'  )" var="podeAtenderPaciente"  /> 
+        <sec:authorize access="hasRole('ROLE_INCLUIR_ATENDIMENTO'  )" var="podeAtenderPaciente"  /> 
  
  
         <div class="body">
