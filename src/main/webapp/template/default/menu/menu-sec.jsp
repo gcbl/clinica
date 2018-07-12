@@ -91,9 +91,9 @@
 <sec:authorize access="hasRole('ROLE_PESQUISAR_AGENDAMENTO' )" var="pesquisarAgendamento" />
 <sec:authorize access="hasRole('ROLE_INCLUIR_AGENDAFORM' )" var="incluirAgendaForm" />
 
+
+<sec:authorize access="hasRole('ROLE_EXIBIR_CALENDARIO_AGENDAMENTO' )" var="exibirCalendarioAgendamento" />
 <sec:authorize access="hasRole('ROLE_EXIBIR_CALENDARIO_VAGAS_AGENDAMENTO' )" var="exibirCalendarioVagasAgendamento" />
-<sec:authorize access="hasRole('ROLE_EXIBIR_CALENDARIO_VAGAS_AGENDAMENTO_MEDICO' )" var="exibirCalendarioVagasAgendamentoMedico" />
-<c:set var="funcoesCalendarioVagasAgendamento" value="${exibirCalendarioVagasAgendamento || exibirCalendarioVagasAgendamentoMedico}"/>
 
 
 <%-- ################################################################################################## --%>
@@ -144,7 +144,7 @@
                 <i class="far fa-calendar-alt"></i> Agenda
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-            <c:if test = "${funcoesCalendarioVagasAgendamento}">
+            <c:if test = "${exibirCalendarioVagasAgendamento}">
                 <a class="dropdown-item" href="exibir-calendario-vagas-agendamento">Exibir Calendário</a>
             </c:if>
             <c:if test = "${incluirAgendamento}">
@@ -162,8 +162,15 @@
                 <a class="dropdown-item" href="listar-agendamento">Listar Agendamentos</a>
             </c:if>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="exibir-calendario-agendamento"><i class="fas fa-flask"></i> Exibir Marcações Calendario</a>
-            <a class="dropdown-item" href="exibir-calendario-vagas-agendamento"><i class="fas fa-flask"></i> Exibir Vagas Calendario</a>
+            
+            <c:if test = "${exibirCalendarioAgendamento}">
+                <a class="dropdown-item" href="exibir-calendario-agendamento"><i class="fas fa-flask"></i> Exibir Marcações Calendário</a>
+            </c:if>
+            <%--
+            <c:if test = "${exibirCalendarioVagasAgendamento}">
+                <a class="dropdown-item" href="exibir-calendario-vagas-agendamento"><i class="fas fa-flask"></i> Exibir Vagas Calendário</a>
+            </c:if>
+            --%>
             <a class="dropdown-item" href="incluir-consulta-agendamento"><i class="fas fa-flask"></i> Marcar Consulta</a>
             </div>
         </li>        
