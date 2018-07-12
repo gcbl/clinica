@@ -1,6 +1,6 @@
 insert into SC_SEC_Permissao (id, nome) values (11, '/');
 insert into SC_SEC_Permissao (id, nome) values (12, '/antigo/**');
-insert into SC_SEC_Permissao (id, nome) values (13, '/atender');
+insert into SC_SEC_Permissao (id, nome) values (13, '/atender-paciente');
 insert into SC_SEC_Permissao (id, nome) values (14, '/criar-agenda-agendamento');
 insert into SC_SEC_Permissao (id, nome) values (15, '/desmarcar-horario-ajax-json');
 insert into SC_SEC_Permissao (id, nome) values (16, '/editar-agendamento');
