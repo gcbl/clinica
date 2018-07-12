@@ -1,7 +1,5 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.controller;
 
-import java.security.Principal;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,15 +26,15 @@ public class HomeController extends BaseController{
     }
 
     @GetMapping("/privado/inicio")
-    public String inicio(HttpServletRequest request, Principal principal) { // login com sucesso!
-        setUsuarioLogado(request, principal);
+    public String inicio(HttpServletRequest request) { // login com sucesso!
+        setPrincipalLogado(request);
         return "views/autenticacao/inicio";
     }
     
     @GetMapping("/privado/home")
-    public String home(HttpServletRequest request, Principal principal) {
+    public String home(HttpServletRequest request) {
         testeService.popula();
-        return inicio(request, principal);
+        return inicio(request);
     }  
     
     @GetMapping("/acesso-negado")
