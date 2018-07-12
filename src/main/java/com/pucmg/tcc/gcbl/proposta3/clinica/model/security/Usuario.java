@@ -39,7 +39,9 @@ public abstract class Usuario extends Pessoa implements Serializable {
     @NotEmpty(message = "*Por favor informe a senha")
     @JsonIgnore
     private String senha;
-//    private boolean ativo;
+
+    @Column(name = "PRIMEIRO_LOGIN")
+    private boolean primeiroLogin;
     
     @ManyToMany(mappedBy = "usuarios", cascade={CascadeType.MERGE}, fetch=FetchType.LAZY)
     @JsonIgnore
