@@ -107,20 +107,27 @@ public class SecurityConfigurationNovo extends WebSecurityConfigurerAdapter {
                 
                 .antMatchers("/privado/pesquisar-agendamento").hasRole("PESQUISAR_AGENDAMENTO")
                 .antMatchers("/privado/incluir-agendaForm").hasRole("INCLUIR_AGENDAFORM")
+
+                .antMatchers("/privado/exibir-calendario-agendamento").hasRole("EXIBIR_CALENDARIO_AGENDAMENTO") // mesma role
+                .antMatchers("/privado/exibir-calendario-agendamento-medico").hasRole("EXIBIR_CALENDARIO_AGENDAMENTO")
+                //.antMatchers("/privado/exibir-calendario-agendamento-medico").hasRole("EXIBIR_CALENDARIO_AGENDAMENTO_MEDICO")
                 
-                .antMatchers("/privado/exibir-calendario-vagas-agendamento").hasRole("EXIBIR_CALENDARIO_VAGAS_AGENDAMENTO")
-                .antMatchers("/privado/exibir-calendario-vagas-agendamento-medico").hasRole("EXIBIR_CALENDARIO_VAGAS_AGENDAMENTO_MEDICO")
+                
+                .antMatchers("/privado/exibir-calendario-vagas-agendamento").hasRole("EXIBIR_CALENDARIO_VAGAS_AGENDAMENTO") // mesma role
+                .antMatchers("/privado/exibir-calendario-vagas-agendamento-medico").hasRole("EXIBIR_CALENDARIO_VAGAS_AGENDAMENTO")
+                //.antMatchers("/privado/exibir-calendario-vagas-agendamento-medico").hasRole("EXIBIR_CALENDARIO_VAGAS_AGENDAMENTO_MEDICO")
+                
+                .antMatchers("/privado/atender-paciente").hasRole("ATENDER_PACIENTE")
                 
                 //--------------
-                .antMatchers("/privado/atender").hasRole("ATENDER")
+                
                 .antMatchers("/privado/criar-agenda-agendamento").hasRole("CRIAR_AGENDA_AGENDAMENTO")
                 .antMatchers("/privado/desmarcar-horario-ajax-json").hasRole("DESMARCAR_HORARIO_AJAX_JSON")
                 
+
                 
                 
                 
-                .antMatchers("/privado/exibir-calendario-agendamento").hasRole("EXIBIR_CALENDARIO_AGENDAMENTO")
-                .antMatchers("/privado/exibir-calendario-agendamento-medico").hasRole("EXIBIR_CALENDARIO_AGENDAMENTO_MEDICO")
                 
                 .antMatchers("/privado/fullcalendar-listar-horario-ocupado-json").hasRole("FULLCALENDAR_LISTAR_HORARIO_OCUPADO_JSON")
                 .antMatchers("/privado/fullcalendar-listar-horario-vago-json").hasRole("FULLCALENDAR_LISTAR_HORARIO_VAGO_JSON")
