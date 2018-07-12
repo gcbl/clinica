@@ -73,6 +73,8 @@ public class SecurityConfigurationNovo extends WebSecurityConfigurerAdapter {
                 .antMatchers("/privado/editar-medicamento").hasRole("EDITAR_MEDICAMENTO")
                 .antMatchers("/privado/excluir-medicamento").hasRole("EXCLUIR_MEDICAMENTO")
                 
+                //.antMatchers("/privado/atender-paciente").hasRole("ATENDER_PACIENTE")
+                .antMatchers("/privado/atender-paciente").hasRole("INCLUIR_ATENDIMENTO")
                 .antMatchers("/privado/incluir-atendimento").hasRole("INCLUIR_ATENDIMENTO")
                 .antMatchers("/privado/listar-atendimento").hasRole("LISTAR_ATENDIMENTO")
                 .antMatchers("/privado/editar-atendimento").hasRole("EDITAR_ATENDIMENTO")
@@ -117,44 +119,21 @@ public class SecurityConfigurationNovo extends WebSecurityConfigurerAdapter {
                 .antMatchers("/privado/exibir-calendario-vagas-agendamento-medico").hasRole("EXIBIR_CALENDARIO_VAGAS_AGENDAMENTO")
                 //.antMatchers("/privado/exibir-calendario-vagas-agendamento-medico").hasRole("EXIBIR_CALENDARIO_VAGAS_AGENDAMENTO_MEDICO")
                 
-                .antMatchers("/privado/atender-paciente").hasRole("ATENDER_PACIENTE")
+                
                 
                 //--------------
-                
+                /*
                 .antMatchers("/privado/criar-agenda-agendamento").hasRole("CRIAR_AGENDA_AGENDAMENTO")
                 .antMatchers("/privado/desmarcar-horario-ajax-json").hasRole("DESMARCAR_HORARIO_AJAX_JSON")
-                
-
-                
-                
-                
-                
                 .antMatchers("/privado/fullcalendar-listar-horario-ocupado-json").hasRole("FULLCALENDAR_LISTAR_HORARIO_OCUPADO_JSON")
                 .antMatchers("/privado/fullcalendar-listar-horario-vago-json").hasRole("FULLCALENDAR_LISTAR_HORARIO_VAGO_JSON")
-                
-                
-                
                 .antMatchers("/privado/incluir-consulta-agendamento").hasRole("INCLUIR_CONSULTA_AGENDAMENTO")
-                
-                
-                
                 .antMatchers("/privado/listar-horario-vago-json").hasRole("LISTAR_HORARIO_VAGO_JSON")
-                
                 .antMatchers("/privado/listar-medicamento-json").hasRole("LISTAR_MEDICAMENTO_JSON")
-
-
-                
-                
-
-                
-                
                 .antMatchers("/privado/marcar-horario-ajax-json").hasRole("MARCAR_HORARIO_AJAX_JSON")
-                
-                
-
-                
+                */
                 // -- /AUTOMATICA --
-                .antMatchers("/**").hasRole("PERFIL_ADMIN")
+                
                 .anyRequest().denyAll()                
                 // ---###--- FIM DAS PEMISSOES ---###--- 
                 //.anyRequest().authenticated()
