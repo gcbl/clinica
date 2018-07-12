@@ -10,6 +10,7 @@
 <tiles:insertDefinition name="defaultTemplate">
     <tiles:putAttribute name="body">
  
+<sec:authorize access="hasRole('ROLE_ATENDER_PACIENTE'  )" var="podeAtenderPaciente"  /> 
  
  
         <div class="body">
@@ -124,7 +125,10 @@
              <div class="text-center">
                  <button type="button" class="btn btn-primary" id="btnMarcarHorarioModal"><i class="far fa-calendar-check"></i> Marcar horário</button>
                  <button type="button" class="btn btn-warning" id="btnDesmarcarHorarioModal"><i class="far fa-calendar-times"></i> Desmarcar horário</button>
-                 <button type="button" class="btn btn-success" id="btnAtenderModal"><i class="fas fa-user-md"></i> Atender</button>
+                 <c:if test = "${podeAtenderPaciente}">
+                    <button type="button" class="btn btn-success" id="btnAtenderModal"><i class="fas fa-user-md"></i> Atender</button>
+                 </c:if>
+                 
              </div>
          </div>
          <div class="modal-footer">
@@ -477,7 +481,7 @@ $(document).ready(function() {
     }    
     
     $( "#btnAtenderModal" ).click(function() {
-        window.location.replace("atender?idAgendamento=" + idAgendamento);
+        window.location.replace("atender-paciente?idAgendamento=" + idAgendamento);
     });
 	
 </script> 
