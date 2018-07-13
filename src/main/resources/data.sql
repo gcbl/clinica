@@ -11,10 +11,6 @@ DELETE FROM SC_PACIENTE;
 DELETE FROM SC_MEDICO;
 DELETE FROM SC_RECEPCIONISTA;
 
-DELETE FROM USER_ROLE;
-DELETE FROM ROLE;
-DELETE FROM USER;
-
 --DELETE FROM SC_SEC_USUARIO_GRUPOS;
 DELETE FROM SC_SEC_USUARIO_GRUPO;
 --DELETE FROM SC_SEC_USUARIO_PERMISSOES;
@@ -22,15 +18,6 @@ DELETE FROM SC_SEC_GRUPO_PERMISSOES;
 DELETE FROM SC_SEC_GRUPO;
 DELETE FROM SC_SEC_PERMISSAO;
 DELETE FROM SC_SEC_USUARIO;
-
-
--- USUARIOS
-INSERT INTO ROLE VALUES (1, 'ADMIN');
-
--- OPCIONAL
-INSERT INTO USER VALUES (1, 1, 'teste@teste.com', 'last name', 'name', '$2a$10$IzpvPiq.R5pAMhPbA430yekFGV18tOVw9YLAbhJuqf5.MbWjvj6cm');
-INSERT INTO USER_ROLE VALUES (1, 1);
-
 
 
 
@@ -457,12 +444,17 @@ SELECT ID, CONCAT(ID, '99', ID) MATRICULA
 FROM TEMP_PESSOA
 WHERE rownum BETWEEN 21 AND 25;
 
--- INSERT 5 RECEPCIONISTAS
---DELETE FROM SC_RECEPCIONISTA ;
---INSERT INTO SC_RECEPCIONISTA  (ID, CEP, CIDADE, CPF, DT_NASCIMENTO, ENDERECO, BAIRRO, ESTADO, NOME, MATRICULA)
---SELECT ID, CEP, CIDADE, CPF, DT_NASCIMENTO, ENDERECO, BAIRRO, ESTADO, NOME, CONCAT(ID, '11', ID) MATRICULA
---FROM TEMP_PESSOA
---WHERE rownum BETWEEN 21 AND 25;
+-- INSERE O USUARIO 100 COMO RECEPCIONISTA, ESTE VAI PRA O GRUPO DE TESTES
+INSERT INTO SC_SEC_USUARIO (ID, CEP, CIDADE, CPF, DT_NASCIMENTO, ENDERECO, BAIRRO, ESTADO, NOME, LOGIN, SENHA)
+SELECT ID, CEP, CIDADE, CPF, DT_NASCIMENTO, ENDERECO, BAIRRO, ESTADO, NOME, CONCAT(ID, '') LOGIN, CONCAT(ID, '') SENHA
+FROM TEMP_PESSOA
+WHERE rownum = 100;
+
+INSERT INTO SC_RECEPCIONISTA (ID, MATRICULA)
+SELECT ID, CONCAT(ID, '99', ID) MATRICULA
+FROM TEMP_PESSOA
+WHERE rownum = 100;
+
 
 -- Atualiza todas as senhas para "senha"
 -- UPDATE SC_SEC_USUARIO SET SENHA = '$2a$10$ytQWDIUvR3HCQh5jwqO7xuF0tmv23qnHZ/4u0.UfRV/L1c2w7qrHq';
@@ -478,17 +470,49 @@ WHERE rownum BETWEEN 101 AND 200;
 DELETE FROM TEMP_PESSOA;
 DROP TABLE TEMP_PESSOA;
 
--- SECURITY
--- insert into SC_SEC_Usuario (id, nome, login, senha, ativo) values (0, 'admin', 'admin', 'admin', true);
--- insert into SC_SEC_Usuario (id, nome, login, senha, ativo) values (1, 'med', 'med', 'med', true);
--- insert into SC_SEC_Usuario (id, nome, login, senha, ativo) values (2, 'rec', 'rec', 'rec', true);
--- insert into SC_SEC_Usuario (id, nome, login, senha, ativo) values (3, 'Alexandre Afonso', 'teste@teste.com', '$2a$10$IzpvPiq.R5pAMhPbA430yekFGV18tOVw9YLAbhJuqf5.MbWjvj6cm', true);
 
 -- GRUPOS
 insert into SC_SEC_Grupo (id, nome, descricao) values (0, 'ADMINISTRADORES', 'Grupo de Administradores do Sistema');
 insert into SC_SEC_Grupo (id, nome, descricao) values (1, 'MEDICOS', 'Grupo de Médicos');
 insert into SC_SEC_Grupo (id, nome, descricao) values (2, 'RECEPCIONISTAS', 'Grupo de Recepcionista');
 insert into SC_SEC_Grupo (id, nome, descricao) values (3, 'TESTES', 'Grupo de Teste');
+
+-- ADICIONANDO O USUARIO 1 e 21 ao grupo de administradores
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (1, 0);
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (21, 0);
+
+-- ADICIONANDO TODOS OS MEDICOS ao grupo de médicos
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values ( 1, 1);
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values ( 2, 1);
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values ( 3, 1);
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values ( 4, 1);
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values ( 5, 1);
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values ( 6, 1);
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values ( 7, 1);
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values ( 8, 1);
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values ( 9, 1);
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (10, 1);
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (11, 1);
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (12, 1);
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (13, 1);
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (14, 1);
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (15, 1);
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (16, 1);
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (17, 1);
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (18, 1);
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (19, 1);
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (20, 1);
+
+--  ADICIONANDO TODOS OS RECEPCIONISTAS AO GRUPO DE RECEPCIONISTAS
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (21, 2);
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (22, 2);
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (23, 2);
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (24, 2);
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (25, 2);
+
+-- Adicionando o usuario 25 ao grupo de testes
+insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (100, 3);
+
 
 -- PERMISSOES ROLES/URLS
 insert into SC_SEC_Permissao (id, nome) values (48, '/incluir-medico');
@@ -613,10 +637,6 @@ DELETE FROM SC_SEC_GRUPO_PERMISSOES WHERE GRUPO_ID = 2 AND PERMISSOES_ID IN (SEL
 
 
 
--- ADICIONANDO O USUARIO 1 no grupo de administradores
-insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (1, 0);
-insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (21, 0);
-insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (25, 3);
 
 
 -- ----
