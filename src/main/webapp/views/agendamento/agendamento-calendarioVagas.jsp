@@ -10,8 +10,11 @@
 <tiles:insertDefinition name="defaultTemplate">
     <tiles:putAttribute name="body">
  
-        <sec:authorize access="hasRole('ROLE_INCLUIR_ATENDIMENTO'  )" var="podeAtenderPaciente"  /> 
+        <sec:authorize access="hasRole('ROLE_INCLUIR_ATENDIMENTO'  )" var="roleAtenderPaciente"  /> 
  
+        <%-- So pode atender paciente se tem a ROLE e se é a mesma pessoa logada --%>
+        <c:set var="podeAtenderPaciente"  scope="session" value="${roleAtenderPaciente && (medicoLogado eq medico)}"/>
+        
  
         <div class="body">
 
