@@ -134,6 +134,12 @@
 	                },
 	        }
 	    });
+
+	    // TODO: Fazer esta validacao no servidor
+	    // Se ja vem com medico preenchido desabilita
+	    if($('#medico').val().length > 0){
+	    	$("#medico").prop("disabled", true);
+	    }
 	 
 	 
 });
