@@ -17,8 +17,8 @@
         
         <div class="body">
         
-            <c:if test = "${podeAtenderPaciente}">
-      
+           <c:if test = "${podeAtenderPaciente || (empty ATENDER)}">
+                
                 <form:form action="${acao}-${MODEL}" class="form-horizontal" modelAttribute="${MODEL}" id="${acao}-${MODEL}">
                     <fieldset>
                     
@@ -83,10 +83,12 @@
                     </fieldset>
                 </form:form>
 
+
             </c:if>
-            <c:if test = "${!podeAtenderPaciente}">
+            <c:if test = "${(!podeAtenderPaciente) && (not empty ATENDER)}">
                 Este atendimento está marcado para <b>${atendimento.medico.nome}</b> e não para você, <b>${medicoLogado.nome}</b>.
             </c:if>
+
             
             
             
@@ -161,15 +163,15 @@
 	// Desabilita os selects se for um atendimento
 	$("#paciente").prop("disabled", true);
     $("#medico").prop("disabled", true);
- 
- 	// Habilita novamente ao submeter
-    $("#${acao}-${MODEL}").submit(function() {
-	    $("#paciente").prop("disabled", false);
-    	$("#medico").prop("disabled", false);
-    });
 </c:if>
- 
- </script>
+
+// Habilita novamente ao submeter
+$("#${acao}-${MODEL}").submit(function() {
+    $("#paciente").prop("disabled", false);
+    $("#medico").prop("disabled", false);
+});
+
+</script>
  
  
     </tiles:putAttribute>
