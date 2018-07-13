@@ -12,9 +12,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.security.Usuario;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.security.UsuarioSistema;
 import com.pucmg.tcc.gcbl.proposta3.clinica.util.Constantes;
+
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Recepcionista;
 
 public abstract class BaseController {
 
@@ -27,29 +30,65 @@ public abstract class BaseController {
     MessageSource messageSource;
     
     //-------------------
-    private static final String PRINCIPAL_LOGADO = "principalLogado";
     private static final String USUARIO_LOGADO = "usuarioLogado";
-
-    public Usuario getUsuarioLogado(){
-        return null;
-    }    
+    private static final String MEDICO_LOGADO = "medicoLogado";
+    private static final String RECEPCIONISTA_LOGADO = "recepcionistaLogado";
+    private static final String AUTHENTICATION = "authentication";
     
-    public Principal getPrincipalLogado(HttpServletRequest request){
-        return (Principal) request.getSession().getAttribute(PRINCIPAL_LOGADO);
+    public void configuracoesIniciais(HttpServletRequest request){
+    	// Seta na sessao para chamar da view
+    	Usuario usuarioLogado = getUsuarioLogado();
+    	Medico medicoLogado = getMedicoLogado();
+    	Recepcionista recepcionistaLogado = getRecepcionistaLogado();
+    	Authentication authentication = getAuthentication();
+    	
+        request.getSession().setAttribute(USUARIO_LOGADO, usuarioLogado);
+        request.getSession().setAttribute(MEDICO_LOGADO, medicoLogado);
+        request.getSession().setAttribute(RECEPCIONISTA_LOGADO, recepcionistaLogado);
+        request.getSession().setAttribute(AUTHENTICATION, authentication);
+    }
+    
+    public Medico getMedicoLogado(){
+    	Medico medicoLogado = null;
+    	Usuario usuarioLogado = getUsuarioLogado();
+    	
+    	// Poderia usar instanceof mas é meio tosco [e esse try/catch tambem é =P]
+    	try {
+    		medicoLogado = (Medico)usuarioLogado;
+    	}catch(Throwable t) {		
+    	}
+    	
+    	return medicoLogado;
     }
 
-    public void setPrincipalLogado(HttpServletRequest request){
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        
-        request.getSession().setAttribute(PRINCIPAL_LOGADO, auth);
-        request.getSession().setAttribute(USUARIO_LOGADO, ((UsuarioSistema)(auth.getPrincipal())).getUsuario() );
+    public Recepcionista getRecepcionistaLogado() {
+    	Recepcionista recepcionistaLogado = null;
+        Usuario usuarioLogado = getUsuarioLogado();
+    	
+        // instanceof é meio tosco mas o prazo é curto
+    	if(usuarioLogado instanceof Recepcionista) {
+    		recepcionistaLogado = (Recepcionista) usuarioLogado;
+    	}
+    	
+    	return recepcionistaLogado;
     }
+    
+    public Usuario getUsuarioLogado(){
+        Authentication auth = getAuthentication();
+        UsuarioSistema usuarioSistema = (UsuarioSistema)auth.getPrincipal();
+        return usuarioSistema.getUsuario();
+    }
+
+    public Authentication getAuthentication(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return auth;
+    }
+
     //-------------------
     
     public String getVersaoSistema(HttpServletRequest request){
         return Constantes.VERSAO_DO_SISTEMA;
     }
-    
 
     public void adicionarAlertaPrimary(Model model, String mensagem){
         model.addAttribute(Constantes.ALERTA_PRIMARY , mensagem);
