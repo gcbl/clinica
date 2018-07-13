@@ -4,16 +4,21 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="tags"%>
-
-
-
 
 <tiles:insertDefinition name="defaultTemplate">
     <tiles:putAttribute name="body">
+    
+        <sec:authorize access="hasRole('ROLE_INCLUIR_ATENDIMENTO'  )" var="roleAtenderPaciente"  /> 
  
+        <%-- So pode atender paciente se tem a ROLE e se é a mesma pessoa logada --%>
+        <c:set var="podeAtenderPaciente"  scope="session" value="${roleAtenderPaciente && (medicoLogado eq atendimento.medico)}"/>    
+        
         <div class="body">
-
+        
+            <c:if test = "${podeAtenderPaciente}">
+      
                 <form:form action="${acao}-${MODEL}" class="form-horizontal" modelAttribute="${MODEL}" id="${acao}-${MODEL}">
                     <fieldset>
                     
@@ -77,6 +82,14 @@
                     
                     </fieldset>
                 </form:form>
+
+            </c:if>
+            <c:if test = "${!podeAtenderPaciente}">
+                Este atendimento está marcado para <b>${atendimento.medico.nome}</b> e não para você, <b>${medicoLogado.nome}</b>.
+            </c:if>
+            
+            
+            
             
             <hr>
            
