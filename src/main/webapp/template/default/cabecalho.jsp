@@ -13,4 +13,4 @@
 <%-- -- ALERTA --  --%>
 
 
-   <div class="ribbon"><span>${usuarioLogado.tipo}</span></div>
+<div class="ribbon ribbon-${usuarioLogado.tipo}"><span>${usuarioLogado.tipo}</span></div>
