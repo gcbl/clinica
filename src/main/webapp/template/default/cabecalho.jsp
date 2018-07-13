@@ -11,3 +11,6 @@
 <%-- -- ALERTA --  --%> 
 <c:import url="../alerta.jsp"/>
 <%-- -- ALERTA --  --%>
+
+
+   <div class="ribbon"><span>${usuarioLogado.tipo}</span></div>
