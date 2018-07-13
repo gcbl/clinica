@@ -13,10 +13,10 @@
  
         <div class="body">
             <br>
-            <h1 class="animated fadeInLeft">Bem vindo ${principalLogado.principal.usuario.primeiroNome}!</h1>
+            <h1 class="animated fadeInLeft">Bem vindo ${usuarioLogado.primeiroNome}!</h1>
             <br>
 
-            <c:if test="${empty principalLogado.principal.usuario.grupos}">
+            <c:if test="${empty usuarioLogado.grupos}">
                 <h4>Detectamos que você não foi incluído em nenhum grupo de trabalho e desta forma você não conseguirá utilizar o sistema.<br>Entre em contato com o administrador do sistema.</h3>
             </c:if>
 
@@ -33,11 +33,13 @@
             ${principalLogado.principal.usuario.grupos}
              --%>
             <hr>
-            ${principalLogado}
+            ${authentication}
             <hr>
-            ${usuariolLogado}
-
-
+            ${usuarioLogado}
+            <hr>
+            <c:if test="${empty usuarioLogado.grupos}">
+            ${usuarioLogado.grupos}
+            </c:if>
             <hr>
         </div>
  
