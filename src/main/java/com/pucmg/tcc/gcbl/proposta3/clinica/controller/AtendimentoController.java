@@ -57,7 +57,11 @@ public class AtendimentoController extends ModelController {
     public String inserirForm(Model model){
         model.addAttribute(Constantes.ACAO, Constantes.ACAO_INCLUIR);
         
-        model.addAttribute(getModelName(), new Atendimento());
+        Atendimento atendimento = new Atendimento();
+        atendimento.setMedico( getMedicoLogado() );
+        
+        
+        model.addAttribute(getModelName(), atendimento);
         return getViewPath() + "incluirForm";
     }
 
