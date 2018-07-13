@@ -29,11 +29,13 @@ public class HomeController extends BaseController{
 
     @GetMapping("/privado/inicio")
     public String inicio(HttpServletRequest request) { // login com sucesso!
-        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString().contains("anonymous")){
-            return login();
+    	Authentication auth = getAuthentication();
+    	
+        if( "anonymousUser".equals( auth.getPrincipal() ) ){
+            return "redirect:login";
         }
         
-        setPrincipalLogado(request);
+        configuracoesIniciais(request);
         return "views/autenticacao/inicio";
     }
     
