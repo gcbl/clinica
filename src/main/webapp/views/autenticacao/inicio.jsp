@@ -31,7 +31,7 @@
             ${fn:length(principalLogado.principal.usuario.grupos)} grupos
             <hr>
             ${principalLogado.principal.usuario.grupos}
-             --%>
+            
             <hr>
             ${authentication}
             <hr>
@@ -41,6 +41,8 @@
             ${usuarioLogado.grupos}
             </c:if>
             <hr>
+            --%>
+            
         </div>
  
  
