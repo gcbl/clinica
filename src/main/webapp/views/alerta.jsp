@@ -41,7 +41,7 @@ http://stackoverflow.com/questions/7676356/can-twitter-bootstrap-alerts-fade-in-
         
             <!-- success -->
             <c:if test="${not empty alertaSuccess}">
-                <div class="animated fadeIn">
+                <div class="animated bounce">
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                       ${alertaSuccess}
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
