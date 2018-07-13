@@ -111,7 +111,7 @@
 	    });	 
 	    
 	    $('#medico').select2({
-	        placeholder: "Selecione o médico solicitante",
+	        placeholder: "Selecione o médico atendente",
 	        language: "pt-BR",        
 	        theme: "bootstrap",
 	        allowClear: true,
