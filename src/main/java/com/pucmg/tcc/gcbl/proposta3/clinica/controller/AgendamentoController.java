@@ -195,6 +195,10 @@ public class AgendamentoController extends ModelController {
     
     @RequestMapping(value={"/exibir-calendario-vagas-agendamento"}, method = RequestMethod.GET)
     public String exibirCalendarioVagas(Model model){
+    	if(getMedicoLogado() != null) {
+    		return exibirCalendarioVagasMedico( getMedicoLogado().getId() , model);
+    	}
+    	
         model.addAttribute("itemList", modelService.getHorarioOcupadoList());
         return getViewPath() + "calendarioVagas";
     }
