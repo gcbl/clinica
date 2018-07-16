@@ -142,8 +142,9 @@ public class SecurityConfigurationNovo extends WebSecurityConfigurerAdapter {
             .formLogin()
                 .loginPage("/login").permitAll()
                 .defaultSuccessUrl("/privado/inicio")
-            .and().
-            logout()
+                .failureUrl("/loginErrado")
+            .and()
+            .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/")
             .and()
