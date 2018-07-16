@@ -4,8 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.pucmg.tcc.gcbl.proposta3.clinica.service.TesteService;
@@ -26,6 +26,12 @@ public class HomeController extends BaseController{
     public String login() {
         return "views/autenticacao/login";
     }
+    
+    @GetMapping("/loginErrado")
+    public String loginErrado(Model model) {
+        model.addAttribute("loginErrado", true);
+        return "views/autenticacao/login";
+    }    
 
     @GetMapping("/privado/inicio")
     public String inicio(HttpServletRequest request) { // login com sucesso!
