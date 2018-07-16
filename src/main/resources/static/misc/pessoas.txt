@@ -1,0 +1,201 @@
+nome,sobrenome,endereco,cpf,dtnasc,numero,bairro,cep,cidade,estado
+Danilo,Cavalcante,"Avenida Espirito Santo",400.682.995-75,03/01/1955,816,"Quadro Conjuntos",58000000,"João Pessoa",PB
+Gabriela,Pilar,"Rua Diamente",375.511.562-08,16/04/1972,817,"Primeiro de Maio",30000000,"Belo Horizonte",MG
+Gabriela,Batista,"Av. Pedro XVX",558.082.135-25,12/07/1961,398,"Santo Antônio",50000000,Recife,PE
+Isaac,Carvalho,"Avenida Sergipe",414.649.073-15,21/04/1993,233,E,23799000,"Rio de Janeiro",RJ
+Júlia,"De Oliveira","Rua Doze",366.017.195-60,14/01/1957,1372,Principal,69000000,Manaus,AM
+Hugo,Morais,"Av. dos Sonhos",638.965.384-03,24/07/1968,1663,H,65099000,"São Luiz",MA
+Gabriel,Garcia,"Rua Primeiro de Maio",880.364.125-43,07/06/1983,1814,Um,79680000,"Água Clara",MS
+Manuela,Souza,"Rua Rubi",960.548.268-16,23/01/1993,207,"Conjuto 1",88100000,Florianópolis,SC
+Duarte,Mesquita,"Rua Avenida Horizonte",547.955.181-73,05/05/2002,245,D,66999000,Belém,PA
+Murilo,Suarez,"Rua A",528.595.239-52,24/05/1958,953,"Santo Antônio",41999000,Salvador,BA
+Joaquim,Menezes,"Rua Doze",743.631.265-07,09/12/1953,53,3,86300000,"Cornélio Procópio",PR
+Bárbara,Menezes,"Rua Onze",067.388.219-56,29/11/1959,321,1,91999000,"Porto Alegre",RS
+Lia,Neves,"Av. Pedro XVX",348.545.661-67,02/10/1992,1905,"Conjunto B",70999000,Brasília,DF
+Paola,Maia,"Rua Um",759.566.813-14,09/11/1968,406,"Conjuto D",50000000,Recife,PE
+Vicente,Sampaio,"Av. João Pombo",213.917.408-90,25/01/1967,331,1,86300000,"Cornélio Procópio",PR
+Ariela,Alves,"Rua Um",136.954.501-00,19/01/1954,1932,Treze,50000000,Recife,PE
+Clarisse,Alencar,"Rua Cinco",528.658.181-10,09/05/1975,574,Diamente,69000000,Manaus,AM
+Bryan,Martinez,"Av. João Pombo",021.929.105-50,25/05/1954,1799,"Siqueira Lima",78480000,Cuiabá,MT
+Eduardo,Xavier,"Avenida São José",825.586.376-14,28/11/1970,1830,"João Lima",69000000,Manaus,AM
+Matheus,Menezes,"Av. Santiago",519.429.396-80,05/10/1998,560,Nove,82999000,Curitiba,PR
+Guilherme,Paris,"Av. João Pombo",180.621.594-26,06/05/1985,1504,Cinco,57099000,Maceió,AL
+Calebe,Amaral,"Avenida Seis",666.930.789-66,20/10/1951,512,"Santo Antônio",70999000,Brasília,DF
+Micaela,Martinele,"Rua 1",325.952.704-43,18/03/1997,1625,Principal,70999000,Brasília,DF
+Ariana,Rocha,"Av. Xv",056.816.892-55,20/09/1966,1251,"Conjuto 3",60000000,Fortaleza,CE
+Leandro,Mello,"Av. dos Sonhos",855.024.733-25,19/07/1989,180,"Conjunto B",86300000,"Cornélio Procópio",PR
+Lorenzo,Sampaio,"Rua João Quinze",240.521.431-83,17/04/1970,1534,"Espirito Santo",50000000,Recife,PE
+Carol,Barcellos,"Rua I",638.109.844-93,11/05/1953,1557,Dez,41999000,Salvador,BA
+Filipe,Leão,"Rua Um",766.493.111-89,12/12/1973,516,Dois,23799000,"Rio de Janeiro",RJ
+Bryan,Martinez,"Av. Três",491.000.881-02,22/09/1952,1979,"Conjunto A",29099000,Vitória,ES
+João,Oliveira,"Av. Pombo Rocha",055.512.751-67,30/08/1955,602,"Conjuto 2",60000000,Fortaleza,CE
+Lis,Paris,"Avenida São José",529.853.808-80,19/12/1959,1547,Um,86300000,"Cornélio Procópio",PR
+Rebeca,Araújo,"Rua 3",228.039.099-01,17/01/1972,1025,"João Rocha",69000000,Manaus,AM
+Vinicios,Soares,"Rua 1",593.278.394-04,28/11/1965,1024,Seis,23799000,"Rio de Janeiro",RJ
+Marina,Lima,"Rua C",641.980.215-62,22/02/1976,1405,Cinco,60000000,Fortaleza,CE
+"Maria Clara",Lacerda,"Rua 2",945.910.517-30,23/01/1981,457,"Conjuto 4",59000000,Natal,RN
+Rafaela,Costa,"Rua 1",701.010.006-34,12/11/1980,144,"Posto Norte",49099000,Aracaju,SE
+Angelina,Barcellos,"Av. Três",790.541.058-79,30/01/1966,472,"Espirito Santo",66999000,Belém,PA
+Rebeca,Oliveira,"Rua 3",777.388.071-99,13/05/1961,599,"Conjunto B",82999000,Curitiba,PR
+Ângelo,Oliveira,"Av. Xv",112.934.716-82,01/12/1950,347,"Santo Antônio",29099000,Vitória,ES
+Rafaela,Neves,"Rua Esmeralda",435.147.132-86,25/01/1971,1610,"João Lima",78480000,Cuiabá,MT
+Victor,Gonçalves,"Rua A",696.849.395-07,27/07/1983,1533,"Conjunto A",79680000,"Água Clara",MS
+Luisa,Lima,"Rua C",697.453.534-18,19/03/1977,1815,"Conjuto 2",88100000,Florianópolis,SC
+Rodrigo,Vasconcelos,"Av. Xv",805.880.134-80,17/07/1987,302,"Conjunto C",59000000,Natal,RN
+Clara,Moraes,"Rua Paraíba",610.886.233-52,05/06/1986,1400,"João Rocha",86300000,"Cornélio Procópio",PR
+Yasmin,Araújo,"Rua Santo Antônio",162.540.132-90,09/05/1981,1290,C,70999000,Brasília,DF
+Alexander,Mello,"Rua João Gabriel",789.340.873-15,09/09/1959,1277,Limeira,70999000,Brasília,DF
+Benjamim,Bernardes,"Avenida São José",416.877.887-82,28/12/1953,657,Dez,08000000,"São Paulo",SP
+Guilherme,Gomes,"Avenida Sergipe",235.967.441-21,13/09/1958,417,G,69000000,Manaus,AM
+Mateus,Moreira,"Avenida São José",334.910.089-99,13/09/1976,1106,2,69000000,Manaus,AM
+Raquel,Freitas,"Rua 1",947.095.317-73,03/09/1991,838,Horizonte,70999000,Brasília,DF
+Alessandra,Gomes,"Rua Doze",598.626.781-86,29/08/1990,1388,"Conjunto B",82999000,Curitiba,PR
+Sophia,Costa,"Rua A",274.786.934-23,07/04/1996,894,Cinco,08000000,"São Paulo",SP
+Thiago,Chaves,"Rua G",301.780.861-00,11/07/1982,480,"João Rocha",23799000,"Rio de Janeiro",RJ
+Pablo,Batista,"Av. João Pombo",487.667.543-05,16/04/1971,1228,Um,86300000,"Cornélio Procópio",PR
+Isadora,Garcia,"Av. Santiago",325.759.699-56,12/09/1983,558,"Jardim Pérola",49099000,Aracaju,SE
+"Ana Beatriz","De Oliveira","Av. João Pombo",797.156.822-35,05/05/1988,1231,Principal,68914000,Macapá,AP
+Isis,Monteiro,"Rua dos Amigos",544.366.892-71,22/12/1995,705,D,91999000,"Porto Alegre",RS
+"Ana Clara",,"Rua Paraíba",099.017.689-42,09/06/1987,716,"Conjuto 2",68914000,Macapá,AP
+"Ana Júlia",Paes,"Rua Esmeralda",734.486.567-04,27/09/1976,693,Brasil,69339000,"Boa Vista",RR
+Vitória,Alencar,"Rua Oito",676.062.548-00,24/12/1975,1412,Perola,82999000,Curitiba,PR
+Helena,Garcia,"Rua Principal",074.799.699-70,16/04/1973,231,Doze,91999000,"Porto Alegre",RS
+Estela,Leão,"Av. Santiago",831.953.524-78,22/12/1977,1389,E,08000000,"São Paulo",SP
+Diogo,Cavalcante,"Avenida São José",939.298.533-96,16/11/1981,1329,"Conjuto 1",29099000,Vitória,ES
+Lucca,Albuquerque,"Rua João Quinze",371.891.746-72,14/09/1987,1343,"Conjuto 1",50000000,Recife,PE
+Isis,Morais,"Av. Três",481.578.294-61,22/12/1957,1183,Um,57099000,Maceió,AL
+Mariana,Freitas,"Avenida Sergipe",447.234.942-60,29/09/1958,1055,"Jardim Pérola",88100000,Florianópolis,SC
+Isabelly,Oliveira,"Av. Três",901.550.409-10,19/12/1978,1038,"Posto Norte",69000000,Manaus,AM
+Igor,Muniz,"Av. São Paulo",539.927.946-01,21/12/1979,883,"Posto Norte",86300000,"Cornélio Procópio",PR
+Lorenzo,Paiva,"Rua I",777.538.740-80,18/06/1967,1485,"Primeiro de Maio",30000000,"Belo Horizonte",MG
+"João Lucas",Pereira,"Rua G",559.534.768-68,31/03/1973,364,B,50000000,Recife,PE
+Bianca,Galisteu,"Rua B",092.561.638-96,06/10/1992,1996,"Conjuto D",29099000,Vitória,ES
+Emanuel,Bernardes,"Avenida Sergipe",549.556.589-46,08/04/1980,512,"Jardim Pérola",08000000,"São Paulo",SP
+Abel,Menezzes,"Rua Sete",212.630.129-06,02/07/1973,1020,Seis,58000000,"João Pessoa",PB
+"Davi Lucca",Pinheiro,"Rua Cinco",183.589.676-67,01/06/1953,244,H,64099000,Teresina,PI
+Davi,Medeiros,"Av. Dom Pedro II",326.619.939-16,17/01/1967,222,Dez,66999000,Belém,PA
+Emanuela,Gonçalves,"Rua D",347.004.510-09,20/09/1958,342,Um,69920000,"Rio Branco",AC
+Manuel,Frota,"Avenida São José",615.342.049-46,03/09/1978,1831,2,68914000,Macapá,AP
+Apólo,Amaral,"Avenida Seis",297.273.317-77,05/01/1983,261,Diamente,91999000,"Porto Alegre",RS
+Gustavo,"Andrade ","Av. Pombo Rocha",089.161.297-10,20/06/1961,52,"Conjuto 4",79680000,"Água Clara",MS
+Melissa,Oliveira,"Rua Um",956.674.908-20,15/06/1958,310,"Espirito Santo",88100000,Florianópolis,SC
+Mariana,Vieira,"Rua Esmeralda",631.326.018-02,11/10/1953,188,C,82999000,Curitiba,PR
+Marina,Lessa,"Av. João Pombo",578.568.695-34,18/06/1989,1316,"Jardim Esperança",69000000,Manaus,AM
+Heitor,Pinheiro,"Rua Cinco",609.341.760-35,31/03/2001,1244,3,70999000,Brasília,DF
+Diego,Moreira,"Rua A",272.436.211-04,10/02/1999,1519,Paraíba,66999000,Belém,PA
+"João Miguel",Barreto,"Rua F",810.802.286-08,04/06/1951,649,Cinco,69000000,Manaus,AM
+Rafael,Pilar,"Rua 1",347.676.202-52,04/12/1984,455,"Conjuto 4",65099000,"São Luiz",MA
+Alice,Nogueira,"Avenida Brasil",714.275.311-02,18/01/1965,1346,C,88100000,Florianópolis,SC
+Helena,Barreto,"Rua Nove",939.591.841-15,12/03/1969,1878,Nogueira,70999000,Brasília,DF
+"Ana Júlia",Oliveira,"Rua dos Amigos",680.824.904-03,13/07/1967,1667,"Conjuto A",30000000,"Belo Horizonte",MG
+Felipe,Ferrari,"Rua dos Amigos",919.886.373-84,21/06/1999,851,"Jardim Veneza",88100000,Florianópolis,SC
+Guilherme,Reis,"Av. São Paulo",275.300.797-78,08/02/1974,573,1,68914000,Macapá,AP
+Matheus,Figueira,"Av. Santiago",002.795.519-24,23/01/1959,639,Onze,79680000,"Água Clara",MS
+Clara,Mello,"Avenida Sergipe",291.839.359-24,27/08/1981,1295,2,23799000,"Rio de Janeiro",RJ
+Rafaela,Martinez,"Rua Cinco",598.807.609-21,03/08/1966,204,"Conjuto D",29099000,Vitória,ES
+Lorena,Guimarães,"Rua 2",095.739.826-33,17/02/1971,890,"Jardim Pérola",79680000,"Água Clara",MS
+Calebe,"De Oliveira","Rua Sete",110.738.811-21,10/08/1988,1496,Cinco,08000000,"São Paulo",SP
+Eva,Pilar,"Rua Dez",980.388.904-42,10/07/1969,1833,"Conjuto A",69920000,"Rio Branco",AC
+Débora,Oliveira,"Av. dos Sonhos",277.563.492-37,24/06/1958,836,E,29099000,Vitória,ES
+Emanuelle,Barreto,"Avenida Brasil",108.817.957-63,08/09/1986,1824,"Martins de Souza",60000000,Fortaleza,CE
+Juliano,Guimarães,"Rua 1",399.963.992-06,19/01/1968,1518,"Conjunto B",49099000,Aracaju,SE
+Clara,Nogueira,"Rua Rubi",835.123.844-98,27/04/1957,1642,"Conjuto 2",78480000,Cuiabá,MT
+Eduarda,Martinele,"Rua E",247.226.953-69,27/09/1977,362,"Conjuto 2",68914000,Macapá,AP
+Esther,Vieira,"Rua Primeiro de Maio",656.325.845-00,19/02/1953,1736,G,69339000,"Boa Vista",RR
+Joana,Paes,"Av. São Paulo",464.430.099-32,29/12/1977,704,D,23799000,"Rio de Janeiro",RJ
+Alana,Monteiro,"Rua João Quinze",585.104.968-54,19/02/1999,1471,Limeira,49099000,Aracaju,SE
+Joaquim,Rodrigues,"Rua Cinco",229.213.700-34,08/09/1971,1127,Nogueira,49099000,Aracaju,SE
+Abigail,Frota,"Rua Nove",287.704.639-72,06/03/1998,1796,"Quadro Conjuntos",88100000,Florianópolis,SC
+Lourenço,Vasconcelos,"Rua dos Amigos",552.613.211-07,01/05/1964,1782,Horizonte,30000000,"Belo Horizonte",MG
+Iara,"De Novais","Rua Sete",648.706.728-80,11/07/1986,1596,"Jardim das Rosas",79680000,"Água Clara",MS
+Eduardo,Duarte,"Rua D",345.294.647-92,26/10/1989,1664,Perola,50000000,Recife,PE
+Beatriz,Morais,"Rua H",452.805.494-95,17/08/1962,349,Dez,65099000,"São Luiz",MA
+Melissa,"De Oliveira","Rua I",866.254.780-08,17/08/1974,221,C,59000000,Natal,RN
+Ágata,Soares,"Rua Avenida Horizonte",852.485.830-39,23/08/1975,749,"Conjuto D",64099000,Teresina,PI
+Larissa,Medeiros,"Rua João Gabriel",491.850.886-33,12/03/1977,1915,D,88100000,Florianópolis,SC
+Rebeca,Pilar,"Rua Paraíba",363.870.131-00,01/05/1966,1202,"Conjuto D",78480000,Cuiabá,MT
+Laura,Mello,"Rua João Quinze",944.217.449-56,20/10/1950,1922,"Conjunto A",49099000,Aracaju,SE
+Júlia,Freitas,"Rua Avenida Horizonte",091.839.900-97,30/07/1975,1586,"Marcelo Queiroz",82999000,Curitiba,PR
+Lara,Figueira,"Avenida Espirito Santo",425.164.222-88,17/01/1959,345,Cinco,86300000,"Cornélio Procópio",PR
+Benício,Barcellos,"Rua Dois",624.304.123-90,23/05/1980,1320,"Jardim Pérola",50000000,Recife,PE
+Victor,Martinez,"Rua G",795.714.574-42,07/01/1963,974,3,70999000,Brasília,DF
+Joaquim,Gomes,"Rua Avenida Horizonte",417.566.689-30,25/02/1965,890,"Santo Antônio",86300000,"Cornélio Procópio",PR
+Lara,Gomes,"Rua Sete",977.796.553-26,18/07/2001,1547,Sergipe,86300000,"Cornélio Procópio",PR
+Maísa,Vasconcelos,"Av. Pedro XVX",789.717.117-52,20/05/1970,847,1,78480000,Cuiabá,MT
+Rafael,Muniz,"Rua Nove",843.162.522-83,23/08/1963,382,"Espirito Santo",91999000,"Porto Alegre",RS
+"Maria Alice",Soares,"Rua 2",259.502.804-90,23/08/1980,25,Treze,49099000,Aracaju,SE
+Eduardo,Santos,"Rua B",473.576.821-10,02/05/1964,596,"Conjuto 1",29099000,Vitória,ES
+Laura,Alves,"Rua D",354.556.571-86,09/05/1981,695,Dez,08000000,"São Paulo",SP
+Ana,Barreto,"Rua Avenida Horizonte",031.195.976-86,21/08/1996,1495,"Conjuto 4",69920000,"Rio Branco",AC
+Emanuel,Carvalho,"Rua F",870.645.759-22,11/09/1951,564,"Primeiro de Maio",50000000,Recife,PE
+Igor,Leão,"Av. João Pombo",864.001.528-73,20/09/1982,93,Cinco,86300000,"Cornélio Procópio",PR
+Brenda,Mauricio,"Rua João Gabriel",794.538.065-44,09/06/1970,707,"João Rocha",70999000,Brasília,DF
+Francisco,Nogueira,"Rua 1",002.157.105-84,04/09/1981,710,"Conjunto B",79680000,"Água Clara",MS
+Anabela,Bernardes,"Rua Nove",641.126.064-86,23/03/1996,1748,"Martins de Souza",30000000,"Belo Horizonte",MG
+Cecília,Monteiro,"Rua D",463.078.405-52,13/02/1958,1544,"Conjuto B",82999000,Curitiba,PR
+Danilo,Marques,"Rua Paraíba",556.695.251-83,14/08/1998,1163,Dois,69339000,"Boa Vista",RR
+Isadora,Muniz,"Rua Sete",187.295.065-57,07/05/1982,1743,"Conjuto 4",30000000,"Belo Horizonte",MG
+Nicole,Barreto,"Rua C",945.113.058-62,06/08/1962,974,Perola,29099000,Vitória,ES
+Felipe,Barreto,"Rua Sete",970.668.682-77,17/10/1992,1274,Principal,91999000,"Porto Alegre",RS
+Anderson,Duarte,"Avenida Espirito Santo",283.510.507-76,28/10/1976,2,"Conjuto 3",41999000,Salvador,BA
+Ana,Maia,"Avenida Brasil",633.102.016-00,25/11/1994,1312,Sete,78480000,Cuiabá,MT
+Pietro,Martins,"Rua dos Amigos",011.552.001-52,29/10/1953,1004,Sergipe,59000000,Natal,RN
+Isa,Paris,"Rua Oito",781.616.952-37,27/01/1974,181,"Jardim Pérola",69000000,Manaus,AM
+"João Miguel",Reis,"Avenida Seis",515.346.079-78,16/10/1954,1877,"Siqueira Lima",57099000,Maceió,AL
+Alan,Carvalho,"Av. Pombo Rocha",246.714.896-35,12/10/1989,1876,D,60000000,Fortaleza,CE
+João,Queiroz,"Av. Pedro XVX",407.486.157-76,07/08/1979,1387,Onze,60000000,Fortaleza,CE
+Alícia,Santos,"Rua 1",629.367.983-02,06/12/1963,1737,C,69339000,"Boa Vista",RR
+Helena,Alencar,"Rua 3",492.919.400-89,17/03/1969,826,Dez,60000000,Fortaleza,CE
+Diana,Queiroz,"Rua F",437.034.669-01,07/03/1982,1828,"Conjuto D",69000000,Manaus,AM
+Manuela,Novaes,"Av. Pedro XVX",574.374.037-22,17/03/1969,821,G,66999000,Belém,PA
+Nicolas,Rocha,"Rua G",883.459.400-21,09/08/1999,353,"Jardim Pérola",57099000,Maceió,AL
+Catarina,Costa,"Avenida Brasil",515.270.203-71,27/02/1957,1652,"Conjunto C",30000000,"Belo Horizonte",MG
+Olívia,Maximus,"Rua Sete",316.701.765-17,02/12/1959,770,Nove,60000000,Fortaleza,CE
+Camila,Gomes,"Av. Três",685.080.459-64,15/07/1966,59,E,66999000,Belém,PA
+Raul,Santana,"Rua Diamente",957.022.437-14,05/12/1952,810,"Jardim das Rosas",68914000,Macapá,AP
+Diego,Soares,"Av. Três",369.314.235-17,25/01/1952,1401,"Conjuto 2",08000000,"São Paulo",SP
+Gabriela,Ribeiro,"Rua Principal",777.823.808-04,21/11/1953,1988,"São José",23799000,"Rio de Janeiro",RJ
+"Davi Lucas","De Novais","Avenida São José",434.391.969-25,14/07/1996,1812,Diamente,64099000,Teresina,PI
+Vicente,Boaventura,"Rua C",910.121.811-54,31/07/1960,3,"Posto Norte",58000000,"João Pessoa",PB
+Lorena,Pereira,"Rua C",381.906.540-71,07/12/1997,588,"Primeiro de Maio",68914000,Macapá,AP
+Benjamim,Boaventura,"Rua Nove",842.777.011-16,24/03/1978,1633,Diamente,59000000,Natal,RN
+Emanuela,Queiroz,"Rua Cinco",211.234.831-08,26/02/1980,1118,"Conjunto B",30000000,"Belo Horizonte",MG
+Miguel,Leão,"Av. Quatro",108.571.052-13,03/08/1967,1287,"Martins de Souza",60000000,Fortaleza,CE
+Bruna,Barreto,"Avenida Espirito Santo",402.342.321-10,28/08/1969,536,H,70999000,Brasília,DF
+"Ana Beatriz","Andrade ","Rua Santo Antônio",705.017.682-62,15/12/1996,1308,Onze,91999000,"Porto Alegre",RS
+Fernando,Gomes,"Rua Cinco",815.548.677-03,15/03/1986,1732,D,08000000,"São Paulo",SP
+Luana,Suarez,"Avenida Seis",816.818.264-29,13/06/1993,191,H,50000000,Recife,PE
+Leticia,Paris,"Rua Avenida Horizonte",030.757.729-50,14/01/1979,1561,I,08000000,"São Paulo",SP
+Elisa,Lacerda,"Rua B",684.170.199-28,03/05/1962,1955,"Primeiro de Maio",59000000,Natal,RN
+Henrique,Vieira,"Av. Dom Pedro II",789.181.939-47,24/08/1982,1739,Perola,57099000,Maceió,AL
+Joaquim,Alves,"Av. Quatro",321.826.321-23,06/08/1971,1623,"Conjuto 3",70999000,Brasília,DF
+Vitor,Novaes,"Rua 2",494.612.556-67,15/05/1976,1066,D,82999000,Curitiba,PR
+Lucca,Neves,"Rua Principal",233.622.490-94,18/10/1966,354,Principal,69000000,Manaus,AM
+Alice,Ribeiro,"Rua Cinco",524.585.433-32,07/07/1975,1502,"Conjuto E",59000000,Natal,RN
+Renan,Ferrari,"Rua A",413.435.721-77,18/12/1967,151,2,64099000,Teresina,PI
+Henrique,Oliveira,"Av. Xv",458.851.137-85,24/03/1953,1760,A,23799000,"Rio de Janeiro",RJ
+Alícia,Vitor,"Av. Pombo Rocha",555.399.312-11,19/05/1963,325,"João Lima",88100000,Florianópolis,SC
+Esther,Barreto,"Rua Esmeralda",558.002.109-77,27/04/1957,483,E,69000000,Manaus,AM
+"Maria Fernanda",Soares,"Rua Diamente",842.506.381-70,27/08/1970,1109,Limeira,29099000,Vitória,ES
+Lorenzo,Morais,"Av. Santiago",597.610.904-77,10/03/1955,120,Sergipe,79680000,"Água Clara",MS
+Benjamim,Queiroz,"Avenida São José",917.030.800-41,05/01/1953,522,Nove,59000000,Natal,RN
+Flôr,Vieira,"Rua F",155.816.573-86,22/08/1990,580,Seis,86300000,"Cornélio Procópio",PR
+Pedro,Costa,"Rua Primeiro de Maio",493.644.800-15,12/05/1992,876,"João Lima",08000000,"São Paulo",SP
+Melinda,Oliveira,"Av. Pedro XVX",834.670.457-74,13/01/1968,658,"Conjunto B",59000000,Natal,RN
+Vicente,Ferrari,"Rua Treze",799.989.539-36,20/02/1974,1745,D,23799000,"Rio de Janeiro",RJ
+Manuela,Freitas,"Av. Dom Pedro II",484.329.665-17,13/07/1958,241,"São Paulo",49099000,Aracaju,SE
+Benjamim,Campos,"Av. das Lameiras",135.235.351-23,26/10/1978,1719,Treze,82999000,Curitiba,PR
+Leonardo,Batista,"Av. Quatro",731.343.825-71,02/02/1979,1292,"Siqueira Lima",70999000,Brasília,DF
+"Maria Luiza",Costa,"Rua A",533.119.786-84,28/12/2001,1274,Oito,79680000,"Água Clara",MS
+Joana,Araújo,"Rua João Gabriel",159.251.306-93,05/07/1994,944,Onze,29099000,Vitória,ES
+Kevin,Vieira,"Rua Sete",464.866.442-65,04/08/1962,1920,"Jardim Veneza",29099000,Vitória,ES
+Abel,Martinele,"Rua Nove",285.136.127-90,30/01/1986,1184,1,88100000,Florianópolis,SC
+Caio,Pereira,"Rua Oito",730.943.061-10,03/09/1982,608,Diamente,57099000,Maceió,AL
+Ester,Muniz,"Rua Avenida Horizonte",540.840.221-52,30/09/1999,1327,"Quadro Conjuntos",70999000,Brasília,DF
+Brenda,Albuquerque,"Av. Dom Pedro II",721.958.977-83,08/02/1974,1660,"Conjuto 4",59000000,Natal,RN
+Samuel,Freitas,"Rua B",824.936.092-39,25/12/1999,652,Cinco,50000000,Recife,PE
+Lourenço,Martinez,"Av. das Lameiras",855.509.428-36,28/09/1954,353,Sergipe,58000000,"João Pessoa",PB
+Adriana,Cavalcante,"Av. Três",018.006.178-01,20/01/1953,290,Diamente,23799000,"Rio de Janeiro",RJ
+Lara,Ribeiro,"Rua Esmeralda",976.408.705-18,29/01/1996,890,3,64099000,Teresina,PI
+Daniela,Paiva,"Av. São Paulo",105.577.394-03,21/08/1963,1924,Oito,64099000,Teresina,PI
+Lucas,Martins,"Av. João Pombo",880.057.361-42,07/11/1963,1372,"Conjunto C",69339000,"Boa Vista",RR
