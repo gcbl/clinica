@@ -61,3 +61,12 @@ http://blog.algaworks.com/spring-security/
 
 Joined Table como heranca
 https://vladmihalcea.com/the-best-way-to-use-entity-inheritance-with-jpa-and-hibernate/
+
+
+
+Diagramas:
+https://online.visual-paradigm.com/subscribe.jsp
+tccpuc@sharklasers.com
+
+
+https://yuml.me/edit/8c667fc3
