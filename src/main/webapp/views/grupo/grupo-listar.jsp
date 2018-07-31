@@ -40,7 +40,7 @@
                                 <td>
                                     <ul>
                                         <c:forEach items="${item.usuarios}" var="itemList">
-                                            <li>${itemList['class'].simpleName} ${itemList.nome}</li>
+                                            <li>${itemList['class'].simpleName} ${itemList.nome} <small class="text-secondary">(login: ${itemList.login})</small></li>
                                         </c:forEach>
                                     </ul>
                                 </td>
