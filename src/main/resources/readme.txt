@@ -62,11 +62,20 @@ http://blog.algaworks.com/spring-security/
 Joined Table como heranca
 https://vladmihalcea.com/the-best-way-to-use-entity-inheritance-with-jpa-and-hibernate/
 
-
+-- -------------------------------------------------------------------------------------------------------- --
 
 Diagramas:
 https://online.visual-paradigm.com/subscribe.jsp
 tccpuc@sharklasers.com
 
+SmartDraw
+tccpuc@sharklasers.com
+tccpuc
+
 
 https://yuml.me/edit/90c49d32
+
+
+Duvidas tutoria:
+
+- O requisito/caso de uso "Cadastro de usuários" é necessário já que existe o "Cadastro de Profissionais"  
