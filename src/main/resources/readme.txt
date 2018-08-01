@@ -79,4 +79,4 @@ https://yuml.me/edit/90c49d32
 Duvidas tutoria:
 
 - O requisito/caso de uso "Cadastro de usuários" é necessário já que existe o "Cadastro de Profissionais"?
-  - Só pra atender a especificacao disponibilizada? 
+  - Só pra atender a especificacao disponibilizada?
