@@ -95,7 +95,7 @@ body {
             <!-- ------------------------------------------- -->
                 <div class="row">
                     <div class="col-sm-4"></div>
-                    <div class="col-sm-4"><br><br><br>
+                    <div class="col-sm-5"><br><br><br>
                         <h1 class="text-center login-title">Efetue autenticação para continuar no sistema</h1>
                         <div class="account-wall">
                             <div class="text-center"><h3><b>SisClinica</b></h3></div>
@@ -109,7 +109,7 @@ body {
                             </c:if>
                             <form class="form-signin" action="/login" method="post">
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>                            
-                                <input type="text"     class="form-control" name="username" value="25" placeholder="Email" required autofocus>
+                                <input type="text"     class="form-control" name="username" value="25" placeholder="Login" required autofocus>
                                 <input type="password" class="form-control" name="password" value="25" placeholder="Senha"     required>
                                 <button class="btn btn-lg btn-info btn-block" type="submit">Entrar no sistema</button>
                             </form>
@@ -118,7 +118,7 @@ body {
                             <div class="text-center font-weight-light font-italic"><small>v. ${versao}</small></div>
                         </c:if>
                     </div>
-                    <div class="col-sm-4"></div>
+                    <div class="col-sm-3"></div>
                 </div>
             
             <!-- ------------------------------------------- -->
