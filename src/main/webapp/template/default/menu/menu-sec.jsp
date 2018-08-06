@@ -31,6 +31,9 @@
 <sec:authorize access="hasRole('ROLE_EXCLUIR_RECEPCIONISTA' )" var="excluirRecepcionista" />
 <c:set var="funcoesRecepcionista" value="${listarRecepcionista || incluirRecepcionista || editarRecepcionista || excluirRecepcionista}"/>
 
+<%-- Profissional [Medico || Recepcionista] --%>
+<c:set var="funcoesProfissional" value="${funcoesMedico || funcoesRecepcionista}"/>
+
 <%-- Grupo --%>
 <sec:authorize access="hasRole('ROLE_LISTAR_GRUPO'  )" var="listarGrupo"  />
 <sec:authorize access="hasRole('ROLE_INCLUIR_GRUPO' )" var="incluirGrupo" />
@@ -252,7 +255,34 @@
             </li>
         </c:if>
       
+      	<%-- Profissional --%>
+        <c:if test = "${funcoesProfissional}">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user-md"></i> Profissionais
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                    <c:if test = "${listarMedico || editarMedico || excluirMedico}">
+                        <a class="dropdown-item" href="listar-medico">Consultar Médico</a>
+                    </c:if>
+                    <c:if test = "${incluirMedico}">  
+                        <a class="dropdown-item" href="incluir-medico">Incluir Médico</a>          
+                    </c:if>
+                    <div class="dropdown-divider"></div>
+                    <c:if test = "${listarRecepcionista || editarRecepcionista || excluirRecepcionista}">
+                        <a class="dropdown-item" href="listar-recepcionista">Consultar Recepcionista</a>
+                    </c:if>
+                    <c:if test = "${incluirRecepcionista}">
+                        <a class="dropdown-item" href="incluir-recepcionista">Incluir Recepcionista</a>
+                    </c:if>          
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+        </c:if>
+
+      
         <%-- OK - Medico --%>
+		<%--
         <c:if test = "${funcoesMedico}">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -269,6 +299,7 @@
                 </div>
             </li>
         </c:if>
+		--%>
 
         <%-- OK - Paciente --%>
         <c:if test = "${funcoesPaciente}">
@@ -293,6 +324,7 @@
         </c:if>
 
         <%-- OK - Recepcionista --%>
+        <%-- 
         <c:if test = "${funcoesRecepcionista}">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -309,6 +341,7 @@
                 </div>
             </li>
         </c:if>
+      	--%>
       
         <%-- OK - Grupo --%>
         <c:if test = "${funcoesGrupo}">
