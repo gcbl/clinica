@@ -32,7 +32,7 @@
                     <div class="form-group">
                       <label class="col-sm-4 control-label" for="dataSolicitacao">Nome:</label>  
                       <div class="col-sm-4">
-                      <form:input path="nome" placeholder="nome" class="form-control input-md"/>
+                      <form:input path="nome" placeholder="Nome do grupo" class="form-control input-md"/>
                       <form:errors path="nome" cssClass="text-danger" />
                       <!-- <span class="help-block">help block</span> -->  
                       </div>
@@ -40,9 +40,9 @@
                     
                     <!-- Text input-->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="descricao">Descricao:</label>  
+                      <label class="col-md-4 control-label" for="descricao">Descrição:</label>  
                       <div class="col-md-4">
-                      <form:input path="descricao" placeholder="descricao" class="form-control input-md"/> <form:errors path="descricao" cssClass="text-danger" />
+                      <form:input path="descricao" placeholder="Descrição do grupo" class="form-control input-md"/> <form:errors path="descricao" cssClass="text-danger" />
                       <!-- <span class="help-block">Informe a concentração e forma farmaceutica ou uma breve descrição </span> -->  
                       </div>
                     </div>  
@@ -170,7 +170,7 @@
  $(document).ready(function() {
 	 
         $('#usuarios').select2({
-            placeholder: "Selecione os usuários",
+            placeholder: "Selecione os usuários deste grupo",
             language: "pt-BR",
             theme: "bootstrap",
             allowClear: true,

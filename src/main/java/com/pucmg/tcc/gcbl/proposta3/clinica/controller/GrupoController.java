@@ -74,6 +74,10 @@ public class GrupoController extends ModelController {
         if(result.hasErrors()){
             model.addAttribute(getModelName(), item);
             
+            List<Permissao> permissoesList = permissaoService.findAll();
+            Collections.sort(permissoesList);
+            model.addAttribute("permissoesList", permissoesList);
+            
             String mensagem = messageSource.getMessage("formulario.erros-de-validacao", null, locale);
             adicionarAlertaWarning(model, mensagem);
             return getViewPath() + "incluirForm";
