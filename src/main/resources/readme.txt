@@ -63,6 +63,9 @@ Joined Table como heranca
 https://vladmihalcea.com/the-best-way-to-use-entity-inheritance-with-jpa-and-hibernate/
 
 -- -------------------------------------------------------------------------------------------------------- --
+Casos de uso:
+https://github.com/fga-gpp-mds/2016.2-SAS_FGA/wiki/Especifica%C3%A7%C3%A3o-de-Caso-de-Uso---Realizar-Login-(UC02)
+-- ---------
 
 Diagramas:
 https://online.visual-paradigm.com/subscribe.jsp
