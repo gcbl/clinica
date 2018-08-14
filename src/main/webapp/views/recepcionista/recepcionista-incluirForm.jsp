@@ -34,7 +34,7 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="cpf">Cpf:</label>  
                       <div class="col-md-4">
-                      <form:input path="cpf" placeholder="Cpf" class="form-control input-md"/> <form:errors path="cpf" cssClass="text-danger" />
+                      <form:input path="cpf" placeholder="000.000.000-00" class="form-control input-md"/> <form:errors path="cpf" cssClass="text-danger" />
                       <!-- <span class="help-block">help block</span> -->  
                       </div>
                     </div>

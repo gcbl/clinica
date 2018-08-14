@@ -29,7 +29,7 @@ public abstract class Pessoa extends BaseEntity implements Comparable<Pessoa> {
 
     //TODO: Ativar o unique=true e tratar quando for inserir um mesmo CPF
     @Column(name = "CPF" /*, unique=true */)
-    @CPF(message = "Por favor informe um CPF válido")
+    @CPF(message = "Por favor informe um CPF válido (inclua pontos e traço)")
     @JsonIgnore
     private String cpf;
     
