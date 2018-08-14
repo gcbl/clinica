@@ -127,6 +127,7 @@ public class DataUtils {
     }
 
     public static boolean isCPF(String CPF) {
+        CPF = (CPF == null) ? "" : CPF; // String vazio se CPF null;
     	CPF = CPF.replace(".", "");
     	CPF = CPF.replace("-", "");
     	
