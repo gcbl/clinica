@@ -50,7 +50,7 @@
                     
                     <!-- Text input-->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="concentracaoFormaFarmaceutica">Concentração e Forma Farmaceutica</label>  
+                      <label class="col-md-4 control-label" for="concentracaoFormaFarmaceutica">Concentração e Forma Farmacêutica</label>  
                       <div class="col-md-4">
                       <form:input path="concentracaoFormaFarmaceutica" placeholder="Exemplo: Suspensão oral 15mg/ml" class="form-control input-md"/> <form:errors path="concentracaoFormaFarmaceutica" cssClass="text-danger" />
                       <!-- <span class="help-block">Informe a concentração e forma farmaceutica ou uma breve descrição </span> -->  
