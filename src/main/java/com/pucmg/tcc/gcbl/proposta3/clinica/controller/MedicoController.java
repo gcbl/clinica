@@ -68,8 +68,14 @@ public class MedicoController extends ModelController {
             return getViewPath() + "incluirForm";
         }
         
-        
-        modelService.salvar(item);
+
+        try{
+            modelService.salvar(item);
+        }catch(DataIntegrityViolationException dive){
+            String mensagem = messageSource.getMessage("formulario.operacao.insercao.login-ja-utilizado", new Object[]{ getModelName() }, locale);
+            adicionarAlertaWarning(model, mensagem);
+            return inserirForm(model);
+        }        
         
         String mensagemInclusao = messageSource.getMessage("formulario.operacao.inclusao.sucesso", new Object[]{ getModelName() }, locale);
         adicionarAlertaSuccess(model, mensagemInclusao);
