@@ -44,7 +44,7 @@
 
                     <!-- Select input-->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="medico">Medico:</label>  
+                      <label class="col-md-4 control-label" for="medico">Médico:</label>  
                       <div class="col-md-4">
                           <form:select path="medico" id="medico" style="width: 100%">
                               <%-- No caso de estar editando --%>
