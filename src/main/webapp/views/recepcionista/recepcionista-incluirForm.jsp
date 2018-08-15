@@ -95,7 +95,7 @@
 
                     <!-- Text input-->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="matricula">Matricula:</label>  
+                      <label class="col-md-4 control-label" for="matricula">Matrícula:</label>  
                       <div class="col-md-4">
                       <form:hidden path="id" placeholder="id" class="form-control input-md"/> <form:errors path="id" cssClass="text-danger" />
                       <form:input path="matricula" placeholder="Matricula" class="form-control input-md"/> <form:errors path="matricula" cssClass="text-danger" />
