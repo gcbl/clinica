@@ -51,7 +51,6 @@
                     <div class="form-group">
                             <label class="col-md-4 control-label" for="usuarios">Usuários:</label>
                     </div>
-                    
                     <div class="form-group form-inline">
 		                      <!-- <label class="col-md-4 control-label" for="usuarios">Usuários:</label> -->
 		                      <div class="col-md-4">
@@ -71,29 +70,32 @@
 
                     <!-- Select input-->
                     <div class="form-group">
-                      <label class="col-md-5 control-label" for="permissoes">Permissões:</label>  
-                      <div class="col-md-5">
+                      <label class="col-md-4 control-label" for="permissoes">Permissões:<br><small>Filtros: @ aberto; # fechado</small></label>  
+                      <div class="col-md-4">
                       <form:errors path="permissoes" cssClass="text-danger" /> 
                           <%-- ##### --%>
                               <div class="table-responsive table-sm">
                                  <table id="itemDataTable" class="table table-striped table-bordered">
                                          <thead>
                                              <tr>
-                                                 <th>id</th>
+                                                 <!-- <th>id</th> -->
                                                  <th>Descrição</th>
-                                                 <!--  <th>Estado atual</th> -->
                                                  <th>Permitir?</th>
-                                                 <th>Ação</th>
+                                                 <!-- <th>Situação Atual</th> -->
+                                                 <!-- <th>Ação</th> -->
                                              </tr>
                                          </thead>
                                          <tbody>
+                                             <c:set var="permissoesStr" value="${grupo.permissoesStr}"/>
                                              <c:forEach items="${permissoesList}" var="item">
+                                             <c:set var="estaPermissao" value="${item.descricao}"/>
+                                             <c:set var="situacaoAtual" value="${fn:containsIgnoreCase(permissoesStr, estaPermissao)}"/>
                                                  <tr>
-                                                     <td>${item.id}</td>
-                                                     <td nowrap="nowrap">${item.descricao}</td>
-                                                     <!--  <td>${fn:contains(theString, 'test')}</td> -->
+                                                     <%-- <td>${item.id}</td> --%>
+                                                     <td nowrap="nowrap">${item.descricao} <div class="d-none"><c:out value="${situacaoAtual ? '@' : '#'}" /></div></td>
                                                      <td> <form:checkbox path="permissoes" value="${item.id}" label="" data-toggle="toggle" data-on="<i class='fas fa-lock-open'></i> Sim" data-off="<i class='fas fa-lock'></i> Não" data-onstyle="success" data-offstyle="danger" data-size="small" data-style="android" /></td>                                
-                                                     <td nowrap="nowrap"><small><small>${item.nome}</small></small></td>
+                                                     <%-- <td nowrap="nowrap"><small><small><c:out value="${situacaoAtual ? 'Sim' : 'Não'}" /></small></small></td> --%>
+                                                     <%-- <td nowrap="nowrap"><small><small>${item.nome}</small></small></td> --%>
                                                  </tr>
                                              </c:forEach>
                                          </tbody>
@@ -218,7 +220,13 @@
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese.json"
             }
-        } );         
+        } );
+        
+        $('#btnSalvar').click(function() {
+            // busca com vazio pra poder atualizar a lista submeter todos os valores
+        	table.search('').draw();
+        });
+        
         
 });
  </script>
