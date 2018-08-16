@@ -71,8 +71,8 @@
 
                     <!-- Select input-->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="permissoes">Permissões:</label>  
-                      <div class="col-md-4">
+                      <label class="col-md-5 control-label" for="permissoes">Permissões:</label>  
+                      <div class="col-md-5">
                       <form:errors path="permissoes" cssClass="text-danger" /> 
                           <%-- ##### --%>
                               <div class="table-responsive table-sm">
@@ -80,18 +80,20 @@
                                          <thead>
                                              <tr>
                                                  <th>id</th>
-                                                 <th>Ação</th>
+                                                 <th>Descrição</th>
                                                  <!--  <th>Estado atual</th> -->
                                                  <th>Permitir?</th>
+                                                 <th>Ação</th>
                                              </tr>
                                          </thead>
                                          <tbody>
                                              <c:forEach items="${permissoesList}" var="item">
                                                  <tr>
                                                      <td>${item.id}</td>
-                                                     <td>${item.nome}</td>
+                                                     <td nowrap="nowrap">${item.descricao}</td>
                                                      <!--  <td>${fn:contains(theString, 'test')}</td> -->
                                                      <td> <form:checkbox path="permissoes" value="${item.id}" label="" data-toggle="toggle" data-on="<i class='fas fa-lock-open'></i> Sim" data-off="<i class='fas fa-lock'></i> Não" data-onstyle="success" data-offstyle="danger" data-size="small" data-style="android" /></td>                                
+                                                     <td nowrap="nowrap"><small><small>${item.nome}</small></small></td>
                                                  </tr>
                                              </c:forEach>
                                          </tbody>

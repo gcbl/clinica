@@ -22,6 +22,9 @@ public class Permissao extends BaseEntity implements Comparable<Permissao>, Seri
     @JsonIgnore
     private String nome;
 
+    @JsonIgnore
+    private String descricao;
+
     
 //    @ManyToMany(mappedBy = "permissoes")
 //    private List<Usuario> usuarios;
