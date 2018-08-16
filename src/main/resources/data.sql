@@ -510,7 +510,7 @@ insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (23, 2);
 insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (24, 2);
 insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (25, 2);
 
--- Adicionando o usuario 25 ao grupo de testes
+-- Adicionando o usuario 100 ao grupo de testes
 insert into SC_SEC_USUARIO_GRUPO (ID_USUARIO, ID_GRUPO) values (100, 3);
 
 
