@@ -23,7 +23,7 @@ public class AgendaForm  extends BaseEntity {
 
     @NotNull(message = "*Por favor informe a data de fim")
     @DateTimeFormat(pattern = "dd/MM/yyyy" )
-    @Future
+    //@Future
     private Date dataFim;
     
 //    @NotNull(message = "*Por favor informe a hora do inicio")
