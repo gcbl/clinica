@@ -49,4 +49,12 @@ public class Grupo extends BaseEntity implements Serializable {
     @JsonIgnore
     private List<Permissao> permissoes = new ArrayList<Permissao>();
     
+    public String getPermissoesStr(){
+        String permissoesStr = "|";
+        for (Permissao permissao : permissoes) {
+            permissoesStr += permissao.getDescricao() + "|";
+        }
+        return permissoesStr;
+    }
+    
 }
