@@ -155,6 +155,14 @@ public class TesteService{
         for (Grupo grupo : grupos) {
             grupoService.adicionarUsuario(grupo, recepcionistas);
         }
+        
+        // Remove o recepcionista 100 que é o de teste
+        Recepcionista usuarioTeste = recepcionistaService.findOne("100");
+        for (Grupo grupo : grupos) {
+            grupoService.removerUsuario(grupo, usuarioTeste);
+        }
+
+        
 
         grupos = grupoService.findByNome("MEDICOS");
         // Zera o grupo

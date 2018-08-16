@@ -72,6 +72,11 @@ public class GrupoService{
         grupo.setUsuarios(new ArrayList<Usuario>());
         salvar(grupo);
     }
+    
+    public void removerUsuario(Grupo grupo, Usuario usuario){
+        grupo.getUsuarios().remove(usuario);
+        salvar(grupo);
+    }    
 
     
 }
