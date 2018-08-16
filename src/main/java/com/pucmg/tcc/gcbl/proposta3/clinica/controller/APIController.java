@@ -172,7 +172,7 @@ public class APIController extends BaseController {
             Paciente paciente = pacienteService.findOne(idPaciente);
             agendamentoService.preencherAgendamento(agendamento, paciente);
         }else {
-        	throw new RuntimeException("Horario ja ocupado");
+        	throw new RuntimeException("Horário já ocupado");
         }
         
         
@@ -191,7 +191,7 @@ public class APIController extends BaseController {
             agendamentoService.liberarAgendamento(agendamento, paciente);
 
         }else {
-        	throw new RuntimeException("Horario já está vago");
+        	throw new RuntimeException("Horário já está vago");
         }
 
         return agendamento;
