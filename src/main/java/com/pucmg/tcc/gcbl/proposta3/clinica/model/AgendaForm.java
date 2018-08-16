@@ -1,5 +1,6 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.model;
 
+import java.time.LocalTime;
 import java.util.Date;
 
 import javax.validation.constraints.Future;
@@ -25,14 +26,23 @@ public class AgendaForm  extends BaseEntity {
     @Future
     private Date dataFim;
     
-    @NotNull(message = "*Por favor informe a hora do inicio")
-    @Range(min=0, max=23, message="Por favor informe um numero entre 0 e 23")
-    private Integer horaInicio;
-    
-    @NotNull(message = "*Por favor informe a hora do fim")
-    @Range(min=0, max=23, message="Por favor informe um numero entre 0 e 23")
-    private Integer horaFim;
+//    @NotNull(message = "*Por favor informe a hora do inicio")
+//    @Range(min=0, max=23, message="Por favor informe um numero entre 0 e 23")
+//    private Integer horaInicio;
 
+    @NotNull(message = "*Por favor informe a hora do inicio")
+    @DateTimeFormat(pattern = "HH:mm" )
+    private LocalTime horaInicio;
+    
+//    @NotNull(message = "*Por favor informe a hora do fim")
+//    @Range(min=0, max=23, message="Por favor informe um numero entre 0 e 23")
+//    private Integer horaFim;
+
+    @NotNull(message = "*Por favor informe a hora do fim")
+    @DateTimeFormat(pattern = "HH:mm" )
+    private LocalTime horaFim;
+    
+    
     @NotNull(message = "*Por favor informe a duração do atendimendo")
     @Range(min=10, max=60, message="A duração da consulta deve ser entre 10 e 60 minutos")
     private Integer duracao;

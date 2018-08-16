@@ -46,7 +46,7 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="horaInicio">Hora inicial:</label>  
                       <div class="col-md-4">
-                      <form:input path="horaInicio" placeholder="Número entre 0 e 23" class="form-control input-md"/>
+                      <form:input path="horaInicio" placeholder="HH:MM" class="form-control input-md"/>
                       <form:errors path="horaInicio" cssClass="text-danger" />
                       <!-- <span class="help-block">help block</span> -->  
                       </div>
@@ -56,7 +56,7 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="horaFim">Hora final:</label>  
                       <div class="col-md-4">
-                      <form:input path="horaFim" placeholder="Número entre 0 e 23" class="form-control input-md"/>
+                      <form:input path="horaFim" placeholder="HH:MM" class="form-control input-md"/>
                       <form:errors path="horaFim" cssClass="text-danger" />
                       <!-- <span class="help-block">help block</span> -->  
                       </div>

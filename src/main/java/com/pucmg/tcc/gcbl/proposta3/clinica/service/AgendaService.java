@@ -24,8 +24,8 @@ public class AgendaService{
     public void criarVagas(Medico medico,
                            LocalDate dataInicio,
                            LocalDate dataFim,
-                           int horaInicio,
-                           int horaFim,
+                           LocalTime horaInicio,
+                           LocalTime horaFim,
                            int duracao) {
 
         // Apagando todos os agendamentos daquele medico no periodo
@@ -35,12 +35,14 @@ public class AgendaService{
         List<Agendamento> vagas = new ArrayList<Agendamento>();
         
         LocalDate data = dataInicio;
-        while(data.isBefore(dataFim)){
+        
+        LocalDate dataFimAux = dataFim.plusDays(1); // 1 dia a mais pra ficar inclusivo, incluir o ultimo dia na geração da agenda
+        while(data.isBefore(  dataFimAux  )){
             
             boolean isWeekend = DataUtils.isWeekend(data);
             if ( !isWeekend ){
-                    LocalTime horaInicioLocalTime = LocalTime.of(horaInicio, 0);
-                    LocalTime horaFimLocalTime = LocalTime.of(horaFim, 0);
+                    LocalTime horaInicioLocalTime = horaInicio; // LocalTime.of(horaInicio, 0);
+                    LocalTime horaFimLocalTime = horaFim; // LocalTime.of(horaFim, 0);
                     
                     LocalTime horaInicioTemp = horaInicioLocalTime;
                     LocalTime horaFimTemp = horaInicioTemp.plusMinutes(duracao);

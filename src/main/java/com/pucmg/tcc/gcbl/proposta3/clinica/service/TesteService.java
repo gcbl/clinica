@@ -2,6 +2,7 @@ package com.pucmg.tcc.gcbl.proposta3.clinica.service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -229,8 +230,11 @@ public class TesteService{
         // Criando agenda pra os medicos
         LocalDate diaInicioAgenda = DataUtils.asLocalDate( new Date() );
         diaInicioAgenda = diaInicioAgenda.plusDays(-10);
+        
+        LocalTime horaInicio = LocalTime.of(8, 0);
+        LocalTime horaFim = LocalTime.of(18, 0);
         for (Medico medicoElement : medicos) {
-            agendaService.criarVagas(medicoElement, diaInicioAgenda, diaInicioAgenda.plusDays(20), 8, 18, 60);
+            agendaService.criarVagas(medicoElement, diaInicioAgenda, diaInicioAgenda.plusDays(20), horaInicio, horaFim, 60);
         }
         
         // --- Marcando horarios ---
