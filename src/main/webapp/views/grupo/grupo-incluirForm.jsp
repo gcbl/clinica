@@ -79,6 +79,7 @@
                                          <thead>
                                              <tr>
                                                  <!-- <th>id</th> -->
+                                                 <th>&nbsp;</th>
                                                  <th>Descrição</th>
                                                  <th>Permitir?</th>
                                                  <!-- <th>Situação Atual</th> -->
@@ -92,17 +93,19 @@
                                              <c:set var="situacaoAtual" value="${fn:containsIgnoreCase(permissoesStr, estaPermissao)}"/>
                                                  <tr>
                                                      <%-- <td>${item.id}</td> --%>
-                                                     <td nowrap="nowrap">
-                                                     <c:out value="${situacaoAtual ? cadeadoAberto : cadeadoFechado}" />
-                                                     <c:choose>
-                                                         <c:when test="${situacaoAtual}">
-                                                             <i class="fas fa-lock-open text-success"></i>
-                                                         </c:when>
-                                                         <c:otherwise>
-                                                             <i class="fas fa-lock text-danger"></i>
-                                                         </c:otherwise>
-                                                     </c:choose>
-                                                     ${item.descricao} <div class="d-none"><c:out value="${situacaoAtual ? '@' : '#'}" /></div></td>
+                                                     <td class="text-center">
+                                                         <div class="d-none"><c:out value="${situacaoAtual ? '@' : '#'}" /></div>
+                                                         <c:out value="${situacaoAtual ? cadeadoAberto : cadeadoFechado}" />
+                                                         <c:choose>
+                                                             <c:when test="${situacaoAtual}">
+                                                                 <i class="fas fa-lock-open text-success"></i>
+                                                             </c:when>
+                                                             <c:otherwise>
+                                                                 <i class="fas fa-lock text-danger"></i>
+                                                             </c:otherwise>
+                                                         </c:choose>
+                                                     </td>
+                                                     <td nowrap="nowrap">${item.descricao}</td>
                                                      <td> <form:checkbox path="permissoes" value="${item.id}" label="" data-toggle="toggle" data-on="<i class='fas fa-lock-open'></i> Sim" data-off="<i class='fas fa-lock'></i> Não" data-onstyle="success" data-offstyle="danger" data-size="small" data-style="android" /></td>                                
                                                      <%-- <td nowrap="nowrap"><small><small><c:out value="${situacaoAtual ? 'Sim' : 'Não'}" /></small></small></td> --%>
                                                      <%-- <td nowrap="nowrap"><small><small>${item.nome}</small></small></td> --%>
@@ -224,7 +227,7 @@
                      ],
             "paging":   false,
             "ordering": true,
-            "columnDefs": [ /* { orderable: false, targets: -1 } */ ], // desabilita sort da ultima coluna 
+            "columnDefs": [ { orderable: false, targets: -1 } ], // desabilita sort da ultima coluna 
             "order": [[ 1, "asc" ]],
             "info":     true,       
             "language": {
