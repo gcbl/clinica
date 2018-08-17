@@ -1,8 +1,9 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.util;
 
 public class Constantes {
- 
-    public static final String VERSAO_DO_SISTEMA = "201807161207"; // "201804181819";  // Versao do sistema
+
+    public static final String NOME_DO_SISTEMA = "SisClínicaCONSTANTE";
+    public static final String VERSAO_DO_SISTEMA = "201808171918";
 
     
     // Constantes de alerta
