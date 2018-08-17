@@ -1,7 +1,5 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.controller;
 
-import java.security.Principal;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.hibernate.SessionFactory;
@@ -13,11 +11,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.Medico;
+import com.pucmg.tcc.gcbl.proposta3.clinica.model.Recepcionista;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.security.Usuario;
 import com.pucmg.tcc.gcbl.proposta3.clinica.model.security.UsuarioSistema;
 import com.pucmg.tcc.gcbl.proposta3.clinica.util.Constantes;
-
-import com.pucmg.tcc.gcbl.proposta3.clinica.model.Recepcionista;
 
 public abstract class BaseController {
 
