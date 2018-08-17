@@ -37,7 +37,7 @@
                     
                     <!-- Text input-->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="horaInicio">horaInicio:</label>  
+                      <label class="col-md-4 control-label" for="horaInicio">Hora Inicial:</label>  
                       <div class="col-md-4">
                       <form:input path="horaInicio" placeholder="horaInicio" class="form-control input-md"/>
                       <form:errors path="horaInicio" cssClass="text-danger" />
@@ -47,7 +47,7 @@
                     
                     <!-- Text input-->
                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="horaFim">horaFim:</label>  
+                      <label class="col-md-4 control-label" for="horaFim">Hora Final:</label>  
                       <div class="col-md-4">
                       <form:input path="horaFim" placeholder="horaFim" class="form-control input-md"/>
                       <form:errors path="horaFim" cssClass="text-danger" />
