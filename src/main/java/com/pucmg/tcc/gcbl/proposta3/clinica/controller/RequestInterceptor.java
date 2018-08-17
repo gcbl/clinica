@@ -13,13 +13,17 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        String versao = (String)request.getSession().getAttribute("versao");
+        String  nomeSistema = (String)request.getSession().getAttribute("nomeSistema");
+        String       versao = (String)request.getSession().getAttribute("versao");
         
-         String ACAO_LISTAR = (String)request.getSession().getAttribute("ACAO_LISTAR");
+        String  ACAO_LISTAR = (String)request.getSession().getAttribute("ACAO_LISTAR");
         String ACAO_INCLUIR = (String)request.getSession().getAttribute("ACAO_INCLUIR");
         String ACAO_EXCLUIR = (String)request.getSession().getAttribute("ACAO_EXCLUIR");
-         String ACAO_EDITAR = (String)request.getSession().getAttribute("ACAO_EDITAR");
-        
+        String  ACAO_EDITAR = (String)request.getSession().getAttribute("ACAO_EDITAR");
+
+        if(nomeSistema == null){ // "" ou null
+            request.getSession().setAttribute("nomeSistema", Constantes.NOME_DO_SISTEMA);
+        }         
         
         if(versao == null){ // "" ou null
             request.getSession().setAttribute("versao", Constantes.VERSAO_DO_SISTEMA);
