@@ -4,12 +4,26 @@
     <!-- sec:csrfMetaTags -->
     <sec:csrfMetaTags />
     <!-- /sec:csrfMetaTags -->
-    <title>TCC</title>
+    <title>${nomeSistema}</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124345784-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'UA-124345784-1');
+    </script>
+
+
 
 	<!-- livereload -->
+    <!--
 	<script>
         document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')  
     </script> 
+    -->
     
     <!-- Favicon -->
     <!-- <link rel="shortcut icon" type="image/x-icon" href="resources/images/favicon.ico" /> -->
