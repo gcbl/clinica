@@ -40,6 +40,34 @@ public class SecurityConfigurationNovo extends WebSecurityConfigurerAdapter {
                 .antMatchers("/privado/inicio").permitAll()
                 .antMatchers("/privado/home").permitAll()
                 .antMatchers("/privado/api/**").permitAll() // tudo que envolve json
+                
+                
+                // Spring Boot Actuator
+                .antMatchers("/infos/**").permitAll()
+                .antMatchers("/autoconfig").permitAll()
+                .antMatchers("/trace").permitAll()
+                
+                .antMatchers("/auditevents").permitAll()
+                .antMatchers("/beans").permitAll()
+                .antMatchers("/conditions").permitAll()
+                .antMatchers("/configprops").permitAll()
+                .antMatchers("/env").permitAll()
+                .antMatchers("/flyway").permitAll()
+                .antMatchers("/health").permitAll()
+                .antMatchers("/admin/health").permitAll()
+                .antMatchers("/httptrace").permitAll()
+                .antMatchers("/info").permitAll()
+                .antMatchers("/loggers").permitAll()
+                .antMatchers("/liquibase").permitAll()
+                .antMatchers("/metrics").permitAll()
+                .antMatchers("/mappings").permitAll()
+                .antMatchers("/scheduledtasks").permitAll()
+                .antMatchers("/sessions").permitAll()
+                .antMatchers("/shutdown").permitAll()
+                .antMatchers("/threaddump").permitAll()
+                .antMatchers("/api/applications").permitAll()
+                // /Spring Boot Actuator
+                
                 // -- AUTOMATICA --
 
                 // Medico
