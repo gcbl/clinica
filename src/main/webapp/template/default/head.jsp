@@ -60,7 +60,7 @@
     
     <!-- Local pelos acentos -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/i18n/pt-BR.js" integrity="sha256-SYr7ePu2amNnWuiooknttfQaa6jBNCy1hUAZnPS6SMw=" crossorigin="anonymous"></script> -->
-    <script src="/resources/static/libs/select2/4.0.5/js/i18n/pt-BR.js" integrity="sha256-SYr7ePu2amNnWuiooknttfQaa6jBNCy1hUAZnPS6SMw=" crossorigin="anonymous"></script>
+    <script src="/resources/static/libs/select2/4.0.5/js/i18n/pt-BR.js"></script>
 
 	<!-- Bootstrap Toggle -->
     <!-- 
