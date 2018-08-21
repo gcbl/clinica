@@ -98,7 +98,7 @@ body {
                     <div class="col-sm-5"><br><br><br>
                         <h1 class="text-center login-title">Efetue autenticação para continuar no sistema</h1>
                         <div class="account-wall">
-                            <div class="text-center"><h3><b>SisClinica</b></h3></div>
+                            <div class="text-center"><h3><b>${nomeSistema}</b></h3></div>
                             <!-- <img class="profile-img" src="https://cdn2.iconfinder.com/data/icons/medical-12-1/512/xxx017-256.png"> -->
                             <img class="profile-img" src="resources/static/images/logo.png">
                             <div class="text-center"><h4>Sistema de Administração de Clínicas</h4></div>
