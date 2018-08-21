@@ -46,6 +46,8 @@ public class CustomUserDetailsService implements UserDetailsService {
     public Collection<? extends GrantedAuthority> authorities(List<Grupo> grupos) {
         Collection<GrantedAuthority> auths = new ArrayList<>();
         
+        //auths.add(new SimpleGrantedAuthority("ACTUATOR"));
+        
         for (Grupo grupo: grupos) {
             //List<Permissao> lista = permissaoRepository.findByGruposIn(grupo);
         	List<Permissao> lista = grupo.getPermissoes();
