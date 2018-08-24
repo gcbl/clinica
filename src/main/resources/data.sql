@@ -396,7 +396,7 @@ INSERT INTO TEMP_PESSOA (ID, NOME, CPF, DT_NASCIMENTO, ENDERECO, BAIRRO, CEP, CI
 ( 187, 'Leonardo Batista', '731.343.825-71', '1979-02-02', 'Av. Quatro, 1292', 'Siqueira Lima', '70999-000', 'Brasília', 'DF'),
 ( 188, 'Maria Luiza Costa', '533.119.786-84', '2001-12-28', 'Rua A, 1274', 'Oito', '79680-000', 'Água Clara', 'MS'),
 ( 189, 'Joana Araújo', '159.251.306-93', '1994-07-05', 'Rua João Gabriel, 944', 'Onze', '29099-000', 'Vitória', 'ES'),
-( 190, 'Kevin Vieira', '464.866.442-65', '1962-08-04', 'Rua Sete, 1920', 'Jardim Veneza', '29099-000', 'Vitória', 'ES'),
+( 190, 'Ian Lira', '464.866.442-65', '1950-12-28', 'Rua Sete, 1920', 'Jardim Veneza', '29099-000', 'Recife', 'PE'),
 ( 191, 'Abel Martinele', '285.136.127-90', '1986-01-30', 'Rua Nove, 1184', '1', '88100-000', 'Florianópolis', 'SC'),
 ( 192, 'Caio Pereira', '730.943.061-10', '1982-09-03', 'Rua Oito, 608', 'Diamente', '57099-000', 'Maceió', 'AL'),
 ( 193, 'Ester Muniz', '540.840.221-52', '1999-09-30', 'Rua Avenida Horizonte, 1327', 'Quadro Conjuntos', '70999-000', 'Brasília', 'DF'),
