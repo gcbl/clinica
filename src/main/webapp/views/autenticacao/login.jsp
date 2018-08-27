@@ -56,9 +56,9 @@ body {
     margin-top: 20px;
     padding: 40px 0px 20px 0px;
     background-color: #f7f7f7;
-    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.3);
 }
 .login-title
 {
@@ -95,8 +95,8 @@ body {
             <!-- ------------------------------------------- -->
                 <div class="row">
                     <div class="col-sm-4"></div>
-                    <div class="col-sm-5"><br><br><br>
-                        <h1 class="text-center login-title">Efetue autenticação para continuar no sistema</h1>
+                    <div class="col-sm-5"><br>
+                        <h1 class="text-center login-title">Informe suas credenciais para continuar no sistema</h1>
                         <div class="account-wall">
                             <div class="text-center"><h3><b>${nomeSistema}</b></h3></div>
                             <!-- <img class="profile-img" src="https://cdn2.iconfinder.com/data/icons/medical-12-1/512/xxx017-256.png"> -->
