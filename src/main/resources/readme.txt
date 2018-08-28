@@ -85,3 +85,15 @@ Duvidas tutoria:
 
 - O requisito/caso de uso "Cadastro de usuários" é necessário já que existe o "Cadastro de Profissionais"?
   - Só pra atender a especificacao disponibilizada? 
+
+  
+  
+----
+https://cepein.femanet.com.br/extrafema/buscarTccCurso.jsp?curso=ADS
+
+Futuros:
+
+- Paginação no servidor
+- Mascara
+- Melhoria no sistema de autorização
+- Pagina de abertura com funcionalidades mais usadas  
