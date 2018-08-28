@@ -97,3 +97,5 @@ Futuros:
 - Mascara
 - Melhoria no sistema de autorização
 - Pagina de abertura com funcionalidades mais usadas  
+
+- service chamando service pode gerar chamadas ciclicas. Resolver: implementar interface, jogar pra o controller 
