@@ -93,6 +93,7 @@ https://cepein.femanet.com.br/extrafema/buscarTccCurso.jsp?curso=ADS
 
 Futuros:
 
+- exclusao logica
 - Paginação no servidor
 - Mascara
 - Melhoria no sistema de autorização
