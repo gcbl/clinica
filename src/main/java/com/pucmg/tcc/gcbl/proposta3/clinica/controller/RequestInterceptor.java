@@ -59,6 +59,13 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 //
 //                }
         
+        String queryString = request.getQueryString() == null ? "" : "?" + request.getQueryString();
+        
+        String requisicao = "[" + getClientIp(request) + "]" + "[" + request.getRequestURL().toString() + queryString + "]"; 
+        
+        //System.out.println("######################################  Request Url: " + request.getRequestURL().toString() + "?" + request.getQueryString());
+        System.out.println("######################################  " + requisicao);
+
         return super.preHandle(request, response, handler);
 
     }
@@ -67,5 +74,18 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         super.postHandle(request, response, handler, modelAndView);
     }
+    
+    
+    private String getClientIp(HttpServletRequest request) {
+        String remoteAddr = "";
+        if (request != null) {
+            remoteAddr = request.getHeader("X-FORWARDED-FOR");
+            if (remoteAddr == null || "".equals(remoteAddr)) {
+                remoteAddr = request.getRemoteAddr();
+            }
+        }
+        return remoteAddr;
+    }
+    
     
 }
