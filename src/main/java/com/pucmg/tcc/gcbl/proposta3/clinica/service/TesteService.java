@@ -442,7 +442,7 @@ public class TesteService{
 //        
 //        solicitacaoExameRepository.save(solicitacaoExame);
         
-        System.out.println("pausa");
+        //System.out.println("pausa");
         
         medico = medicoRepository.findOne("2");
         
@@ -451,7 +451,7 @@ public class TesteService{
         List<Agendamento> agendaVagaMedico = agendamentoService.getHorarioDisponivelMedicoList(medico);
         List<Agendamento> agendaOcupadaMedico = agendamentoService.getHorarioOcupadoMedicoList(medico);
         
-        System.out.println("pausa");
+        //System.out.println("pausa");
         
 //        for (Agendamento agenda : agendamentos) {
 //          System.out.println(agenda);
