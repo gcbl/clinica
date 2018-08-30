@@ -1,15 +1,24 @@
 package com.pucmg.tcc.gcbl.proposta3.clinica.controller;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.pucmg.tcc.gcbl.proposta3.clinica.util.Constantes;
 
+@Component
 public class RequestInterceptor extends HandlerInterceptorAdapter {
+	
+    private static Log log = LogFactory.getLog(RequestInterceptor.class);
 
+	
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
@@ -61,10 +70,16 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
         
         String queryString = request.getQueryString() == null ? "" : "?" + request.getQueryString();
         
-        String requisicao = "[" + getClientIp(request) + "]" + "[" + request.getRequestURL().toString() + queryString + "]"; 
+        String requisicao = "[" + new Date() + "][" + getClientIp(request) + "]" + "[" + request.getRequestURL().toString() + queryString + "]"; 
+        log.info(requisicao);
         
+        // salva log
+        // requestLogRepository.save(requestLog);
+        //telegramService.sendToChannelASync("287918", requestLog.toString());
         //System.out.println("######################################  Request Url: " + request.getRequestURL().toString() + "?" + request.getQueryString());
-        System.out.println("######################################  " + requisicao);
+        //System.out.println("######################################  " + requisicao);
+
+        // -------------------------------
 
         return super.preHandle(request, response, handler);
 
