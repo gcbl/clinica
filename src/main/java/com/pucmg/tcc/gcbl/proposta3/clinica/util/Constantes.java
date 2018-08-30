@@ -3,7 +3,7 @@ package com.pucmg.tcc.gcbl.proposta3.clinica.util;
 public class Constantes {
 
     public static final String NOME_DO_SISTEMA = "SisClínica";
-    public static final String VERSAO_DO_SISTEMA = "201808300017";
+    public static final String VERSAO_DO_SISTEMA = "201808300033";
 
     
     // Constantes de alerta

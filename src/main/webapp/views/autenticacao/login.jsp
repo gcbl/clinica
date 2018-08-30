@@ -109,8 +109,8 @@ body {
                             </c:if>
                             <form class="form-signin" action="/login" method="post">
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>                            
-                                <input type="text"     class="form-control" name="username" value="25" placeholder="Login" required autofocus>
-                                <input type="password" class="form-control" name="password" value="25" placeholder="Senha" required>
+                                <input type="text"     class="form-control" name="username" value="" placeholder="Login" required autofocus>
+                                <input type="password" class="form-control" name="password" value="" placeholder="Senha" required>
                                 <button class="btn btn-lg btn-info btn-block" type="submit">Entrar no sistema</button>
                             </form>
                         </div>
