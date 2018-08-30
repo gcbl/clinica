@@ -3,6 +3,6 @@
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
     <logger name="org.springframework.web.servlet.view" level="INFO"/>
     <logger name="org.apache.http" level="OFF"/>
-    <logger name="com.pucmg.tcc" level="OFF"/>
-    <logger name="org.apache.http" level="DEBUG"/>    
+    <logger name="com.pucmg.tcc" level="INFO"/>
+    <logger name="org.apache.http" level="INFO"/>    
 </configuration>
