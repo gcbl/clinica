@@ -98,5 +98,7 @@ Futuros:
 - Mascara
 - Melhoria no sistema de autorização
 - Pagina de abertura com funcionalidades mais usadas  
+- Impedir remoçao de autorização de manutenção de grupos para todos os usuarios. Garantir q pelo menos 1 tenha opção;
+- Impedir remoção de todos os grupos.
 
 - service chamando service pode gerar chamadas ciclicas. Resolver: implementar interface, jogar pra o controller 
